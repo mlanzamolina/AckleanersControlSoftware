@@ -8,12 +8,12 @@ export default function Login() {
      
       <h1>Login</h1>
       <button
-        id="btn-3"
+        id="btn-2"
         onClick={() => {
             navigate("/");
         }}
       >
-        Home
+        Login
       </button>
     </div>
     )
