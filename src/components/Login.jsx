@@ -1,14 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 export default function Login() {
-  const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
-
-
 
   function handleSubmit() {
       
@@ -23,8 +19,9 @@ export default function Login() {
       } else {
         if (/^\w+([.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail)\.(?:|com|es)+$/.test(user)) {
          
-          alert("bienvenido =)");
-          navigate("/");
+            alert("bienvenido =");
+            
+     
          
         }else{
           alert("Ingrese un correo.");
@@ -92,7 +89,7 @@ export default function Login() {
                   </small>
                 </div>
               </div>
-            
+              <Link to="/">Home</Link>
       </div>
     );
   }
