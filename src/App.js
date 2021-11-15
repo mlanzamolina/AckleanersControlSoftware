@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './components/Home';
-//import Login from './components/Login';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -16,11 +16,11 @@ function App() {
         <Route exact path="/">
            <Home />
         </Route>
-       {/** 
+   
         <Route path="/Login">
         <Login />
-          </Route>*/
-}
+          </Route>
+
         </Switch>
 
         </div>

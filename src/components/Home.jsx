@@ -26,7 +26,7 @@ export class Home extends Component {
       <div>
          <div className="cover">
       <h1>Home</h1>
-      <Link to="/Login">Login</Link>
+     
     </div>
         <Navigation />
         <Header data={this.state.resumeData.Header}/>
@@ -36,6 +36,7 @@ export class Home extends Component {
         <Testimonials  data={this.state.resumeData.Testimonials}/>
         <Team  data={this.state.resumeData.Team}/>
         <Contact  data={this.state.resumeData.Contact}/>
+       
       </div>
     )
   }
