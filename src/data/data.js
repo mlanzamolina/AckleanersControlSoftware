@@ -6,18 +6,17 @@ export default {
 
   },
   "About": {
-    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "paragraph": " ACKleaners es una compañía joven diseñada para brindar una solución al mantenimiento de unidades de aire acondicionadas, las cuales están siendo cada vez exigidas por las altas temperaturas en la zona. Somos una empresa familiar, centrada en ofrecer el mejor servicio para todos nuestros clientes ya sea en el hogar o en tu negocio. ",
     "Why": [
-      "Lorem ipsum dolor",
-      "Tempor incididunt",
-      "Lorem ipsum dolor",
-      "Incididunt ut labore"
+      "Tiempo de respuesta del servicio.",
+      "Uso herramientas y proceso profesionales ",
+      "Amplio conocimiento técnico",
+      "Seguridad residencial"
     ],
     "Why2": [
-      "Aliquip ex ea commodo",
-      "Lorem ipsum dolor",
-      "Exercitation ullamco",
-      "Lorem ipsum dolor"
+      "Personal profesional ",
+      "Reporte de trabajo",
+      
     ]
   },
   "Services": [{
@@ -105,25 +104,23 @@ export default {
     }
   ],
   "Contact": {
-    "address": "4321 California St, San Francisco, CA 12345 ",
-    "phone": "+1 123 456 1234",
-    "email": "info@company.com",
-    "facebook": "fb.com",
-    "twitter": "twitter.com",
-    "youtube": "youtube.com"
+    "address": "San Pedro Sula, Cortes",
+    "phone": "+504 3286-8726",
+    "email": "Lanza49marco@gmail.com",
+    "facebook": "https://www.facebook.com/Ackleaners-106521830930162/?ref=page_internal",
   },
   "Features": [{
-    "icon": "fa fa-comments-o",
+    "icon": "fa fa-paint-brush",
     "title": "Limpieza",
     "text": ""
   },
     {
-      "icon": "fa fa-bullhorn",
+      "icon": "fa fa-wrench",
       "title": "Mantenimiento",
       "text": ""
     },
     {
-      "icon": "fa fa-group",
+      "icon": "fa fa-gear",
       "title": "Instalacion",
       "text": ""
     }
