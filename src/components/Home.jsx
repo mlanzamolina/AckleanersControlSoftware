@@ -5,10 +5,8 @@ import Features from './features';
 import About from './about';
 import Gallery from './gallery';
 import Testimonials from './testimonials';
-import Team from './Team';
 import Contact from './contact';
 import data from '../data/data';
-import { Link } from 'react-router-dom';
 export class Home extends Component {
  
   state = {
@@ -34,9 +32,7 @@ export class Home extends Component {
         <About  data={this.state.resumeData.About}/>
         <Gallery />
         <Testimonials  data={this.state.resumeData.Testimonials}/>
-        <Team  data={this.state.resumeData.Team}/>
         <Contact  data={this.state.resumeData.Contact}/>
-       
       </div>
     )
   }
