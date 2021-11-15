@@ -108,6 +108,8 @@ export default {
     "phone": "+504 3286-8726",
     "email": "Lanza49marco@gmail.com",
     "facebook": "https://www.facebook.com/Ackleaners-106521830930162/?ref=page_internal",
+    "instagram": "https://www.instagram.com/ackleaners/",
+
   },
   "Features": [{
     "icon": "fa fa-paint-brush",
