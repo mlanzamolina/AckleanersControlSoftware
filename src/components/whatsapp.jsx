@@ -33,11 +33,11 @@ class Whatsapp extends Component {
               position: "fixed",
             }}
           >
-         <button className="button">Formulario</button>
+         <button className="button">Formulario Agregar Empleado</button>
           </Link>
           <Fab
             color="primary"
-            aria-label="whatsapp"
+            aria-label="Formulario"
             style={{
               margin: 0,
               top: "auto",
