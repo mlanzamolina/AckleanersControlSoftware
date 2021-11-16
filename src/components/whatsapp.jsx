@@ -19,7 +19,21 @@ class Whatsapp extends Component {
               position: "fixed",
             }}
           >
-         <button className="button">Login</button>
+         <button className="button">Formulario</button>
+          </Link>
+          <Link
+            id="link"
+            to="/Formulario"
+            style={{
+              margin: 0,
+              top: "auto",
+              left: 20,
+              top: 160,
+              left: "auto",
+              position: "fixed",
+            }}
+          >
+         <button className="button">Formulario</button>
           </Link>
           <Fab
             color="primary"
