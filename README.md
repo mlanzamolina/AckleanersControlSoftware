@@ -4,7 +4,7 @@
 ## cd AckleanersControlSoftware
 ## git fetch
 ## git checkout -b [NOMBRE DE NUEVA BRANCH]
-## git pull origin Develop
+## git pull origin Dev
 
 ## npm install
 ## npm start
