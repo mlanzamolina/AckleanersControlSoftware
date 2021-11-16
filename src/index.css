@@ -19,10 +19,9 @@ h5 {
   .tituloh1{
     font-family:"Brush Script MT" ;
     color:rgb(0, 0, 0);
-    font-size: 30px;     
+    font-size: 40px;     
     text-align: center; 
     letter-spacing: 5px;     
-    margin:10px 0px -50px;
   }
   .col-md-5{
     font-family:"Times New Roman" ;
@@ -36,15 +35,9 @@ h5 {
   border: solid 2px #000;
   font: 1em arial, helvetica, sans-serif;
   background-color: rgb(255, 255, 255);
-  text-align: center;
+  text-align: right;
   }
   
-  .Formularioh2{
-    font-family:"Times New Roman" ;
-    width: 200%;
-    margin: 10px -300px;
-    text-align: center;
-  }
   
   .d-gridgap-5d-md-flexjustify-content-md-center{
     margin: 10px 20px 50px;
