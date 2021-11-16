@@ -1,4 +1,5 @@
 import React, {Fragment, useState} from 'react';
+import { Link } from 'react-router-dom';
 
 const Formulario=()=>{
 
@@ -79,7 +80,8 @@ const Formulario=()=>{
                 </input>
             </div>
             <div className="d-gridgap-5d-md-flexjustify-content-md-center">
-            <button type="submit" class="btn btn-danger">Cancelar</button>
+            <Link to="/"><button type="submit" class="btn btn-danger">Cancelar</button></Link>
+            
             <button type="submit" class="btn btn-primary">Registrar</button>
             </div>
         </form>

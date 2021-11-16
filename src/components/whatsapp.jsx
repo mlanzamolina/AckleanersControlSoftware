@@ -19,7 +19,7 @@ class Whatsapp extends Component {
               position: "fixed",
             }}
           >
-         <button className="button">Formulario</button>
+         <button className="button">Login</button>
           </Link>
           <Link
             id="link"
