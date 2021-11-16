@@ -4,10 +4,12 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./views/Login/Login";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
     <>
+
       <Router>
         <div>
           <Switch>
