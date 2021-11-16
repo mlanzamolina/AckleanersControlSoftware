@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Home from './Home';
-import Login from './components/Login';
-import Formulario from './components/Formulario';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./components/Home";
+import Login from "./views/Login/Login";
+
 function App() {
   return (
     <>
-    {/* <div className="container mt-5"></div> */}
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
 
-    <Formulario/>
-    
-    {/* <div/>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Formulario" element={<Formulario/>}/>
-      </Routes>
-    </BrowserRouter> */}
+            <Route path="/Login">
+              <Login />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </>
   );
 }
