@@ -1,5 +1,7 @@
 import React, {Fragment, useState} from 'react';
 import { Link } from 'react-router-dom';
+import { Fab } from '@material-ui/core';
+import logo from "../../img/logo.png"
 
 const Formulario=()=>{
 
@@ -29,14 +31,19 @@ const Formulario=()=>{
 
     return(
         <Fragment>
-        <div className="Logo">Logo</div>
-        <div className="Registro">Registro</div>
+      <a href="/"><img src={logo} alt="logo ackleaners" width="250" style={{
+              margin: 0,
+              top: "auto",
+              left: 45,
+              top: 40,
+              position: "fixed",
+            }}/></a> 
         <div >
             <h1 className="tituloh1">Registro Empleado</h1>
         </div>
         <form className="col-md" onSubmit={enviarDatos} >
             <div className="col-md-5">
-                <h2 className="Formularioh2">Nombre Completo: </h2>
+                <h2>Nombre Completo: </h2>
                 <input 
                     placeholder="Ingrese Nombre"
                     className="form-control"
@@ -47,7 +54,7 @@ const Formulario=()=>{
                 </input>
             </div>
             <div className="col-md-5">
-            <h2 className="Formularioh2">ID: </h2>
+            <h2>ID: </h2>
                 <input
                     placeholder="Ingrese número de identidad"
                     className="form-control"
@@ -58,7 +65,7 @@ const Formulario=()=>{
                 </input>
             </div>
             <div className="col-md-5">
-            <h2 className="Formularioh2">No. Contacto: </h2>
+            <h2>No. Contacto: </h2>
                 <input
                     placeholder="Ingrese número de Telefono/celular"
                     className="form-control"
@@ -69,7 +76,7 @@ const Formulario=()=>{
                 </input>
             </div>
             <div className="col-md-5">
-            <h2 className="Formularioh2">Correo Electronico: </h2>
+            <h2>Correo Electronico: </h2>
                 <input
                     placeholder="ejemplo.123@ejemplo.com"
                     className="form-control"
