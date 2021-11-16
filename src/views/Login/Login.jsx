@@ -42,7 +42,6 @@ export default function Login() {
             margin: 0,
             top: "auto",
             right: 45,
-            top: 40,
             position: "fixed",
           }}
         />

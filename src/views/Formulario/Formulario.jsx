@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { Fab } from "@material-ui/core";
 import logo from "../../img/logo.png";
 
 const Formulario = () => {
@@ -40,7 +39,6 @@ const Formulario = () => {
             margin: 0,
             top: "auto",
             left: 45,
-            top: 40,
             position: "fixed",
           }}
         />
