@@ -30,6 +30,7 @@ export class Home extends Component {
         <Testimonials data={this.state.resumeData.Testimonials} />
         <Contact data={this.state.resumeData.Contact} />
         <Whatsapp />
+        
       </div>
     );
   }

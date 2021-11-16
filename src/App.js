@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./views/Login/Login";
 import { Link } from "react-router-dom";
+import Formulario from "./views/Formulario/Formulario";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
 
             <Route path="/Login">
               <Login />
+            </Route>
+            <Route path="/Formulario">
+              <Formulario />
             </Route>
           </Switch>
         </div>

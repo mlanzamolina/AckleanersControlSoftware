@@ -21,6 +21,20 @@ class Whatsapp extends Component {
           >
          <button className="button">Login</button>
           </Link>
+          <Link
+            id="link"
+            to="/Formulario"
+            style={{
+              margin: 0,
+              top: "auto",
+              left: 20,
+              top: 160,
+              left: "auto",
+              position: "fixed",
+            }}
+          >
+         <button className="button">Formulario</button>
+          </Link>
           <Fab
             color="primary"
             aria-label="whatsapp"
