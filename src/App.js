@@ -5,7 +5,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./views/Login/Login";
 import { Link } from "react-router-dom";
-import Formulario from "./views/Formulario/Formulario";
+import AgregarEmpleado from "./views/Employees/agregarEmpleado";
+import ModificarEmpleado from "./views/Employees/modificarEmpleado";
+import ListarEmpleado from "./views/Employees/listarEmpleado";
 import Management from "./views/Management/Management";
 import PasswordRecovery from "./views/PasswordRecovery/PasswordRecovery";
 
@@ -22,14 +24,22 @@ function App() {
             <Route path="/Login">
               <Login />
             </Route>
-            <Route path="/Formulario">
-              <Formulario />
+            <Route path="/AgregarEmpleado">
+              <AgregarEmpleado />
             </Route>
             <Route exact path="/Management">
               <Management />
             </Route>
             <Route path="/PasswordRecovery">
               <PasswordRecovery />
+            </Route>
+
+            <Route path="/ModificarEmpleado">
+              <ModificarEmpleado />
+            </Route>
+
+            <Route path="/ListarEmpleado">
+              <ListarEmpleado />
             </Route>
           </Switch>
         </div>
