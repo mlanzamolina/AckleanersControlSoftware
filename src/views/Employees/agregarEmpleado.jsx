@@ -5,7 +5,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SideBarData';
 
-const Formulario = () => {
+const AgregarEmpleado = () => {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -135,4 +135,4 @@ const Formulario = () => {
   );
 };
 
-export default Formulario;
+export default AgregarEmpleado;

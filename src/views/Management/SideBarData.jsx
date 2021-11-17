@@ -16,7 +16,7 @@ export const SidebarData = [
   },
   {
     title: 'Empleados',
-    path: '/Formulario',
+    path: '/AgregarEmpleado',
     cName: 'nav-text'
   },
   {
