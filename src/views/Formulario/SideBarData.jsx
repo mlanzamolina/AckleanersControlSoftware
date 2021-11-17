@@ -24,4 +24,5 @@ export const SidebarData = [
     path: '/ModificarEmpleado',
     cName: 'nav-text'
   },
+  
 ];

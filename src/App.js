@@ -6,6 +6,8 @@ import Home from "./components/Home";
 import Login from "./views/Login/Login";
 import { Link } from "react-router-dom";
 import Formulario from "./views/Formulario/Formulario";
+import ModificarEmpleado from "./views/Formulario/modificarEmpleado";
+import ListarEmpleado from "./views/Formulario/listarEmpleado";
 import Management from "./views/Management/Management";
 import PasswordRecovery from "./views/PasswordRecovery/PasswordRecovery";
 
@@ -30,6 +32,14 @@ function App() {
             </Route>
             <Route path="/PasswordRecovery">
               <PasswordRecovery />
+            </Route>
+
+            <Route path="/ModificarEmpleado">
+              <ModificarEmpleado />
+            </Route>
+
+            <Route path="/ListarEmpleado">
+              <ListarEmpleado />
             </Route>
           </Switch>
         </div>
