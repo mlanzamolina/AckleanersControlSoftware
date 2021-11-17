@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Login from "./views/Login/Login";
 import { Link } from "react-router-dom";
 import Formulario from "./views/Formulario/Formulario";
+import PasswordRecovery from "./views/PasswordRecovery/PasswordRecovery";
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
 
             <Route path="/Login">
               <Login />
+            </Route>
+
+            <Route path="/PasswordRecovery">
+              <PasswordRecovery />
             </Route>
 
             <Route path="/Formulario">

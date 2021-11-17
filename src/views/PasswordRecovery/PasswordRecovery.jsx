@@ -1,29 +1,21 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Login.css";
+import "./PasswordRecovery.css";
 
 export default function Login() {
   const [user, setUser] = useState("");
-  const [pass, setPass] = useState("");
 
   function handleSubmit() {
       
-    console.log(pass);
+
     console.log(user);
 
     
       
         if (/^\w+([.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail)\.(?:|com|es)+$/.test(user)) {
-          if (pass === null) {
-            alert("Ingrese Contraseña.");
-          } else {
-            if (pass === "") {
-              alert("Ingrese Contraseña.");
-            }else{
-              alert("bienvenido =)");
-            }
-          }
+            
+            alert("conexion a firebase y link de recupercaion");
 
          
         }else{
@@ -38,8 +30,10 @@ export default function Login() {
       
       <div className="wrapper">
       <div className="form-wrapper">
-      <h1>Iniciar Sesión</h1>
+      <h1>Recuperación de Contraseña</h1>
       <form >
+          
+          
             <div className="login-form">
               <div className="email">
                 <label htmlFor="email">Correo Electrónico</label>
@@ -52,24 +46,10 @@ export default function Login() {
                 />
               </div>
              
-
-              <div className="password">
-                <label htmlFor="password">Contraseña</label>
-                <input
-                  placeholder="Contraseña"
-                  type="password"
-                  name="password"
-                  noValidate
-                  onChange={(e) => { setPass(e.target.value); }}
-                />
-              </div>
               <div>
-                <small>
-                <Link to="/passwordRecovery">¿Olvidó su contraseña?</Link>
-                </small>
               </div>
               <div className="createAccount">
-                <button onClick={handleSubmit}>INICIAR SESIÓN</button>
+                <button onClick={handleSubmit}>Mandar un correo</button>
               </div>
               <div>
                 <div>
@@ -96,5 +76,3 @@ export default function Login() {
     );
   }
     
-
-
