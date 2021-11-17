@@ -7,6 +7,7 @@ import Login from "./views/Login/Login";
 import { Link } from "react-router-dom";
 import Formulario from "./views/Formulario/Formulario";
 import Management from "./views/Management/Management";
+import PasswordRecovery from "./views/PasswordRecovery/PasswordRecovery";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <Route exact path="/Management">
               <Management />
+            </Route>
+            <Route path="/PasswordRecovery">
+              <PasswordRecovery />
             </Route>
           </Switch>
         </div>
