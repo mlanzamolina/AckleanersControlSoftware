@@ -23,7 +23,7 @@ class Whatsapp extends Component {
           </Link>
           <Link
             id="link"
-            to="/Formulario"
+            to="/Management"
             style={{
               margin: 0,
               top: "auto",
@@ -33,7 +33,7 @@ class Whatsapp extends Component {
               position: "fixed",
             }}
           >
-         <button className="button">Formulario Agregar Empleado</button>
+         <button className="button">Management</button>
           </Link>
           <Fab
             color="primary"

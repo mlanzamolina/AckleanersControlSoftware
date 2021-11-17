@@ -6,11 +6,11 @@ import Home from "./components/Home";
 import Login from "./views/Login/Login";
 import { Link } from "react-router-dom";
 import Formulario from "./views/Formulario/Formulario";
+import Management from "./views/Management/Management";
 
 function App() {
   return (
     <>
-
       <Router>
         <div>
           <Switch>
@@ -23,6 +23,9 @@ function App() {
             </Route>
             <Route path="/Formulario">
               <Formulario />
+            </Route>
+            <Route exact path="/Management">
+              <Management />
             </Route>
           </Switch>
         </div>
