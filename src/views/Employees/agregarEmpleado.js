@@ -4,12 +4,12 @@ import logo from "../../img/logo.png";
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SideBarData';
-import { db } from '../../fire'
+import { dbEmpleado } from "../../components/firebase";
 import { collection, addDoc } from 'firebase/firestore'
 
 const AgregarEmpleado = () => {
   const [sidebar, setSidebar] = useState(false);
-  const tablaEmpleadosRef = collection(db, "meterEmpleados");
+  const tablaEmpleadosRef = collection(dbEmpleado, "meterEmpleados");
   const showSidebar = () => setSidebar(!sidebar);
   
   const [dats, setDatos] = useState({
@@ -18,8 +18,6 @@ const AgregarEmpleado = () => {
     numero: " ",
     correo: " ",
   });
-
-
 
   const handleInputChance = (event) => {
     setDatos({

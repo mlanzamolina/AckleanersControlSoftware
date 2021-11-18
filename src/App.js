@@ -10,6 +10,7 @@ import ModificarEmpleado from "./views/Employees/modificarEmpleado";
 import ListarEmpleado from "./views/Employees/listarEmpleado";
 import Management from "./views/Management/Management";
 import PasswordRecovery from "./views/PasswordRecovery/PasswordRecovery";
+import Registrar from "./views/Usuarios/Registrar";
 
 function App() {
   return (
@@ -40,6 +41,10 @@ function App() {
 
             <Route path="/ListarEmpleado">
               <ListarEmpleado />
+            </Route>
+
+            <Route path="/Registrar">
+              <Registrar />
             </Route>
           </Switch>
         </div>

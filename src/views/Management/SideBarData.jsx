@@ -24,4 +24,9 @@ export const SidebarData = [
     path: '/inventarios',
     cName: 'nav-text'
   },
+  {
+    title: 'Usuarios',
+    path: '/Registrar',
+    cName: 'nav-text'
+  },
 ];
