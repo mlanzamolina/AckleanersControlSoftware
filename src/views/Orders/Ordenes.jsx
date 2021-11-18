@@ -5,19 +5,21 @@ import { Link } from 'react-router-dom';
 import { SidebarData } from './SideBarData';
 import logo from "../../img/logo.png"
 
-function Usuarios() {
-  const [sidebar, setSidebar] = useState(false);
+
+export default function Ordenes() {
+    const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
+
 
   return (
     <>
     <div className="dropdown" style={{float: 'right',}}>
   <button class="dropbtn">Opciones</button>
   <div class="dropdown-content">
-  <a href="/ListarUsuarios">Listar Usuarios</a>
-  <a href="/ModificarUsuarios">Modificar Usuarios</a>
-  <a href="/Registrar">Agregar Usuarios</a>
+  <a href="/ListarOrdenes">Listar Ordenes</a>
+  <a href="/ModificarOrdenes">Modificar Ordenes</a>
+  <a href="/AgregarOrdenes">Agregar Ordenes</a>
   </div>
 </div>
         <div className='managementsidemenu'>
@@ -44,7 +46,7 @@ function Usuarios() {
             })}
           </ul>
         </nav>
-        <h1 style={{textAlign: 'center',}}>Manage usuarios funciona</h1>
+        <h1 style={{textAlign: 'center',}}>Manage ordenes funciona</h1>
         <a href="/"><img src={logo} alt="logo ackleaners" width="250" style={{
               margin: 0,
               top: "auto",
@@ -55,5 +57,3 @@ function Usuarios() {
     </>
   );
 }
-
-export default Usuarios;

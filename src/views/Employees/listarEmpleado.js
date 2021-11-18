@@ -106,6 +106,15 @@ const ListarEmpleado = () => {
     })
 
     return (
+        <>
+        <div className="dropdown" style={{float: 'right',}}>
+  <button class="dropbtn">Opciones</button>
+  <div class="dropdown-content">
+  <a href="/ListarEmpleado">Listar Empleado</a>
+  <a href="/AgregarEmpleado">AgregarEmpleado</a>
+  <a href="/ModificarEmpleado">ModificarEmpleado</a>
+  </div>
+</div>
         <Fragment>
             <a href="/">
                 <img
@@ -172,6 +181,7 @@ const ListarEmpleado = () => {
             </div>
             {/* <h3>{dats.nombre}-{dats.id}-{dats.numero}-{dats.correo}</h3> */}
         </Fragment>
+        </>
     );
 };
 
