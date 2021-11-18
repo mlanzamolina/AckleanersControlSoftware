@@ -1,14 +1,17 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../img/logo.png";
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SideBarData';
+import { db } from '../../fire'
+import { collection, addDoc } from 'firebase/firestore'
 
 const AgregarEmpleado = () => {
   const [sidebar, setSidebar] = useState(false);
-
+  const tablaEmpleadosRef = collection(db, "meterEmpleados");
   const showSidebar = () => setSidebar(!sidebar);
+  
   const [dats, setDatos] = useState({
     nombre: " ",
     id: " ",
@@ -16,23 +19,20 @@ const AgregarEmpleado = () => {
     correo: " ",
   });
 
+
+
   const handleInputChance = (event) => {
-    console.log(event.target.value);
     setDatos({
       ...dats,
       [event.target.name]: event.target.value,
-      // [event.target.dni] : event.target.value,
-      // [event.target.number] : event.target.value,
-      // [event.target.email] : event.target.value
     });
   };
-
-  const enviarDatos = (event) => {
-    event.preventDefault();
-    console.log(
-      dats.nombre + " " + dats.id + " " + dats.numero + " " + dats.correo
-    );
+  
+  const handleSubmit = async (e) =>{
+    await addDoc(tablaEmpleadosRef,{nombre: dats.nombre, 
+      id: dats.id, numero: dats.numero, correo: dats.correo});
   };
+
 
   return (
     <Fragment>
@@ -78,7 +78,7 @@ const AgregarEmpleado = () => {
         <h1 className="tituloh1">Registro Empleado</h1>
       </div>
 
-      <form className="col-md" onSubmit={enviarDatos}>
+      <form className="col-md" >
         <div >
           <h3>Nombre Completo: </h3>
           <input
@@ -86,6 +86,7 @@ const AgregarEmpleado = () => {
             className="form-control"
             name="nombre"
             onChange={handleInputChance}
+            required
           ></input>
         </div>
         <div>
@@ -96,6 +97,7 @@ const AgregarEmpleado = () => {
             type="text"
             name="id"
             onChange={handleInputChance}
+            required
           ></input>
         </div>
         <div>
@@ -106,6 +108,7 @@ const AgregarEmpleado = () => {
             type="text"
             name="numero"
             onChange={handleInputChance}
+            required
           ></input>
         </div>
         <div>
@@ -115,22 +118,24 @@ const AgregarEmpleado = () => {
             className="form-control"
             type="text"
             name="correo"
-            onChange={handleInputChance}
+            onChange={handleInputChance} 
+            required
           ></input>
         </div>
         <div>
           <Link to="/">
-            <button type="submit" class="btn btn-danger">
+            <button type="submit" className="btn btn-danger">
               Cancelar
             </button>
           </Link>
 
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
             Registrar
           </button>
         </div>
       </form>
       {/* <h3>{dats.nombre}-{dats.id}-{dats.numero}-{dats.correo}</h3> */}
+      
     </Fragment>
   );
 };
