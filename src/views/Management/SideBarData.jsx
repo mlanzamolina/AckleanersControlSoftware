@@ -29,4 +29,9 @@ export const SidebarData = [
     path: '/Usuarios',
     cName: 'nav-text'
   },
+  {
+    title: 'Ordenes de trabajo',
+    path: '/Ordenes',
+    cName: 'nav-text'
+  },
 ];
