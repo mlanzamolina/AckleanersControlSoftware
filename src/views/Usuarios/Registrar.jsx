@@ -25,6 +25,15 @@ function Registrar() {
   }, [user, loading]);
 
   return (
+    <>
+     <div className="dropdown" style={{float: 'right',}}>
+  <button class="dropbtn">Opciones</button>
+  <div class="dropdown-content">
+  <a href="/ListarUsuarios">Listar Usuarios</a>
+  <a href="/ModificarUsuarios">Modificar Usuarios</a>
+  <a href="/AgregarUsuarios">Agregar Usuarios</a>
+  </div>
+</div>
     <div className="register">
 
       <div className="register__container">
@@ -82,6 +91,7 @@ function Registrar() {
               position: "fixed",
             }}/></a> 
     </div>
+    </>
   );
 }
 

@@ -12,6 +12,7 @@ import Management from "./views/Management/Management";
 import PasswordRecovery from "./views/PasswordRecovery/PasswordRecovery";
 import Registrar from "./views/Usuarios/Registrar";
 import Usuarios from "./views/Usuarios/Usuarios";
+import Ordenes from "./views/Orders/Ordenes";
 
 function App() {
   return (
@@ -49,6 +50,9 @@ function App() {
             </Route>
              <Route path="/Usuarios">
               <Usuarios />
+            </Route>
+            <Route path="/Ordenes">
+              <Ordenes />
             </Route>
           </Switch>
         </div>
