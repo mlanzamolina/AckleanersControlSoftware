@@ -15,6 +15,7 @@ function SideMenu() {
 
   return (
     <>
+
       <div className="managementsidemenu">
         <Link to="#" className="managementmenu-bars">
           <FaIcons.FaBars onClick={showSidebar} />
@@ -41,6 +42,7 @@ function SideMenu() {
           })}
         </ul>
       </nav>
+      <h1 style={{textAlign: 'center',}}>Bienvenido ,Nombre de persona, al hub de herramientas administrativas hoy es , fecha de hoy, lista de clientes que tienen pendiente limpieza por fecha</h1>
       <a href="/">
         <img
           src={logo}
