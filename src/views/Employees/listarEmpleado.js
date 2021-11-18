@@ -4,6 +4,7 @@ import logo from "../../img/logo.png";
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SideBarData';
+import "./Formulario.css";
 
 const ListarEmpleado = () => {
     const [sidebar, setSidebar] = useState(false);
@@ -33,6 +34,76 @@ const ListarEmpleado = () => {
             dats.nombre + " " + dats.id + " " + dats.numero + " " + dats.correo
         );
     };
+    const [empleado,setEmpleado]=useState({
+        results:[
+            {
+                "nombre":"Rodrigo",
+                "id":"05514198005047",
+                "numero":"32458277",
+                "correo":"rodrio.bardales@unitec.edu"
+            },
+            {
+                "nombre":"Marco",
+                "id":"05514198005047",
+                "numero":"32458277",
+                "correo":"marcos.lanzas@unitec.edu"
+            },
+            {
+                "nombre":"Michael",
+                "id":"05514198005047",
+                "numero":"32458277",
+                "correo":"michael.algo@unitec.edu"
+            },
+            {
+                "nombre":"Michael",
+                "id":"05514198005047",
+                "numero":"32458277",
+                "correo":"michael.algo@unitec.edu"
+            },
+            {
+                "nombre":"Michael",
+                "id":"05514198005047",
+                "numero":"32458277",
+                "correo":"michael.algo@unitec.edu"
+            },
+            {
+                "nombre":"Michael",
+                "id":"05514198005047",
+                "numero":"32458277",
+                "correo":"michael.algo@unitec.edu"
+            },
+            {
+                "nombre":"Michael",
+                "id":"05514198005047",
+                "numero":"32458277",
+                "correo":"michael.algo@unitec.edu"
+            },
+            {
+                "nombre":"Michael",
+                "id":"05514198005047",
+                "numero":"32458277",
+                "correo":"michael.algo@unitec.edu"
+            },
+            {
+                "nombre":"Michael",
+                "id":"05514198005047",
+                "numero":"32458277",
+                "correo":"michael.algo@unitec.edu"
+            },
+            {
+                "nombre":"Michael",
+                "id":"05514198005047",
+                "numero":"32458277",
+                "correo":"michael.algo@unitec.edu"
+            },
+            {
+                "nombre":"Michael",
+                "id":"05514198005047",
+                "numero":"32458277",
+                "correo":"michael.algo@unitec.edu"
+            },
+        ]
+    })
 
     return (
         <Fragment>
@@ -74,8 +145,30 @@ const ListarEmpleado = () => {
                     })}
                 </ul>
             </nav>
-            <div>
-                <h1 className="tituloh1">Soy listar empleado</h1>
+            <div  >
+                <h1 className="tituloh1">Listar Empleado</h1>
+                <table  className="ta" align="center">
+                    <thead>
+                    <tr className="ta">
+                        <th scope="col">Nombre De Empleado</th>
+                        <th scope="col">Numero de Identidad</th>
+                        <th scope="col">Numero de Telefono</th>
+                        <th scope="col">Correo Electronico</th>
+                    </tr>
+                    </thead>    
+                    <tbody>
+                    {empleado.results.map((item) => {
+                        return (
+                        <tr className="ta">
+                            <td >{item.nombre}</td>
+                            <td >{item.id}</td>
+                            <td >{item.numero}</td>
+                            <td>{item.correo}</td>
+                        </tr>
+                        );
+                    })}
+                    </tbody>
+                 </table>
             </div>
             {/* <h3>{dats.nombre}-{dats.id}-{dats.numero}-{dats.correo}</h3> */}
         </Fragment>
