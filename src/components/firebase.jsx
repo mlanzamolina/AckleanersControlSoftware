@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app";
 import 'firebase/compat/auth';
 import "firebase/compat/firestore";
+import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAfLPpUYYLWIbqXEfHvg8RDG2mfZV_lIBA",
@@ -58,6 +59,9 @@ const logout = () => {
   auth.signOut();
 };
 
+const appEmpleado = firebase.initializeApp(firebaseConfig);
+const dbEmpleado = getFirestore(appEmpleado);
+
 export {
   auth,
   db,
@@ -65,4 +69,5 @@ export {
   registerWithEmailAndPassword,
   sendPasswordResetEmail,
   logout,
+  dbEmpleado,
 };
