@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, registerWithEmailAndPassword } from "../../components/firebase";
 import "./Registrar.css";
+import logo from "../../img/logo.png"
 
 function Registrar() {
 
@@ -73,7 +74,13 @@ function Registrar() {
         </button>
 
       </div>
-
+      <a href="/"><img src={logo} alt="logo ackleaners" width="250" style={{
+              margin: 0,
+              top: "auto",
+              right: 45,
+              bottom: 40,
+              position: "fixed",
+            }}/></a> 
     </div>
   );
 }
