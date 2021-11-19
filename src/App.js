@@ -13,6 +13,9 @@ import PasswordRecovery from "./views/PasswordRecovery/PasswordRecovery";
 import Registrar from "./views/Usuarios/Registrar";
 import Usuarios from "./views/Usuarios/Usuarios";
 import Ordenes from "./views/Orders/Ordenes";
+import ListarOrdenes from "./views/Orders/ListarOrdenes";
+
+
 
 function App() {
   return (
@@ -53,6 +56,9 @@ function App() {
             </Route>
             <Route path="/Ordenes">
               <Ordenes />
+            </Route>
+            <Route path="/ListarOrdenes">
+              <ListarOrdenes />
             </Route>
           </Switch>
         </div>
