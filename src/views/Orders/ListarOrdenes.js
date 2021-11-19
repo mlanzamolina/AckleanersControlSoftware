@@ -57,9 +57,9 @@ const ListarOrdenes = () => {
         <div className="dropdown" style={{float: 'right',}}>
   <button class="dropbtn">Opciones</button>
   <div class="dropdown-content">
-  <a href="/ListarEmpleado">Listar Ordenes</a>
-  <a href="/AgregarEmpleado">Agregar Ordenes</a>
-  <a href="/ModificarEmpleado">Modificar Ordenes</a>
+  <a href="/ListarOrdenes">Listar Ordenes</a>
+  <a href="/ModificarOrdenes">Modificar Ordenes</a>
+  <a href="/AgregarOrdenes">Agregar Ordenes</a>
   </div>
 </div>
         <Fragment>
