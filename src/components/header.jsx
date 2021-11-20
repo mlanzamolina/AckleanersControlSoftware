@@ -16,12 +16,10 @@ export class Header extends Component {
                   <p>
                     {this.props.data ? this.props.data.paragraph : "Loading"}
                   </p>
-                  <a
-                    href="#features"
-                    className="btn btn-custom btn-lg page-scroll"
-                  >
-                    Learn More
-                  </a>{" "}
+                  <a href="#features">
+                    {" "}
+                    <button className="button">Nuestros Servicios</button>
+                  </a>
                 </div>
               </div>
             </div>

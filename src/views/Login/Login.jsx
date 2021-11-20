@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
+import logo from "../../img/logo.png"
 
 export default function Login() {
   const [user, setUser] = useState("");
@@ -75,22 +76,22 @@ export default function Login() {
                 <div>
                   <small>
                     ¿No tiene una cuenta?
-                    <a
-                      className="clickable_text"
-                      onClick={() => {
-                        alert("hola2");
-                       
-                      }}
-                    >
+                    <Link to="/Registrar">
                       {" "}
                       Registrarse
-                    </a>
+                    </Link>
                   </small>
                 </div>
               </div>
-              <Link to="/">Home</Link>
               </div>
               </form> 
+              <a href="/"><img src={logo} alt="logo ackleaners" width="250" style={{
+              margin: 0,
+              top: "auto",
+              right: 45,
+              bottom: 40,
+              position: "fixed",
+            }}/></a> 
       </div>
       </div>
     );

@@ -15,13 +15,13 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Inventarios',
-    path: '/inventarios',
+    title: 'Empleados',
+    path: '/AgregarEmpleado',
     cName: 'nav-text'
   },
   {
-    title: 'Usuarios',
-    path: '/Usuarios',
+    title: 'Inventarios',
+    path: '/inventarios',
     cName: 'nav-text'
   },
   {
@@ -29,5 +29,4 @@ export const SidebarData = [
     path: '/Ordenes',
     cName: 'nav-text'
   },
-  
 ];
