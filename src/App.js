@@ -14,6 +14,7 @@ import Registrar from "./views/Usuarios/Registrar";
 import Usuarios from "./views/Usuarios/Usuarios";
 import Ordenes from "./views/Orders/Ordenes";
 import ListarOrdenes from "./views/Orders/ListarOrdenes";
+import AgregarOrden from "./views/Orders/agregarOrden";
 
 
 
@@ -51,7 +52,7 @@ function App() {
             <Route path="/Registrar">
               <Registrar />
             </Route>
-             <Route path="/Usuarios">
+            <Route path="/Usuarios">
               <Usuarios />
             </Route>
             <Route path="/Ordenes">
@@ -60,6 +61,11 @@ function App() {
             <Route path="/ListarOrdenes">
               <ListarOrdenes />
             </Route>
+
+            <Route path="/AgregarOrden">
+              <AgregarOrden />
+            </Route>
+            
           </Switch>
         </div>
       </Router>

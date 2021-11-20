@@ -19,7 +19,7 @@ export default function Ordenes() {
   <div class="dropdown-content">
   <a href="/ListarOrdenes">Listar Ordenes</a>
   <a href="/ModificarOrdenes">Modificar Ordenes</a>
-  <a href="/AgregarOrdenes">Agregar Ordenes</a>
+  <a href="/AgregarOrden">Agregar Orden</a>
   </div>
 </div>
         <div className='managementsidemenu'>

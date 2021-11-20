@@ -61,7 +61,7 @@ const logout = () => {
 
 const appEmpleado = firebase.initializeApp(firebaseConfig);
 const dbEmpleado = getFirestore(appEmpleado);
-
+const dbOrdenes = getFirestore(appEmpleado)
 export {
   auth,
   db,
@@ -70,4 +70,5 @@ export {
   sendPasswordResetEmail,
   logout,
   dbEmpleado,
+  dbOrdenes,
 };
