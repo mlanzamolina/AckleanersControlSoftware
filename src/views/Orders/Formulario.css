@@ -1,27 +1,53 @@
 .ta table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 500px;
-  }
-  
-  .ta table.center {
-    margin: auto; 
-    margin-right: auto;
-  }
+  border-collapse: collapse;
+  width: 100%;
+  margin: 500px;
+}
 
-  .ta td {
-    padding: 20px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-size: larger;
-    color: rgb(0, 0, 0);
-  }
+.ta table.center {
+  margin: auto;
+  margin-right: auto;
+}
 
-  .ta th {
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
-    padding: 20px;
-    font-size: x-large;
-    background-color: rgb(183, 247, 181);
-    color: rgb(0, 0, 0);
-  }
-  .ta tr:hover {background-color: rgb(16, 159, 224);}
+.ta td {
+  padding: 20px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: larger;
+  color: rgb(0, 0, 0);
+}
+
+.ta th {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  padding: 20px;
+  font-size: x-large;
+  background-color: rgb(183, 247, 181);
+  color: rgb(0, 0, 0);
+}
+
+.ta tr:hover {
+  background-color: rgb(16, 159, 224);
+}
+
+
+.propiedadTextArea {
+  resize: none;
+}
+
+.propiedadUnidades {
+  width: 15%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.letra{
+  font-family: 'Times New Roman', Times, serif;
+}
