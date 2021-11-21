@@ -15,6 +15,7 @@ import Usuarios from "./views/Usuarios/Usuarios";
 import Ordenes from "./views/Orders/Ordenes";
 import ListarOrdenes from "./views/Orders/ListarOrdenes";
 import AgregarOrden from "./views/Orders/agregarOrden";
+import CrearUsuario from "./views/Usuarios/CrearUsuario";
 
 
 
@@ -65,6 +66,11 @@ function App() {
             <Route path="/AgregarOrden">
               <AgregarOrden />
             </Route>
+
+            <Route path="/CrearUsuario">
+              <CrearUsuario />
+            </Route>
+            
             
           </Switch>
         </div>

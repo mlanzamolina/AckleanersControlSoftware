@@ -76,7 +76,7 @@ export default function Login() {
                 <div>
                   <small>
                     ¿No tiene una cuenta?
-                    <Link to="/Registrar">
+                    <Link to="/CrearUsuario">
                       {" "}
                       Registrarse
                     </Link>
