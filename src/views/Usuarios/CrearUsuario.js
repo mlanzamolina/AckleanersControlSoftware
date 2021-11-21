@@ -12,7 +12,7 @@ import logo from "../../img/logo.png"
 
 
 const CrearUsuario = () => {
-    const userCollectionRef = collection(db, "123");
+    const userCollectionRef = collection(db, "Usuarios");
 
     const [correo, setCorreo] = useState("");
     const [nombre, setNombre] = useState("");
@@ -119,7 +119,7 @@ const CrearUsuario = () => {
         if(contra===contra1){
             await addDoc(userCollectionRef, {
                 Nombre: nombre,
-                ID: id, Correo: correo, Numero: telefono
+                ID: correo, Correo: correo, Numero: telefono
     
             }).catch((error) => {
                 console.log(error);
@@ -161,9 +161,6 @@ const CrearUsuario = () => {
 
                     <h5>Ingrese nombre</h5>
                     <input type="text" value={nombre} autofocus name="nombre" onChange={(e) => setNombre(e.target.value)} />
-
-                    <h5>Ingrese ID</h5>
-                    <input type="text" name="id" autofocus onChange={(e) => setID(e.target.value)} value={id} />
 
                     <h5>Ingrese Telefono</h5>
                     <input type="text" name="telefono" autofocus onChange={(e) => setTelefono(e.target.value)} value={telefono} />
