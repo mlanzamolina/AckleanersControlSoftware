@@ -6,7 +6,7 @@ import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SideBarData';
 import "./Formulario.css";
 
-const ListarOrdenes = () => {
+const ListarReportes = () => {
     const [sidebar, setSidebar] = useState(false);
 
     const showSidebar = () => setSidebar(!sidebar);
@@ -36,21 +36,21 @@ const ListarOrdenes = () => {
     };
     const [ordenes, setOrdenes] = useState({
         results: [
+         
             {
                 "nombre": "Rodrigo ",
-                "unidades": "3",
-                "descripcion": "Muy buen producto",
-                "fecha": "11/19/2021",
-                "telefono": "9999-9999",
-
-
+                "telefono": "9990-9999",
+                "cantidad_de_unidaes": "7",
+                "descipcion": "exelente producto",
+                "estado": "terminado",
             },
+
             {
-                "nombre": "Marco",
-                "unidades": "4",
-                "descripcion": "bueno",
-                "fecha": "11/19/2021",
-                "telefono": "9999-9999",
+                "nombre": "Marco ",
+                "telefono": "9990-9999",
+                "cantidad_de_unidaes": "6",
+                "descipcion": "Exelente",
+                "estado": "proceso",
             },
 
         ]
@@ -61,9 +61,9 @@ const ListarOrdenes = () => {
             <div className="dropdown" style={{ float: 'right', }}>
                 <button class="dropbtn">Opciones</button>
                 <div class="dropdown-content">
-                    <a href="/ListarOrdenes">Listar Ordenes</a>
-                    <a href="/ModificarOrdenes">Modificar Ordenes</a>
-                    <a href="/AgregarOrdenes">Agregar Ordenes</a>
+                    <a href="/ListarOrdenes">Listar Reportes</a>
+                    <a href="/ModificarOrdenes">Modificar Reportes</a>
+                    <a href="/AgregarOrdenes">Agregar Reportes</a>
                 </div>
             </div>
             <Fragment>
@@ -106,16 +106,15 @@ const ListarOrdenes = () => {
                     </ul>
                 </nav>
                 <div  >
-                    <h1 className="tituloh1">Listar Ordenes de Trabajo</h1>
+                    <h1 className="tituloh1">Listar Reportes</h1>
                     <table className="ta" align="center">
                         <thead>
                             <tr className="ta">
                                 <th scope="col">Nombre del Cliente</th>
                                 <th scope="col">Unidades</th>
                                 <th scope="col">Descripcion</th>
-                                <th scope="col">Fecha</th>
                                 <th scope="col">Telefono</th>
-
+                                <th scope="col">Estado</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -123,10 +122,10 @@ const ListarOrdenes = () => {
                                 return (
                                     <tr className="ta">
                                         <td >{item.nombre}</td>
-                                        <td >{item.unidades}</td>
-                                        <td >{item.descripcion}</td>
-                                        <td>{item.fecha}</td>
+                                        <td >{item.cantidad_de_unidaes}</td>
+                                        <td >{item.descipcion}</td>
                                         <td>{item.telefono}</td>
+                                        <td>{item.estado}</td> 
                                     </tr>
                                 );
                             })}
@@ -139,4 +138,4 @@ const ListarOrdenes = () => {
     );
 };
 
-export default ListarOrdenes;
+export default ListarReportes;
