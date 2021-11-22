@@ -18,7 +18,7 @@ import AgregarOrden from "./views/Orders/agregarOrden";
 import CrearUsuario from "./views/Usuarios/CrearUsuario";
 import Reportes from "./views/Reports/Reportes"
 import ListarReportes from "./views/Reports/ListarReportes";
-
+import ModificarOrden from "./views/Orders/modificarOrdenes";
 
 
 function App() {
@@ -79,6 +79,10 @@ function App() {
 
             <Route path="/ListarReportes">
               <ListarReportes />
+            </Route>
+
+            <Route path="/ModificarOrden">
+              <ModificarOrden />
             </Route>
             
             

@@ -14,10 +14,10 @@ const ListarOrdenes = () => {
 
   const showSidebar = () => setSidebar(!sidebar);
   const [dats, setDatos] = useState({
-        nombre: " ",
-        numero_telefono: " ",
-        cantidad_unidades: " ",
-        descripcion: " ",
+    nombre: " ",
+    numero_telefono: " ",
+    cantidad_unidades: " ",
+    descripcion: " ",
   });
 
   const handleInputChance = (event) => {
@@ -25,9 +25,6 @@ const ListarOrdenes = () => {
     setDatos({
       ...dats,
       [event.target.name]: event.target.value,
-      // [event.target.dni] : event.target.value,
-      // [event.target.number] : event.target.value,
-      // [event.target.email] : event.target.value
     });
   };
 
@@ -104,21 +101,20 @@ const ListarOrdenes = () => {
             <tbody>
               {empleados
                 ? empleados.map((item) => {
-                    return (
-                      <tr className="ta" key={item.id}>
-                        <td>{item.nombre}</td>
-                        <td>{item.cantidad_unidades}</td>
-                        <td>{item.descripcion}</td>
-                        <td>{item.numero_telefono}</td>
-                        <td>{item.estado}</td>
-                      </tr>
-                    );
-                  })
+                  return (
+                    <tr className="ta" key={item.id}>
+                      <td>{item.nombre}</td>
+                      <td>{item.cantidad_unidades}</td>
+                      <td>{item.descripcion}</td>
+                      <td>{item.numero_telefono}</td>
+                      <td>{item.estado}</td>
+                    </tr>
+                  );
+                })
                 : null}
             </tbody>
           </table>
         </div>
-        {/* <h3>{dats.nombre}-{dats.id}-{dats.numero}-{dats.correo}</h3> */}
       </Fragment>
     </>
   );
