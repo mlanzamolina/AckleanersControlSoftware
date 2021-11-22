@@ -10,16 +10,19 @@ import ModificarEmpleado from "./views/Employees/modificarEmpleado";
 import ListarEmpleado from "./views/Employees/listarEmpleado";
 import Management from "./views/Management/Management";
 import PasswordRecovery from "./views/PasswordRecovery/PasswordRecovery";
-import Registrar from "./views/Usuarios/Registrar";
 import Usuarios from "./views/Usuarios/Usuarios";
 import Ordenes from "./views/Orders/Ordenes";
 import ListarOrdenes from "./views/Orders/ListarOrdenes";
 import AgregarOrden from "./views/Orders/agregarOrden";
-import CrearUsuario from "./views/Usuarios/CrearUsuario";
-import Reportes from "./views/Reports/Reportes"
+import Reportes from "./views/Reports/Reportes";
 import ListarReportes from "./views/Reports/ListarReportes";
 import ModificarOrden from "./views/Orders/modificarOrdenes";
-
+import ModificarReportes from "./views/Reports/ModificarReportes";
+import AgregarReportes from "./views/Reports/AgregarReportes";
+import ModificarUsuarios from "./views/Usuarios/ModificarUsuario";
+import ListarUsuarios from "./views/Usuarios/ListarUsuarios";
+import AgregarUsuarios from "./views/Usuarios/AgregarUsuarios";
+import Inventarios from "./views/Inventarios/Inventarios";
 
 function App() {
   return (
@@ -51,10 +54,6 @@ function App() {
             <Route path="/ListarEmpleado">
               <ListarEmpleado />
             </Route>
-
-            <Route path="/Registrar">
-              <Registrar />
-            </Route>
             <Route path="/Usuarios">
               <Usuarios />
             </Route>
@@ -69,10 +68,6 @@ function App() {
               <AgregarOrden />
             </Route>
 
-            <Route path="/CrearUsuario">
-              <CrearUsuario />
-            </Route>
-
             <Route path="/Reportes">
               <Reportes />
             </Route>
@@ -80,12 +75,30 @@ function App() {
             <Route path="/ListarReportes">
               <ListarReportes />
             </Route>
+            <Route path="/ModificarReportes">
+              <ModificarReportes />
+            </Route>
+            <Route path="/AgregarReportes">
+              <AgregarReportes />
+            </Route>
 
             <Route path="/ModificarOrden">
               <ModificarOrden />
             </Route>
-            
-            
+
+            <Route path="/ListarUsuarios">
+              <ListarUsuarios />
+            </Route>
+
+            <Route path="/ModificarUsuarios">
+              <ModificarUsuarios />
+            </Route>
+            <Route path="/AgregarUsuarios">
+              <AgregarUsuarios />
+            </Route>
+            <Route path="/inventarios">
+              <Inventarios />
+            </Route>
           </Switch>
         </div>
       </Router>

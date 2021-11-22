@@ -5,19 +5,19 @@ import { Link } from 'react-router-dom';
 import { SidebarData } from './SideBarData';
 import logo from "../../img/logo.png"
 
-function Usuarios() {
-  const [sidebar, setSidebar] = useState(false);
+export default function Inventarios() {
+    const [sidebar, setSidebar] = useState(false);
 
-  const showSidebar = () => setSidebar(!sidebar);
-
-  return (
-    <>
-    <div className="dropdown" style={{float: 'right',}}>
+    const showSidebar = () => setSidebar(!sidebar);
+  
+    return (
+        <div>
+             <div className="dropdown" style={{float: 'right',}}>
   <button class="dropbtn">Opciones</button>
   <div class="dropdown-content">
-  <a href="/ListarUsuarios">Listar Usuarios</a>
-  <a href="/ModificarUsuarios">Modificar Usuarios</a>
-  <a href="/AgregarUsuarios">Agregar Usuarios</a>
+  <a href="/inventarios">Listar Inventarios</a>
+  <a href="/inventarios">Modificar Inventarios</a>
+  <a href="/inventarios">Agregar Inventarios</a>
   </div>
 </div>
         <div className='managementsidemenu'>
@@ -44,7 +44,7 @@ function Usuarios() {
             })}
           </ul>
         </nav>
-        <h1 style={{textAlign: 'center',}}>Manage usuarios funciona</h1>
+        <h1 style={{textAlign: 'center',}}>Manage inventarios funciona</h1>
         <a href="/"><img src={logo} alt="logo ackleaners" width="250" style={{
               margin: 0,
               top: "auto",
@@ -52,8 +52,6 @@ function Usuarios() {
               bottom: 40,
               position: "fixed",
             }}/></a> 
-    </>
-  );
+        </div>
+    )
 }
-
-export default Usuarios;
