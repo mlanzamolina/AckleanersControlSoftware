@@ -12,7 +12,6 @@ import swal from "sweetalert";
 
 const ModificarOrden = () => {
     const [sidebar, setSidebar] = useState(false);
-    const tablaOrdenesRef = collection(dbOrdenes, "OrdenesTrabajo");
     const showSidebar = () => setSidebar(!sidebar);
     const [dats, setDatos] = useState({
         nombre: " ",
