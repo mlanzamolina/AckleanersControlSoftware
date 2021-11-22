@@ -31,12 +31,6 @@ const ListarOrdenes = () => {
     });
   };
 
-  const enviarDatos = (event) => {
-    event.preventDefault();
-    console.log(
-      dats.nombre + " " + dats.cantidad_unidades + " " + dats.numero_telefono + " " + dats.descripcion
-    );
-  };
   const [empleados, loading, error] = useCollectionData(
     collection(db, "OrdenesTrabajo"),
     { idField: "id" }
@@ -48,8 +42,8 @@ const ListarOrdenes = () => {
         <button class="dropbtn">Opciones</button>
         <div class="dropdown-content">
           <a href="/ListarOrdenes">Listar Ordenes</a>
-          <a href="/AgregarOrden">Agregar Ordenes</a>
-          <a href="/ModificarOrdenes">Modificar Ordenes</a>
+          <a href="/AgregarOrden">Agregar Orden</a>
+          <a href="/ModificarOrden">Modificar Ordenes</a>
         </div>
       </div>
       <Fragment>
@@ -104,6 +98,7 @@ const ListarOrdenes = () => {
                 <th scope="col">Unidades</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Telefono</th>
+                <th scope="col">Estado</th>
               </tr>
             </thead>
             <tbody>
@@ -115,6 +110,7 @@ const ListarOrdenes = () => {
                         <td>{item.cantidad_unidades}</td>
                         <td>{item.descripcion}</td>
                         <td>{item.numero_telefono}</td>
+                        <td>{item.estado}</td>
                       </tr>
                     );
                   })
