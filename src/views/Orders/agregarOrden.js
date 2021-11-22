@@ -7,10 +7,11 @@ import { SidebarData } from "./SideBarData";
 import { dbOrdenes } from "../../components/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import "./Formulario.css";
+import swal from "sweetalert";
 
-const AgregarEmpleado = () => {
+const AgregarOrden = () => {
     const [sidebar, setSidebar] = useState(false);
-    const tablaEmpleadosRef = collection(dbOrdenes, "OrdenesTrabajo");
+    const tablaOrdenesRef = collection(dbOrdenes, "OrdenesTrabajo");
     const showSidebar = () => setSidebar(!sidebar);
 
     const [dats, setDatos] = useState({
@@ -18,6 +19,7 @@ const AgregarEmpleado = () => {
         numero_telefono: " ",
         cantidad_unidades: " ",
         descripcion: " ",
+        estado: "Pendiente"
     });
 
     const handleInputChance = (event) => {
@@ -27,24 +29,41 @@ const AgregarEmpleado = () => {
         });
     };
 
+
     const handleSubmit = async (e) => {
         //console.log(JSON.stringify(dats))
-        await addDoc(tablaEmpleadosRef, {
-            nombre: dats.nombre,
-            numero_telefono: dats.numero_telefono,
-            cantidad_unidades: dats.cantidad_unidades,
-            descripcion: dats.descripcion,
-        });
+        if (dats.descripcion == " " || dats.numero_telefono == " " || dats.cantidad_unidades == " ") {
+            swal({
+                title: "No se realizo",
+                text: "No se agregro una orden de trabajo",
+                icon: "warning",
+                button: "aceptar"
+            });
+        } else {
+            await addDoc(tablaOrdenesRef, {
+                nombre: dats.nombre,
+                numero_telefono: dats.numero_telefono,
+                cantidad_unidades: dats.cantidad_unidades,
+                descripcion: dats.descripcion,
+                estado: dats.estado,
+            });
+            swal({
+                title: "Realizado",
+                text: "Se agregro una orden de trabajo",
+                icon: "info",
+                button: "aceptar"
+            });
+        }
     };
 
     return (
         <>
             <div className="dropdown" style={{ float: "right" }}>
-                <button class="dropbtn">Opciones</button>
-                <div class="dropdown-content">
-                    <a href="/ListarEmpleado">Listar Empleado</a>
-                    <a href="/AgregarEmpleado">AgregarEmpleado</a>
-                    <a href="/ModificarEmpleado">ModificarEmpleado</a>
+                <button className="dropbtn">Opciones</button>
+                <div className="dropdown-content">
+                    <a href="/AgregarOrden">Agregar Orden</a>
+                    <a href="/ModificarOrden">Modificar Orden</a>
+                    <a href="/ListarOrdenes">Listar Orden</a>
                 </div>
             </div>
             <Fragment>
@@ -130,7 +149,7 @@ const AgregarEmpleado = () => {
                     <div>
                         <h3 className="letra">Descripcion </h3>
                         <textarea
-                            className="propiedadTextArea form-control letra"
+                            className="propiedadTextArea form-control"
                             name="descripcion"
                             onChange={handleInputChance}
                             placeholder="Si tienes comentarios adicionales o un metodo de contacto adicional, puedes especificarlos..."
@@ -161,4 +180,4 @@ const AgregarEmpleado = () => {
     );
 };
 
-export default AgregarEmpleado;
+export default AgregarOrden;
