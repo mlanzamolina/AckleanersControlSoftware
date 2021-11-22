@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
 import logo from "../../img/logo.png"
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth , signInWithEmailAndPassword } from "../../components/firebase";
 
 export default function Login() {
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
+  const [user1, loading, error] = useAuthState(auth);
+
+  /*useEffect(() => {
+    if (user1) history.replace("/dashboard");
+  }, [user1, loading]);*/
+ 
 
   function handleSubmit() {
       
@@ -22,7 +30,8 @@ export default function Login() {
             if (pass === "") {
               alert("Ingrese Contraseña.");
             }else{
-              alert("bienvenido =)");
+              //alert("bienvenido =)");
+              signInWithEmailAndPassword(user, pass);
             }
           }
 
@@ -97,5 +106,3 @@ export default function Login() {
     );
   }
     
-
-

@@ -15,6 +15,9 @@ import Usuarios from "./views/Usuarios/Usuarios";
 import Ordenes from "./views/Orders/Ordenes";
 import ListarOrdenes from "./views/Orders/ListarOrdenes";
 import AgregarOrden from "./views/Orders/agregarOrden";
+import CrearUsuario from "./views/Usuarios/CrearUsuario";
+import Reportes from "./views/Reports/Reportes"
+import ListarReportes from "./views/Reports/ListarReportes";
 
 
 
@@ -65,6 +68,19 @@ function App() {
             <Route path="/AgregarOrden">
               <AgregarOrden />
             </Route>
+
+            <Route path="/CrearUsuario">
+              <CrearUsuario />
+            </Route>
+
+            <Route path="/Reportes">
+              <Reportes />
+            </Route>
+
+            <Route path="/ListarReportes">
+              <ListarReportes />
+            </Route>
+            
             
           </Switch>
         </div>
