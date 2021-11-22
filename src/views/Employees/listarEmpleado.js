@@ -25,20 +25,11 @@ const ListarEmpleado = () => {
     setDatos({
       ...dats,
       [event.target.name]: event.target.value,
-      // [event.target.dni] : event.target.value,
-      // [event.target.number] : event.target.value,
-      // [event.target.email] : event.target.value
     });
   };
 
-  const enviarDatos = (event) => {
-    event.preventDefault();
-    console.log(
-      dats.nombre + " " + dats.id + " " + dats.numero + " " + dats.correo
-    );
-  };
   const [empleados, loading, error] = useCollectionData(
-    collection(db, "empleados"),
+    collection(db, "Empleados"),
     { idField: "id" }
   );
 
@@ -101,9 +92,10 @@ const ListarEmpleado = () => {
             <thead>
               <tr className="ta">
                 <th scope="col">Nombre De Empleado</th>
-                <th scope="col">Numero de Identidad</th>
+                <th scope="col">DNI</th>
                 <th scope="col">Numero de Telefono</th>
                 <th scope="col">Correo Electronico</th>
+                <th scope="col">Estado</th>
               </tr>
             </thead>
             <tbody>
@@ -112,9 +104,10 @@ const ListarEmpleado = () => {
                     return (
                       <tr className="ta" key={item.id}>
                         <td>{item.nombre}</td>
-                        <td>{item.n_id}</td>
-                        <td>{item.n_contacto}</td>
+                        <td>{item.dni}</td>
+                        <td>{item.n_telefono}</td>
                         <td>{item.correo}</td>
+                        <td>{item.estado}</td>
                       </tr>
                     );
                   })
@@ -122,7 +115,6 @@ const ListarEmpleado = () => {
             </tbody>
           </table>
         </div>
-        {/* <h3>{dats.nombre}-{dats.id}-{dats.numero}-{dats.correo}</h3> */}
       </Fragment>
     </>
   );
