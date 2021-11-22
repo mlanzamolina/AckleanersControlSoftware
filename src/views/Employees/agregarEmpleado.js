@@ -6,17 +6,19 @@ import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SideBarData";
 import { dbEmpleado } from "../../components/firebase";
 import { collection, addDoc } from "firebase/firestore";
+import swal from "sweetalert";
 
 const AgregarEmpleado = () => {
   const [sidebar, setSidebar] = useState(false);
-  const tablaEmpleadosRef = collection(dbEmpleado, "empleados");
+  const tablaEmpleadosRef = collection(dbEmpleado, "Empleados");
   const showSidebar = () => setSidebar(!sidebar);
 
   const [dats, setDatos] = useState({
     nombre: " ",
     id: " ",
-    nunero: " ",
+    numero: " ",
     correo: " ",
+    estado: "Activo"
   });
 
   const handleInputChance = (event) => {
@@ -27,12 +29,28 @@ const AgregarEmpleado = () => {
   };
 
   const handleSubmit = async (e) => {
-    await addDoc(tablaEmpleadosRef, {
-      nombre: dats.nombre,
-      n_id: dats.id,
-      n_contacto: dats.numero,
-      correo: dats.correo,
-    });
+    if (dats.nombre == " " || dats.numero == " " || dats.id == " " || dats.correo == " ") {
+      swal({
+        title: "No se realizo",
+        text: "No se agregro el empleado, verifique los campos",
+        icon: "warning",
+        button: "aceptar"
+      });
+    } else {
+      await addDoc(tablaEmpleadosRef, {
+        nombre: dats.nombre,
+        dni: dats.id,
+        n_telefono: dats.numero,
+        correo: dats.correo,
+        estado: dats.estado
+      });
+      swal({
+        title: "Realizado",
+        text: "Se agregro el empleado",
+        icon: "info",
+        button: "aceptar"
+      });
+    }
   };
 
   return (
@@ -108,7 +126,7 @@ const AgregarEmpleado = () => {
             <input
               placeholder="Ingrese número de identidad"
               className="form-control"
-              type="text"
+              type="number"
               name="id"
               onChange={handleInputChance}
               required
@@ -119,7 +137,7 @@ const AgregarEmpleado = () => {
             <input
               placeholder="Ingrese número de Telefono/celular"
               className="form-control"
-              type="text"
+              type="number"
               name="numero"
               onChange={handleInputChance}
               required
@@ -152,7 +170,6 @@ const AgregarEmpleado = () => {
             </button>
           </div>
         </form>
-        {/* <h3>{dats.nombre}-{dats.id}-{dats.numero}-{dats.correo}</h3> */}
       </Fragment>
     </>
   );
