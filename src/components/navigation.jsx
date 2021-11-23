@@ -19,7 +19,7 @@ class Navigation extends Component {
               <span className="icon-bar"></span>{" "}
             </button>
             <a className="navbar-brand page-scroll" href="#page-top">
-              Ackleaners Landing Page
+              Ackleaners
             </a>{" "}
           </div>
 
@@ -45,7 +45,7 @@ class Navigation extends Component {
               </li>
               <li>
                 <a href="#testimonials" className="page-scroll">
-                  Reviews
+                Reseñas
                 </a>
               </li>
               <li>

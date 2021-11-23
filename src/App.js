@@ -15,9 +15,7 @@ import Ordenes from "./views/Orders/Ordenes";
 import ListarOrdenes from "./views/Orders/ListarOrdenes";
 import AgregarOrden from "./views/Orders/agregarOrden";
 import Reportes from "./views/Reports/Reportes";
-import ListarReportes from "./views/Reports/ListarReportes";
 import ModificarOrden from "./views/Orders/modificarOrdenes";
-import ModificarReportes from "./views/Reports/ModificarReportes";
 import AgregarReportes from "./views/Reports/AgregarReportes";
 import ModificarUsuarios from "./views/Usuarios/ModificarUsuario";
 import ListarUsuarios from "./views/Usuarios/ListarUsuarios";
@@ -72,13 +70,8 @@ function App() {
               <Reportes />
             </Route>
 
-            <Route path="/ListarReportes">
-              <ListarReportes />
-            </Route>
-            <Route path="/ModificarReportes">
-              <ModificarReportes />
-            </Route>
-            <Route path="/AgregarReportes">
+           
+            <Route path="/AgregarReportes/:id">
               <AgregarReportes />
             </Route>
 

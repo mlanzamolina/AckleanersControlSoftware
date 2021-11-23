@@ -1,0 +1,38 @@
+.ta1 table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 5px;
+}
+
+.ta1 table.center {
+  margin: auto;
+  margin-right: auto;
+}
+
+.ta1 td {
+  padding: 20px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: larger;
+  color: rgb(0, 0, 0);
+}
+
+.ta1 th {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  padding: 20px;
+  font-size: x-large;
+  background-color: rgb(183, 247, 181);
+  color: rgb(0, 0, 0);
+  text-align: left;
+}
+.img1 img{
+    width:100%;
+    max-width:600px;
+}
+.alinkcrear a{
+    outline: none;
+  text-decoration: none;
+  font-size: x-large;
+  
+
+}

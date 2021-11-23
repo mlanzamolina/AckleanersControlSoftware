@@ -21,7 +21,7 @@ export const SidebarData = [
   },
   {
     title: 'Orders',
-    path: '/inventarios',
+    path: '/Ordenes',
     cName: 'nav-text'
   },
   {

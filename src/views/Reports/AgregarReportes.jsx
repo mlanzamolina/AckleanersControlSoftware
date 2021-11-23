@@ -1,71 +1,77 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Component, PropTypes } from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { SidebarData } from "./SideBarData";
 import logo from "../../img/logo.png";
+import SingleImageUploadComponent from "./SingleImageUploadComponent ";
+import { jsPDF } from "jspdf";
+import ReactDOMServer from "react-dom/server";
+import html2canvas from "html2canvas";
 
 export default function AgregarReportes() {
-  const [sidebar, setSidebar] = useState(false);
+  let { id } = useParams();
 
-  const showSidebar = () => setSidebar(!sidebar);
-  const [dats, setDatos] = useState({
-    nombre: " ",
-    unidades: " ",
-    descripcion: " ",
-    fecha: " ",
-  });
+  function handleMandarReporte() {
+    const input = document.getElementById("divToPrint");
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, "JPEG", 0, 0);
+      // pdf.output('dataurlnewwindow');
+      pdf.save("download.pdf");
+    });
+  }
+  const items = [];
+  for (let index = 0; index < id; index++) {
+    items.push(
+      <div className="ta1">
+        <table>
+          <h2>Unidad: {index + 1}</h2>
+          <tr>
+            <th>Sucio</th>
+            <th>Limpio</th>
+          </tr>
+          <tr>
+            <td>
+              <SingleImageUploadComponent />
+            </td>
+            <td>
+              <SingleImageUploadComponent />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <SingleImageUploadComponent />
+            </td>
+            <td>
+              <SingleImageUploadComponent />
+            </td>
+          </tr>
+        </table>
+      </div>
+    );
+  }
+
   return (
-    <div>
-       <div className="dropdown" style={{ float: "right" }}>
-        <button class="dropbtn">Opciones</button>
-        <div class="dropdown-content">
-          <a href="/ListarReportes">Listar Reporte</a>
-          <a href="/ModificarReportes">Modificar Reporte</a>
-          <a href="/AgregarReportes">Agregar Reporte</a>
-        </div>
-      </div>
-      <div className="managementsidemenu">
-        <Link to="#" className="managementmenu-bars">
-          <FaIcons.FaBars onClick={showSidebar} />
-        </Link>
-      </div>
-      <nav
-        className={sidebar ? "managementnav-menu active" : "managementnav-menu"}
-      >
-        <ul className="managementnav-menu-items" onClick={showSidebar}>
-          <li className="navbar-toggle">
-            <Link to="#" className="managementmenu-bars">
-              <AiIcons.AiOutlineClose />
-            </Link>
-          </li>
-          {SidebarData.map((item, index) => {
-            return (
-              <li key={index} className={`management${item.cName}`}>
-                <Link to={item.path}>
-                  {item.icon}
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-      <h1 style={{ textAlign: "center" }}>Agregar Reportes</h1>
-      <a href="/">
-        <img
-          src={logo}
-          alt="logo ackleaners"
-          width="250"
-          style={{
-            margin: 0,
-            top: "auto",
-            right: 45,
-            bottom: 40,
-            position: "fixed",
-          }}
-        />
-      </a>
+    <>
+     <label for="Nombre">Nombre:</label>
+  <input type="text" id="Nombre" name="Nombre"></input><br /><br />
+  <label for="Correo electronico">Correo : </label>
+  <input type="text" id="Correo electronico" name="Correo electronico"></input>
+    
+    {/**<button className="button1" onClick={handleMandarReporte} style={{
+      margin: 0,
+      top: "auto",
+      right: 0,
+      top: 0,
+      left: "auto",
+      position: "fixed",
+    }}>Herramienta de Reporte</button>**/}
+    <div id="divToPrint">
+      {items}
+      
     </div>
+    </>
   );
 }

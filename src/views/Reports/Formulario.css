@@ -51,3 +51,10 @@ input[type=number] {
 .letra{
   font-family: 'Times New Roman', Times, serif;
 }
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
