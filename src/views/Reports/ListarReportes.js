@@ -1,5 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { collection } from "@firebase/firestore";
+import { db } from "../..//components/firebase";
 import logo from "../../img/logo.png";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
@@ -11,10 +14,9 @@ const ListarReportes = () => {
 
   const showSidebar = () => setSidebar(!sidebar);
   const [dats, setDatos] = useState({
-    nombre: " ",
-    unidades: " ",
-    descripcion: " ",
-    fecha: " ",
+    Fecha: " ",
+    Unidades: " ",
+
   });
 
   const handleInputChance = (event) => {
@@ -22,52 +24,22 @@ const ListarReportes = () => {
     setDatos({
       ...dats,
       [event.target.name]: event.target.value,
-      // [event.target.dni] : event.target.value,
-      // [event.target.number] : event.target.value,
-      // [event.target.email] : event.target.value
     });
   };
 
-  const enviarDatos = (event) => {
-    event.preventDefault();
-    console.log(
-      dats.nombre +
-        " " +
-        dats.unidades +
-        " " +
-        dats.descripcion +
-        " " +
-        dats.fecha
-    );
-  };
-  const [ordenes, setOrdenes] = useState({
-    results: [
-      {
-        nombre: "Rodrigo ",
-        telefono: "9990-9999",
-        cantidad_de_unidaes: "7",
-        descipcion: "exelente producto",
-        estado: "terminado",
-      },
-
-      {
-        nombre: "Marco ",
-        telefono: "9990-9999",
-        cantidad_de_unidaes: "6",
-        descipcion: "Exelente",
-        estado: "proceso",
-      },
-    ],
-  });
+  const [reportes, loading, error] = useCollectionData(
+    collection(db, "Reportes"),
+    { idField: "id" }
+  );
 
   return (
     <>
       <div className="dropdown" style={{ float: "right" }}>
         <button class="dropbtn">Opciones</button>
         <div class="dropdown-content">
-          <a href="/ListarReportes">Listar Reporte</a>
-          <a href="/ModificarReportes">Modificar Reporte</a>
-          <a href="/AgregarReportes">Agregar Reporte</a>
+          <a href="/ListarReportes">Listar Reportes</a>
+          <a href="/AgregarReportes">Agregar Reportes</a>
+          <a href="/ModificarReportes">Modificar Reportes</a>
         </div>
       </div>
       <Fragment>
@@ -114,33 +86,28 @@ const ListarReportes = () => {
           </ul>
         </nav>
         <div>
-          <h1 className="tituloh1">Listar Reportes</h1>
+          <h1 className="tituloh1">Listar Ordenes</h1>
           <table className="ta" align="center">
             <thead>
               <tr className="ta">
-                <th scope="col">Nombre del Cliente</th>
+                <th scope="col">Fecha </th>
                 <th scope="col">Unidades</th>
-                <th scope="col">Descripcion</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Estado</th>
               </tr>
             </thead>
             <tbody>
-              {ordenes.results.map((item) => {
-                return (
-                  <tr className="ta">
-                    <td>{item.nombre}</td>
-                    <td>{item.cantidad_de_unidaes}</td>
-                    <td>{item.descipcion}</td>
-                    <td>{item.telefono}</td>
-                    <td>{item.estado}</td>
-                  </tr>
-                );
-              })}
+              {reportes
+                ? reportes.map((item) => {
+                  return (
+                    <tr className="ta" key={item.id}>
+                      <td>{item.Fecha}</td>
+                      <td>{item.Unidades}</td>
+                    </tr>
+                  );
+                })
+                : null}
             </tbody>
           </table>
         </div>
-        {/* <h3>{dats.nombre}-{dats.id}-{dats.numero}-{dats.correo}</h3> */}
       </Fragment>
     </>
   );
