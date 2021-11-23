@@ -5,14 +5,19 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SideBarData";
 import logo from "../../img/logo.png";
 
-export default function Reportes() {
+export default function AgregarReportes() {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
-
+  const [dats, setDatos] = useState({
+    nombre: " ",
+    unidades: " ",
+    descripcion: " ",
+    fecha: " ",
+  });
   return (
-    <>
-      <div className="dropdown" style={{ float: "right" }}>
+    <div>
+       <div className="dropdown" style={{ float: "right" }}>
         <button class="dropbtn">Opciones</button>
         <div class="dropdown-content">
           <a href="/ListarReportes">Listar Reporte</a>
@@ -46,7 +51,7 @@ export default function Reportes() {
           })}
         </ul>
       </nav>
-      <h1 style={{ textAlign: "center" }}>Manage Reportes funciona</h1>
+      <h1 style={{ textAlign: "center" }}>Agregar Reportes</h1>
       <a href="/">
         <img
           src={logo}
@@ -61,6 +66,6 @@ export default function Reportes() {
           }}
         />
       </a>
-    </>
+    </div>
   );
 }
