@@ -91,7 +91,7 @@ input:-moz-placeholder {
 
 #signup .inputs input[type=email], input[type=password] {
     background: #f5f5f5;
-    font-size: 0.8rem;
+    font-size: 16px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
@@ -106,7 +106,7 @@ input:-moz-placeholder {
 
 #signup .inputs input[type=text] {
     background: #f5f5f5;
-    font-size: 0.8rem;
+    font-size: 16px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
@@ -140,7 +140,7 @@ input:-moz-placeholder {
 
 #signup .inputs label.terms {
     float: left;
-    font-size: 14px;
+    font-size: 16px;
     font-style: italic;
 }
 

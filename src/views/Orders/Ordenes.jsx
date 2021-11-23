@@ -46,7 +46,7 @@ export default function Ordenes() {
             })}
           </ul>
         </nav>
-        <h1 style={{textAlign: 'center',}}>Manage ordenes funciona</h1>
+        <h1 style={{textAlign: 'center',}}>Herramienta de ordenes</h1>
         <a href="/"><img src={logo} alt="logo ackleaners" width="250" style={{
               margin: 0,
               top: "auto",

@@ -31,13 +31,6 @@ export class Home extends Component {
         <Testimonials data={this.state.resumeData.Testimonials} />
         <Contact data={this.state.resumeData.Contact} />
         <Whatsapp />
-        <a href="/"><img src={logo} alt="logo ackleaners" width="250" style={{
-              margin: 0,
-              top: "auto",
-              left: 45,
-              bottom: -99,
-              position: "fixed",
-            }}/></a> 
       </div>
     );
   }

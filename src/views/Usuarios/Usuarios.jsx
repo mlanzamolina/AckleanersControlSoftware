@@ -44,7 +44,7 @@ function Usuarios() {
             })}
           </ul>
         </nav>
-        <h1 style={{textAlign: 'center',}}>Manage usuarios funciona</h1>
+        <h1 style={{textAlign: 'center',}}>Herramienta para administrar usuarios</h1>
         <a href="/"><img src={logo} alt="logo ackleaners" width="250" style={{
               margin: 0,
               top: "auto",

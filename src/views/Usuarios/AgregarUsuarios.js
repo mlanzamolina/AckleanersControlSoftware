@@ -8,6 +8,7 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import "./estilo.css";
 import logo from "../../img/logo.png";
+import { FaWindows } from "react-icons/fa";
 
 const AgregarUsuarios = () => {
   const userCollectionRef = collection(db, "Usuarios");
@@ -113,6 +114,7 @@ const AgregarUsuarios = () => {
         console.log(error);
       });
       registerWithEmailAndPassword(nombre, correo, contra);
+      window.location.assign("/Login");
       alert("Usuario Creado");
     } else {
       alert("Las contraseñas deben coincidir");
