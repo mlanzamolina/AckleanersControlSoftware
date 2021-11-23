@@ -21,6 +21,7 @@ const db = app.firestore();
 const signInWithEmailAndPassword = async (email, password) => {
   try {
     await auth.signInWithEmailAndPassword(email, password);
+    window.location.assign("/");
     alert("Bienvenido");
   } catch (err) {
     console.error(err);

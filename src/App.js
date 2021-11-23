@@ -21,6 +21,7 @@ import ModificarUsuarios from "./views/Usuarios/ModificarUsuario";
 import ListarUsuarios from "./views/Usuarios/ListarUsuarios";
 import AgregarUsuarios from "./views/Usuarios/AgregarUsuarios";
 import Inventarios from "./views/Inventarios/Inventarios";
+import NewPassword from "./views/NewPassword/NewPassword"
 
 function App() {
   return (
@@ -91,6 +92,9 @@ function App() {
             </Route>
             <Route path="/inventarios">
               <Inventarios />
+            </Route>
+            <Route path="/NewPassword">
+              <NewPassword />
             </Route>
           </Switch>
         </div>
