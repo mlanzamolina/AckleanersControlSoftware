@@ -29,18 +29,11 @@ const signInWithEmailAndPassword = async (email, password) => {
   }
 };
 
-const registerWithEmailAndPassword = async (nombre, email, password, tipo) => {
+const registerWithEmailAndPassword = async (nombre, email, password) => {
   try {
     const res = await auth.createUserWithEmailAndPassword(email, password);
     const user = res.user;
     await user.sendEmailVerification();
-    await db.collection("users").add({
-      uid: user.uid,
-      nombre,
-      authProvider: "local",
-      email,
-      tipo,
-    });
   } catch (err) {
     console.error(err);
     alert(err.message);

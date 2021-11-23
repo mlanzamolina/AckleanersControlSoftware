@@ -108,6 +108,7 @@ const AgregarUsuarios = () => {
         ID: correo,
         Correo: correo,
         Numero: telefono,
+        Tipo: "Cliente",
       }).catch((error) => {
         console.log(error);
       });
