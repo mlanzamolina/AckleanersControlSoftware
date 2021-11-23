@@ -86,7 +86,7 @@ const ListarReportes = () => {
           </ul>
         </nav>
         <div>
-          <h1 className="tituloh1">Listar Ordenes</h1>
+          <h1 className="tituloh1">Listar Reportes</h1>
           <table className="ta" align="center">
             <thead>
               <tr className="ta">
