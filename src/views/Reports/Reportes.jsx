@@ -63,6 +63,8 @@ export default function Reportes() {
             className="form-control"
             type="number"
             name="numero"
+            pattern="[0-9]{1}"
+            title="numero de 0-9"
             onChange={handleInputChance}
             required
           ></input>

@@ -147,6 +147,8 @@ const AgregarUsuarios = () => {
               name="telefono"
               autofocus
               onChange={(e) => setTelefono(e.target.value)}
+              pattern="[0-9]{8}"
+              title="numero 8 digitos sin nada extra"
               value={telefono}
             />
             <h5>Ingrese Correo Electronico</h5>
