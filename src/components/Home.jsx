@@ -21,7 +21,7 @@ export class Home extends Component {
     return (
       <div>
         <div className="cover">
-          <h1>Home</h1>
+         
         </div>
         <Navigation />
         <Header data={this.state.resumeData.Header} />

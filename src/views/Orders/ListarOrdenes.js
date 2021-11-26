@@ -88,9 +88,11 @@ const ListarOrdenes = () => {
         </nav>
         <div>
           <h1 className="tituloh1">Listar Ordenes</h1>
-          <table className="ta" align="center">
+          <table className="table table-dark" align="center">
+            {/*<table className="ta" align="center">*/}
             <thead>
-              <tr className="ta">
+              <tr>
+                {/*<tr className="ta">*/}
                 <th scope="col">Nombre </th>
                 <th scope="col">Unidades</th>
                 <th scope="col">Descripcion</th>
@@ -102,7 +104,8 @@ const ListarOrdenes = () => {
               {empleados
                 ? empleados.map((item) => {
                   return (
-                    <tr className="ta" key={item.id}>
+                    <tr key={item.id}>
+                      {/*<tr className="ta" key={item.id}>*/}
                       <td>{item.nombre}</td>
                       <td>{item.cantidad_unidades}</td>
                       <td>{item.descripcion}</td>

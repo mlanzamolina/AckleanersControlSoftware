@@ -95,3 +95,18 @@ input {
   font-weight: 700;
   font-size: 10pt;
 }
+.navbar-brand {
+  padding: 0px; /* firefox bug fix */
+}
+.navbar-brand>img {
+  max-height: 100%;
+  width: auto;
+}
+
+.navbar navbar-expand-lg navbar-light  bg-light  navbar-fixed-top{
+  background-color: #e3f2fd;
+}
+.navbar-nav > li{
+  padding-left:20px;
+  padding-right:20px;
+}

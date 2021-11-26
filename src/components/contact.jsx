@@ -12,7 +12,7 @@ export class Contact extends Component {
             <div className="col-md-8">
               <div className="row">
                 <div className="section-title">
-                  <h2>Contactenos</h2>
+                  <h2>¡Programe su cita!</h2>
                 </div>
                 <form name="sentMessage" id="contactForm" noValidate>
                   <div className="row">

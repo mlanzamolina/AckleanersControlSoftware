@@ -56,7 +56,7 @@ class Whatsapp extends Component {
               <img
                 src="https://1000marcas.net/wp-content/uploads/2019/11/WhatsApp-logo.png"
                 alt="whatsapp"
-                height="57"
+                height="100"
               />{" "}
             </a>
           </Fab>

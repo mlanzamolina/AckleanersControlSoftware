@@ -1,55 +1,44 @@
 import React, { Component } from "react";
+import logo from "../img/ack.png"
 
 class Navigation extends Component {
+  
   render() {
     return (
-      <nav id="menu" className="navbar navbar-default navbar-fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-light  bg-light  navbar-fixed-top sticky">
+        
         <div className="container">
-          <div className="navbar-header">
-            <button
-              type="button"
-              className="navbar-toggle collapsed"
-              data-toggle="collapse"
-              data-target="#bs-example-navbar-collapse-1"
-            >
-              {" "}
-              <span className="sr-only">Toggle navigation</span>{" "}
-              <span className="icon-bar"></span>{" "}
-              <span className="icon-bar"></span>{" "}
-              <span className="icon-bar"></span>{" "}
-            </button>
-            <a className="navbar-brand page-scroll" href="#page-top">
-              Ackleaners
-            </a>{" "}
-          </div>
+        <a class="navbar-brand" href="#">
+      <img src={logo} alt="..." />
+    </a>
 
           <div
             className="collapse navbar-collapse"
             id="bs-example-navbar-collapse-1"
           >
             <ul className="nav navbar-nav navbar-right">
-              <li>
-                <a href="#features" className="page-scroll">
+            <li className="nav-item">
+                <a href="#features" className="nav-link active">
                   Servicios
                 </a>
               </li>
-              <li>
-                <a href="#about" className="page-scroll">
-                  SOBRE NOSOTROS
+              <li className="nav-item">
+                <a href="#about" className="nav-link active">
+                  Sobre Nosotros
                 </a>
               </li>
-              <li>
-                <a href="#portfolio" className="page-scroll">
+              <li className="nav-item">
+                <a href="#portfolio" className="nav-link active">
                   Fotos
                 </a>
               </li>
-              <li>
-                <a href="#testimonials" className="page-scroll">
+              <li className="nav-item">
+                <a href="#testimonials" className="nav-link active">
                 Reseñas
                 </a>
               </li>
-              <li>
-                <a href="#contact" className="page-scroll">
+              <li className="nav-item">
+                <a href="#contact" className="nav-link active">
                   Contactenos
                 </a>
               </li>
