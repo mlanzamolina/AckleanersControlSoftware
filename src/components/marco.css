@@ -1,0 +1,9 @@
+#navbar-brandt {
+    padding: 0px; /* firefox bug fix */
+    
+  }
+  #navbar-brandti{
+    width: 170px;
+    height: auto;
+  }
+  

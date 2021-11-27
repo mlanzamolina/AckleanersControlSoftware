@@ -45,20 +45,24 @@
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
 }
 
-.button:hover {background-color: #3e8e41}
+.button:hover {
+  background-color: #3e8e41;
+}
 
 .button:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-.button1:hover {background-color: #3e8e41}
+.button1:hover {
+  background-color: #3e8e41;
+}
 
 .button1:active {
   background-color: #3e8e41;
@@ -74,13 +78,13 @@
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
 }
 input {
-  content: 'Ingrese foto';
+  content: "Ingrese foto";
   color: black;
   display: inline-block;
   background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
@@ -95,18 +99,4 @@ input {
   font-weight: 700;
   font-size: 10pt;
 }
-.navbar-brand {
-  padding: 0px; /* firefox bug fix */
-}
-.navbar-brand>img {
-  max-height: 100%;
-  width: auto;
-}
 
-.navbar navbar-expand-lg navbar-light  bg-light  navbar-fixed-top{
-  background-color: #e3f2fd;
-}
-.navbar-nav > li{
-  padding-left:20px;
-  padding-right:20px;
-}

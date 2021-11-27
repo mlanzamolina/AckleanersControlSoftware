@@ -22,11 +22,13 @@ import ListarUsuarios from "./views/Usuarios/ListarUsuarios";
 import AgregarUsuarios from "./views/Usuarios/AgregarUsuarios";
 import Inventarios from "./views/Inventarios/Inventarios";
 import NewPassword from "./views/NewPassword/NewPassword"
+import Probar from "./views/Probandocss/probar";
 
 function App() {
   return (
     <>
       <Router>
+        
         <div>
           <Switch>
             <Route exact path="/">
@@ -36,6 +38,11 @@ function App() {
             <Route path="/Login">
               <Login />
             </Route>
+
+            <Route path="/probar">
+              <Probar />
+            </Route>
+
             <Route path="/AgregarEmpleado">
               <AgregarEmpleado />
             </Route>

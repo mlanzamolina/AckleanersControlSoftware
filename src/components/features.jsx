@@ -16,19 +16,16 @@ export class features extends Component {
                     <i className={d.icon} />
                     <h3>{d.title}</h3>
                     <p>{d.text}</p>
+                    <div>
+          <iframe
+            src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F106521830930162%2Fvideos%2F417711099124406%2F&show_text=false&width=560&t=0" /> 
+         </div>
                   </div>
                 ))
               : "Loading..."}
           </div>
-          <iframe
-            src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F106521830930162%2Fvideos%2F417711099124406%2F&show_text=false&width=560&t=0"
-            width="852px"
-            height="480px"
-            id="myId"
-            className="myClassname"
-            display="initial"
-            position="relative"
-          />
+        
+
         </div>
       </div>
     );

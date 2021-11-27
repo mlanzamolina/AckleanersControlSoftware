@@ -1,48 +1,74 @@
 import React, { Component } from "react";
-import logo from "../img/ack.png"
+import logo from "../img/ack.png";
+import "./marco.css"
+
 
 class Navigation extends Component {
-  
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light  bg-light  navbar-fixed-top sticky">
-        
-        <div className="container">
-        <a class="navbar-brand" href="#">
-      <img src={logo} alt="..." />
-    </a>
-
-          <div
-            className="collapse navbar-collapse"
-            id="bs-example-navbar-collapse-1"
-          >
-            <ul className="nav navbar-nav navbar-right">
-            <li className="nav-item">
-                <a href="#features" className="nav-link active">
+      <nav class="navbar navbar-inverse navbar-expand-sm bg-light navbar-light navbar-fixed-top sticky">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#myNavbar"
+            >
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brandt" style={{padding: "0px"}} href="#">
+              <img src={logo} id="navbar-brandti" alt="..." />
+            </a>
+          </div>
+          <div class="collapse navbar-collapse " id="myNavbar">
+            <ul class="nav ms-auto justify-content-end">
+              <li class="active" class="nav-item">
+                {" "}
+                <a
+                  href="#features"
+                  class="nav-link m-2 menu-item nav-active text-dark"
+                >
                   Servicios
                 </a>
               </li>
-              <li className="nav-item">
-                <a href="#about" className="nav-link active">
+              <li class="nav-item">
+                <a
+                  href="#about"
+                  class="nav-link m-2 menu-item nav-active text-dark"
+                >
                   Sobre Nosotros
                 </a>
               </li>
-              <li className="nav-item">
-                <a href="#portfolio" className="nav-link active">
+              <li class="nav-item">
+                {" "}
+                <a
+                  href="#portfolio"
+                  class="nav-link m-2 menu-item nav-active text-dark"
+                >
                   Fotos
-                </a>
+                </a>{" "}
               </li>
-              <li className="nav-item">
-                <a href="#testimonials" className="nav-link active">
-                Reseñas
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="#contact" className="nav-link active">
+              <li class="nav-item">
+                {" "}
+                <a
+                  href="#contact"
+                  class="nav-link m-2 menu-item nav-active text-dark"
+                >
                   Contactenos
-                </a>
+                </a>{" "}
               </li>
-              
+              <li class="nav-item">
+                {" "}
+                <a
+                  href="#testimonials"
+                  class="nav-link m-2 menu-item nav-active text-dark"
+                >
+                  Reseñas
+                </a>{" "}
+              </li>
             </ul>
           </div>
         </div>
