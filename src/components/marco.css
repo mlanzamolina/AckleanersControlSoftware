@@ -6,4 +6,11 @@
     width: 170px;
     height: auto;
   }
-  
+  #responsiveAbout {
+    width: 100%;
+    height: auto;
+  }
+  .fotos {
+    max-width: 960px;
+    margin: 0 auto;
+  }

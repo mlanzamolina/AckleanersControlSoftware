@@ -5,14 +5,16 @@ export class features extends Component {
   render() {
     return (
       <div id="features" className="text-center">
+        <br />
+           <h2 style={{ padding: "42px" }}>Servicios</h2>
         <div className="container">
           <div className="">
-            <h2 style={{ padding: "42px" }}>Servicios</h2>
+         
           </div>
           <div className="row">
             {this.props.data
               ? this.props.data.map((d, i) => (
-                  <div style={{ padding: "20px" }} className="col-sm" key={i}>
+                  <div style={{ padding: "50px" }} className="col-sm" key={i}>
                     <i className={d.icon} />
                     <h3>{d.title}</h3>
                     <p>{d.text}</p>

@@ -3,116 +3,71 @@ import PropTypes from "prop-types";
 
 export class Contact extends Component {
   static propTypes = {};
+  
 
   render() {
     return (
-      <div>
-        <div id="contact">
-          <div className="container">
-            <div className="col-md-8">
-              <div className="row">
-                <div className="section-title">
-                  <h2>¡Programe su cita!</h2>
-                </div>
-                <form name="sentMessage" id="contactForm" noValidate>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <input
-                          type="text"
-                          id="name"
-                          className="form-control"
-                          placeholder="Name"
-                          required="required"
-                        />
-                        <p className="help-block text-danger"></p>
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <input
-                          type="email"
-                          id="email"
-                          className="form-control"
-                          placeholder="Email"
-                          required="required"
-                        />
-                        <p className="help-block text-danger"></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <textarea
-                      name="message"
-                      id="message"
-                      className="form-control"
-                      rows="4"
-                      placeholder="Message"
-                      required
-                    ></textarea>
-                    <p className="help-block text-danger"></p>
-                  </div>
-                  <div id="success"></div>
-                  <button type="submit" className="btn btn-custom btn-lg">
-                    Send
-                  </button>
-                </form>
-              </div>
+      <div id="contact">
+      <div class="containerf">
+      <h2 style={{textAlign: "center"}}>Programe su cita!</h2> 
+        <form >
+          <div class="rowf">
+            <div class="col-25f">
+              <label for="fname">Nombre</label>
             </div>
-            <div className="col-md-3 col-md-offset-1 contact-info">
-              <div className="contact-item">
-                <h3>Info</h3>
-                <p>
-                  <span>
-                    <i className="fa fa-map-marker"></i>Dirección
-                  </span>
-                  {this.props.data ? this.props.data.address : "loading"}
-                </p>
-              </div>
-              <div className="contact-item">
-                <p>
-                  <span>
-                    <i className="fa fa-phone"></i>Teléfono
-                  </span>{" "}
-                  {this.props.data ? this.props.data.phone : "loading"}
-                </p>
-              </div>
-              <div className="contact-item">
-                <p>
-                  <span>
-                    <i className="fa fa-envelope-o"></i>Email
-                  </span>{" "}
-                  {this.props.data ? this.props.data.email : "loading"}
-                </p>
-              </div>
-            </div>
-            <div className="col-md-12">
-              <div className="row">
-                <div className="social">
-                  <ul>
-                    <li>
-                      <a
-                        href={this.props.data ? this.props.data.facebook : "/"}
-                        target="_blank"
-                      >
-                        <i className="fa fa-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href={this.props.data ? this.props.data.instagram : "/"}
-                        target="_blank"
-                      >
-                        <i className="fa fa-instagram"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            <div class="col-75f">
+              <input
+                type="text"
+                id="fname"
+                name="firstname"
+                placeholder="Escribe tu nombre.."
+              />
             </div>
           </div>
-        </div>
-        <div id="footer"></div>
+          <div class="rowf">
+            <div class="col-25f">
+              <label for="country">Email</label>
+            </div>
+            <div class="col-75f">
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Escribe tu correo electronico.."
+              />
+            </div>
+          </div>
+          <div class="rowf">
+            <div class="col-25f">
+              <label for="telefono">Telefono</label>
+            </div>
+            <div class="col-75f">
+              <input
+                type="text"
+                id="telefono"
+                name="Telefono"
+                placeholder="Escribe tu telefono.."
+              />
+            </div>
+          </div>
+          <div class="rowf">
+            <div class="col-25f">
+              <label for="subject">Subject</label>
+            </div>
+            <div class="col-75f">
+              <textarea
+                id="subject"
+                name="subject"
+                placeholder="Write something.."
+                style={{ height: "200px" }}
+              ></textarea>
+            </div>
+          </div>
+          <div class="rowf">
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
+      </div>
       </div>
     );
   }
