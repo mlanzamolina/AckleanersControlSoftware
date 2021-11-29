@@ -104,7 +104,10 @@ input {
 .containerf {
   width: 75vw;
   margin: 50px auto;
-  background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
+
+  background-color: #20bf55;
+  background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+
   -webkit-box-shadow: -5px 5px 0px 1px rgba(0, 0, 0, 0.25);
   box-shadow: -5px 5px 0px 3px rgba(0, 0, 0, 0.25);
 
