@@ -7,7 +7,7 @@ class Whatsapp extends Component {
     return (
       <>
         <div className="whatsapp">
-        <Link
+       {/* <Link
             id="link"
             to="/Login"
             style={{
@@ -34,7 +34,8 @@ class Whatsapp extends Component {
             }}
           >
          <button className="button">Herramienta Administrativa</button>
-          </Link>
+          </Link>*/}
+          
           <Fab
             color="primary"
             aria-label="Formulario"
@@ -56,7 +57,7 @@ class Whatsapp extends Component {
               <img
                 src="https://1000marcas.net/wp-content/uploads/2019/11/WhatsApp-logo.png"
                 alt="whatsapp"
-                height="57"
+                height="100"
               />{" "}
             </a>
           </Fab>

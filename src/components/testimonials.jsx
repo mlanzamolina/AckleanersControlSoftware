@@ -3,9 +3,11 @@ import React, { Component } from "react";
 export class testimonials extends Component {
   render() {
     return (
+      <>
       <div id="testimonials">
         <div className="container">
           <div className="section-title text-center">
+          <br />  <br />  <br />
             <h2>Reseñas</h2>
           </div>
           <div className="row">
@@ -28,6 +30,7 @@ export class testimonials extends Component {
           </div>
         </div>
       </div>
+</>
     );
   }
 }

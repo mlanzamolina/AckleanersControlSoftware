@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
+import "./index.css"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./views/Login/Login";
@@ -21,9 +22,27 @@ import ModificarUsuarios from "./views/Usuarios/ModificarUsuario";
 import ListarUsuarios from "./views/Usuarios/ListarUsuarios";
 import AgregarUsuarios from "./views/Usuarios/AgregarUsuarios";
 import Inventarios from "./views/Inventarios/Inventarios";
-import NewPassword from "./views/NewPassword/NewPassword"
+import NewPassword from "./views/NewPassword/NewPassword";
+import Probar from "./views/Probandocss/probar";
+
+import { useRef } from "react";
 
 function App() {
+  const firstNameRef = useRef(null);
+  const lastNameRef = useRef(null);
+  const emailRef = useRef(null);
+  const messageRef = useRef(null);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = {
+      firstName: firstNameRef.current.value,
+      lastName: lastNameRef.current.value,
+      email: emailRef.current.value,
+      message: messageRef.current.value,
+    };
+    alert("tadaaa!: \n" + JSON.stringify(data) + "Your data 😎");
+  };
   return (
     <>
       <Router>
@@ -36,6 +55,11 @@ function App() {
             <Route path="/Login">
               <Login />
             </Route>
+
+            <Route path="/probar">
+              <Probar />
+            </Route>
+
             <Route path="/AgregarEmpleado">
               <AgregarEmpleado />
             </Route>
@@ -71,7 +95,6 @@ function App() {
               <Reportes />
             </Route>
 
-           
             <Route path="/AgregarReportes/:id">
               <AgregarReportes />
             </Route>
@@ -99,6 +122,8 @@ function App() {
           </Switch>
         </div>
       </Router>
+      
+     
     </>
   );
 }
