@@ -111,3 +111,7 @@ span {
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+.responsive {
+  width: 15%;
+  height: auto;
+}

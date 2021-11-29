@@ -116,7 +116,7 @@ export default {
     },
     {
       icon: "fa fa-wrench",
-      title: "Mantenimiento",
+      title: "Reparacion",
       text: "",
     },
     {
