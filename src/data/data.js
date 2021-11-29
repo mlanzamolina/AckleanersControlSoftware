@@ -110,17 +110,17 @@ export default {
   },
   Features: [
     {
-      icon: "fa fa-paint-brush",
+      icon: "fa fa-paint-brush fa-4x circle-icon",
       title: "Limpieza",
       text: "",
     },
     {
-      icon: "fa fa-wrench",
+      icon: "fa fa-wrench fa-4x circle-icon",
       title: "Reparacion",
       text: "",
     },
     {
-      icon: "fa fa-gear",
+      icon: "fa fa-cog fa-spin fa-4x fa-fw",
       title: "Instalacion",
       text: "",
     },

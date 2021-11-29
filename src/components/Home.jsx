@@ -20,10 +20,8 @@ export class Home extends Component {
 
   render() {
     return (
-      <div>
-        <div className="cover">
-         
-        </div>
+        <div>
+           <Whatsapp />
         <Navigation />
         <Header data={this.state.resumeData.Header} />
         <Features data={this.state.resumeData.Features} /> <br /> <br /> <br /> <br /> 
@@ -31,7 +29,7 @@ export class Home extends Component {
         <Gallery /> <br /><br /><br /><br /><br /><br /><br /><br />
         <Testimonials data={this.state.resumeData.Testimonials} /> 
         <Contact />
-        <Whatsapp />
+       
       </div>
     );
   }
