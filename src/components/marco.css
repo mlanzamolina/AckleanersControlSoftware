@@ -14,7 +14,12 @@
   margin: 0 auto;
 }
 .cover {
-  background: linear-gradient(to right, rgb(5, 117, 230), rgb(0, 242, 96));
+  background:white;
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
 
 }
 .whatsapp{
