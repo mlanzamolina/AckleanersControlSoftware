@@ -228,7 +228,7 @@ input[type="submit"]:hover {
 /* Create four equal columns that sits next to each other */
 .columng {
   display: flex;
-  background-color: rgb(255, 255, 255);
+  background-color: transparent;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import pics1 from "../img/01.jpg";
 import pics2 from "../img/02.jpg";
 import pics3 from "../img/03.jpg";
+import pics4 from "../img/04.jpg";
+
 
 export class Gallery extends Component {
   render() {
@@ -16,6 +18,7 @@ export class Gallery extends Component {
           <img src={pics1} /> 
         <img src={pics2} />
         <img src={pics3} />
+        <img src={pics4} />
         </div>
       </div>
       </div>

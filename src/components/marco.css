@@ -1,16 +1,22 @@
 #navbar-brandt {
-    padding: 0px; /* firefox bug fix */
-    
-  }
-  #navbar-brandti{
-    width: 170px;
-    height: auto;
-  }
-  #responsiveAbout {
-    width: 100%;
-    height: auto;
-  }
-  .fotos {
-    max-width: 960px;
-    margin: 0 auto;
-  }
+  padding: 0px; /* firefox bug fix */
+}
+#navbar-brandti {
+  width: 170px;
+  height: auto;
+}
+#responsiveAbout {
+  width: 100%;
+  height: auto;
+}
+.fotos {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.cover {
+  background: linear-gradient(to right, rgb(5, 117, 230), rgb(0, 242, 96));
+
+}
+.whatsapp{
+  
+}

@@ -34,33 +34,29 @@ class Whatsapp extends Component {
             }}
           >
          <button className="button">Herramienta Administrativa</button>
-          </Link>*/}
+          </Link>
           
-          <Fab
-            color="primary"
-            aria-label="Formulario"
-            style={{
-              margin: 0,
-              top: "auto",
-              right: 40,
-              bottom: 40,
-              left: "auto",
-              position: "fixed",
-            }}
-          >
+        
             <a
               id="whatsapp"
               href="https://web.whatsapp.com/send?phone=+50432868726"
               target="_blank"
+              style={{
+                width: "5vw",
+                height: "9vh",
+                left: -25,
+                top: 100,
+                position: "fixed",
+              }}
             >
               {" "}
               <img
                 src="https://1000marcas.net/wp-content/uploads/2019/11/WhatsApp-logo.png"
                 alt="whatsapp"
-                height="100"
+                width= "200vw"
               />{" "}
             </a>
-          </Fab>
+*/}
         </div>
       </>
     );

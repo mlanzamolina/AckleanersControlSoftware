@@ -25,28 +25,12 @@ import Inventarios from "./views/Inventarios/Inventarios";
 import NewPassword from "./views/NewPassword/NewPassword";
 import Probar from "./views/Probandocss/probar";
 
-import { useRef } from "react";
 
 function App() {
-  const firstNameRef = useRef(null);
-  const lastNameRef = useRef(null);
-  const emailRef = useRef(null);
-  const messageRef = useRef(null);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = {
-      firstName: firstNameRef.current.value,
-      lastName: lastNameRef.current.value,
-      email: emailRef.current.value,
-      message: messageRef.current.value,
-    };
-    alert("tadaaa!: \n" + JSON.stringify(data) + "Your data 😎");
-  };
   return (
     <>
       <Router>
-        <div>
+        <div className="cover">
           <Switch>
             <Route exact path="/">
               <Home />
