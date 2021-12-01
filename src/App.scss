@@ -105,8 +105,7 @@ input {
   width: 75vw;
   margin: 50px auto;
 
-  background-color: #20bf55;
-  background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+  background: #0dcaf0;
 
   -webkit-box-shadow: -5px 5px 0px 1px rgba(0, 0, 0, 0.25);
   box-shadow: -5px 5px 0px 3px rgba(0, 0, 0, 0.25);
@@ -167,6 +166,15 @@ textarea {
   border-radius: 4px;
   resize: vertical;
 }
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
 
 label {
   padding: 12px 12px 12px 0;
@@ -174,22 +182,16 @@ label {
 }
 
 input[type="submit"] {
-  background: #04aa6d;
-  color: black;
   padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
   float: right;
 }
 
 input[type="submit"]:hover {
-  background: #45a049;
+  background: whitesmoke;
 }
 
 .containerf {
   border-radius: 5px;
-  background-color: #f2f2f2;
   padding: 20px;
 }
 

@@ -7,6 +7,7 @@ import Gallery from "./gallery";
 import Testimonials from "./testimonials";
 import Contact from "./contact";
 import Whatsapp from "./whatsapp";
+import Footer from "./footer";
 import data from "../data/data";
 import logo from "../img/logo.png"
 export class Home extends Component {
@@ -26,9 +27,11 @@ export class Home extends Component {
         <Header data={this.state.resumeData.Header} />
         <Features data={this.state.resumeData.Features} /> <br /> <br /> <br /> <br /> 
         <About data={this.state.resumeData.About} /> <br /><br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> 
-        <Gallery /> <br /><br /><br /><br /><br /><br /><br /><br />
-        <Testimonials data={this.state.resumeData.Testimonials} /> 
+        <Gallery /> <br /><br /><br /><br /><br />
         <Contact />
+        <Testimonials data={this.state.resumeData.Testimonials} /> 
+        <Footer />
+      
        
       </div>
     );
