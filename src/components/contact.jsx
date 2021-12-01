@@ -72,6 +72,7 @@ export class Contact extends Component {
   render() {
     return (
       <div id="contact">
+        <br /><br /><br /><br /><br /><br /><br />
         <div class="containerf">
           <h2 style={{ textAlign: "center" }}>Programe su cita!</h2><br />
         

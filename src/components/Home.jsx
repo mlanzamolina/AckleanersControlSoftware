@@ -27,7 +27,7 @@ export class Home extends Component {
         <Header data={this.state.resumeData.Header} />
         <Features data={this.state.resumeData.Features} /> <br /> <br /> <br /> <br /> 
         <About data={this.state.resumeData.About} /> <br /><br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> 
-        <Gallery /> <br /><br /><br /><br /><br />
+        <Gallery /> <br />
         <Contact />
         <Testimonials data={this.state.resumeData.Testimonials} /> 
         <Footer />

@@ -4,7 +4,7 @@ export class about extends Component {
   render() {
     return (
       <div id="about">
-          <br />  <br />  <br />
+          <br />  <br />  <br /><br /><br />
         <div className="container">
           <div className="row">
             <div className="col-xs-12 col-md-6">
