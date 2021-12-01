@@ -29,5 +29,12 @@ export const SidebarData = [
     path: '/Ordenes',
     cName: 'nav-text'
   },
+  { 
+    title: 'Administracion Empleados',
+    path: '/eliminarEmpleados',
+    cName: 'nav-text'
+
+  },
+
   
 ];

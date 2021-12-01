@@ -24,14 +24,16 @@ import AgregarUsuarios from "./views/Usuarios/AgregarUsuarios";
 import Inventarios from "./views/Inventarios/Inventarios";
 import NewPassword from "./views/NewPassword/NewPassword";
 import Probar from "./views/Probandocss/probar";
-
+import EliminarEmpleados from "./views/Employees/eliminarEmpleados";
 
 function App() {
   return (
+
+  
     <>
       <Router>
         <div className="cover">
-          <Switch>
+         <Switch>
             <Route exact path="/">
               <Home />
             </Route>
@@ -103,6 +105,10 @@ function App() {
             <Route path="/NewPassword">
               <NewPassword />
             </Route>
+            <Route path="/eliminarEmpleados">
+            <EliminarEmpleados/>
+            </Route>
+
           </Switch>
         </div>
       </Router>
