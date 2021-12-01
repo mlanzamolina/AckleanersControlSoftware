@@ -24,21 +24,37 @@ const EliminarEmpleados = () => {
                 temp.push({ ...doc.data(), id: doc.id });
             });
 
-
+           
 
             setData(temp);
         });
     };
 
+    const refrescar=()=> {
+        window.location.reload(false);
+     }
+
+     useEffect(() => {
+        getEmpleados();
+       
+    }, []);
+
 
     const eliminarEmpleado = async (id) => {
         const empleado = doc(db, "Empleados", id);
-
+        
         deleteDoc(empleado);
+        mostrarModalEliminar();
+
+        getEmpleados();
+       
+       
     }
 
     const mostrarModalEliminar = (index) => {
         setID(index)
+        
+        
 
         if (mostrarE === false) {
             setMostrarE(!mostrarE);
@@ -49,9 +65,9 @@ const EliminarEmpleados = () => {
 
     }
 
-    useEffect(() => {
-        getEmpleados();
-    }, []);
+
+    
+    
 
 
 
@@ -66,7 +82,7 @@ const EliminarEmpleados = () => {
                 <hr></hr>
             </div>
             <div className="container">
-                <div className="mt-4 mb-4 table-responsive" >
+                <div className="mt-4 mb-4 table-responsive"  >
                     <table className="table table-dark table-striped table-bordered table-hover" >
                         <thead className="thead-dark">
                             <tr className="text-center">
@@ -107,7 +123,7 @@ const EliminarEmpleados = () => {
                 <ModalHeader closeButton >¿DESEA ELIMINAR EL EMPLEADO?</ModalHeader>
 
                 <ModalFooter>
-                    <Button type="submit" className="center" variant="primary" onClick={() => eliminarEmpleado(id)} >SI</Button>
+                    <Button type="button"  variant="primary" onClick={() => eliminarEmpleado(id)} >SI</Button>
                 
                     <Button type="button" variant="secondary" onClick={() => mostrarModalEliminar()} >NO</Button>
                 </ModalFooter>
