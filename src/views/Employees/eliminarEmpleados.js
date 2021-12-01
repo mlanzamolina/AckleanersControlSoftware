@@ -11,7 +11,7 @@ import { useForm } from 'react-hook-form'
 
 const EliminarEmpleados = () => {
 
-    const[data, setData] = useState([]);
+    const [data, setData] = useState([]);
     const [mostrarE, setMostrarE] = useState(false);
     const [opcionE, setopcionE] = useState(false);
     const [id, setID] = useState("");
@@ -23,7 +23,7 @@ const EliminarEmpleados = () => {
             querySnapshot.forEach((doc) => {
                 temp.push({ ...doc.data(), id: doc.id });
             });
-            
+
 
 
             setData(temp);
@@ -31,19 +31,19 @@ const EliminarEmpleados = () => {
     };
 
 
-    const eliminarEmpleado = async(id)=>{
-        const empleado =doc(db, "Empleados",id );
-        
+    const eliminarEmpleado = async (id) => {
+        const empleado = doc(db, "Empleados", id);
+
         deleteDoc(empleado);
     }
 
-    const mostrarModalEliminar=(index)=>{
+    const mostrarModalEliminar = (index) => {
         setID(index)
-        console.log(id)
-        if(mostrarE===false){
+
+        if (mostrarE === false) {
             setMostrarE(!mostrarE);
 
-        }else{
+        } else {
             setMostrarE(!mostrarE);
         }
 
@@ -53,14 +53,14 @@ const EliminarEmpleados = () => {
         getEmpleados();
     }, []);
 
-  
-    
+
+
 
 
 
     return (
-     
-<div className="container col-md-12 mt-4">
+
+        <div className="container col-md-12 mt-4">
             <div className="text-center">
                 <h1>Empleados</h1>
                 <hr></hr>
@@ -75,6 +75,7 @@ const EliminarEmpleados = () => {
                                 <th scope="col">DNI</th>
                                 <th scope="col">TELEFONO</th>
                                 <th scope="col">CORREO</th>
+                                <th scope="col">ESTADO</th>
                                 <th scope="col">EDITAR</th>
                             </tr>
                         </thead>
@@ -85,9 +86,10 @@ const EliminarEmpleados = () => {
                                     <td>{empleados.foto}</td>
                                     <td>{empleados.dni}</td>
                                     <td>{empleados.n_telefono}</td>
-                                    <td>{empleados.foto}</td>
+                                    <td>{empleados.correo}</td>
+                                    <td>{empleados.estado}</td>
                                     <td>
-                                        <Button color="success"  onClick={()=>setMostrarE(true)}   onClick={()=>mostrarModalEliminar(empleados.id)}  >
+                                        <Button color="success" onClick={() => setMostrarE(true)} onClick={() => mostrarModalEliminar(empleados.id)}  >
                                             Eliminar
                                         </Button>
                                     </td>
@@ -96,30 +98,26 @@ const EliminarEmpleados = () => {
                             ))}
                         </tbody>
                     </table>
+
+
+
+                </div>
+            </div>
+            <Modal isOpen={mostrarE} >
+                <ModalHeader closeButton >¿DESEA ELIMINAR EL EMPLEADO?</ModalHeader>
+
+                <ModalFooter>
+                    <Button type="submit" className="center" variant="primary" onClick={() => eliminarEmpleado(id)} >SI</Button>
                 
+                    <Button type="button" variant="secondary" onClick={() => mostrarModalEliminar()} >NO</Button>
+                </ModalFooter>
 
-            
+
+
+            </Modal>
+
+
         </div>
-    </div>
-    <Modal isOpen={mostrarE} >
-                <ModalHeader>ADVERTENCIA</ModalHeader>
-                <ModalBody>
-                <div> <h1> ¿DESEA ELIMINAR EL EMPLEADO? </h1> </div>
-                </ModalBody>
-                <ModalFooter>
-                    <Button type="button"  variant="primary" onClick={()=>eliminarEmpleado(id)} >SI</Button>
-                </ModalFooter>
-
-                <ModalFooter>
-                    <Button type="button" variant="secondary"  onClick={()=>mostrarModalEliminar()} >NO</Button>
-                </ModalFooter>
-
-
-              
-    </Modal>
-
-
-    </div>
     )
 }
 
