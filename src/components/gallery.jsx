@@ -14,7 +14,7 @@ export class Gallery extends Component {
      <br />  <br />  <br />  <br />
       <div id="rowg">
       <h2 style={{textAlign: "center"}}>Fotos</h2><br /> <br /> <br /> <br /> 
-        <div class="columng">
+        <div className="columng">
           <img src={pics1} /> 
         <img src={pics2} />
         <img src={pics3} />

@@ -5,12 +5,12 @@ import "./marco.css";
 class Navigation extends Component {
   render() {
     return (
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top sticky-top ">
-        <a class="navbar-brand" style={{}} href="#">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top sticky-top ">
+        <a className="navbar-brand" style={{}} href="#">
           <img src={logo} id="navbar-brandti" alt="..." />
         </a>
         <a
-          class="navbar-brand"
+          className="navbar-brand"
           target="_blank"
           style={{}}
           href="https://web.whatsapp.com/send?phone=+50432868726"
@@ -22,7 +22,7 @@ class Navigation extends Component {
           />
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
@@ -30,41 +30,41 @@ class Navigation extends Component {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto" style={{}}>
-            <li class="active" class="nav-item">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav ms-auto" style={{}}>
+            <li className="active" className="nav-item">
               <a
                 href="#features"
-                class="nav-link m-2 menu-item nav-active text-light"
+                className="nav-link m-2 menu-item nav-active text-light"
               >
                 Servicios
               </a>
             </li>
 
-            <li class="nav-item">
+            <li className="nav-item">
               <a
                 href="#about"
-                class="nav-link m-2 menu-item nav-active text-light"
+                className="nav-link m-2 menu-item nav-active text-light"
               >
                 Sobre Nosotros
               </a>
             </li>
 
-            <li class="nav-item">
+            <li className="nav-item">
               <a
                 href="#fotos"
-                class="nav-link m-2 menu-item nav-active text-light"
+                className="nav-link m-2 menu-item nav-active text-light"
               >
                 Fotos
               </a>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <a
                 href="#contact"
-                class="nav-link m-2 menu-item nav-active text-light"
+                className="nav-link m-2 menu-item nav-active text-light"
               >
                 Contactenos
               </a>

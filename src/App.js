@@ -30,12 +30,12 @@ function App() {
   return (
     <>
       <Router>
-        <div className="cover">
+        
           <Switch>
             <Route exact path="/">
               <Home />
             </Route>
-
+            <div className="cover">
             <Route path="/Login">
               <Login />
             </Route>
@@ -103,8 +103,9 @@ function App() {
             <Route path="/NewPassword">
               <NewPassword />
             </Route>
+            </div>
           </Switch>
-        </div>
+     
       </Router>
       
      
