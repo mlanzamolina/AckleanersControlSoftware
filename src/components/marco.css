@@ -28,9 +28,15 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.centered3 {
+  position: absolute;
+  top: 406.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .centered2 {
   position: absolute;
-  top: 48%;
+  top: 53%;
   left: 48%;
   transform: translate(-50%, -50%);
 }
@@ -63,4 +69,12 @@
   .centered, .centered2 {
     display: none;
   }
+}
+
+#subjectin{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
 }
