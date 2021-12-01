@@ -8,26 +8,14 @@ export class testimonials extends Component {
         <div className="container">
           <div className="section-title text-center">
           <br />  <br />  <br />
-            <h2>Reseñas</h2>
+            <h2>Reseñas</h2>  <br />  <br />  <br />
           </div>
           <div className="row">
-            {this.props.data
-              ? this.props.data.map((d, i) => (
-                  <div className="col-md-4" key={i}>
-                    <div className="testimonial">
-                      <div className="testimonial-image">
-                        {" "}
-                        <img src={d.img} alt="" />{" "}
-                      </div>
-                      <div className="testimonial-content">
-                        <p>"{d.text}"</p>
-                        <div className="testimonial-meta"> - {d.name} </div>
-                      </div>
-                    </div>
-                  </div>
-                ))
-              : "loading"}
+  
+          <a class="btn btn-info" href="https://g.page/r/CVrdXIDa8X2zEAI/review" role="button"><i className="fa fa-hand-o-right" /> Dejanos una reseña <i className="fa fa-hand-o-left" /></a>
+        
           </div>
+          <br />  <br />  <br />
         </div>
       </div>
 </>

@@ -39,7 +39,7 @@ export class Contact extends Component {
           </div>
           <div class="rowf">
             <div class="col-25f">
-              <label for="telefono">Telefono</label>
+              <label for="telefono">Tel.</label>
             </div>
             <div class="col-75f">
               <input
@@ -64,7 +64,7 @@ export class Contact extends Component {
             </div>
           </div>
           <div class="rowf">
-            <input type="submit" value="Submit" />
+          <button type="submit" class="btn btn-primary" style={{float: "left"}}>Submit</button>
           </div>
         </form>
       </div>
