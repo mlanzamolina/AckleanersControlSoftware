@@ -29,10 +29,7 @@
   transform: translate(-50%, -50%);
 }
 .centered3 {
-  position: absolute;
-  top: 406.5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+margin: 0px 800px;
 }
 .centered2 {
   position: absolute;
@@ -70,6 +67,7 @@
     display: none;
   }
 }
+
 
 #subjectin{
   width: 100%;
