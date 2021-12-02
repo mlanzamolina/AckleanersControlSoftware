@@ -1,12 +1,8 @@
-import React, { useState, useEffect, Component, PropTypes } from "react";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import { Link, useParams } from "react-router-dom";
-import { SidebarData } from "./SideBarData";
-import logo from "../../img/logo.png";
+import React from "react";
+import { useParams } from "react-router-dom";
 import SingleImageUploadComponent from "./SingleImageUploadComponent ";
 import { jsPDF } from "jspdf";
-import ReactDOMServer from "react-dom/server";
+
 import html2canvas from "html2canvas";
 
 export default function AgregarReportes() {

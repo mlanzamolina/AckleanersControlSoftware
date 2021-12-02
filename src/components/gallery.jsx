@@ -21,6 +21,7 @@ export class Gallery extends Component {
         <img src={pics4} />
         </div>
       </div>
+     
       </div>
       </>
     );

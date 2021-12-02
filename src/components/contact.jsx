@@ -72,69 +72,78 @@ export class Contact extends Component {
   render() {
     return (
       <div id="contact">
-        <br /><br /><br /><br /><br /><br /><br />
+         <br />  <br />
         <div class="containerf">
-          <h2 style={{ textAlign: "center" }}>Programe su cita!</h2><br />
-        
-            <div class="rowf">
-              <div class="col-25f">
-                <label for="fname">Nombre</label>
-              </div>
-              <div class="col-75f">
-                <input
-                  type="text"
-                  name="name"
-                  onChange={this.handleChangeName}
-                /> 
-              </div>
+          <h2 style={{ textAlign: "center" }}>Programe su cita!</h2>
+          <br />
+
+          <div class="rowf">
+            <div class="col-25f">
+              <label for="fname">Nombre</label>
             </div>
-            <div class="rowf">
-              <div class="col-25f">
-                <label for="country">Email</label>
-              </div>
-              <div class="col-75f">
-                <input
-                  type="text"
-                  name="email"
-                  ref="email"
-                  onChange={this.handleChangeEmail}
-                />
-              </div>
+
+            <div class="col-75f">
+              <input type="text" name="name" onChange={this.handleChangeName} />
             </div>
-            <div class="rowf">
-              <div class="col-25f">
-                <label for="telefono">Tel.</label>
-              </div>
-              <div class="col-75f">
-                <input
-                  type="number"
-                  name="phone"
-                  ref="phone"
-                  onChange={this.handleChangePhone}
-                />
-              </div>
+          </div>
+
+          <div class="rowf">
+            <div class="col-25f">
+              <label for="country">Email</label>
             </div>
-            <div class="rowf">
-              <div class="col-25f">
-                <label for="subject">Subject</label>
-              </div>
-              <div class="col-75f">
-                <input
-                id="subjectin"
-                  type="textarea"
-                  name="message"
-                  ref="message"
-                  onChange={this.handleChangeMessage}
-                />
-              </div>
+
+            <div class="col-75f">
+              <input
+                type="text"
+                name="email"
+                ref="email"
+                onChange={this.handleChangeEmail}
+              />
             </div>
-            <div class="rowf">
-              <br />
-              <button type="submit" id="btnSend" className="btn btn-primary" style={{float: "right"}} onClick={this.sendMail}>
-                Send Email
-              </button>
+          </div>
+
+          <div class="rowf">
+            <div class="col-25f">
+              <label for="telefono">Tel.</label>
             </div>
-         
+
+            <div class="col-75f">
+              <input
+                type="number"
+                name="phone"
+                ref="phone"
+                onChange={this.handleChangePhone}
+              />
+            </div>
+          </div>
+
+          <div class="rowf">
+            <div class="col-25f">
+              <label for="subject">Subject</label>
+            </div>
+
+            <div class="col-75f">
+              <input
+                type="textarea"
+                name="message"
+                ref="message"
+                onChange={this.handleChangeMessage}
+              />
+            </div>
+          </div>
+
+          <div class="rowf">
+            <br />
+            <button
+              type="submit"
+              id="btnSend"
+              className="btn btn-primary"
+              style={{ float: "right" }}
+              onClick={this.sendMail}
+            >
+              Send Email
+            </button>
+          </div>
         </div>
       </div>
     );
