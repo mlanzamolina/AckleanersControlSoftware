@@ -27,7 +27,7 @@
 }
 .img1 img{
     width:100%;
-    max-width:600px;
+    max-width:200px; /*size de las fotos*/
 }
 .alinkcrear a{
     outline: none;
