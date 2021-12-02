@@ -77,8 +77,8 @@ const AgregarEmpleado = () => {
                   required
                 ></input>
               </div>
-              <div className="col-md-6">
-                <label for="inputAddress" className="form-label letrasFormulario" style={{ "marginTop": "5%" }}>Correo electronico</label>
+              <div className="col-md-4">
+                <label for="inputAddress" className="form-label letrasFormulario" style={{ "marginTop": "8%" }}>Correo electronico</label>
                 <input
                   type="email"
                   className="form-control"
@@ -127,6 +127,7 @@ const AgregarEmpleado = () => {
                   rows="3"
                   onChange={handleInputChance}
                   required
+                  placeholder="Direccion donde reside el empleado"
                 ></textarea>
 
               </div>
