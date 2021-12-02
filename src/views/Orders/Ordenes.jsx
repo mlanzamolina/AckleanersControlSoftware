@@ -17,9 +17,9 @@ export default function Ordenes() {
     <div className="dropdown" style={{float: 'right',}}>
   <button class="dropbtn">Opciones</button>
   <div class="dropdown-content">
-  <a href="/ListarOrdenes">Listar Ordenes</a>
-  <a href="/ModificarOrden">Modificar Ordenes</a>
-  <a href="/AgregarOrden">Agregar Orden</a>
+  <Link to="/ListarOrdenes">Listar Ordenes</Link>
+  <Link to="/ModificarOrden">Modificar Ordenes</Link>
+  <Link to="/AgregarOrden">Agregar Orden</Link>
   </div>
 </div>
         <div className='managementsidemenu'>
@@ -46,7 +46,7 @@ export default function Ordenes() {
             })}
           </ul>
         </nav>
-        <h1 style={{textAlign: 'center',}}>Manage ordenes funciona</h1>
+        <h1 style={{textAlign: 'center',}}>Herramienta de ordenes</h1>
         <a href="/"><img src={logo} alt="logo ackleaners" width="250" style={{
               margin: 0,
               top: "auto",

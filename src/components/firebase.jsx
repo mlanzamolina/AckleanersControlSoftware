@@ -21,6 +21,7 @@ const db = app.firestore();
 const signInWithEmailAndPassword = async (email, password) => {
   try {
     await auth.signInWithEmailAndPassword(email, password);
+    window.location.assign("/");
     alert("Bienvenido");
   } catch (err) {
     console.error(err);
@@ -28,18 +29,11 @@ const signInWithEmailAndPassword = async (email, password) => {
   }
 };
 
-const registerWithEmailAndPassword = async (nombre, email, password, tipo) => {
+const registerWithEmailAndPassword = async (nombre, email, password) => {
   try {
     const res = await auth.createUserWithEmailAndPassword(email, password);
     const user = res.user;
     await user.sendEmailVerification();
-    await db.collection("users").add({
-      uid: user.uid,
-      nombre,
-      authProvider: "local",
-      email,
-      tipo,
-    });
   } catch (err) {
     console.error(err);
     alert(err.message);

@@ -1,0 +1,78 @@
+#navbar-brandt {
+  padding: 0px; /* firefox bug fix */
+}
+#navbar-brandti {
+  width: 170px;
+  height: auto;
+}
+#responsiveAbout {
+  width: 100%;
+  height: auto;
+}
+.fotos {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.cover {
+  background:white;
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+
+}
+.centered {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.centered3 {
+margin: 0px 800px;
+}
+.centered2 {
+  position: absolute;
+  top: 53%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+}
+#headerm {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.myButtonm {
+	box-shadow:inset 0px 0px 15px 3px #23395e;
+	background:rgb(5, 117, 230);
+	background-color:rgb(5, 117, 230);
+	border-radius:17px;
+	display:inline-block;
+	cursor:pointer;
+	color: rgb(0, 242, 96);
+	font-size:15px;
+	padding:6px 13px;
+	text-decoration:none;
+}
+.myButtonm:hover {
+	background: rgb(0, 242, 96);
+	background-color: rgb(0, 242, 96);
+}
+.myButtonm:active {
+	position:relative;
+	top:1px;
+}
+@media screen and (max-width: 800px) {
+  .centered, .centered2 {
+    display: none;
+  }
+}
+
+
+#subjectin{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}

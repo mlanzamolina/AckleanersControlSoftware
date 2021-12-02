@@ -1,48 +1,18 @@
-h1,
-h2,
-h3,
-h4,
-h5 {
-  color: black;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
 
-}
 #link {
   padding: 20px;
 }
-.Logo{
-  background-color:rgb(50, 90, 177);
-  color:cornsilk;
+.Logo {
+  background-color: rgb(50, 90, 177);
+  color: cornsilk;
   font-style: normal;
   margin: 0px 0px 0px;
-  }
-  
-  .tituloh1{
-    font-family:"Brush Script MT" ;
-    color:rgb(0, 0, 0);
-    font-size: 40px;     
-    text-align: center; 
-    letter-spacing: 5px;     
-  }
-  .col-md-5{
-    font-family:"Times New Roman" ;
-    width: 50%;
-    margin: 10px 200px 20px;
-    
-  }
-  
-  .col-md{
-  width: 50%;
-  margin: 50px auto;
-  font: 1em arial, helvetica, sans-serif;
-  background-color: rgb(255, 255, 255);
-  text-align: left;
-  padding: 20;
-  }
-  
-  
-  .btn{
-    float: right;
-    margin: 20px;
-  }
-  
+}
+
+.tituloh1 {
+  font-family: "Brush Script MT";
+  color: rgb(0, 0, 0);
+  font-size: 40px;
+  text-align: center;
+  letter-spacing: 5px;
+}

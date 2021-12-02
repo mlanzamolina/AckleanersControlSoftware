@@ -1,118 +1,150 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { useRef, Component } from "react";
+import * as emailjs from "emailjs-com";
+import swal from "sweetalert";
 
 export class Contact extends Component {
-  static propTypes = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    };
+  }
+
+  handleChangeName = (event) => {
+    this.setState({
+      name: event.target.value,
+    });
+  };
+  handleChangeEmail = (event) => {
+    this.setState({
+      email: event.target.value,
+    });
+  };
+  handleChangePhone = (event) => {
+    this.setState({
+      phone: event.target.value,
+    });
+  };
+  handleChangeMessage = (event) => {
+    this.setState({
+      message: event.target.value,
+    });
+  };
+  sendMail = () => {
+    var template_params = {
+      name: this.state.name,
+      email: this.state.email,
+      tel: this.state.phone,
+      subject: this.state.message,
+    };
+    console.log(template_params);
+
+    emailjs
+      .send(
+        "service_07irwdr",
+        "template_du2p4od",
+        template_params,
+        emailjs.init("user_swdEcicIxbn0pfLvSx9HE")
+      )
+      .then(
+        function (response) {
+          swal({
+            title: "Realizado",
+            text: "Se envio al correo ackleaners@gmail.com",
+            icon: "success",
+            button: "aceptar",
+          });
+        },
+        function (err) {
+          swal({
+            title: "No Realizado",
+            text: "No se pudo enviar el correo",
+            icon: "warning",
+            button: "aceptar",
+          });
+        }
+      );
+  };
 
   render() {
     return (
-      <div>
-        <div id="contact">
-          <div className="container">
-            <div className="col-md-8">
-              <div className="row">
-                <div className="section-title">
-                  <h2>Contactenos</h2>
-                </div>
-                <form name="sentMessage" id="contactForm" noValidate>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <input
-                          type="text"
-                          id="name"
-                          className="form-control"
-                          placeholder="Name"
-                          required="required"
-                        />
-                        <p className="help-block text-danger"></p>
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <input
-                          type="email"
-                          id="email"
-                          className="form-control"
-                          placeholder="Email"
-                          required="required"
-                        />
-                        <p className="help-block text-danger"></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <textarea
-                      name="message"
-                      id="message"
-                      className="form-control"
-                      rows="4"
-                      placeholder="Message"
-                      required
-                    ></textarea>
-                    <p className="help-block text-danger"></p>
-                  </div>
-                  <div id="success"></div>
-                  <button type="submit" className="btn btn-custom btn-lg">
-                    Send
-                  </button>
-                </form>
-              </div>
+      <div id="contact">
+         <br />  <br />
+        <div class="containerf">
+          <h2 style={{ textAlign: "center" }}>Programe su cita!</h2>
+          <br />
+
+          <div class="rowf">
+            <div class="col-25f">
+              <label for="fname">Nombre</label>
             </div>
-            <div className="col-md-3 col-md-offset-1 contact-info">
-              <div className="contact-item">
-                <h3>Info</h3>
-                <p>
-                  <span>
-                    <i className="fa fa-map-marker"></i>Dirección
-                  </span>
-                  {this.props.data ? this.props.data.address : "loading"}
-                </p>
-              </div>
-              <div className="contact-item">
-                <p>
-                  <span>
-                    <i className="fa fa-phone"></i>Teléfono
-                  </span>{" "}
-                  {this.props.data ? this.props.data.phone : "loading"}
-                </p>
-              </div>
-              <div className="contact-item">
-                <p>
-                  <span>
-                    <i className="fa fa-envelope-o"></i>Email
-                  </span>{" "}
-                  {this.props.data ? this.props.data.email : "loading"}
-                </p>
-              </div>
-            </div>
-            <div className="col-md-12">
-              <div className="row">
-                <div className="social">
-                  <ul>
-                    <li>
-                      <a
-                        href={this.props.data ? this.props.data.facebook : "/"}
-                        target="_blank"
-                      >
-                        <i className="fa fa-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href={this.props.data ? this.props.data.instagram : "/"}
-                        target="_blank"
-                      >
-                        <i className="fa fa-instagram"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+
+            <div class="col-75f">
+              <input type="text" name="name" onChange={this.handleChangeName} />
             </div>
           </div>
+
+          <div class="rowf">
+            <div class="col-25f">
+              <label for="country">Email</label>
+            </div>
+
+            <div class="col-75f">
+              <input
+                type="text"
+                name="email"
+                ref="email"
+                onChange={this.handleChangeEmail}
+              />
+            </div>
+          </div>
+
+          <div class="rowf">
+            <div class="col-25f">
+              <label for="telefono">Tel.</label>
+            </div>
+
+            <div class="col-75f">
+              <input
+                type="number"
+                name="phone"
+                ref="phone"
+                onChange={this.handleChangePhone}
+              />
+            </div>
+          </div>
+
+          <div class="rowf">
+            <div class="col-25f">
+              <label for="subject">Subject</label>
+            </div>
+
+            <div class="col-75f">
+              <input
+                type="textarea"
+                name="message"
+                ref="message"
+                onChange={this.handleChangeMessage}
+              />
+            </div>
+          </div>
+
+          <div class="rowf">
+            <br />
+            <button
+              type="submit"
+              id="btnSend"
+              className="btn btn-primary"
+              style={{ float: "right" }}
+              onClick={this.sendMail}
+            >
+              Send Email
+            </button>
+          </div>
         </div>
-        <div id="footer"></div>
       </div>
     );
   }

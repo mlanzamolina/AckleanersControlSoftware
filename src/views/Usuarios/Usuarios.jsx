@@ -17,7 +17,7 @@ function Usuarios() {
   <div class="dropdown-content">
   <a href="/ListarUsuarios">Listar Usuarios</a>
   <a href="/ModificarUsuarios">Modificar Usuarios</a>
-  <a href="/Registrar">Agregar Usuarios</a>
+  <a href="/AgregarUsuarios">Agregar Usuarios</a>
   </div>
 </div>
         <div className='managementsidemenu'>
@@ -44,7 +44,7 @@ function Usuarios() {
             })}
           </ul>
         </nav>
-        <h1 style={{textAlign: 'center',}}>Manage usuarios funciona</h1>
+        <h1 style={{textAlign: 'center',}}>Herramienta para administrar usuarios</h1>
         <a href="/"><img src={logo} alt="logo ackleaners" width="250" style={{
               margin: 0,
               top: "auto",
