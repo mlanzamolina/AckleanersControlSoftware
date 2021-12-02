@@ -62,7 +62,7 @@ const AgregarEmpleado = () => {
   return (
     <Fragment>
       <Interfaz />
-      <div className="w-100 p-3 h-100 contenedorPrincipal">
+      <div className="p-3 contenedorPrincipal">
         <div className="container rounded contenedorFormulario">
           <div>
             <form className="row g-3">
