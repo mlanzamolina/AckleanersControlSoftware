@@ -47,8 +47,10 @@ function SideMenu() {
         <img
           src={logo}
           alt="logo ackleaners"
-          width="250"
+      
+          class="responsive"
           style={{
+            
             margin: 0,
             top: "auto",
             right: 45,

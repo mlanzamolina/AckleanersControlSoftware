@@ -1,31 +1,16 @@
 import React, { Component } from "react";
+import about from "../img/headerpic2.png"
 
 export class Header extends Component {
   render() {
     return (
-      <header id="header">
-        <div className="intro">
-          <div className="overlay">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-8 col-md-offset-2 intro-text">
-                  <h1>
-                    {this.props.data ? this.props.data.title : "Loading"}
-                    <span></span>
-                  </h1>
-                  <p>
-                    {this.props.data ? this.props.data.paragraph : "Loading"}
-                  </p>
-                  <a href="#features">
-                    {" "}
-                    <button className="button">Nuestros Servicios</button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+     <>
+   <div id="headerm">
+       <img src={about} alt="" width= "100%"/>
+       <div className="centered" ><a href="#features" className="myButtonm"><h2>Nuestros servicios</h2></a></div>
+       <div className="centered2"><a href="#contact" className="myButtonm"><h2>Contactenos</h2></a></div>
+       </div>
+     </>
     );
   }
 }
