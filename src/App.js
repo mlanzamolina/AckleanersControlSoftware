@@ -30,12 +30,12 @@ function App() {
   return (
     <>
       <Router>
-        
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <div className="cover">
+
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <div className="cover">
             <Route path="/Login">
               <Login />
             </Route>
@@ -44,7 +44,7 @@ function App() {
               <Probar />
             </Route>
 
-            <Route path="/AgregarEmpleado">
+            <Route exact path="/AgregarEmpleado">
               <AgregarEmpleado />
             </Route>
             <Route exact path="/Management">
@@ -103,12 +103,12 @@ function App() {
             <Route path="/NewPassword">
               <NewPassword />
             </Route>
-            </div>
-          </Switch>
-     
+          </div>
+        </Switch>
+
       </Router>
-      
-     
+
+
     </>
   );
 }
