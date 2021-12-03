@@ -2,6 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./PasswordRecovery.css";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth} from "../../components/firebase";
+import { db } from "../..//components/firebase";
+
 
 export default function Login() {
   const [user, setUser] = useState("");
@@ -15,7 +19,13 @@ export default function Login() {
       
         if (/^\w+([.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail)\.(?:|com|es)+$/.test(user)) {
             
-            alert("conexion a firebase y link de recupercaion");
+          auth.sendPasswordResetEmail(user).then(()=>{
+            alert("Se envio un correo para restablecer la contraseña");
+         }).catch(error => {
+           console.error(error);
+           alert("Este correo no esta en nuestra base de datos");
+         })
+            
 
          
         }else{

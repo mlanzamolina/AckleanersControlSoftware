@@ -7,6 +7,7 @@ import Gallery from "./gallery";
 import Testimonials from "./testimonials";
 import Contact from "./contact";
 import Whatsapp from "./whatsapp";
+import Footer from "./footer";
 import data from "../data/data";
 import logo from "../img/logo.png"
 export class Home extends Component {
@@ -16,28 +17,22 @@ export class Home extends Component {
   componentDidMount() {
     this.setState({ resumeData: data });
   }
+  
 
   render() {
     return (
-      <div>
-        <div className="cover">
-          <h1>Home</h1>
-        </div>
+        <div>
+           <Whatsapp />
         <Navigation />
         <Header data={this.state.resumeData.Header} />
-        <Features data={this.state.resumeData.Features} />
-        <About data={this.state.resumeData.About} />
-        <Gallery />
-        <Testimonials data={this.state.resumeData.Testimonials} />
-        <Contact data={this.state.resumeData.Contact} />
-        <Whatsapp />
-        <a href="/"><img src={logo} alt="logo ackleaners" width="250" style={{
-              margin: 0,
-              top: "auto",
-              left: 45,
-              bottom: -99,
-              position: "fixed",
-            }}/></a> 
+        <Features data={this.state.resumeData.Features} /> <br /> <br /> <br /> <br /> 
+        <About data={this.state.resumeData.About} /> <br /><br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> 
+        <Gallery /> <br /><br /><br /><br /><br /> 
+        <Contact />
+        <Testimonials data={this.state.resumeData.Testimonials} /> 
+        <Footer />
+      
+       
       </div>
     );
   }

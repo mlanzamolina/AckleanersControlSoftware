@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import "./index.css"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./views/Login/Login";
@@ -10,24 +11,40 @@ import ModificarEmpleado from "./views/Employees/modificarEmpleado";
 import ListarEmpleado from "./views/Employees/listarEmpleado";
 import Management from "./views/Management/Management";
 import PasswordRecovery from "./views/PasswordRecovery/PasswordRecovery";
-import Registrar from "./views/Usuarios/Registrar";
 import Usuarios from "./views/Usuarios/Usuarios";
 import Ordenes from "./views/Orders/Ordenes";
+import ListarOrdenes from "./views/Orders/ListarOrdenes";
+import AgregarOrden from "./views/Orders/agregarOrden";
+import Reportes from "./views/Reports/Reportes";
+import ModificarOrden from "./views/Orders/modificarOrdenes";
+import AgregarReportes from "./views/Reports/AgregarReportes";
+import ModificarUsuarios from "./views/Usuarios/ModificarUsuario";
+import ListarUsuarios from "./views/Usuarios/ListarUsuarios";
+import AgregarUsuarios from "./views/Usuarios/AgregarUsuarios";
+import Inventarios from "./views/Inventarios/Inventarios";
+import NewPassword from "./views/NewPassword/NewPassword";
+import Probar from "./views/Probandocss/probar";
+
 
 function App() {
   return (
     <>
       <Router>
-        <div>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
 
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <div className="cover">
             <Route path="/Login">
               <Login />
             </Route>
-            <Route path="/AgregarEmpleado">
+
+            <Route path="/probar">
+              <Probar />
+            </Route>
+
+            <Route exact path="/AgregarEmpleado">
               <AgregarEmpleado />
             </Route>
             <Route exact path="/Management">
@@ -44,19 +61,54 @@ function App() {
             <Route path="/ListarEmpleado">
               <ListarEmpleado />
             </Route>
-
-            <Route path="/Registrar">
-              <Registrar />
-            </Route>
-             <Route path="/Usuarios">
+            <Route path="/Usuarios">
               <Usuarios />
             </Route>
             <Route path="/Ordenes">
               <Ordenes />
             </Route>
-          </Switch>
-        </div>
+            <Route path="/ListarOrdenes">
+              <ListarOrdenes />
+            </Route>
+
+            <Route path="/AgregarOrden">
+              <AgregarOrden />
+            </Route>
+
+            <Route path="/Reportes">
+              <Reportes />
+            </Route>
+
+            <Route path="/AgregarReportes/:id">
+              <AgregarReportes />
+            </Route>
+
+            <Route path="/ModificarOrden">
+              <ModificarOrden />
+            </Route>
+
+            <Route path="/ListarUsuarios">
+              <ListarUsuarios />
+            </Route>
+
+            <Route path="/ModificarUsuarios">
+              <ModificarUsuarios />
+            </Route>
+            <Route path="/AgregarUsuarios">
+              <AgregarUsuarios />
+            </Route>
+            <Route path="/inventarios">
+              <Inventarios />
+            </Route>
+            <Route path="/NewPassword">
+              <NewPassword />
+            </Route>
+          </div>
+        </Switch>
+
       </Router>
+
+
     </>
   );
 }

@@ -7,7 +7,7 @@ class Whatsapp extends Component {
     return (
       <>
         <div className="whatsapp">
-        <Link
+       {/* <Link
             id="link"
             to="/Login"
             style={{
@@ -19,7 +19,7 @@ class Whatsapp extends Component {
               position: "fixed",
             }}
           >
-         <button className="button">Login</button>
+         <button className="button">Iniciar sesión</button>
           </Link>
           <Link
             id="link"
@@ -33,33 +33,30 @@ class Whatsapp extends Component {
               position: "fixed",
             }}
           >
-         <button className="button">Management</button>
+         <button className="button">Herramienta Administrativa</button>
           </Link>
-          <Fab
-            color="primary"
-            aria-label="Formulario"
-            style={{
-              margin: 0,
-              top: "auto",
-              right: 40,
-              bottom: 40,
-              left: "auto",
-              position: "fixed",
-            }}
-          >
+          
+        
             <a
               id="whatsapp"
               href="https://web.whatsapp.com/send?phone=+50432868726"
               target="_blank"
+              style={{
+                width: "5vw",
+                height: "9vh",
+                left: -25,
+                top: 100,
+                position: "fixed",
+              }}
             >
               {" "}
               <img
                 src="https://1000marcas.net/wp-content/uploads/2019/11/WhatsApp-logo.png"
                 alt="whatsapp"
-                height="57"
+                width= "200vw"
               />{" "}
             </a>
-          </Fab>
+*/}
         </div>
       </>
     );
