@@ -4,14 +4,16 @@ import logo from "../../img/logo.png";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SideBarData";
-import { dbEmpleado } from "../../components/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { dbEmpleado, almacenamiento } from "../../components/firebase";
+import { collection, addDoc, updateDoc, doc} from "firebase/firestore";
 import swal from "sweetalert";
 import { Interfaz } from "./empleadoNav"
 import "./estiloEmpleado.css"
 
 const AgregarEmpleado = () => {
   const tablaEmpleadosRef = collection(dbEmpleado, "Empleados");
+  const [image, setImage] = useState('');
+  const [imageurl, setimageURL] = useState('');
 
   const [dats, setDatos] = useState({
     nombre: " ",
@@ -20,7 +22,7 @@ const AgregarEmpleado = () => {
     correo: " ",
     direccion: " ",
     estado: "ACTIVO",
-    foto: " "
+    foto: ""
   });
 
   const handleInputChance = (event) => {
@@ -30,17 +32,36 @@ const AgregarEmpleado = () => {
     });
   };
 
+  const handleFileSubmit = (e) => {
+    if (!(e.target.files[0].name.toLowerCase().endsWith('.png') || e.target.files[0].name.toLowerCase().endsWith('.jpg'))) {
+      swal({
+        title: "Formato de archivo no aceptable",
+        text: "El archivo subido no es una foto, por favor asegurarse de subir una imagen formato png o jpeg",
+        icon: "warning",
+        button: "aceptar",
+      });
+      e.target.value = null;
+      setimageURL(null);
+      setImage(null);
+      return;
+    }
+    setimageURL(URL.createObjectURL(e.target.files[0]));
+    setImage(e.target.files[0]);
+  };
+
   const handleSubmit = async (e) => {
-    if (dats.nombre == " " || dats.numero == " " || dats.id == " " || dats.correo == " ") {
+    if (dats.nombre == " " || dats.numero == " " || dats.id == " " || dats.correo == " " || image === null) {
       swal({
         title: "No se realizo",
         text: "No se agregro el empleado, verifique los campos",
         icon: "warning",
         button: "aceptar"
       });
-
     }
     else {
+      var n_empleado_id = null; 
+      document.getElementById("b_submit").disabled = true;
+      document.getElementById("b_cancelar").disabled = true;
       await addDoc(tablaEmpleadosRef, {
         nombre: dats.nombre,
         dni: dats.dni,
@@ -49,12 +70,34 @@ const AgregarEmpleado = () => {
         estado: dats.estado,
         direccion: dats.direccion,
         foto: dats.foto
+      }).then(n_doc => {
+        console.log(n_doc.id)
+        n_empleado_id = n_doc.id;
       });
-      swal({
-        title: "Realizado",
-        text: "Se agregro el empleado",
-        icon: "info",
-        button: "aceptar"
+      console.log(n_empleado_id);
+      const uploadtask = almacenamiento.ref('/UsuarioFotos/'+n_empleado_id).put(image);
+      uploadtask.then(uploadtaskSnapshot => {
+      return uploadtaskSnapshot.ref.getDownloadURL();
+      }).then(url => {
+        updateDoc(doc(dbEmpleado,'Empleados',n_empleado_id), {
+          foto: url, 
+        })
+        setImage(null);
+        setimageURL(null);
+        document.getElementById("i_nombre").value = null;
+        document.getElementById("i_email").value = null;
+        document.getElementById("i_dni").value = null;
+        document.getElementById("i_telefono").value = null;
+        document.getElementById("i_dirrecion").value = null;
+        document.getElementById("b_file").value = null;
+        document.getElementById("b_submit").disabled = false;
+        document.getElementById("b_cancelar").disabled = false;
+        swal({
+          title: "Realizado",
+          text: "Se agregro el empleado",
+          icon: "info",
+          button: "aceptar"
+        });
       });
     }
   };
@@ -69,6 +112,7 @@ const AgregarEmpleado = () => {
               <div className="col-md-6">
                 <label htmlFor="inputAddress" className="form-label letrasFormulario" style={{ "marginTop": "5%" }}>Nombre completo</label>
                 <input
+                  id="i_nombre" 
                   type="text"
                   className="form-control"
                   placeholder="Eje. Carlos Flores"
@@ -80,6 +124,7 @@ const AgregarEmpleado = () => {
               <div className="col-md-4">
                 <label for="inputAddress" className="form-label letrasFormulario" style={{ "marginTop": "8%" }}>Correo electronico</label>
                 <input
+                  id="i_email" 
                   type="email"
                   className="form-control"
                   placeholder="Eje. test@mail.com"
@@ -94,6 +139,7 @@ const AgregarEmpleado = () => {
               <div className="col-5">
                 <label for="inputAddress" className="form-label letrasFormulario">DNI</label>
                 <input
+                  id="i_dni" 
                   type="text"
                   class="form-control"
                   placeholder="Eje. 1804198002033"
@@ -108,6 +154,7 @@ const AgregarEmpleado = () => {
               <div class="col-5">
                 <label for="inputAddress" class="form-label letrasFormulario">N.Telefono</label>
                 <input
+                  id="i_telefono" 
                   type="text"
                   class="form-control"
                   name="numero"
@@ -121,6 +168,7 @@ const AgregarEmpleado = () => {
               <div class="col-md-10">
                 <label for="exampleFormControlTextarea1" class="letrasFormulario" >Direccion</label>
                 <textarea
+                  id="i_dirrecion" 
                   class="form-control"
                   style={{ "resize": "none" }}
                   name="direccion"
@@ -132,15 +180,25 @@ const AgregarEmpleado = () => {
 
               </div>
 
-              <div class="col-3 offset-lg-4 foto">
+              <div>
+                <img id="foto" src = {imageurl} class="col-3 offset-lg-4 foto"/>;
+              </div>
+
+              <div class="offset-lg-4">
+
+                <input
+                  id="b_file" 
+                  type="file" 
+                  class="form-control-file" 
+                  accept=".jpg,.png" 
+                  onChange={handleFileSubmit}/>
 
               </div>
-              <div class="offset-lg-4">
-                <button type="button" class="btn btn-secondary btn-sm">Agregar Foto</button>
-              </div>
+
               <div class="col-12 offset-lg-7">
 
                 <button
+                  id="b_submit"
                   type="submit"
                   class="btn btn-primary"
                   style={{ "marginBottom": "3%", "marginRight": "2%" }}
@@ -151,6 +209,7 @@ const AgregarEmpleado = () => {
 
                 <Link to="/">
                   <button
+                    id="b_cancelar" 
                     type="submit"
                     class="btn btn-danger"
                     style={{ "marginBottom": "3%" }}
