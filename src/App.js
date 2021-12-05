@@ -24,7 +24,7 @@ import AgregarUsuarios from "./views/Usuarios/AgregarUsuarios";
 import Inventarios from "./views/Inventarios/Inventarios";
 import NewPassword from "./views/NewPassword/NewPassword";
 import Probar from "./views/Probandocss/probar";
-
+import { Documentos } from "./views/Documents/interfazDocumentos"
 
 function App() {
   return (
@@ -102,6 +102,9 @@ function App() {
             </Route>
             <Route path="/NewPassword">
               <NewPassword />
+            </Route>
+            <Route path="/adminDocs">
+              <Documentos />
             </Route>
           </div>
         </Switch>
