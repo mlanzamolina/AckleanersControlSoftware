@@ -2,8 +2,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import SingleImageUploadComponent from "./SingleImageUploadComponent ";
 import { jsPDF } from "jspdf";
-
 import html2canvas from "html2canvas";
+import {logito} from "../../img/ack.png";
+
 
 export default function AgregarReportes() {
   let { id } = useParams();
@@ -19,7 +20,8 @@ export default function AgregarReportes() {
     });
   }
   const items = [];
-  for (let index = 0; index < id; index++) {
+  let index;
+  for (index = 0; index < id; index++) {
     items.push(
       <div className="ta1">
         <table>
@@ -51,11 +53,30 @@ export default function AgregarReportes() {
 
   return (
     <>
-     <label for="Nombre">Nombre:</label>
-  <input type="text" id="Nombre" name="Nombre"></input><br /><br />
-  <label for="Correo electronico">Correo : </label>
-  <input type="text" id="Correo electronico" name="Correo electronico"></input>
-    
+    <div id="logit">
+    <img src={logito} alt="" width= "100%"/>
+    </div>
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+        <label for="Nombre">Nombre(Cliente):</label>
+        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre Completo"/>
+        </div>
+        <div class="form-group col-md-6">
+        <label for="Correo electronico">Correo(Cliente): </label>
+        <input type="text"class="form-control" id="inputCorreo" placeholder="Correo Electrónico"/>
+        </div>
+      </div>
+        <div class="form-group col-md-6">
+        <label for="Fecha">Fecha de Orden de Trabajo:</label>
+        <input type="date" class="form-control" placeholder="Fecha"/>
+        </div>
+        <div class="form-group col-md-6">
+        <label for="Numero Unidades">Numero de Unidades:</label>
+        <h1>{index}</h1>
+        </div>
+    </form> 
+  
     {/**<button className="button1" onClick={handleMandarReporte} style={{
       margin: 0,
       top: "auto",
