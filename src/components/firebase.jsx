@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app";
 import 'firebase/compat/auth';
 import "firebase/compat/firestore";
+import 'firebase/compat/storage';
 import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
@@ -17,6 +18,7 @@ const app = firebase.initializeApp(firebaseConfig);
 const auth = app.auth();
 auth.languageCode = 'es_419';
 const db = app.firestore();
+const almacenamiento = app.storage();
 
 const signInWithEmailAndPassword = async (email, password) => {
   try {
@@ -60,6 +62,7 @@ const dbOrdenes = getFirestore(appEmpleado)
 export {
   auth,
   db,
+  almacenamiento,
   signInWithEmailAndPassword,
   registerWithEmailAndPassword,
   sendPasswordResetEmail,

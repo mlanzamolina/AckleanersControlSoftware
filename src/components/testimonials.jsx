@@ -12,7 +12,7 @@ export class testimonials extends Component {
           </div>
           <div className="row  justify-content-center">
   
-          <a className="btn btn-info" href="https://g.page/r/CVrdXIDa8X2zEAI/review" role="button"><i className="fa fa-hand-o-right" /> Dejanos una reseña <i className="fa fa-hand-o-left" /></a>
+          <a className="btn btn-info" href="https://g.page/r/CVrdXIDa8X2zEAI/review" target="_blank" role="button"><i className="fa fa-hand-o-right" /> Dejanos una reseña <i className="fa fa-hand-o-left" /></a>
         
           </div>
           <br />  <br />  <br />
