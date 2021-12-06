@@ -9,7 +9,8 @@ import Contact from "./contact";
 import Whatsapp from "./whatsapp";
 import Footer from "./footer";
 import data from "../data/data";
-import logo from "../img/logo.png"
+
+
 export class Home extends Component {
   state = {
     resumeData: {},
