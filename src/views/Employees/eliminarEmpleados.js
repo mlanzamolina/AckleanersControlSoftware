@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form } from 'reactstrap';
 import { db, auth, registerWithEmailAndPassword,almacenamiento } from "../../components/firebase"
 import { collection, doc, getDocs, updateDoc, deleteDoc} from "firebase/firestore";
 import {
@@ -11,6 +11,7 @@ import swal from "sweetalert";
 
 
 
+
 const EliminarEmpleados = () => {
 
     const [data, setData] = useState([]);
@@ -19,8 +20,13 @@ const EliminarEmpleados = () => {
     const [id, setID] = useState("");
     const [mostrarM, SetmostrarM] =useState(false);
     const [currentID, setCurrentID] = useState({
-        id: null, nombre: '', dni: '', correo: '', telefono: '', estado: '', foto:''
+        id: null, nombre: '', dni: '', correo: '', telefono: '', estado: '', foto:'', direccion:''
     });
+    const [currentID2, setCurrentID2] = useState({
+        id: null, nombre: '', dni: '', correo: '', telefono: '', estado: '', foto:'', direccion:''
+    });
+
+
 
 
 
@@ -36,26 +42,9 @@ const EliminarEmpleados = () => {
     const [imageurl, setimageURL] = useState('');
     const [idFire, setIDFire] = useState("");
 
-
-    const [dats, setDatos] = useState({
-        nombre: " ",
-        dni: " ",
-        numero: " ",
-        correo: " ",
-        direccion: " ",
-        estado: "ACTIVO",
-        foto: ""
-      });
     
-      const handleInputChance = (event) => {
-        setDatos({
-          ...dats,
-          [event.target.name]: event.target.value,
-        });
-      };
+   
     
-    
-
 
     const getEmpleados = async () => {
         const temp = [];
@@ -70,6 +59,15 @@ const EliminarEmpleados = () => {
         });
     };
 
+    useEffect(() => {
+        getEmpleados();
+       
+       
+    }, [data]);
+
+
+  
+
   
 
 
@@ -82,6 +80,8 @@ const EliminarEmpleados = () => {
 
     const eliminarEmpleado = async (id) => {
         const empleado = doc(db, "Empleados", id);
+       
+        
         
         deleteDoc(empleado);
         mostrarModalEliminar();
@@ -93,6 +93,7 @@ const EliminarEmpleados = () => {
 
     const mostrarModalEliminar = (index) => {
         setID(index)
+       
         
         
 
@@ -122,16 +123,79 @@ const EliminarEmpleados = () => {
         setImage(e.target.files[0]);
       };
 
+      const handleInputChance = (event) => {
+         
+        setCurrentID2({
+          ...currentID2,
+          [event.target.name]: event.target.value,
+        });
+      };
 
 
-    const modificar = async () => {
+
+      const editRow = (empleados) => {
+          obtener(empleados)
+            
+        if (mostrarM === false) {
+            
+        
+            SetmostrarM(!mostrarM);
+        
+        } else {
+            SetmostrarM(!mostrarM);
+        }
+
+        
+
+    }
+
+
+const obtener =  (empleados)=>{
+        setIDFire(empleados.id);
+
+        setCurrentID({id: empleados.dni, nombre: empleados.nombre,correo: empleados.correo, 
+            telefono: empleados.n_telefono, 
+            foto: empleados.foto, estado: empleados.estado, 
+            direccion: empleados.direccion});
+
+
+
+    }
+
+
+    
+
+    /*const obtener2 = ()=>{
+
+        setCurrentID2({dni: dni, nombre: nombre,correo: correo, 
+            telefono: telefono, 
+            foto: foto, estado: estado, 
+            direccion: direccion});
+            
+    }*/
+
+
+
+
+    const modificar = async (e) => {
+        e.preventDefault();
+    
         
         const empleadosDoc = doc(db, "Empleados",idFire);
+
+        var nombre2 = document.getElementById("nombre").value;
+        var id2 = document.getElementById("id").value;
+        var telefono2 = document.getElementById("telefono").value;
+        var correo2 = document.getElementById("correo").value;
+        var direccion2 = document.getElementById("direccion").value;
+        var estado2 = document.getElementById("estado").value;
+
+        console.log(id2);
         
-        console.log("entro")
+      
 
   
-            if (dats.nombre == " " || dats.telefono == " " || dats.id == " " || dats.correo == " " || image === null) {
+           if (nombre2 == " " || telefono2 == " " || id2 == " " || correo2 == " " ) {
                 swal({
                     title: "No se realizo",
                     text: "No se modifico el empleado, verifique los campos",
@@ -142,13 +206,23 @@ const EliminarEmpleados = () => {
 
             }
              else{
-            
+              
 
-            await updateDoc(empleadosDoc, { nombre: dats.nombre,
-                dni: dats.dni, correo: dats.correo, n_telefono: dats.telefono, estado: dats.estado, direccion: dats.direccion
-            });
-                console.log("Entro");
-                console.log(nombre);
+            await updateDoc(empleadosDoc, { nombre: nombre2,
+                dni: id2, correo: correo2, n_telefono:telefono2, estado: estado2, direccion: direccion2
+            }).catch((error)=>{
+                swal({
+                    title: "Surgio un error",
+                    text: "No se modifico",
+                    icon: "info",
+                    button: "aceptar"
+                })
+            })
+            console.log(nombre);
+            
+            
+               
+                
 
                 const uploadtask = almacenamiento.ref('/UsuarioFotos/'+idFire).put(image);
                 uploadtask.then(uploadtaskSnapshot => {
@@ -165,49 +239,12 @@ const EliminarEmpleados = () => {
                     icon: "info",
                     button: "aceptar"
                   });
-                }
-                editRow();
-                console.log(dats);
+             }
 
-                
-      
     
     }//Fin 
 
-    useEffect(() => {
-        getEmpleados();
-       
-    }, []);
-
-
   
-        
-
-    const editRow = (empleados) => {
-    
-        
-        if (mostrarM === false) {
-            setIDFire(empleados.id);
-
-            setCurrentID({id: empleados.dni, nombre: empleados.nombre,correo: empleados.correo, telefono: empleados.n_telefono, foto: empleados.foto, estado: empleados.estado, direccion: empleados.direccion});
-           
-           
-        
-            SetmostrarM(!mostrarM);
-        
-        } else {
-            SetmostrarM(!mostrarM);
-        }
-
-    }
-
-
-    
-    
-
-
-
-
 
 
     return (
@@ -233,7 +270,7 @@ const EliminarEmpleados = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map((empleados, index) => (
+                            {data.map(( empleados,index) => (
                                 <tr className="text-center" key={index}>
                                     <td>{empleados.nombre}</td>
                                     <td>{empleados.foto}</td>
@@ -245,7 +282,7 @@ const EliminarEmpleados = () => {
                                     
                                     <td>        
 
-                                    <Button color="success"  onClick={() => SetmostrarM(true)} onClick={() => editRow(empleados,index)}  >
+                                    <Button color="success"  onClick={()=>editRow(empleados) }   >
                                            Modificar
                                         </Button>
                                         <Button color="success" onClick={() => setMostrarE(true)} onClick={() => mostrarModalEliminar(empleados.id)}  >
@@ -279,41 +316,61 @@ const EliminarEmpleados = () => {
 
 
              {/* MODAL PARA MOSTRAR OBJETOS */}
+
+             
              <Modal isOpen={mostrarM} >
+             
+            
                 <ModalHeader>Modificar Empleado</ModalHeader>
                 <ModalBody>
 
-                    <div className="form-group">
-                        <form   >
+                
 
+                    <div className="form-group">
+                         <form  onSubmit={(e)=>modificar(e)}>
+                    
+                       
+                       
+                
                             <label>Nombre: </label>
                             <br />
-                            <input type="text" className="form-control"  onChange={handleInputChance} defaultValue={currentID && currentID.nombre} name="nombre" />
+                            <input type="text"  id="nombre" className="form-control"  onChange={(e) => setNombre(e.target.value)}defaultValue={currentID && currentID.nombre} name="nombre" />
                             <br />
                             <label>DNI: </label>
                             <br />
-                            <input type="text" className="form-control" onChange={handleInputChance} defaultValue={currentID &&  currentID.dni} name="id" />
+                            <input type="text" id="id" 
+                              className="form-control"
+                              onChange={(e) => setDNI(e.target.value)}
+                               defaultValue={currentID &&  currentID.id}
+                                pattern="[0-9]{13}"
+                                title="numero 13 digitos sin nada extra"/>
                             <br />
                             <label>Correo: </label>
                             <br />
-                            <input type="text" className="form-control" onChange={handleInputChance} defaultValue={currentID && currentID.correo} name="correo" />
+                            <input type="text" id="correo" className="form-control"
+                           
+                            onChange={(e) => setCorreo(e.target.value)} defaultValue={currentID && currentID.correo} name="correo" />
                             <br />
                             <label>Telefono </label>
                             <br />
-                            <input type="text" className="form-control" onChange={handleInputChance} defaultValue={currentID && currentID.telefono} name="telefono" />
+                            <input type="text" id="telefono" className="form-control" 
+                            onChange={(e) => setTelefono(e.target.value)} 
+                            pattern="[0-9]{8}"
+                          title="numero 8 digitos sin nada extra"
+                            defaultValue={currentID && currentID.telefono} name="telefono" />
                             <br/>
                             <label>Direccion</label>
                             <br/>
                             <textarea
-                             id="i_dirrecion" 
+                             id="direccion" 
                             class="form-control"
                              name="direccion"
                              placeholder="Direccion donde reside el empleado"
-                             onChange={handleInputChance} defaultValue={currentID && currentID.direccion}
+                             onChange={(e) => setDireccion(e.target.value)} defaultValue={currentID && currentID.direccion}
                             ></textarea>
                             <label>Estado Empleado</label>
                             <br/>
-                            <select  onChange={handleInputChance} defaultValue={currentID && currentID.estado}>
+                            <select id="estado"  onChange={(e) => setEstado(e.target.value)} defaultValue={currentID && currentID.estado}>
                             <option >Activo</option>
                              <option>Inactivo</option>
                           
@@ -327,36 +384,56 @@ const EliminarEmpleados = () => {
                           <img id="foto" src = {imageurl} class="form-control"/>;
                             </div>
 
-              <div class="form-control">
+                            <div class="form-control">
 
-                <input
-                  id="b_file" 
-                  type="file" 
-                  class="form-control-file" 
-                  accept=".jpg,.png" 
-                  onChange={handleFileSubmit}/>
+                         <input
+                         id="b_file" 
+                         type="file" 
+                          class="form-control-file" 
+                         accept=".jpg,.png" 
+                        onChange={handleFileSubmit}/>
 
-              </div>
-                            
+                          </div>
+                         
+                       <ModalFooter>
+                          <Button type="button" class="btn btn-outline-danger"   onClick={()=>SetmostrarM(false)}>SALIR</Button>
+                         <Button type="submit" class="btn btn-outline-danger" >Modificar</Button>
+                         </ModalFooter>
+                    </form>
+                         
+                    
+                      
+                     </div>
+                     
+                     
+
+                     </ModalBody>
+
+                    
+                     
+                       
+                   
+                   
+                  
+               
+
+                     </Modal>
+                   
+                   
+                
+                   
+
+                     </div>
+                   
+
+                  
+                   
+       
+            
 
 
-                        </form>
-                    </div>
-
-
-                </ModalBody>
-
-                <ModalFooter>
-                    <Button type="button" class="btn btn-outline-danger"   onClick={()=>editRow()}>SALIR</Button>
-                </ModalFooter>
-
-                <ModalFooter>
-                    <Button type="button" class="btn btn-outline-danger" onClick={() => modificar()}   onClick={()=>editRow()}   >Modificar</Button>
-                </ModalFooter>
-            </Modal>
-
-
-        </div>
+        
+      
     )
 }
 
