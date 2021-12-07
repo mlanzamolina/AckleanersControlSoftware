@@ -8,6 +8,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SideBarData";
 import "./Formulario.css";
+import OrdenesNavigation from "./navigation";
 
 const ListarOrdenes = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -35,74 +36,24 @@ const ListarOrdenes = () => {
 
   return (
     <>
-      <div className="dropdown" style={{ float: "right" }}>
-        <button class="dropbtn">Opciones</button>
-        <div class="dropdown-content">
-          <a href="/ListarOrdenes">Listar Ordenes</a>
-          <a href="/AgregarOrden">Agregar Orden</a>
-          <a href="/ModificarOrden">Modificar Ordenes</a>
-        </div>
-      </div>
-      <Fragment>
-        <a href="/">
-          <img
-            src={logo}
-            alt="logo ackleaners"
-            width="250"
-            style={{
-              margin: 0,
-              top: "auto",
-              right: 45,
-              bottom: 40,
-              position: "fixed",
-            }}
-          />
-        </a>
-        <div className="managementsidemenu">
-          <Link to="#" className="managementmenu-bars">
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
-        </div>
-        <nav
-          className={
-            sidebar ? "managementnav-menu active" : "managementnav-menu"
-          }
-        >
-          <ul className="managementnav-menu-items" onClick={showSidebar}>
-            <li className="navbar-toggle">
-              <Link to="#" className="managementmenu-bars">
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li>
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={`management${item.cName}`}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-        <div>
-          <h1 className="tituloh1">Listar Ordenes</h1>
-          <table className="table table-dark" align="center">
-            {/*<table className="ta" align="center">*/}
-            <thead>
-              <tr>
-                {/*<tr className="ta">*/}
-                <th scope="col">Nombre </th>
-                <th scope="col">Unidades</th>
-                <th scope="col">Descripcion</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Estado</th>
-              </tr>
-            </thead>
-            <tbody>
-              {empleados
-                ? empleados.map((item) => {
+      <OrdenesNavigation></OrdenesNavigation>
+      <div>
+        <h1 className="tituloh1">Listar Ordenes</h1>
+        <table className="table table-dark" align="center">
+          {/*<table className="ta" align="center">*/}
+          <thead>
+            <tr>
+              {/*<tr className="ta">*/}
+              <th scope="col">Nombre </th>
+              <th scope="col">Unidades</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {empleados
+              ? empleados.map((item) => {
                   return (
                     <tr key={item.id}>
                       {/*<tr className="ta" key={item.id}>*/}
@@ -114,14 +65,12 @@ const ListarOrdenes = () => {
                     </tr>
                   );
                 })
-                : null}
-            </tbody>
-          </table>
-        </div>
-      </Fragment>
+              : null}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
 
 export default ListarOrdenes;
-

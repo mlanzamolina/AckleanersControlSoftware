@@ -7,8 +7,7 @@ import { SidebarData } from "./SideBarData";
 import { dbEmpleado, almacenamiento } from "../../components/firebase";
 import { collection, addDoc, updateDoc, doc} from "firebase/firestore";
 import swal from "sweetalert";
-import { Interfaz } from "./empleadoNav"
-import "./estiloEmpleado.css"
+import EmployeeNavigation from "./EmployeeNavigation";
 
 const AgregarEmpleado = () => {
   const tablaEmpleadosRef = collection(dbEmpleado, "Empleados");
@@ -103,10 +102,24 @@ const AgregarEmpleado = () => {
   };
 
   return (
-    <Fragment>
-      <Interfaz />
-      <div className="p-3 contenedorPrincipal">
-        <div className="container rounded contenedorFormulario">
+    <>
+      <EmployeeNavigation></EmployeeNavigation>
+        <div>
+          <h1 className="tituloh1">Registro Empleado</h1>
+        </div>
+
+        <form className="col-md"  onSubmit={(e) => handleSubmit(e.preventDefault())}>
+          <div>
+            <h3>Nombre Completo: </h3>
+            <input
+              placeholder="Ingrese Nombre"
+              className="form-control"
+              name="nombre"
+              onChange={handleInputChance}
+              autofocus
+              required
+            ></input>
+          </div>
           <div>
             <form className="row g-3">
               <div className="col-md-6">
@@ -218,9 +231,8 @@ const AgregarEmpleado = () => {
               </div>
             </form>
           </div>
-        </div>
-      </div>
-    </Fragment>
+        </form>
+    </>
   );
 };
 
