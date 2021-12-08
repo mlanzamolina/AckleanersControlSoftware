@@ -181,7 +181,7 @@ const AgregarEmpleado = () => {
               </div>
 
               <div>
-                <img id="foto" src = {imageurl} className="col-3 offset-lg-4 foto rounded"/>;
+                <img id="foto" src = {imageurl} className="col-3 offset-lg-4 foto rounded"/>
               </div>
 
               <div class="offset-lg-4">
