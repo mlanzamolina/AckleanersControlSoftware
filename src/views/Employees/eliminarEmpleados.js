@@ -9,10 +9,13 @@ import {
 import { useForm } from 'react-hook-form'
 import swal from "sweetalert";
 
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import styles from "./Table.module.css"
+import useTable from "./useTable"
+import TableFooter from "./TableFooter"
 
 
-
-const EliminarEmpleados = () => {
+const EliminarEmpleados = ({rowsPerPage }) => {
 
     const [data, setData] = useState([]);
     const [mostrarE, setMostrarE] = useState(false);
@@ -25,6 +28,18 @@ const EliminarEmpleados = () => {
     const [currentID2, setCurrentID2] = useState({
         id: null, nombre: '', dni: '', correo: '', telefono: '', estado: '', foto:'', direccion:''
     });
+
+    const [mostrarV, setMostrarV] = useState(false);
+
+    const[paginated, setPaginated] = useState();
+
+
+    const [page, setPage] = useState(1);
+    const [vista, setVista] = useState({
+        id: null, nombre: '', dni: '', correo: '', telefono: '', estado: '', foto:'', direccion:''
+    });
+
+
 
 
 
@@ -41,6 +56,10 @@ const EliminarEmpleados = () => {
     const [image, setImage] = useState('');
     const [imageurl, setimageURL] = useState('');
     const [idFire, setIDFire] = useState("");
+    const [q, setQ] = useState("");
+
+
+    
 
     
    
@@ -53,8 +72,8 @@ const EliminarEmpleados = () => {
                 temp.push({ ...doc.data(), id: doc.id });
             });
 
+        
            
-
             setData(temp);
         });
     };
@@ -65,9 +84,10 @@ const EliminarEmpleados = () => {
        
     }, [data]);
 
+    const { slice, range } = useTable(data, page, 1);
 
+   
   
-
   
 
 
@@ -244,51 +264,91 @@ const obtener =  (empleados)=>{
     
     }//Fin 
 
+
+    const mostrarVistaEmpleado = (empleados)=>{
+        setVista({ nombre: empleados.nombre, telefono: empleados.n_telefono,
+        dni: empleados.dni, correo: empleados.correo, id: empleados.id, foto: empleados.foto, direccion: empleados.direccion, estado: empleados.estado});
+        console.log(vista.foto);
+        
+        
+        if(mostrarV==false){
+            setMostrarV(!mostrarV);
+        }else{
+            setMostrarV(!mostrarV);
+        }
+    
+    }
+
+   
+
+       
+
+    
+
+    
+
+
+    
   
 
 
     return (
 
+
+        
+
         <div className="container col-md-12 mt-4">
+             
+            
+        
+
+
             <div className="text-center">
                 <h1>Empleados</h1>
                 <hr></hr>
             </div>
             <div className="container">
                 <div className="mt-4 mb-4 table-responsive"  >
-                    <table className="table table-dark table-striped table-bordered table-hover" >
-                        <thead className="thead-dark">
+                    <table 
+                    className="table table-dark table-striped" >
+                        <thead className={styles.tableRowHeader}>
                             <tr className="text-center">
                                 <th scope="col">NOMBRE</th>
-                                <th scope="col">FOTO</th>
-                                <th scope="col">DNI</th>
+                                <th  scope="col">FOTO</th>
+                                <th  scope="col">DNI</th>
                                 <th scope="col">TELEFONO</th>
-                                <th scope="col">CORREO</th>
+                                <th  scope="col">CORREO</th>
                                 <th scope="col">ESTADO</th>
                                 <th scope="col">DIRECCION</th>
                                 <th scope="col">EDITAR</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map(( empleados,index) => (
-                                <tr className="text-center" key={index}>
-                                    <td>{empleados.nombre}</td>
-                                    <td>{empleados.foto}</td>
-                                    <td>{empleados.dni}</td>
-                                    <td>{empleados.n_telefono}</td>
-                                    <td>{empleados.correo}</td>
-                                    <td>{empleados.estado}</td>
-                                    <td>{empleados.direccion}</td>
+                            {slice.map((empleados,index) => (
+                                <tr key={index}>
+                                    <td  >{empleados.nombre}</td>
+                                    <td >{empleados.foto}</td>
+                                    <td  >{empleados.dni}</td>
+                                    <td  >{empleados.n_telefono}</td>
+                                    <td >{empleados.correo}</td>
+                                    <td  >{empleados.estado}</td>
+                                    <td >{empleados.direccion}</td>
                                     
-                                    <td>        
+                                    <td>      
 
-                                    <Button color="success"  onClick={()=>editRow(empleados) }   >
-                                           Modificar
-                                        </Button>
+                                        <div class="btn-group" role="group" aria-label="Basic example">  
+
+                                    <Button color="success"   onClick={()=>editRow(empleados) }   >
+                                    <i class="bi bi-pencil"></i>
+                                        </Button>       
                                         <Button color="success" onClick={() => setMostrarE(true)} onClick={() => mostrarModalEliminar(empleados.id)}  >
-                                            Eliminar
+                                        <i class="bi bi-person-x"></i>
                                         </Button>
-                                        
+
+                                        <Button color="success"  onClick={()=>mostrarVistaEmpleado(empleados)}   >
+                                        <i class="bi bi-person-video"></i>
+                                        </Button>
+                                        </div>
                                         
                                     </td>
 
@@ -296,7 +356,17 @@ const obtener =  (empleados)=>{
                             ))}
                         </tbody>
                     </table>
+                    <TableFooter range={range} slice={slice} setPage={setPage} page={page} />
+                    
 
+
+                 
+
+                    
+
+                    
+                   
+                    
 
 
                 </div>
@@ -400,7 +470,9 @@ const obtener =  (empleados)=>{
                          <Button type="submit" class="btn btn-outline-danger" >Modificar</Button>
                          </ModalFooter>
                     </form>
-                         
+                    
+
+                    
                     
                       
                      </div>
@@ -418,6 +490,73 @@ const obtener =  (empleados)=>{
                
 
                      </Modal>
+
+
+                     <Modal isOpen={mostrarV} >
+             
+            
+                    <ModalHeader>{vista.nombre}</ModalHeader>
+                    <ModalBody>
+
+                        
+                    <img src={vista.foto} class="card-img-top" alt="..."></img>
+                    <div class="container">
+                   
+                    <div class="col">
+                      <label>ID</label><label>{vista.dni}</label>
+                    </div>
+                     <div class="col">
+                     <label>Correo</label><label>{vista.correo}</label>
+                         </div>
+                     <div class="col">
+                     <label>Telefono</label><label>{vista.telefono}</label>
+                     </div>
+
+                     <div class="col align-self-start">
+                     <label>Direccion</label><label>{vista.direccion}</label>
+                     </div>
+                    </div>
+                    
+
+
+
+
+
+
+
+
+
+
+                   
+                    
+
+                    
+                    
+                   
+                   
+
+
+
+                       
+                  
+                   
+  
+               
+
+ 
+     
+     
+
+
+                    <ModalFooter>
+                        <Button type="button" class="btn btn-outline-danger"   onClick={()=>setMostrarV(false)}>SALIR</Button>
+                         
+                        </ModalFooter>
+
+
+                    </ModalBody>
+
+                </Modal>
                    
                    
                 
