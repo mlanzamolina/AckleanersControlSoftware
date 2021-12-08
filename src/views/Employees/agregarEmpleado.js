@@ -9,6 +9,7 @@ import { collection, addDoc, updateDoc, doc} from "firebase/firestore";
 import swal from "sweetalert";
 import { Interfaz } from "./empleadoNav"
 import "./estiloEmpleado.css"
+import Nav from "../NavAdmin"
 
 const AgregarEmpleado = () => {
   const tablaEmpleadosRef = collection(dbEmpleado, "Empleados");
@@ -103,9 +104,16 @@ const AgregarEmpleado = () => {
   };
 
   return (
+    
     <Fragment>
-      <Interfaz />
-      <div className="p-3 contenedorPrincipal">
+      <Nav />
+     
+      <div class="sidebar" >
+  <a class="active" href="#home">Agregar Empleado</a>
+  <a href="#news">Administrar Empleado</a>
+</div>
+<div class="contentf">
+      <div className="contenedorPrincipal" style={{width: "100%",height: "100%"}}>
         <div className="container rounded contenedorFormulario">
           <div>
             <form className="row g-3">
@@ -219,6 +227,7 @@ const AgregarEmpleado = () => {
             </form>
           </div>
         </div>
+      </div>
       </div>
     </Fragment>
   );
