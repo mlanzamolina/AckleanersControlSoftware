@@ -27,7 +27,7 @@
 }
 
 .fondoAgregar{
-    background-image: url("https://cdn-icons.flaticon.com/png/512/2278/premium/2278897.png?token=exp=1638681781~hmac=936b92d6d97c08bb2052453cdfb87425");
+    background-image: url("https://cdn-icons-png.flaticon.com/512/2541/2541984.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
@@ -65,4 +65,3 @@
     border: black;
     border-style:dashed;
 }
-

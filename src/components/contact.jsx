@@ -72,7 +72,7 @@ export class Contact extends Component {
   render() {
     return (
       <div id="contact">
-         <br />  <br />
+        <br />  <br />
         <div class="containerf">
           <h2 style={{ textAlign: "center" }}>Programe su cita!</h2>
           <br />
@@ -82,8 +82,8 @@ export class Contact extends Component {
               <label for="fname">Nombre</label>
             </div>
 
-            <div class="col-75f">
-              <input type="text" name="name" onChange={this.handleChangeName} />
+            <div class="col-75f inputMarco">
+              <input type="text" name="name" className="inputMarco" onChange={this.handleChangeName} />
             </div>
           </div>
 
@@ -94,9 +94,11 @@ export class Contact extends Component {
 
             <div class="col-75f">
               <input
+
                 type="text"
                 name="email"
                 ref="email"
+                className="inputMarco"
                 onChange={this.handleChangeEmail}
               />
             </div>
@@ -109,6 +111,7 @@ export class Contact extends Component {
 
             <div class="col-75f">
               <input
+                className="inputMarco"
                 type="number"
                 name="phone"
                 ref="phone"
@@ -124,6 +127,7 @@ export class Contact extends Component {
 
             <div class="col-75f">
               <input
+                className="inputMarco"
                 type="textarea"
                 name="message"
                 ref="message"
