@@ -1,22 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
 
-.contenedorFormulario {
-  background-color: rgba(0, 0, 0, 0.4);
-  height: 90%;
-  width: 100%;
-  margin-top: 2%;
+.contenedorPrincipal{
+  
 }
 
-.letrasFormulario {
-  color: white;
-  font-family: "Raleway";
-  font-weight: bold;
+.contenedorFormulario{
+    background-color: rgba(0, 0, 0, 0.40);
+    height: 70%;
+    width: 60%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
-.foto {
-  width: 250px;
-  height: 250px;
-  background-image: url("http://simpleicon.com/wp-content/uploads/user1.png");
-  background-size: cover;
-  border: solid;
+.letrasFormulario{
+    color: white;
+    font-family: 'Raleway';
+    font-weight: bold;
+}
+
+.foto{
+    width: 250px;
+    height: 250px;
+    background-image: url("http://simpleicon.com/wp-content/uploads/user1.png");
+    background-size:cover;
+    border: solid;
+    
 }
