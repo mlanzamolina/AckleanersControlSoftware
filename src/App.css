@@ -84,7 +84,7 @@
   box-shadow: 0 9px #999;
 }
 
-input {
+.inputMarco {
   content: "Ingrese foto";
   color: black;
   display: inline-block;
