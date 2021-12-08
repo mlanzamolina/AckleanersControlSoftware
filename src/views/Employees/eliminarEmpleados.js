@@ -84,7 +84,7 @@ const EliminarEmpleados = ({rowsPerPage }) => {
        
     }, [data]);
 
-    const { slice, range } = useTable(data, page, 1);
+    const { slice, range } = useTable(data, page, 5);
 
    
   
