@@ -1,8 +1,30 @@
 import React, { Component } from "react";
 import logo from "../img/ack.png";
 import "./marco.css";
+import Swal from 'sweetalert2'
+
 
 class Navigation extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+
+  }
+  handleClick(){
+    Swal.fire({
+      title: 'Alto ahi!',
+      text: "Espacio para empleados",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Soy empleado!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "/Management"
+      }
+    });
+  }
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top sticky-top ">
@@ -68,6 +90,15 @@ class Navigation extends Component {
               >
                 Contactenos
               </a>
+            </li>
+            <li className="nav-item">
+              <button
+              style={{margin: "10px 10px"}}
+                className="btn btn-primary"
+                onClick={this.handleClick}
+              >
+                Empleados
+              </button>
             </li>
           </ul>
         </div>
