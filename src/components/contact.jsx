@@ -1,6 +1,7 @@
 import React, { useRef, Component } from "react";
 import * as emailjs from "emailjs-com";
-import swal from "sweetalert";
+import swal from 'sweetalert2';
+import check from "../img/check.png"
 
 export class Contact extends Component {
   constructor(props) {
@@ -51,15 +52,15 @@ export class Contact extends Component {
       )
       .then(
         function (response) {
-          swal({
+          swal.fire({
+            iconHtml: '<img src="'+check+'">',
             title: "Realizado",
             text: "Se envio al correo ackleaners@gmail.com",
-            icon: "success",
             button: "aceptar",
           });
         },
         function (err) {
-          swal({
+          swal.fire({
             title: "No Realizado",
             text: "No se pudo enviar el correo",
             icon: "warning",
@@ -72,7 +73,7 @@ export class Contact extends Component {
   render() {
     return (
       <div id="contact">
-         <br />  <br />
+        <br />  <br />
         <div class="containerf">
           <h2 style={{ textAlign: "center" }}>Programe su cita!</h2>
           <br />
@@ -83,7 +84,7 @@ export class Contact extends Component {
             </div>
 
             <div class="col-75f">
-              <input type="text" name="name" onChange={this.handleChangeName} />
+              <input type="text" name="name" className="inputMarco" onChange={this.handleChangeName} required/>
             </div>
           </div>
 
@@ -94,9 +95,11 @@ export class Contact extends Component {
 
             <div class="col-75f">
               <input
+required
                 type="text"
                 name="email"
                 ref="email"
+                className="inputMarco"
                 onChange={this.handleChangeEmail}
               />
             </div>
@@ -109,21 +112,23 @@ export class Contact extends Component {
 
             <div class="col-75f">
               <input
+                className="inputMarco"
                 type="number"
                 name="phone"
                 ref="phone"
-                onChange={this.handleChangePhone}
+                onChange={this.handleChangePhone}required
               />
             </div>
           </div>
 
           <div class="rowf">
             <div class="col-25f">
-              <label for="subject">Subject</label>
+              <label for="subject">Mensaje</label>
             </div>
 
             <div class="col-75f">
               <input
+                className="inputMarco"required
                 type="textarea"
                 name="message"
                 ref="message"
@@ -141,7 +146,7 @@ export class Contact extends Component {
               style={{ float: "right" }}
               onClick={this.sendMail}
             >
-              Send Email
+              Enviar
             </button>
           </div>
         </div>
