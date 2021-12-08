@@ -3,20 +3,48 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { SidebarData } from "./SideBarData";
-import "./Management.css";
 import logo from "../../img/logo.png";
 
-function SideMenu() {
+export default function ReportsNavigation() {
   const [sidebar, setSidebar] = useState(false);
-
   const showSidebar = () => setSidebar(!sidebar);
-
   return (
     <>
       <div className="managementsidemenu">
         <Link to="#" className="managementmenu-bars">
           <FaIcons.FaBars onClick={showSidebar} />
         </Link>
+
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="Reportes">
+                    Crear Reporte
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    Ver Reportes
+                  </a>
+                </li>
+                
+              </ul>
+            </div>
+          </nav>
+        </div>
       </div>
       <nav
         className={sidebar ? "managementnav-menu active" : "managementnav-menu"}
@@ -39,25 +67,6 @@ function SideMenu() {
           })}
         </ul>
       </nav>
-      <h1 style={{ textAlign: "center" }}>
-        Bienvenido al area de herramientas administrativas
-      </h1>
-      <a href="/">
-        <img
-          src={logo}
-          alt="logo ackleaners"
-          class="responsive"
-          style={{
-            margin: 0,
-            top: "auto",
-            right: 45,
-            bottom: 40,
-            position: "fixed",
-          }}
-        />
-      </a>
     </>
   );
 }
-
-export default SideMenu;
