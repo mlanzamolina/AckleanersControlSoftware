@@ -1,6 +1,6 @@
 import React from 'react'
 import "./estiloDocs.css"
-import { Interfaz } from '../Employees/empleadoNav'
+import { Link } from "react-router-dom";
 import Nav from "../NavAdmin"
 export const Documentos = () => {
     return (
@@ -11,11 +11,15 @@ export const Documentos = () => {
                     <div>
                         <form className="row g-3" >
                             <div class="offset-lg-1 espaciadoContenedor">
+                                <Link to="/AgregarDocumento">
                                 <button className="rounded botonSize fondoAgregar">Subir Documento</button>
+                                </Link>
                             </div>
 
                             <div class="offset-lg-2 espaciadoContenedor">
+                                <Link to="/DescargarDocumento">
                                 <button className="rounded botonSize fondoDescargar">Bajar Documento</button>
+                                </Link>
                             </div>
 
                             <div class="offset-lg-1 espaciadoContenedor">
