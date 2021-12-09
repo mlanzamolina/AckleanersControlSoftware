@@ -11,9 +11,7 @@ import swal from "sweetalert";
 import Nav from "../NavAdmin";
 
 const AgregarOrden = () => {
-  const [sidebar, setSidebar] = useState(false);
   const tablaOrdenesRef = collection(dbOrdenes, "OrdenesTrabajo");
-  const showSidebar = () => setSidebar(!sidebar);
 
   const [dats, setDatos] = useState({
     nombre: " ",
@@ -63,6 +61,12 @@ const AgregarOrden = () => {
   return (
     <>
       <Nav />
+      <div class="sidebar">
+      <a href="/Ordenes">Ordenes</a>
+          <a href="/ListarOrdenes">Listar Ordenes</a>
+          <a class="active" href="/AgregarOrden">Agregar Orden</a>
+          <a href="/ModificarOrden">Modificar Orden</a>
+        </div>
       <Fragment>
         <a href="/">
           <img
@@ -78,8 +82,7 @@ const AgregarOrden = () => {
             }}
           />
         </a>
-
-        <div>
+        <div class="contentf">
           <h1 className="tituloh1">Agregar Orden de Trabajo</h1>
         </div>
         <div className="container-sm">
