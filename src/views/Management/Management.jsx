@@ -37,25 +37,6 @@ function SideMenu() {
 <div class="contentf">
 <h3>Bienvenido ,Nombre de persona, al hub de herramientas administrativas hoy es , fecha de hoy, lista de clientes que tienen pendiente limpieza por fecha</h3> 
 </div>
-
-      <a href="/">
-        <img
-          src={logo}
-          alt="logo ackleaners"
-      
-          class="responsive"
-          style={{
-            
-            margin: 0,
-            top: "auto",
-            right: 45,
-            bottom: 40,
-            position: "fixed",
-          }}
-        />
-      </a>
-     
-     
     </>
   );
 }

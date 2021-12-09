@@ -67,24 +67,10 @@ const AgregarOrden = () => {
           <a class="active" href="/AgregarOrden">Agregar Orden</a>
           <a href="/ModificarOrden">Modificar Orden</a>
         </div>
+        <div className="contentf">
       <Fragment>
-        <a href="/">
-          <img
-            src={logo}
-            alt="logo ackleaners"
-            class="responsive"
-            style={{
-              margin: 0,
-              top: "auto",
-              right: 45,
-              bottom: 40,
-              position: "fixed",
-            }}
-          />
-        </a>
-        <div class="contentf">
           <h1 className="tituloh1">Agregar Orden de Trabajo</h1>
-        </div>
+      
         <div className="container-sm">
           <form>
             <div>
@@ -147,6 +133,7 @@ const AgregarOrden = () => {
           </form>
         </div>
       </Fragment>
+      </div>
     </>
   );
 };

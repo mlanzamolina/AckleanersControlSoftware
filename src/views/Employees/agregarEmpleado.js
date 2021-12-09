@@ -150,11 +150,10 @@ const AgregarEmpleado = () => {
     <Fragment>
       <Nav />
       <div class="sidebar">
-        <a href="/ListarEmpleado">Listar Empleado</a>
         <a class="active" href="/AgregarEmpleado">
           Agregar Empleado
         </a>
-        <a href="/ModificarEmpleado">Modificar Empleado</a>
+        <a href="/eliminarEmpleados">Modificar Empleado</a>
       </div>
       <div class="contentf">
         <div

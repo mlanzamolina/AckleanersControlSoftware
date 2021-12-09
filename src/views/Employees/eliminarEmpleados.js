@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Nav from "../NavAdmin"
 import {
   Button,
   Modal,
@@ -291,6 +292,16 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
   };
 
   return (
+    <>
+     <Nav />
+     <div class="sidebar">
+        <a  href="/AgregarEmpleado">
+          Agregar Empleado
+        </a>
+        <a class="active" href="/eliminarEmpleados">Modificar Empleado</a>
+        </div>
+  <a class="active" href="/eliminarEmpleados">Modificar Empleado</a>
+  
     <div className="container col-md-12 mt-4">
       <div className="text-center">
         <h1>Empleados</h1>
@@ -530,6 +541,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         </ModalBody>
       </Modal>
     </div>
+    </>
   );
 };
 
