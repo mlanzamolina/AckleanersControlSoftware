@@ -1,10 +1,11 @@
 import React from 'react'
 import "./estiloDocs.css"
 import { Interfaz } from '../Employees/empleadoNav'
+import Nav from "../NavAdmin"
 export const Documentos = () => {
     return (
         <>
-            <Interfaz />
+            <Nav></Nav>
             <div className="p-3 estiloPrincipal">
                 <div className="container rounded estiloContenedor">
                     <div>

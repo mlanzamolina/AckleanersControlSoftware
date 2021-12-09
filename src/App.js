@@ -25,6 +25,7 @@ import Inventarios from "./views/Inventarios/Inventarios";
 import NewPassword from "./views/NewPassword/NewPassword";
 import Probar from "./views/Probandocss/probar";
 import { Documentos } from "./views/Documents/interfazDocumentos"
+import EliminarEmpleados from "./views/Employees/eliminarEmpleados";
 
 function App() {
   return (
@@ -106,6 +107,11 @@ function App() {
             <Route path="/adminDocs">
               <Documentos />
             </Route>
+            <Route path="/eliminarEmpleados">
+              <EliminarEmpleados />
+            </Route>
+
+
           </div>
         </Switch>
 

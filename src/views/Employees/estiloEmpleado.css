@@ -1,15 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
 
 .contenedorPrincipal{
-    background-image: url("https://gradients.mijo-design.com/public/uploads/files/db13.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+  
 }
 
 .contenedorFormulario{
     background-color: rgba(0, 0, 0, 0.40);
-    height: 100%;
+    height: 70%;
     width: 60%;
     margin-top: 2%;
     margin-bottom: 2%;

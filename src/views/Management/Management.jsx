@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SideBarData";
 import "./Management.css";
 import logo from "../../img/logo.png";
+import Nav from "../NavAdmin"
 
 
 function SideMenu() {
@@ -15,34 +16,20 @@ function SideMenu() {
 
   return (
     <>
+   
+    <Nav />
+   
+<div class="sidebar" >
+  <a class="active" href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+</div>
 
-      <div className="managementsidemenu">
-        <Link to="#" className="managementmenu-bars">
-          <FaIcons.FaBars onClick={showSidebar} />
-        </Link>
-      </div>
-      <nav
-        className={sidebar ? "managementnav-menu active" : "managementnav-menu"}
-      >
-        <ul className="managementnav-menu-items" onClick={showSidebar}>
-          <li className="navbar-toggle">
-            <Link to="#" className="managementmenu-bars">
-              <AiIcons.AiOutlineClose />
-            </Link>
-          </li>
-          {SidebarData.map((item, index) => {
-            return (
-              <li key={index} className={`management${item.cName}`}>
-                <Link to={item.path}>
-                  {item.icon}
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-      <h1 style={{textAlign: 'center',}}>Bienvenido ,Nombre de persona, al hub de herramientas administrativas hoy es , fecha de hoy, lista de clientes que tienen pendiente limpieza por fecha</h1>
+<div class="contentf">
+<h3>Bienvenido ,Nombre de persoa, al hub de herramientas administrativas hoy es , fecha de hoy, lista de clientes que tienen pendiente limpieza por fecha</h3> 
+</div>
+
       <a href="/">
         <img
           src={logo}
@@ -59,6 +46,7 @@ function SideMenu() {
           }}
         />
       </a>
+     
      
     </>
   );
