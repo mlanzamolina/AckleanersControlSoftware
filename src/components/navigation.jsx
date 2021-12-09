@@ -21,7 +21,7 @@ class Navigation extends Component {
       confirmButtonText: 'Soy empleado!'
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = "/Management"
+        window.location.href = "/Login"
       }
     });
   }

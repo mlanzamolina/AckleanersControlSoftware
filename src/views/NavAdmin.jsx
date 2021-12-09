@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import {logout} from "../components/firebase";
 import { SidebarData } from "./Management/SideBarData";
 
-export class NavAdmin extends Component {
+export class NavAdmin extends Component {  
     render() {
         return (
           <div>
@@ -31,7 +32,13 @@ export class NavAdmin extends Component {
               </li>
             );
           })}
-         
+          
+          <li key="keysignout" className="nav-item" onClick={logout}>
+            <a href="/"  className="nav-link m-2 menu-item nav-active text-light">
+              <span>Sign Out</span>
+            </a>
+          </li>
+
         </ul>
         </div>
       </nav>

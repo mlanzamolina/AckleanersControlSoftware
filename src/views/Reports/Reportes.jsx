@@ -1,4 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect} from "react";
+import {auth} from "../../components/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link, useHistory, useParams } from "react-router-dom";
@@ -6,10 +8,11 @@ import { SidebarData } from "./SideBarData";
 import logo from "../../img/logo.png";
 import swal from "sweetalert";
 import "./table.css";
+import Nav from "../NavAdmin";
 
 export default function Reportes() {
+  const [user, loading, error] = useAuthState(auth);
   const [sidebar, setSidebar] = useState(false);
-
   const showSidebar = () => setSidebar(!sidebar);
   const history = useHistory();
   const [dats, setDatos] = useState({
@@ -48,34 +51,18 @@ setFecha(today);
     history.push(`/AgregarReportes/${dats.numero}`);
   }
 
+  useEffect(() => {
+    if(loading) return;
+    if (user === null) window.location.assign("/Login");
+  }, [user, loading]);
+
   return (
     <>
-      <div className="managementsidemenu">
-        <Link to="#" className="managementmenu-bars">
-          <FaIcons.FaBars onClick={showSidebar} />
-        </Link>
+      <Nav></Nav>
+      <div class="sidebar">
+        <a class="active" href="/Reportes">Reportes</a>
       </div>
-      <nav
-        className={sidebar ? "managementnav-menu active" : "managementnav-menu"}
-      >
-        <ul className="managementnav-menu-items" onClick={showSidebar}>
-          <li className="navbar-toggle">
-            <Link to="#" className="managementmenu-bars">
-              <AiIcons.AiOutlineClose />
-            </Link>
-          </li>
-          {SidebarData.map((item, index) => {
-            return (
-              <li key={index} className={`management${item.cName}`}>
-                <Link to={item.path}>
-                  {item.icon}
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      <div class="contentf">
       <h1 style={{ textAlign: "center" }}>Crear Reporte</h1>
       <div className="containerf">
     <form className="row g-3">
@@ -108,11 +95,16 @@ setFecha(today);
             required
           ></input>
         </div>
-        <button className="btn btn-primary">
-          <a href={`/AgregarReportes/${dats.numero}`} target="_blank" style={{color: "white"}}>
+        <div className="alinkcrear">
+          <button className="btn btn-primary">
+          <a
+            href={`/AgregarReportes/${dats.numero}`}
+            target="_blank" style={{color: "white"}}
+          >
             Crear
           </a>
         </button>
+        </div>
       </form>
 </div>
       <a href="/">
@@ -129,6 +121,7 @@ setFecha(today);
           }}
         />
       </a>
+      </div>
     </>
   );
 }

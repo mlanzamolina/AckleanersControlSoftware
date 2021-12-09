@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
+import {auth} from "../../components/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -9,10 +11,16 @@ import Nav from "../NavAdmin"
 
 
 function SideMenu() {
+  const [user, loading, error] = useAuthState(auth);
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
 
+  useEffect(() => {
+    console.log(user);
+    if(loading) return;
+    if (user === null) window.location.assign("/Login");
+  }, [user, loading]);
 
   return (
     <>
@@ -27,7 +35,7 @@ function SideMenu() {
 </div>
 
 <div class="contentf">
-<h3>Bienvenido ,Nombre de persoa, al hub de herramientas administrativas hoy es , fecha de hoy, lista de clientes que tienen pendiente limpieza por fecha</h3> 
+<h3>Bienvenido ,Nombre de persona, al hub de herramientas administrativas hoy es , fecha de hoy, lista de clientes que tienen pendiente limpieza por fecha</h3> 
 </div>
 
       <a href="/">

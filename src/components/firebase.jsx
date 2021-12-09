@@ -23,8 +23,7 @@ const almacenamiento = app.storage();
 const signInWithEmailAndPassword = async (email, password) => {
   try {
     await auth.signInWithEmailAndPassword(email, password);
-    window.location.assign("/");
-    alert("Bienvenido");
+    window.location.assign("/Management");
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -53,6 +52,7 @@ const sendPasswordResetEmail = async (email) => {
 };
 
 const logout = () => {
+  window.location.assign("/");
   auth.signOut();
 };
 
@@ -62,6 +62,7 @@ const dbOrdenes = getFirestore(appEmpleado)
 export {
   auth,
   db,
+  app,
   almacenamiento,
   signInWithEmailAndPassword,
   registerWithEmailAndPassword,

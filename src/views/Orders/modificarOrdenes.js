@@ -9,6 +9,7 @@ import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SideBarData";
 import "./Formulario.css";
 import swal from "sweetalert";
+import Nav from "../NavAdmin";
 
 const ModificarOrden = () => {
     const [sidebar, setSidebar] = useState(false);
@@ -52,14 +53,13 @@ const ModificarOrden = () => {
 
     return (
         <>
-            <div className="dropdown" style={{ float: "right" }}>
-                <button className="dropbtn">Opciones</button>
-                <div className="dropdown-content">
-                    <a href="/ListarOrdenes">Listar Ordenes</a>
-                    <a href="/AgregarOrden">Agregar Orden</a>
-                    <a href="/ModificarOrden">Modificar Ordenes</a>
-                </div>
-            </div>
+            <Nav></Nav>
+      <div class="sidebar">
+        <a href="/Ordenes">Ordenes</a>
+        <a href="/ListarOrdenes">Listar ordenes</a>
+        <a href="/AgregarOrden">Agregar ordenes</a>
+        <a class="active" href="/ModificarOrden">Modificar ordenes</a>
+      </div>
             <Fragment>
                 <a href="/">
                     <img
@@ -75,35 +75,7 @@ const ModificarOrden = () => {
                         }}
                     />
                 </a>
-                <div className="managementsidemenu">
-                    <Link to="#" className="managementmenu-bars">
-                        <FaIcons.FaBars onClick={showSidebar} />
-                    </Link>
-                </div>
-                <nav
-                    className={
-                        sidebar ? "managementnav-menu active" : "managementnav-menu"
-                    }
-                >
-                    <ul className="managementnav-menu-items" onClick={showSidebar}>
-                        <li className="navbar-toggle">
-                            <Link to="#" className="managementmenu-bars">
-                                <AiIcons.AiOutlineClose />
-                            </Link>
-                        </li>
-                        {SidebarData.map((item, index) => {
-                            return (
-                                <li key={index} className={`management${item.cName}`}>
-                                    <Link to={item.path}>
-                                        {item.icon}
-                                        <span>{item.title}</span>
-                                    </Link>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </nav>
-                <div>
+                <div class="contentf">
                     <h1 className="tituloh1">Soy modificar</h1>
                     <table className="ta" align="center">
                         <thead>

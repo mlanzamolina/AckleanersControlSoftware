@@ -65,3 +65,19 @@
     border: black;
     border-style:dashed;
 }
+
+.letrasDescarga{
+    color: white;
+}
+
+.letrasDescarga:hover{
+    color: green;
+}
+
+.contenedorFormularioBajar{
+    background-color: rgba(0, 0, 0, 0.40);
+    height: 100%;
+    width: 70%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
