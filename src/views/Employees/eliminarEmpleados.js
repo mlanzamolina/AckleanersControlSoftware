@@ -314,7 +314,7 @@ const obtener =  (empleados)=>{
                         <thead className={styles.tableRowHeader}>
                             <tr className="text-center">
                                 <th scope="col">NOMBRE</th>
-                                <th  scope="col">FOTO</th>
+                            
                                 <th  scope="col">DNI</th>
                                 <th scope="col">TELEFONO</th>
                                 <th  scope="col">CORREO</th>
@@ -326,15 +326,15 @@ const obtener =  (empleados)=>{
                         <tbody>
                             {slice.map((empleados,index) => (
                                 <tr key={index}>
-                                    <td  >{empleados.nombre}</td>
-                                    <td >{empleados.foto}</td>
-                                    <td  >{empleados.dni}</td>
-                                    <td  >{empleados.n_telefono}</td>
-                                    <td >{empleados.correo}</td>
-                                    <td  >{empleados.estado}</td>
-                                    <td >{empleados.direccion}</td>
+                                    <td class="table-primary" >{empleados.nombre}</td >
                                     
-                                    <td>      
+                                    <td class="table-primary"  >{empleados.dni}</td >
+                                    <td class="table-primary"  >{empleados.n_telefono}</td>
+                                    <td class="table-primary" >{empleados.correo}</td >
+                                    <td class="table-primary"  >{empleados.estado}</td>
+                                    <td class="table-primary" >{empleados.direccion}</td >
+                                    
+                                    <td class="table-primary">      
 
                                         <div class="btn-group" role="group" aria-label="Basic example">  
 
@@ -350,7 +350,7 @@ const obtener =  (empleados)=>{
                                         </Button>
                                         </div>
                                         
-                                    </td>
+                                    </td >
 
                                 </tr>
                             ))}
