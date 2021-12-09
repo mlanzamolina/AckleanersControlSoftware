@@ -1,6 +1,7 @@
 import React, { useRef, Component } from "react";
 import * as emailjs from "emailjs-com";
-import swal from "sweetalert";
+import swal from 'sweetalert2';
+import check from "../img/check.png"
 
 export class Contact extends Component {
   constructor(props) {
@@ -51,15 +52,15 @@ export class Contact extends Component {
       )
       .then(
         function (response) {
-          swal({
+          swal.fire({
+            iconHtml: '<img src="'+check+'">',
             title: "Realizado",
             text: "Se envio al correo ackleaners@gmail.com",
-            icon: "success",
             button: "aceptar",
           });
         },
         function (err) {
-          swal({
+          swal.fire({
             title: "No Realizado",
             text: "No se pudo enviar el correo",
             icon: "warning",
@@ -82,8 +83,8 @@ export class Contact extends Component {
               <label for="fname">Nombre</label>
             </div>
 
-            <div class="col-75f inputMarco">
-              <input type="text" name="name" className="inputMarco" onChange={this.handleChangeName} />
+            <div class="col-75f">
+              <input type="text" name="name" className="inputMarco" onChange={this.handleChangeName} required/>
             </div>
           </div>
 
@@ -94,7 +95,7 @@ export class Contact extends Component {
 
             <div class="col-75f">
               <input
-
+required
                 type="text"
                 name="email"
                 ref="email"
@@ -115,19 +116,19 @@ export class Contact extends Component {
                 type="number"
                 name="phone"
                 ref="phone"
-                onChange={this.handleChangePhone}
+                onChange={this.handleChangePhone}required
               />
             </div>
           </div>
 
           <div class="rowf">
             <div class="col-25f">
-              <label for="subject">Subject</label>
+              <label for="subject">Mensaje</label>
             </div>
 
             <div class="col-75f">
               <input
-                className="inputMarco"
+                className="inputMarco"required
                 type="textarea"
                 name="message"
                 ref="message"
@@ -145,7 +146,7 @@ export class Contact extends Component {
               style={{ float: "right" }}
               onClick={this.sendMail}
             >
-              Send Email
+              Enviar
             </button>
           </div>
         </div>

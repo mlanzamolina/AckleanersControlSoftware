@@ -6,6 +6,7 @@ import { SidebarData } from "./SideBarData";
 import logo from "../../img/logo.png";
 import swal from "sweetalert";
 import "./table.css";
+import Nav from "../NavAdmin";
 
 export default function Reportes() {
   const [sidebar, setSidebar] = useState(false);
@@ -28,32 +29,11 @@ export default function Reportes() {
 
   return (
     <>
-      <div className="managementsidemenu">
-        <Link to="#" className="managementmenu-bars">
-          <FaIcons.FaBars onClick={showSidebar} />
-        </Link>
+      <Nav></Nav>
+      <div class="sidebar">
+        <a class="active" href="/Reportes">Reportes</a>
       </div>
-      <nav
-        className={sidebar ? "managementnav-menu active" : "managementnav-menu"}
-      >
-        <ul className="managementnav-menu-items" onClick={showSidebar}>
-          <li className="navbar-toggle">
-            <Link to="#" className="managementmenu-bars">
-              <AiIcons.AiOutlineClose />
-            </Link>
-          </li>
-          {SidebarData.map((item, index) => {
-            return (
-              <li key={index} className={`management${item.cName}`}>
-                <Link to={item.path}>
-                  {item.icon}
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      <div class="contentf">
       <h1 style={{ textAlign: "center" }}>Crear Reporte</h1>
       <form className="col-md">
         <div>
@@ -70,14 +50,19 @@ export default function Reportes() {
           ></input>
         </div>
         <div className="alinkcrear">
-          <a href={`/AgregarReportes/${dats.numero}`} target="_blank"  style={{
-           position: "fixed",
-           width: "80px",
-           height: "200px",
-           margin: "5% auto", /* Will not center vertically and won't work in IE6/7. */
-           left: 0,
-           right: 0,
-          }}>
+          <a
+            href={`/AgregarReportes/${dats.numero}`}
+            target="_blank"
+            style={{
+              position: "fixed",
+              width: "80px",
+              height: "200px",
+              margin:
+                "5% auto" /* Will not center vertically and won't work in IE6/7. */,
+              left: 0,
+              right: 0,
+            }}
+          >
             Crear
           </a>
         </div>
@@ -97,6 +82,7 @@ export default function Reportes() {
           }}
         />
       </a>
+      </div>
     </>
   );
 }

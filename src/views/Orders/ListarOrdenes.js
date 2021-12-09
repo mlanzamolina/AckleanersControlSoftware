@@ -8,11 +8,9 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SideBarData";
 import "./Formulario.css";
+import Nav from "../NavAdmin";
 
 const ListarOrdenes = () => {
-  const [sidebar, setSidebar] = useState(false);
-
-  const showSidebar = () => setSidebar(!sidebar);
   const [dats, setDatos] = useState({
     nombre: " ",
     numero_telefono: " ",
@@ -35,13 +33,12 @@ const ListarOrdenes = () => {
 
   return (
     <>
-      <div className="dropdown" style={{ float: "right" }}>
-        <button class="dropbtn">Opciones</button>
-        <div class="dropdown-content">
-          <a href="/ListarOrdenes">Listar Ordenes</a>
-          <a href="/AgregarOrden">Agregar Orden</a>
-          <a href="/ModificarOrden">Modificar Ordenes</a>
-        </div>
+    <Nav></Nav>
+    <div class="sidebar">
+        <a href="/Ordenes">Ordenes</a>
+        <a class="active" href="/ListarOrdenes">Listar Ordenes</a>
+        <a href="/AgregarOrden">Agregar Orden</a>
+        <a href="/ModificarOrden">Modificar Orden</a>
       </div>
       <Fragment>
         <a href="/">
@@ -58,35 +55,7 @@ const ListarOrdenes = () => {
             }}
           />
         </a>
-        <div className="managementsidemenu">
-          <Link to="#" className="managementmenu-bars">
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
-        </div>
-        <nav
-          className={
-            sidebar ? "managementnav-menu active" : "managementnav-menu"
-          }
-        >
-          <ul className="managementnav-menu-items" onClick={showSidebar}>
-            <li className="navbar-toggle">
-              <Link to="#" className="managementmenu-bars">
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li>
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={`management${item.cName}`}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-        <div>
+        <div class="contentf">
           <h1 className="tituloh1">Listar Ordenes</h1>
           <table className="table table-dark" align="center">
             {/*<table className="ta" align="center">*/}
@@ -103,17 +72,17 @@ const ListarOrdenes = () => {
             <tbody>
               {empleados
                 ? empleados.map((item) => {
-                  return (
-                    <tr key={item.id}>
-                      {/*<tr className="ta" key={item.id}>*/}
-                      <td>{item.nombre}</td>
-                      <td>{item.cantidad_unidades}</td>
-                      <td>{item.descripcion}</td>
-                      <td>{item.numero_telefono}</td>
-                      <td>{item.estado}</td>
-                    </tr>
-                  );
-                })
+                    return (
+                      <tr key={item.id}>
+                        {/*<tr className="ta" key={item.id}>*/}
+                        <td>{item.nombre}</td>
+                        <td>{item.cantidad_unidades}</td>
+                        <td>{item.descripcion}</td>
+                        <td>{item.numero_telefono}</td>
+                        <td>{item.estado}</td>
+                      </tr>
+                    );
+                  })
                 : null}
             </tbody>
           </table>
@@ -124,4 +93,3 @@ const ListarOrdenes = () => {
 };
 
 export default ListarOrdenes;
-
