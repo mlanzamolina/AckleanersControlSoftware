@@ -41,20 +41,6 @@ const ListarOrdenes = () => {
         <a href="/ModificarOrden">Modificar Orden</a>
       </div>
       <Fragment>
-        <a href="/">
-          <img
-            src={logo}
-            alt="logo ackleaners"
-            width="250"
-            style={{
-              margin: 0,
-              top: "auto",
-              right: 45,
-              bottom: 40,
-              position: "fixed",
-            }}
-          />
-        </a>
         <div class="contentf">
           <h1 className="tituloh1">Listar Ordenes</h1>
           <table className="table table-dark" align="center">

@@ -61,20 +61,6 @@ const ModificarOrden = () => {
         <a class="active" href="/ModificarOrden">Modificar ordenes</a>
       </div>
             <Fragment>
-                <a href="/">
-                    <img
-                        src={logo}
-                        alt="logo ackleaners"
-                        width="250"
-                        style={{
-                            margin: 0,
-                            top: "auto",
-                            right: 45,
-                            bottom: 40,
-                            position: "fixed",
-                        }}
-                    />
-                </a>
                 <div class="contentf">
                     <h1 className="tituloh1">Soy modificar</h1>
                     <table className="ta" align="center">

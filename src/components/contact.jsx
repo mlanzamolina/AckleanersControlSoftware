@@ -68,6 +68,11 @@ export class Contact extends Component {
           });
         }
       );
+      document.getElementById("msj").value=null;
+      document.getElementById("tel").value=null;
+      document.getElementById("name").value=null;
+      document.getElementById("email").value=null;
+      
   };
 
   render() {
@@ -84,7 +89,7 @@ export class Contact extends Component {
             </div>
 
             <div class="col-75f">
-              <input type="text" name="name" className="inputMarco" onChange={this.handleChangeName} required/>
+              <input id="name" type="text" name="name" className="inputMarco" onChange={this.handleChangeName} required/>
             </div>
           </div>
 
@@ -95,7 +100,7 @@ export class Contact extends Component {
 
             <div class="col-75f">
               <input
-required
+required id="email"
                 type="text"
                 name="email"
                 ref="email"
@@ -112,6 +117,7 @@ required
 
             <div class="col-75f">
               <input
+              id="tel"
                 className="inputMarco"
                 type="number"
                 name="phone"
@@ -128,6 +134,7 @@ required
 
             <div class="col-75f">
               <input
+                id="msj"
                 className="inputMarco"required
                 type="textarea"
                 name="message"

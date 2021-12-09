@@ -9,7 +9,7 @@ export class NavAdmin extends Component {
           <div>
               
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark  fixed-top sticky-top">
-<a class="navbar-brand" style={{margin: "0px 10px"}} href="#">Ackleaners Administracion</a>
+<a class="navbar-brand" style={{margin: "0px 10px"}} href="/">Ackleaners Administracion</a>
         <button
           className="navbar-toggler"
           type="button"
@@ -36,7 +36,7 @@ export class NavAdmin extends Component {
           
           <li key="keysignout" className="nav-item" onClick={logout}>
             <a href="/"  className="nav-link m-2 menu-item nav-active text-light">
-              <span>Sign Out</span>
+              <span>Salir</span>
             </a>
           </li>
 

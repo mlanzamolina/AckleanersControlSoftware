@@ -33,20 +33,6 @@ export default function Ordenes() {
       </div>
       <div class="contentf">
         <h1 style={{ textAlign: "center" }}>Herramienta de ordenes</h1>
-        <a href="/">
-          <img
-            src={logo}
-            alt="logo ackleaners"
-            width="250"
-            style={{
-              margin: 0,
-              top: "auto",
-              right: 45,
-              bottom: 40,
-              position: "fixed",
-            }}
-          />
-        </a>
       </div>
     </>
   );

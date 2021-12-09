@@ -300,10 +300,9 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         </a>
         <a class="active" href="/eliminarEmpleados">Modificar Empleado</a>
         </div>
-  <a class="active" href="/eliminarEmpleados">Modificar Empleado</a>
   
-    <div className="container col-md-12 mt-4">
-      <div className="text-center">
+    <div className="contentf">
+      <div className="text-center" style={{margin:"50px 0px"}}>
         <h1>Empleados</h1>
         <hr></hr>
       </div>
