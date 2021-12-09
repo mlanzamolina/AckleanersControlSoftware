@@ -62,6 +62,7 @@ const dbOrdenes = getFirestore(appEmpleado)
 export {
   auth,
   db,
+  app,
   almacenamiento,
   signInWithEmailAndPassword,
   registerWithEmailAndPassword,
