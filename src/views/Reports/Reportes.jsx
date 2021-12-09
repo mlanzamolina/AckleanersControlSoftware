@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
+import {auth} from "../../components/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link, useHistory, useParams } from "react-router-dom";
@@ -9,8 +11,8 @@ import "./table.css";
 import Nav from "../NavAdmin";
 
 export default function Reportes() {
+  const [user, loading, error] = useAuthState(auth);
   const [sidebar, setSidebar] = useState(false);
-
   const showSidebar = () => setSidebar(!sidebar);
   const history = useHistory();
   const [dats, setDatos] = useState({
@@ -26,6 +28,11 @@ export default function Reportes() {
   function handleSubmit() {
     history.push(`/AgregarReportes/${dats.numero}`);
   }
+
+  useEffect(() => {
+    if(loading) return;
+    if (user === null) window.location.assign("/Login");
+  }, [user, loading]);
 
   return (
     <>

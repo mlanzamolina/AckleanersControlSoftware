@@ -4,7 +4,9 @@ import logo from "../../img/logo.png";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SideBarData";
-import { dbEmpleado, almacenamiento } from "../../components/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { dbEmpleado, almacenamiento, auth } from "../../components/firebase";
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import swal from "sweetalert";
 import { Interfaz } from "./empleadoNav";
@@ -12,9 +14,20 @@ import "./estiloEmpleado.css";
 import Nav from "../NavAdmin";
 
 const AgregarEmpleado = () => {
+  const [user, loading, error] = useAuthState(auth);
   const tablaEmpleadosRef = collection(dbEmpleado, "Empleados");
+  const [empleados, emp_loading, emp_error] = useCollectionData(
+    collection(dbEmpleado, "Empleados"),
+    { idField: "id" }
+  );
   const [image, setImage] = useState("");
   const [imageurl, setimageURL] = useState("");
+  const [dni_unico, setDni_unico] = useState("");
+
+  useEffect(() => {
+    if (loading) return;
+    if (user === null) window.location.assign("/Login");
+  }, [user, loading]);
 
   const [dats, setDatos] = useState({
     nombre: " ",
@@ -30,6 +43,21 @@ const AgregarEmpleado = () => {
     setDatos({
       ...dats,
       [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleDni = (e) => {
+    setDni_unico(true);
+    empleados.map((item) => {
+      if (item.dni === e.target.value) {
+        setDni_unico(false);
+        swal({
+          title: "Numero de Documento Nacional de Identifacicion repetido",
+          text: "Por favor reingrese un DNI unico o no se le dejara avanzar a agregar",
+          icon: "warning",
+          button: "aceptar",
+        });
+      }
     });
   };
 
@@ -61,7 +89,8 @@ const AgregarEmpleado = () => {
       dats.numero == " " ||
       dats.id == " " ||
       dats.correo == " " ||
-      image === null
+      image === null ||
+      !dni_unico
     ) {
       swal({
         title: "No se realizo",
@@ -121,10 +150,12 @@ const AgregarEmpleado = () => {
     <Fragment>
       <Nav />
       <div class="sidebar">
-          <a href="/ListarEmpleado">Listar Empleado</a>
-          <a class="active" href="/AgregarEmpleado">Agregar Empleado</a>
-          <a href="/ModificarEmpleado">Modificar Empleado</a>
-        </div>
+        <a href="/ListarEmpleado">Listar Empleado</a>
+        <a class="active" href="/AgregarEmpleado">
+          Agregar Empleado
+        </a>
+        <a href="/ModificarEmpleado">Modificar Empleado</a>
+      </div>
       <div class="contentf">
         <div
           className="contenedorPrincipal"
@@ -188,6 +219,7 @@ const AgregarEmpleado = () => {
                     pattern="[0-9]{13}"
                     title="Numero 13 digitos sin guiones"
                     onChange={handleInputChance}
+                    onBlur={handleDni}
                     autoFocus
                     required
                   ></input>
