@@ -1,0 +1,137 @@
+import React, { Fragment, useState, useEffect } from "react";
+import { app } from "../../components/firebase";
+import "../Employees/estiloEmpleado.css"
+import { Link } from "react-router-dom";
+import swal from "sweetalert";
+
+export const AgregarDocumento = () => {
+
+    const [archivoUrl, setArchivoUrl] = useState('');
+
+    const archivoHandler = async (event) => {
+        const archivo = event.target.files[0];
+        swal({
+            title: "¡Convirtiendo!",
+            icon: "warning",
+            text: "Un momento...",
+            timer: 5000,
+            button: false
+        });
+        const storageRef = app.storage().ref("Documentos");
+        const archivoPath = storageRef.child(archivo.name);
+        await archivoPath.put(archivo);
+        console.log("Archivo cargado ", archivo.name);
+        const enlaceUrl = await archivoPath.getDownloadURL();
+        setArchivoUrl(enlaceUrl);
+    }
+
+    const submitHandler = async (event) => {
+        event.preventDefault()
+        const nombreArchivo = event.target.nombre.value;
+        if (!nombreArchivo) {
+            swal({
+                title: "No se realizo",
+                text: "Coloque un nombre para el archivo",
+                icon: "warning",
+                button: "aceptar"
+            });
+            return;
+        }
+        const descripcionArchivo = event.target.descripcion.value;
+        if (!descripcionArchivo) {
+            swal({
+                title: "No se realizo",
+                text: "Coloque una descripcion para el archivo",
+                icon: "warning",
+                button: "aceptar"
+            });
+            return;
+        }
+        const tablaDocumentosRef = app.firestore().collection("Documentos");
+        const documento = tablaDocumentosRef.doc().set({
+            nombre: nombreArchivo,
+            descripcion: descripcionArchivo,
+            url: archivoUrl
+        });
+        swal({
+            title: "¡Agregado!",
+            text: "Archivo agregado a la base de datos...",
+            icon: "info",
+            button: "Aceptar"
+        });
+        
+        document.getElementById("i_nombre").value = null;
+        document.getElementById("i_descripcion").value = null;
+        document.getElementById("i_foto").value = null;
+        
+        return;
+    }
+
+    return (
+        <>
+            <form onSubmit={submitHandler}>
+                <div className="p-2 contenedorPrincipal">
+                    <div className="container rounded contenedorFormulario">
+                        <div style={{ "marginTop": "12%", "marginBottom": "100%" }}>
+                            <div class="mb-3 col-md-6">
+                                <label for="exampleFormControlInput1" className="form-label letrasFormulario" style={{ "marginTop": "10%" }}>Nombre del Archivo</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="i_nombre"
+                                    placeholder="Ingrese nombre"
+                                    name="nombre"
+                                >
+                                </input>
+                            </div>
+                            <div class="mb-3 col-md-8">
+                                <label for="exampleFormControlTextarea1" className="form-label letrasFormulario" >Descripcion del Archivo</label>
+                                <textarea
+                                    placeholder="Ingrese descripcion del archivo..."
+                                    className="form-control"
+                                    id="i_descripcion"
+                                    style={{ "resize": "none" }}
+                                    rows="3"
+                                    name="descripcion"
+                                >
+                                </textarea>
+                            </div>
+
+                            <div class="offset-lg-4">
+
+                                <input
+                                    id="i_foto"
+                                    type="file"
+                                    placeholder="Cargar documento..."
+                                    style={{ "marginTop": "5%" }}
+                                    onChange={archivoHandler}
+                                />
+
+                            </div>
+
+                            <div class="col-12 offset-lg-7">
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary"
+                                    style={{ "marginBottom": "5%", "marginRight": "2%", "marginTop": "5%" }}
+                                >
+                                    Cargar documento
+                                </button>
+
+                                <Link to="/adminDocs">
+                                    <button
+                                        type="submit"
+                                        class="btn btn-danger"
+                                        style={{ "marginBottom": "5%", "marginTop": "5%" }}
+                                    >Regresar</button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </>
+    )
+}
+export default AgregarDocumento;

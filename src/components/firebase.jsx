@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app";
 import 'firebase/compat/auth';
 import "firebase/compat/firestore";
+import 'firebase/compat/storage';
 import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
@@ -17,12 +18,12 @@ const app = firebase.initializeApp(firebaseConfig);
 const auth = app.auth();
 auth.languageCode = 'es_419';
 const db = app.firestore();
+const almacenamiento = app.storage();
 
 const signInWithEmailAndPassword = async (email, password) => {
   try {
     await auth.signInWithEmailAndPassword(email, password);
-    window.location.assign("/");
-    alert("Bienvenido");
+    window.location.assign("/Management");
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -51,6 +52,7 @@ const sendPasswordResetEmail = async (email) => {
 };
 
 const logout = () => {
+  window.location.assign("/");
   auth.signOut();
 };
 
@@ -60,6 +62,8 @@ const dbOrdenes = getFirestore(appEmpleado)
 export {
   auth,
   db,
+  app,
+  almacenamiento,
   signInWithEmailAndPassword,
   registerWithEmailAndPassword,
   sendPasswordResetEmail,

@@ -8,11 +8,9 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SideBarData";
 import "./Formulario.css";
+import Nav from "../NavAdmin";
 
 const ListarEmpleado = () => {
-  const [sidebar, setSidebar] = useState(false);
-
-  const showSidebar = () => setSidebar(!sidebar);
   const [dats, setDatos] = useState({
     nombre: " ",
     id: " ",
@@ -35,14 +33,7 @@ const ListarEmpleado = () => {
 
   return (
     <>
-      <div className="dropdown" style={{ float: "right" }}>
-        <button class="dropbtn">Opciones</button>
-        <div class="dropdown-content">
-          <a href="/ListarEmpleado">Listar Empleado</a>
-          <a href="/AgregarEmpleado">AgregarEmpleado</a>
-          <a href="/ModificarEmpleado">ModificarEmpleado</a>
-        </div>
-      </div>
+    <Nav/>
       <Fragment>
         <a href="/">
           <img
@@ -58,35 +49,12 @@ const ListarEmpleado = () => {
             }}
           />
         </a>
-        <div className="managementsidemenu">
-          <Link to="#" className="managementmenu-bars">
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
+        <div class="sidebar">
+          <a class="active" href="/ListarEmpleado">Listar Empleado</a>
+          <a href="/AgregarEmpleado">Agregar Empleado</a>
+          <a href="/ModificarEmpleado">Modificar Empleado</a>
         </div>
-        <nav
-          className={
-            sidebar ? "managementnav-menu active" : "managementnav-menu"
-          }
-        >
-          <ul className="managementnav-menu-items" onClick={showSidebar}>
-            <li className="navbar-toggle">
-              <Link to="#" className="managementmenu-bars">
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li>
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={`management${item.cName}`}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-        <div>
+        <div class="contentf">
           <h1 className="tituloh1">Listar Empleado</h1>
           <table className="ta" align="center">
             <thead>

@@ -9,7 +9,7 @@ export class Header extends Component {
        <img src={about} alt="" width= "100%"/>
        <div className="centered" ><a href="#features" className="myButtonm"><h2>Nuestros servicios</h2></a></div>
        <div className="centered2"><a href="#contact" className="myButtonm"><h2>Contactenos</h2></a></div>
-       </div>
+    </div>
      </>
     );
   }
