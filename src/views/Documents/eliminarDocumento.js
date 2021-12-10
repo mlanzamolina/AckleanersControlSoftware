@@ -1,4 +1,5 @@
 import React from 'react'
+import Nav from "../NavAdmin"
 
 export const eliminarDocumento = () => {
     return (

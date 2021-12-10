@@ -3,6 +3,7 @@ import { app } from "../../components/firebase";
 import "../Employees/estiloEmpleado.css"
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
+import Nav from "../NavAdmin"
 
 export const AgregarDocumento = () => {
 
@@ -69,6 +70,7 @@ export const AgregarDocumento = () => {
 
     return (
         <>
+        <Nav></Nav>
             <form onSubmit={submitHandler}>
                 <div className="p-2 contenedorPrincipal">
                     <div className="container rounded contenedorFormulario">
