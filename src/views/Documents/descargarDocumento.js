@@ -3,6 +3,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { collection } from "@firebase/firestore";
 import { db } from "../../components/firebase";
+import Nav from "../NavAdmin"
 
 export const DescargarDocumento = () => {
     const [datos, setDatos] = useState({
@@ -17,6 +18,8 @@ export const DescargarDocumento = () => {
     );
 
     return (
+        <>
+        <Nav />
         <div className="p-2 contenedorPrincipal" >
             <div className="container rounded contenedorFormularioBajar" style={{ "marginTop": "12%", "marginBottom": "100%" }}>
                 <table class="table table-hover table-responsive">
@@ -58,6 +61,7 @@ export const DescargarDocumento = () => {
                             </div>
             </div>
         </div>
+        </>
     )
 }
 
