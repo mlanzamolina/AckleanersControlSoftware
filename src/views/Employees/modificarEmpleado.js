@@ -66,10 +66,10 @@ const ModificarEmpleado = () => {
           />
         </a>
         <div class="sidebar">
-          <a href="/ListarEmpleado">Listar Empleado</a>
-          <a href="/AgregarEmpleado">Agregar Empleado</a>
-          <a href="/eliminarEmpleados">Administrar Empleado</a>
-          <a class="active" href="/ModificarEmpleado">Modificar Empleado</a>
+        <a  href="/AgregarEmpleado">
+          Agregar Empleado
+        </a>
+        <a class="active" href="/eliminarEmpleados">Modificar Empleado</a>
         </div>
         <div class="contentf">
           <h1 className="tituloh1">Modificar Empleado</h1>

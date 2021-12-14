@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
+import {auth} from "../../components/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -7,9 +9,16 @@ import logo from "../../img/logo.png";
 import Nav from "../NavAdmin";
 
 export default function Ordenes() {
+  const [user, loading, error] = useAuthState(auth);
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
+  
+  useEffect(() => {
+    console.log(user);
+    if(loading) return;
+    if (user === null) window.location.assign("/Login");
+  }, [user, loading]);
 
   return (
     <>
@@ -24,20 +33,6 @@ export default function Ordenes() {
       </div>
       <div class="contentf">
         <h1 style={{ textAlign: "center" }}>Herramienta de ordenes</h1>
-        <a href="/">
-          <img
-            src={logo}
-            alt="logo ackleaners"
-            width="250"
-            style={{
-              margin: 0,
-              top: "auto",
-              right: 45,
-              bottom: 40,
-              position: "fixed",
-            }}
-          />
-        </a>
       </div>
     </>
   );

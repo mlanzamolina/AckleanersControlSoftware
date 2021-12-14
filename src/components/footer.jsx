@@ -43,10 +43,7 @@ export class footer extends Component {
            
 
             <div class="text-center p-3">
-              © 2020 Copyright:
-              <a class="text-white" href="https://mdbootstrap.com/">
-                MDBootstrap.com
-              </a>
+              © 2021 Ackleaners Dev Team
             </div>
           </footer>
         </div>{" "}

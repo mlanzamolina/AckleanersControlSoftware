@@ -6,6 +6,10 @@ export const Documentos = () => {
     return (
         <>
             <Nav></Nav>
+            <div
+          className="contenedorPrincipal2"
+          style={{ width: "100%", height: "100%" }}
+        >
             <div className="p-3 estiloPrincipal">
                 <div className="container rounded estiloContenedor">
                     <div>
@@ -33,6 +37,8 @@ export const Documentos = () => {
                     </div>
                 </div>
             </div>
+            </div>
+           
         </>
     )
 }

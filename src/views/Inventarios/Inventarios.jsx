@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
+import {auth} from "../../components/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -7,9 +9,15 @@ import logo from "../../img/logo.png";
 import Nav from "../NavAdmin";
 
 export default function Inventarios() {
+  const [user, loading, error] = useAuthState(auth);
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
+
+  useEffect(() => {
+    if(loading) return;
+    if (user === null) window.location.assign("/Login");
+  }, [user, loading]);
 
   return (
     <>

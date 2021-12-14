@@ -3,6 +3,10 @@
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
     background-size: cover;
 }
+.contenedorPrincipal2{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
+    background-size: cover;
+}
 
 .estiloContenedor{
     background-color: rgba(0, 0, 0, 0.40);
