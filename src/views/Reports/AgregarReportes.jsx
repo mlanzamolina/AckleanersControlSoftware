@@ -132,8 +132,7 @@ setFecha(today);
 </div>
 <br></br>
         <div class="form-group col-md-3">
-        <label for="Numero Unidades">Numero de Unidades:</label>
-        <h1>{index}</h1>
+        <label style={{margin: "10px 10px"}} for="Numero Unidades">Numero de Unidades: {index}</label>
         </div>
     </form> 
   
