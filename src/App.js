@@ -82,7 +82,7 @@ function App() {
               <Reportes />
             </Route>
 
-            <Route path="/AgregarReportes/:id">
+            <Route path="/AgregarReportes/:id/:nombre/:telefono">
               <AgregarReportes />
             </Route>
 
