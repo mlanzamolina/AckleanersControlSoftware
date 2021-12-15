@@ -53,7 +53,7 @@ export const AgregarDocumento = () => {
         if(tipoArchivo == "Seleccione tipo de archivo"){
             swal({
                 title: "No se realizo",
-                text: "Coloque una un tipo para el archivo",
+                text: "Coloque un tipo para el archivo",
                 icon: "warning",
                 button: "aceptar"
             });
