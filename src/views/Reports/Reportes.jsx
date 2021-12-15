@@ -59,8 +59,8 @@ setFecha(today);
       });
       
     }else{
+ 
       history.push(`/AgregarReportes/${dats.numero}/${dats.nombre}/${dats.telefono}`);
-
     }
    
   }

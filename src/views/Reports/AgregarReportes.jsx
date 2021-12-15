@@ -96,7 +96,8 @@ setFecha(today);
     <>
     <form>
       <div>
-    <img src={logito} alt="" width="250"/>
+        <a href="/management"><img src={logito} alt="" width="250"/></a>
+    
     </div>
       <div class="row g-3">
         <div class="col-md-3">
@@ -155,6 +156,7 @@ setFecha(today);
       <div>
       <label>Tel: 33067477  Correo Electronico : ackleaners@gmail.com</label>
       </div>
+
     </div>
     </>
   );
