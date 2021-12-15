@@ -8,12 +8,10 @@ import { dbOrdenes } from "../../components/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import "./Formulario.css";
 import swal from "sweetalert";
-import OrdenesNavigation from "./navigation";
+import Nav from "../NavAdmin";
 
 const AgregarOrden = () => {
-  const [sidebar, setSidebar] = useState(false);
   const tablaOrdenesRef = collection(dbOrdenes, "OrdenesTrabajo");
-  const showSidebar = () => setSidebar(!sidebar);
 
   const [dats, setDatos] = useState({
     nombre: " ",
@@ -62,70 +60,80 @@ const AgregarOrden = () => {
 
   return (
     <>
-      <OrdenesNavigation></OrdenesNavigation>
-      <div>
-        <h1 className="tituloh1">Agregar Orden de Trabajo</h1>
+      <Nav />
+      <div class="sidebar">
+      <a href="/Ordenes">Ordenes</a>
+          <a href="/ListarOrdenes">Listar Ordenes</a>
+          <a class="active" href="/AgregarOrden">Agregar Orden</a>
+          <a href="/ModificarOrden">Modificar Orden</a>
+        </div>
+        <div className="contentf">
+      <Fragment>
+          <h1 className="tituloh1">Agregar Orden de Trabajo</h1>
+      
+        <div className="container-sm">
+          <form>
+            <div>
+              <h3 className="letra">Nombre Completo </h3>
+              <input
+                placeholder="Ingrese Nombre"
+                className="form-control"
+                name="nombre"
+                onChange={handleInputChance}
+                required
+              ></input>
+            </div>
+            <div>
+              <h3 className="letra">No. Contacto </h3>
+              <input
+                placeholder="Numero de contacto"
+                className="form-control"
+                type="number"
+                name="numero_telefono"
+                onChange={handleInputChance}
+                required
+              ></input>
+            </div>
+            <div>
+              <h3 className="letra">Cantidad de unidades </h3>
+              <input
+                placeholder="Unidades"
+                className="form-control propiedadUnidades"
+                type="number"
+                name="cantidad_unidades"
+                onChange={handleInputChance}
+                required
+              ></input>
+            </div>
+            <div>
+              <h3 className="letra">Descripcion </h3>
+              <textarea
+                className="propiedadTextArea form-control"
+                name="descripcion"
+                onChange={handleInputChance}
+                placeholder="Si tienes comentarios adicionales o un metodo de contacto adicional, puedes especificarlos..."
+              ></textarea>
+            </div>
+            <div></div>
+            <div>
+              <Link to="/">
+                <button type="submit" className="btn btn-danger">
+                  Salir
+                </button>
+              </Link>
+
+              <button
+                type="submit"
+                className="btn btn-primary"
+                onClick={handleSubmit}
+              >
+                Realizar Orden
+              </button>
+            </div>
+          </form>
+        </div>
+      </Fragment>
       </div>
-
-      <form className="col-md">
-        <div>
-          <h3 className="letra">Nombre Completo </h3>
-          <input
-            placeholder="Ingrese Nombre"
-            className="form-control"
-            name="nombre"
-            onChange={handleInputChance}
-            required
-          ></input>
-        </div>
-        <div>
-          <h3 className="letra">No. Contacto </h3>
-          <input
-            placeholder="Numero de contacto"
-            className="form-control"
-            type="number"
-            name="numero_telefono"
-            onChange={handleInputChance}
-            required
-          ></input>
-        </div>
-        <div>
-          <h3 className="letra">Cantidad de unidades </h3>
-          <input
-            placeholder="Unidades"
-            className="form-control propiedadUnidades"
-            type="number"
-            name="cantidad_unidades"
-            onChange={handleInputChance}
-            required
-          ></input>
-        </div>
-        <div>
-          <h3 className="letra">Descripcion </h3>
-          <textarea
-            className="propiedadTextArea form-control"
-            name="descripcion"
-            onChange={handleInputChance}
-            placeholder="Si tienes comentarios adicionales o un metodo de contacto adicional, puedes especificarlos..."
-          ></textarea>
-        </div>
-        <div></div>
-        <div>
-          <Link to="/">
-            <button type="submit" className="btn btn-danger">
-              Salir
-            </button>
-          </Link>
-
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={handleSubmit}
-          >
-            Realizar Orden
-          </button>
-        </div>
-      </form>
     </>
   );
 };

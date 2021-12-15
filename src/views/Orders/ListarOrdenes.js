@@ -8,12 +8,9 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SideBarData";
 import "./Formulario.css";
-import OrdenesNavigation from "./navigation";
+import Nav from "../NavAdmin";
 
 const ListarOrdenes = () => {
-  const [sidebar, setSidebar] = useState(false);
-
-  const showSidebar = () => setSidebar(!sidebar);
   const [dats, setDatos] = useState({
     nombre: " ",
     numero_telefono: " ",
@@ -36,39 +33,47 @@ const ListarOrdenes = () => {
 
   return (
     <>
-      <OrdenesNavigation></OrdenesNavigation>
-      <div>
-        <h1 className="tituloh1">Listar Ordenes</h1>
-        <table className="table table-dark" align="center">
-          {/*<table className="ta" align="center">*/}
-          <thead>
-            <tr>
-              {/*<tr className="ta">*/}
-              <th scope="col">Nombre </th>
-              <th scope="col">Unidades</th>
-              <th scope="col">Descripcion</th>
-              <th scope="col">Telefono</th>
-              <th scope="col">Estado</th>
-            </tr>
-          </thead>
-          <tbody>
-            {empleados
-              ? empleados.map((item) => {
-                  return (
-                    <tr key={item.id}>
-                      {/*<tr className="ta" key={item.id}>*/}
-                      <td>{item.nombre}</td>
-                      <td>{item.cantidad_unidades}</td>
-                      <td>{item.descripcion}</td>
-                      <td>{item.numero_telefono}</td>
-                      <td>{item.estado}</td>
-                    </tr>
-                  );
-                })
-              : null}
-          </tbody>
-        </table>
+    <Nav></Nav>
+    <div class="sidebar">
+        <a href="/Ordenes">Ordenes</a>
+        <a class="active" href="/ListarOrdenes">Listar Ordenes</a>
+        <a href="/AgregarOrden">Agregar Orden</a>
+        <a href="/ModificarOrden">Modificar Orden</a>
       </div>
+      <Fragment>
+        <div class="contentf">
+          <h1 className="tituloh1">Listar Ordenes</h1>
+          <table className="table table-dark" align="center">
+            {/*<table className="ta" align="center">*/}
+            <thead>
+              <tr>
+                {/*<tr className="ta">*/}
+                <th scope="col">Nombre </th>
+                <th scope="col">Unidades</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              {empleados
+                ? empleados.map((item) => {
+                    return (
+                      <tr key={item.id}>
+                        {/*<tr className="ta" key={item.id}>*/}
+                        <td>{item.nombre}</td>
+                        <td>{item.cantidad_unidades}</td>
+                        <td>{item.descripcion}</td>
+                        <td>{item.numero_telefono}</td>
+                        <td>{item.estado}</td>
+                      </tr>
+                    );
+                  })
+                : null}
+            </tbody>
+          </table>
+        </div>
+      </Fragment>
     </>
   );
 };

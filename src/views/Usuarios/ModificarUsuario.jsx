@@ -4,7 +4,7 @@ import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { SidebarData } from "./SideBarData";
 import logo from "../../img/logo.png";
-import UsersNavigation from "./UsersNavigation";
+import Nav from "../NavAdmin";
 
 export default function ModificarUsuario() {
   const [sidebar, setSidebar] = useState(false);
@@ -12,9 +12,17 @@ export default function ModificarUsuario() {
   const showSidebar = () => setSidebar(!sidebar);
 
   return (
-    <div>
-      <>
-        <UsersNavigation></UsersNavigation>
+    <>
+      <Nav />
+      <div class="sidebar">
+        <a href="/Usuarios">Usuarios</a>
+        <a href="/ListarUsuarios">Listar Usuarios</a>
+        <a href="/AgregarUsuarios">Agregar usuario</a>
+        <a class="active" href="/ModificarUsuarios">
+          Modificar usuario
+        </a>
+      </div>
+      <div class="contentf">
         <h1 style={{ textAlign: "center" }}>
           Manage Modificar usuarios funciona
         </h1>
@@ -32,7 +40,7 @@ export default function ModificarUsuario() {
             }}
           />
         </a>
-      </>
-    </div>
+      </div>
+    </>
   );
 }

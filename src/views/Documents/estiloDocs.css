@@ -3,6 +3,10 @@
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
     background-size: cover;
 }
+.contenedorPrincipal2{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
+    background-size: cover;
+}
 
 .estiloContenedor{
     background-color: rgba(0, 0, 0, 0.40);
@@ -27,7 +31,7 @@
 }
 
 .fondoAgregar{
-    background-image: url("https://cdn-icons.flaticon.com/png/512/2278/premium/2278897.png?token=exp=1638681781~hmac=936b92d6d97c08bb2052453cdfb87425");
+    background-image: url("https://cdn-icons-png.flaticon.com/512/2541/2541984.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
@@ -66,3 +70,18 @@
     border-style:dashed;
 }
 
+.letrasDescarga{
+    color: white;
+}
+
+.letrasDescarga:hover{
+    color: green;
+}
+
+.contenedorFormularioBajar{
+    background-color: rgba(0, 0, 0, 0.40);
+    height: 100%;
+    width: 70%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}

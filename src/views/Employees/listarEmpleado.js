@@ -8,7 +8,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SideBarData";
 import "./Formulario.css";
-import EmployeeNavigation from "./EmployeeNavigation";
+import Nav from "../NavAdmin";
 
 const ListarEmpleado = () => {
   const [dats, setDatos] = useState({
@@ -33,8 +33,28 @@ const ListarEmpleado = () => {
 
   return (
     <>
-      <EmployeeNavigation></EmployeeNavigation>
-        <div>
+    <Nav/>
+      <Fragment>
+        <a href="/">
+          <img
+            src={logo}
+            alt="logo ackleaners"
+            width="250"
+            style={{
+              margin: 0,
+              top: "auto",
+              right: 45,
+              bottom: 40,
+              position: "fixed",
+            }}
+          />
+        </a>
+        <div class="sidebar">
+          <a class="active" href="/ListarEmpleado">Listar Empleado</a>
+          <a href="/AgregarEmpleado">Agregar Empleado</a>
+          <a href="/ModificarEmpleado">Modificar Empleado</a>
+        </div>
+        <div class="contentf">
           <h1 className="tituloh1">Listar Empleado</h1>
           <table className="ta" align="center">
             <thead>
@@ -63,6 +83,7 @@ const ListarEmpleado = () => {
             </tbody>
           </table>
         </div>
+      </Fragment>
     </>
   );
 };
