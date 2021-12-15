@@ -18,7 +18,7 @@ export default function Reportes() {
   const [dats, setDatos] = useState({
     numero: 0,
     nombre: "",
-    fecha: "",
+    telefono: "",
   });
   const [fecha,setFecha]= useState("");
 
@@ -45,6 +45,7 @@ setFecha(today);
       ...dats,
       [event.target.name]: event.target.value,
     });
+    console.log(dats);
   };
 
   function handleSubmit() {
@@ -68,12 +69,16 @@ setFecha(today);
     <form className="row g-3">
     <div class="col-md-6">
       <label for="inputNombre">Nombre del Cliente</label>
-      <input type="nombre" class="form-control" onChange={handleInputChance} id="inputNombre" placeholder="Nombre Cliente"/>
+      <input type="text" name ="nombre" class="form-control" onChange={handleInputChance} id="inputNombre" placeholder="Nombre Cliente"/>
       </div>
       <div className="col-md-6">
       <label for="inputFecha">Fecha</label>
       <input type="text" class="form-control" id="inputFecha" disabled value={fecha}/>
-  </div>
+      </div>
+      <div className="col-md-6">
+        <label for="inputTelefono">Telefono del Cliente</label>
+        <input type="text" name="telefono" class="form-control" onChange={handleInputChance} id="inputTelefono" placeholder="Telefono/celular"/> 
+      </div>
   <div class="col-md-6">
     <label for="inputAddress">ID de Orden de Trabajo</label>
     <input type="text" class="form-control" id="inputOrdenTrabajo" placeholder="ID del Reporte"/>
@@ -98,7 +103,7 @@ setFecha(today);
         <div className="alinkcrear">
           <button className="btn btn-primary">
           <a
-            href={`/AgregarReportes/${dats.numero}`}
+            href={`/AgregarReportes/${dats.numero}/${dats.nombre}/${dats.telefono}`}
             target="_blank" style={{color: "white"}}
           >
             Crear
@@ -106,8 +111,22 @@ setFecha(today);
         </button>
         </div>
       </form>
+     
 </div>
-      
+      {/* <a href="/">
+        <img
+          src={logo}
+          alt="logo ackleaners"
+          width="150"
+          style={{
+            margin: 0,
+            top: "auto",
+            right: 45,
+            bottom: 40,
+            position: "fixed",
+          }}
+        />
+      </a> */}
       </div>
     </>
   );
