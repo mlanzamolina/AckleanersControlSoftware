@@ -15,8 +15,6 @@ export default function Login() {
   function handleSubmit(e) {
 
     e.preventDefault();
-    console.log(pass);
-    console.log(usern);
 
         if (/^\w+([.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail)\.(?:|com|es)+$/.test(usern)) {
           if (pass === null) {

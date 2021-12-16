@@ -5,8 +5,11 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { SidebarData } from "./SideBarData";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { collection, addDoc } from "firebase/firestore";
+import {
+  useCollectionData,
+  useDocumentData,
+} from "react-firebase-hooks/firestore";
+import { collection, addDoc, doc } from "firebase/firestore";
 import { dbOrdenes, db } from "../../components/firebase";
 
 import swal from "sweetalert";
@@ -15,9 +18,12 @@ import Nav from "../NavAdmin";
 
 export default function Reportes() {
   const tablaOrdenesRef = collection(dbOrdenes, "OrdenesTrabajo");
+  const [empAdmin, setEmpAdmin] = useState("");
   const [orden_emps, setOrden_emps] = useState([]);
   const [flag, setFlag] = useState(true);
   const [cantUnidades, setcantUnidades] = useState(1);
+  const [nomCliente, setNombreCliente] = useState("");
+  const [telCliente, setTelefono] = useState("");
   const [select_emp, setSelect_emp] = useState("");
   const [empleados, emp_loading, emp_error] = useCollectionData(
     collection(db, "Empleados"),
@@ -90,9 +96,21 @@ export default function Reportes() {
       [event.target.name]: event.target.value,
     });
   };
+  function handleOrdenData(data) {
+    if (data === -1) {
+      setNombreCliente("");
+      setcantUnidades(1);
+      setTelefono("");
+    } else {
+      const obj = nombreOrden.at(data);
+      setTelefono(obj.numero_telefono);
+      setNombreCliente(obj.nombre);
+      setcantUnidades(obj.cantidad_unidades);
+    }
+  }
 
   function handleSubmit() {
-    if (dats.nombre === "" || dats.numero === "" || dats.telefono === "") {
+    if (nomCliente === "" || telCliente === "" || cantUnidades === 0) {
       swal({
         title: "Revisar fomulario",
         text: "Por favor verifique que todos los campos esten llenos",
@@ -101,7 +119,7 @@ export default function Reportes() {
       });
     } else {
       history.push(
-        `/AgregarReportes/${dats.numero}/${dats.nombre}/${dats.telefono}`
+        `/AgregarReportes/${cantUnidades}/${nomCliente}/${telCliente}`
       );
     }
   }
@@ -123,41 +141,6 @@ export default function Reportes() {
         <h1 style={{ textAlign: "center" }}>Crear Reporte</h1>
         <div className="containerf">
           <form className="row g-3">
-            <div class="col-md-6">
-              <label for="inputNombre">Nombre del Cliente</label>
-              <input
-                required
-                type="text"
-                name="nombre"
-                class="form-control"
-                onChange={handleInputChance}
-                id="inputNombre"
-                placeholder="Nombre Cliente"
-              />
-            </div>
-            <div className="col-md-6">
-              <label for="inputFecha">Fecha</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputFecha"
-                disabled
-                value={fecha}
-              />
-            </div>
-            <div className="col-md-6">
-              <label for="inputTelefono">Telefono del Cliente</label>
-              <input
-                required
-                type="text"
-                name="telefono"
-                class="form-control"
-                onChange={handleInputChance}
-                id="inputTelefono"
-                placeholder="Telefono/celular"
-              />
-            </div>
-
             <form class="row g-3">
               <h6>Orden de trabajo</h6>
               <div class="col-auto">
@@ -166,14 +149,14 @@ export default function Reportes() {
                   class="form-select"
                   disabled={nor_loading}
                   onChange={(e) => {
-                    setcantUnidades(e.target.value);
+                    handleOrdenData(e.target.selectedIndex - 1);
                   }}
                 >
                   <option selected>Seleccioné una orden</option>
                   {nombreOrden
                     ? nombreOrden.map((item) => {
                         return (
-                          <option key={item.id} value={item.cantidad_unidades}>
+                          <option key={item.id} value={item.id}>
                             [Cliente: {item.nombre}]-[Unidades:{" "}
                             {item.cantidad_unidades}]-[Descripcion:{" "}
                             {item.descripcion}]
@@ -205,15 +188,38 @@ export default function Reportes() {
             </form>
 
             <div class="col-md-6">
-              <label for="inputAddress2">
-                Nombre del Empleado que genero el Reporte
-              </label>
+              <label for="inputNombre">Nombre del Cliente</label>
               <input
                 required
                 type="text"
+                name="nombre"
                 class="form-control"
-                id={"Empleado"}
-                placeholder="Ejemplo: Rodrigo Bardales"
+                onChange={handleInputChance}
+                id="inputNombre"
+                placeholder="Nombre Cliente"
+                value={nomCliente}
+                disabled
+              />
+            </div>
+            <div className="col-md-6">
+              <label for="inputFecha">Fecha</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputFecha"
+                disabled
+                value={fecha}
+              />
+            </div>
+            <div className="col-md-6">
+              <label>Telefono del Cliente</label>
+              <input
+                type="text"
+                class="form-control"
+                onChange={handleInputChance}
+                value={telCliente}
+                placeholder="Telefono"
+                disabled
               />
             </div>
             <div class="col-md-6">
@@ -230,8 +236,34 @@ export default function Reportes() {
                 disabled
               ></input>
             </div>
+
             <form class="row g-3">
-              <h6>Empleado</h6>
+              <h6>Empleados que genero el reporte</h6>
+              <div class="col-auto">
+                <select
+                  id="select"
+                  class="form-select"
+                  disabled={emp_loading}
+                  onChange={(e) => {
+                   setEmpAdmin(e.target.value);
+                  }}
+                >
+                  <option selected>Seleccioné un empleado</option>
+                  {empleados
+                    ? empleados.map((item) => {
+                        return (
+                          <option key={item.id} value={item.nombre}>
+                            {item.nombre}
+                          </option>
+                        );
+                      })
+                    : null}
+                </select>
+              </div>
+            
+            </form>
+            <form class="row g-3">
+              <h6>Empleados que trabajaron en la orden</h6>
               <div class="col-auto">
                 <select
                   id="select"
@@ -270,7 +302,7 @@ export default function Reportes() {
                   {orden_emps.map((element, index) => (
                     <li key={index}>
                       {element + "        "}
-                      {console.log(element)}
+                
                       <button
                         type="button"
                         class="btn-close"
@@ -286,7 +318,7 @@ export default function Reportes() {
                 </ul>
               </div>
             </form>
-           
+
             <div className="alinkcrear">
               <button className="btn btn-primary" onClick={handleSubmit}>
                 Crear
