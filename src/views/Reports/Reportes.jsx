@@ -119,24 +119,32 @@ export default function Reportes() {
         button: "aceptar",
       });
     } else {
-      // setTrueReporte(index);
-      history.push(
-        `/AgregarReportes/${cantUnidades}/${nomCliente}/${telCliente}`
-      );
+      setTrueReporte();
+   
+    
     }
   }
-  /*
-  const setTrueReporte = async (id) => {
-    const dbOrdenes = doc(db, "OrdenesTrabajo", id);
-    const nuevoEstado = { reporte: true };
-    await updateDoc(dbOrdenes, nuevoEstado);
-    swal({
-      title: "Completada",
-      text: "reporte creado a continuacion agrege imagenes",
-      icon: "info",
-      button: "Aceptar",
-    });
-  };*/
+
+  const setTrueReporte = async () => {
+    const dbOrdenes = doc(db, "OrdenesTrabajo", nombreOrden.at(index).id);
+    await updateDoc(dbOrdenes, { reporte: true })
+      .then(() => {
+        swal({
+          title: "Completada",
+          text: "reporte creado a continuacion agrege imagenes",
+          icon: "info",
+          button: "Aceptar",
+        });
+      })
+      .then(() => {
+        history.push(
+          `/AgregarReportes/${cantUnidades}/${nomCliente}/${telCliente}`
+        );
+      })
+      .catch((e) => {
+        alert(e);
+      });
+  };
 
   useEffect(() => {
     if (loading) return;
@@ -334,7 +342,7 @@ export default function Reportes() {
             </form>
 
             <div className="alinkcrear">
-              <button className="btn btn-primary" onClick={handleSubmit}>
+              <button type="button"className="btn btn-primary" onClick={handleSubmit}>
                 Crear
               </button>
             </div>
