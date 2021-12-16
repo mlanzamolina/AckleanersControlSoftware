@@ -18,7 +18,7 @@ export default function Reportes() {
   const [dats, setDatos] = useState({
     numero: 0,
     nombre: "",
-    fecha: "",
+    telefono: "",
   });
   const [fecha,setFecha]= useState("");
 
@@ -45,10 +45,24 @@ setFecha(today);
       ...dats,
       [event.target.name]: event.target.value,
     });
+    console.log(dats);
   };
 
   function handleSubmit() {
-    history.push(`/AgregarReportes/${dats.numero}`);
+    if(dats.nombre === "" || dats.numero === "" || dats.telefono === ""){
+   
+      swal({
+        title: "Revisar fomulario",
+        text: "Por favor verifique que todos los campos esten llenos",
+        icon: "warning",
+        button: "aceptar",
+      });
+      
+    }else{
+ 
+      history.push(`/AgregarReportes/${dats.numero}/${dats.nombre}/${dats.telefono}`);
+    }
+   
   }
 
   useEffect(() => {
@@ -68,19 +82,23 @@ setFecha(today);
     <form className="row g-3">
     <div class="col-md-6">
       <label for="inputNombre">Nombre del Cliente</label>
-      <input type="nombre" class="form-control" onChange={handleInputChance} id="inputNombre" placeholder="Nombre Cliente"/>
+      <input  required type="text" name ="nombre" class="form-control" onChange={handleInputChance} id="inputNombre" placeholder="Nombre Cliente"/>
       </div>
       <div className="col-md-6">
       <label for="inputFecha">Fecha</label>
       <input type="text" class="form-control" id="inputFecha" disabled value={fecha}/>
-  </div>
+      </div>
+      <div className="col-md-6">
+        <label for="inputTelefono">Telefono del Cliente</label>
+        <input required type="text" name="telefono" class="form-control" onChange={handleInputChance} id="inputTelefono" placeholder="Telefono/celular"/> 
+      </div>
   <div class="col-md-6">
     <label for="inputAddress">ID de Orden de Trabajo</label>
-    <input type="text" class="form-control" id="inputOrdenTrabajo" placeholder="ID del Reporte"/>
+    <input required type="text" class="form-control" id="inputOrdenTrabajo" placeholder="ID del Reporte"/>
   </div>
   <div class="col-md-6">
     <label for="inputAddress2">Nombre del Empleado que genero el Reporte</label>
-    <input type="text" class="form-control" id={"Empleado"} placeholder="Ejemplo: Rodrigo Bardales"/>
+    <input  required type="text" class="form-control" id={"Empleado"} placeholder="Ejemplo: Rodrigo Bardales"/>
   </div>
   <div>
           <h6>Cantidad de unidades: </h6>
@@ -96,18 +114,28 @@ setFecha(today);
           ></input>
         </div>
         <div className="alinkcrear">
-          <button className="btn btn-primary">
-          <a
-            href={`/AgregarReportes/${dats.numero}`}
-            target="_blank" style={{color: "white"}}
-          >
+          <button className="btn btn-primary" onClick={handleSubmit}>
+         
             Crear
-          </a>
         </button>
         </div>
       </form>
+     
 </div>
-      
+      {/* <a href="/">
+        <img
+          src={logo}
+          alt="logo ackleaners"
+          width="150"
+          style={{
+            margin: 0,
+            top: "auto",
+            right: 45,
+            bottom: 40,
+            position: "fixed",
+          }}
+        />
+      </a> */}
       </div>
     </>
   );
