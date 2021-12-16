@@ -80,7 +80,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
   const [estado, setEstado] = useState("");
   const [foto, setFoto] = useState("");
   const [direccion, setDireccion] = useState("");
-  const [dni_unico, setDni_unico] = useState("");
+  const [dni_unico, setDni_unico] = useState(false);
 
   const [image, setImage] = useState("");
   const [imageurl, setimageURL] = useState("");
@@ -159,7 +159,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
   const handleDni = (e) => {
     setDni_unico(true);
     data.map((item) => {
-      if (item.dni === e.target.value) {
+      if (item.dni === e.target.value && item.dni !== currentID.id ) {
         setDni_unico(false);
         swal({
           title: "Numero de Documento Nacional de Identifacicion repetido",
@@ -223,8 +223,9 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       telefono2 == " " ||
       id2 == " " ||
       correo2 == " " ||
-      !dni_unico
-    ) {
+      dni_unico===true
+      
+    ){
       swal({
         title: "No se realizo",
         text: "No se modifico el empleado, verifique los campos",
