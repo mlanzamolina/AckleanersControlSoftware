@@ -14,6 +14,7 @@ export class Header extends Component {
       //    </>
 
       <>
+      <div id="head">
         <main>
           <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
             <div
@@ -63,6 +64,7 @@ export class Header extends Component {
             </div>
           </div>
         </main>
+        </div>
       </>
     );
   }

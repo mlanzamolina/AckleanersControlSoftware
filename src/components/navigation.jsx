@@ -1,34 +1,32 @@
 import React, { Component } from "react";
 import logo from "../img/ack.png";
 import "./marco.css";
-import Swal from 'sweetalert2'
-
+import Swal from "sweetalert2";
 
 class Navigation extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-
   }
-  handleClick(){
+  handleClick() {
     Swal.fire({
-      title: 'Alto ahi!',
+      title: "Alto ahi!",
       text: "Espacio para empleados",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Soy empleado!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Soy empleado!",
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = "/Login"
+        window.location.href = "/Login";
       }
     });
   }
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top sticky-top ">
-        <a className="navbar-brand" style={{}} href="#">
+        <a className="navbar-brand" style={{}} href="/">
           <img src={logo} id="navbar-brandti" alt="..." />
         </a>
         <a
@@ -64,9 +62,9 @@ class Navigation extends Component {
               >
                 Servicios
               </a>
-            </li>
+            </li> */}
 
-            <li className="nav-item">
+            <li className="active" className="nav-item">
               <a
                 href="#about"
                 className="nav-link m-2 menu-item nav-active text-light"
@@ -75,14 +73,14 @@ class Navigation extends Component {
               </a>
             </li>
 
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a
                 href="#fotos"
                 className="nav-link m-2 menu-item nav-active text-light"
               >
                 Fotos
               </a>
-            </li>
+            </li> */}
             <li className="nav-item">
               <a
                 href="#contact"
@@ -90,10 +88,10 @@ class Navigation extends Component {
               >
                 Contactenos
               </a>
-            </li> */}
+            </li>
             <li className="nav-item">
               <button
-              style={{margin: "10px 10px"}}
+                style={{ margin: "10px 10px" }}
                 className="btn btn-primary"
                 onClick={this.handleClick}
               >

@@ -44,6 +44,7 @@ export class about extends Component {
       //   </div>
       // </div>
 
+      <div id="about">
       <section className="pb-20 bg-blueGray-200 -mt-24">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap">
@@ -137,6 +138,7 @@ export class about extends Component {
           </div>
         </div>
       </section>
+      </div>
     );
   }
 }
