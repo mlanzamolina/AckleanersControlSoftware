@@ -73,6 +73,7 @@ const AgregarOrden = () => {
         descripcion: dats.descripcion,
         estado: dats.estado,
         empleados: orden_emps,
+        reporte: false,
       });
       setOrden_emps([]);
       swal({
@@ -143,7 +144,7 @@ const AgregarOrden = () => {
                 ></textarea>
               </div>
               <form class="row g-3">
-                <h3 className="letra">Empleados a Trabajar</h3>
+                <h3 className="letra">Empleado</h3>
                 <div class="col-auto">
                   <select
                     id="select"
