@@ -50,11 +50,13 @@ setFecha(today);
     items.push(
       <div className="ta1">
         <table>
-          <h2>Unidad: {index + 1}</h2>
+          <br />
+          <h1>Unidad: {index + 1}</h1>
           <tr>
             <th>Sucio</th>
             <th>Limpio</th>
           </tr>
+          <h2>Velocidades</h2>
           <tr>
             <td>
               <SingleImageUploadComponent />
@@ -71,6 +73,7 @@ setFecha(today);
               </div>
             </td>
           </tr>
+          <h2>Temperaturas</h2>
           <tr>
             <td>
               <SingleImageUploadComponent />
@@ -85,6 +88,29 @@ setFecha(today);
               <label for="inputtemperatura" class="sr-only">Temperatura Despues</label>
               <input type="text" class="form-control" id="inputtemperatura" placeholder="temperatura"/>
               </div>
+            </td>
+          </tr>
+          <h2>Evaporador</h2>
+          <tr>
+           
+            <td>
+              <SingleImageUploadComponent />
+            
+            </td>
+            <td>
+              <SingleImageUploadComponent />
+             
+            </td>
+          </tr>
+          <h2>Condensador</h2>
+          <tr>
+            <td>
+              <SingleImageUploadComponent />
+            
+            </td>
+            <td>
+              <SingleImageUploadComponent />
+            
             </td>
           </tr>
         </table>
@@ -107,10 +133,6 @@ setFecha(today);
         <div className="col-md-3">
           <label for="Telefono">Telefono: </label>
           <input type="text" value={telefono} class="form-control" id="inputNombre" placeholder="Telefono/celular"/>
-        </div>
-        <div class="form-group col-md-3">
-        <label for="Direccion">Direccion del Cliente: </label>
-        <input type="text"class="form-control" id="inputDireccion" placeholder="ejemplo: Col. Villareal"/>
         </div>
       </div>
         <div class="form-group col-md-3">
