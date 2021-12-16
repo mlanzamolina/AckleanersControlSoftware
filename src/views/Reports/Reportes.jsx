@@ -9,7 +9,7 @@ import {
   useCollectionData,
   useDocumentData,
 } from "react-firebase-hooks/firestore";
-import { collection, addDoc, doc } from "firebase/firestore";
+import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import { dbOrdenes, db } from "../../components/firebase";
 
 import swal from "sweetalert";
@@ -21,8 +21,9 @@ export default function Reportes() {
   const [empAdmin, setEmpAdmin] = useState("");
   const [orden_emps, setOrden_emps] = useState([]);
   const [flag, setFlag] = useState(true);
-  const [cantUnidades, setcantUnidades] = useState(1);
+  const [cantUnidades, setcantUnidades] = useState(0);
   const [nomCliente, setNombreCliente] = useState("");
+  const [index, setIndex] = useState(0);
   const [telCliente, setTelefono] = useState("");
   const [select_emp, setSelect_emp] = useState("");
   const [empleados, emp_loading, emp_error] = useCollectionData(
@@ -99,7 +100,7 @@ export default function Reportes() {
   function handleOrdenData(data) {
     if (data === -1) {
       setNombreCliente("");
-      setcantUnidades(1);
+      setcantUnidades(0);
       setTelefono("");
     } else {
       const obj = nombreOrden.at(data);
@@ -118,11 +119,24 @@ export default function Reportes() {
         button: "aceptar",
       });
     } else {
+      // setTrueReporte(index);
       history.push(
         `/AgregarReportes/${cantUnidades}/${nomCliente}/${telCliente}`
       );
     }
   }
+  /*
+  const setTrueReporte = async (id) => {
+    const dbOrdenes = doc(db, "OrdenesTrabajo", id);
+    const nuevoEstado = { reporte: true };
+    await updateDoc(dbOrdenes, nuevoEstado);
+    swal({
+      title: "Completada",
+      text: "reporte creado a continuacion agrege imagenes",
+      icon: "info",
+      button: "Aceptar",
+    });
+  };*/
 
   useEffect(() => {
     if (loading) return;
@@ -149,6 +163,7 @@ export default function Reportes() {
                   class="form-select"
                   disabled={nor_loading}
                   onChange={(e) => {
+                    setIndex(e.target.selectedIndex - 1);
                     handleOrdenData(e.target.selectedIndex - 1);
                   }}
                 >
@@ -245,7 +260,7 @@ export default function Reportes() {
                   class="form-select"
                   disabled={emp_loading}
                   onChange={(e) => {
-                   setEmpAdmin(e.target.value);
+                    setEmpAdmin(e.target.value);
                   }}
                 >
                   <option selected>Seleccioné un empleado</option>
@@ -260,7 +275,6 @@ export default function Reportes() {
                     : null}
                 </select>
               </div>
-            
             </form>
             <form class="row g-3">
               <h6>Empleados que trabajaron en la orden</h6>
@@ -302,7 +316,7 @@ export default function Reportes() {
                   {orden_emps.map((element, index) => (
                     <li key={index}>
                       {element + "        "}
-                
+
                       <button
                         type="button"
                         class="btn-close"
