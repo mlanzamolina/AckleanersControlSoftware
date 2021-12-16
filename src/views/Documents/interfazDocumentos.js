@@ -30,7 +30,9 @@ export const Documentos = () => {
                                 <button className="rounded botonSize fondoEliminar">Eliminar Documento</button>
                             </div>
                             <div class="offset-lg-2 espaciadoContenedor">
+                            <Link to="/admiDocumentos">
                                 <button className="rounded botonSize fondoActualizar">Actualizar Documento</button>
+                                </Link>
                             </div>
 
                         </form>

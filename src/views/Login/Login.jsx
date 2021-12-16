@@ -16,8 +16,6 @@ export default function Login() {
   function handleSubmit(e) {
 
     e.preventDefault();
-    console.log(pass);
-    console.log(usern);
 
         if (/^\w+([.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail)\.(?:|com|es)+$/.test(usern)) {
           if (pass === null) {
@@ -107,7 +105,7 @@ export default function Login() {
               </div>{*/}
               </div>
               </form> 
-              <a href="/"><img src={logo} alt="logo ackleaners" width="250" style={{
+              <a href="/"><img src={logo} alt="logo ackleaners" width="12%" height="auto" style={{
               margin: 0,
               top: "auto",
               right: 45,

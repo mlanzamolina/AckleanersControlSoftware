@@ -29,6 +29,7 @@ import EliminarEmpleados from "./views/Employees/eliminarEmpleados";
 import AgregarDocumento from "./views/Documents/agregarDocumento";
 import DescargarDocumento from "./views/Documents/descargarDocumento";
 import "./components/tailwind.css";
+import AdmiDocumentos from "./views/Documents/admiDocumentos";
 
 
 function App() {
@@ -84,7 +85,7 @@ function App() {
               <Reportes />
             </Route>
 
-            <Route path="/AgregarReportes/:id">
+            <Route path="/AgregarReportes/:id/:nombre/:telefono">
               <AgregarReportes />
             </Route>
 
@@ -121,6 +122,9 @@ function App() {
 
             <Route path="/descargarDocumento">
               <DescargarDocumento />
+            </Route>
+            <Route path="/admiDocumentos">
+              <AdmiDocumentos/>
             </Route>
             
           </div>
