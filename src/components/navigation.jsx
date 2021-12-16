@@ -57,7 +57,7 @@ class Navigation extends Component {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto" style={{}}>
-            <li className="active" className="nav-item">
+            {/* <li className="active" className="nav-item">
               <a
                 href="#features"
                 className="nav-link m-2 menu-item nav-active text-light"
@@ -90,7 +90,7 @@ class Navigation extends Component {
               >
                 Contactenos
               </a>
-            </li>
+            </li> */}
             <li className="nav-item">
               <button
               style={{margin: "10px 10px"}}
