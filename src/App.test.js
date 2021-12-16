@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import App from "./App";
 
 test("renders learn react link", () => {

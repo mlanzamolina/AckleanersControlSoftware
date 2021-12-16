@@ -30,6 +30,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import styles from "./Table.module.css";
 import useTable from "./useTable";
 import TableFooter from "./TableFooter";
+import NavAdmin from "../NavAdmin";
 
 
 const AdmiDocumentos=() =>{
@@ -244,7 +245,9 @@ const AdmiDocumentos=() =>{
       const { slice, range } = useTable(data, page, 10);
 
     return (
-        <div className="contentf">
+      <>
+      <NavAdmin></NavAdmin>
+        <div className="contentm">
       <div className="text-center" style={{margin:"50px 0px"}}>
         <h1>Documentos</h1>
         <hr></hr>
@@ -451,22 +454,13 @@ const AdmiDocumentos=() =>{
 
           </div>
 
-        
-
-
-
 
         </ModalBody>
         </Modal>
 
-    
-
-      
-
-             
       
     </div>
-   
+    </>
   );
 };
     
