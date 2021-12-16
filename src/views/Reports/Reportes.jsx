@@ -23,7 +23,7 @@ export default function Reportes() {
   const [flag, setFlag] = useState(true);
   const [cantUnidades, setcantUnidades] = useState(0);
   const [nomCliente, setNombreCliente] = useState("");
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState("");
   const [telCliente, setTelefono] = useState("");
   const [select_emp, setSelect_emp] = useState("");
   const [empleados, emp_loading, emp_error] = useCollectionData(
@@ -98,15 +98,20 @@ export default function Reportes() {
     });
   };
   function handleOrdenData(data) {
-    if (data === -1) {
+    if (data === "primero") {
       setNombreCliente("");
       setcantUnidades(0);
       setTelefono("");
     } else {
-      const obj = nombreOrden.at(data);
-      setTelefono(obj.numero_telefono);
-      setNombreCliente(obj.nombre);
-      setcantUnidades(obj.cantidad_unidades);
+      nombreOrden.map((item) => {
+        if(item.id === data){ 
+      setTelefono(item.numero_telefono);
+      setNombreCliente(item.nombre);
+      setcantUnidades(item.cantidad_unidades);
+      }
+         
+        })
+   
     }
   }
 
@@ -126,12 +131,12 @@ export default function Reportes() {
   }
 
   const setTrueReporte = async () => {
-    const dbOrdenes = doc(db, "OrdenesTrabajo", nombreOrden.at(index).id);
+    const dbOrdenes = doc(db, "OrdenesTrabajo", index);
     await updateDoc(dbOrdenes, { reporte: true })
       .then(() => {
         swal({
           title: "Completada",
-          text: "reporte creado a continuacion agrege imagenes",
+          text: "Reporte creado a continuacion agregue imagenes.",
           icon: "info",
           button: "Aceptar",
         });
@@ -171,20 +176,21 @@ export default function Reportes() {
                   class="form-select"
                   disabled={nor_loading}
                   onChange={(e) => {
-                    setIndex(e.target.selectedIndex - 1);
-                    handleOrdenData(e.target.selectedIndex - 1);
+                    setIndex(e.target.value);
+                    handleOrdenData(e.target.value);
                   }}
                 >
-                  <option selected>Seleccioné una orden</option>
+                  <option selected value="primero">Seleccioné una orden</option>
                   {nombreOrden
                     ? nombreOrden.map((item) => {
-                        return (
-                          <option key={item.id} value={item.id}>
-                            [Cliente: {item.nombre}]-[Unidades:{" "}
-                            {item.cantidad_unidades}]-[Descripcion:{" "}
-                            {item.descripcion}]
-                          </option>
-                        );
+                      if(!item.reporte){ return (
+                        <option key={item.id} value={item.id}>
+                          [Cliente: {item.nombre}]-[Unidades:{" "}
+                          {item.cantidad_unidades}]-[Descripcion:{" "}
+                          {item.descripcion}]
+                        </option>
+                      );}
+                       
                       })
                     : null}
                 </select>
