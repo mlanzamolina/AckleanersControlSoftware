@@ -3,46 +3,6 @@ import React, { Component } from "react";
 export class about extends Component {
   render() {
     return (
-      // <div id="about">
-      //     <br />  <br />  <br />
-      //   <div className="container">
-      //     <div className="row">
-      //       <div className="col-xs-12 col-md-6">
-      //         {" "}
-      //         <img src="img/about.jpg" id="responsiveAbout" />
-      //       </div>
-      //       <div className="col-xs-12 col-md-6">
-      //         <div className="about-text">
-      //           <h2>Sobre nosotros</h2>
-      //           <p>
-      //             {this.props.data ? this.props.data.paragraph : "loading..."}
-      //           </p>
-      //           <h3>Por que elegirnos?</h3>
-      //           <div className="list-style">
-      //             <div className="col-lg-6 col-sm-6 col-xs-12">
-      //               <ul>
-      //                 {this.props.data
-      //                   ? this.props.data.Why.map((d, i) => (
-      //                       <li key={i}>{d}</li>
-      //                     ))
-      //                   : "loading"}
-      //               </ul>
-      //             </div>
-      //             <div className="col-lg-6 col-sm-6 col-xs-12">
-      //               <ul>
-      //                 {this.props.data
-      //                   ? this.props.data.Why2.map((d, i) => (
-      //                       <li key={i}>{d}</li>
-      //                     ))
-      //                   : "loading"}
-      //               </ul>
-      //             </div>
-      //           </div>
-      //         </div>
-      //       </div>
-      //     </div>
-      //   </div>
-      // </div>
 
       <div id="about">
       <section className="pb-20 bg-blueGray-200 -mt-24">
@@ -95,7 +55,7 @@ export class about extends Component {
                 <i className="fas fa-user-friends text-xl"></i>
               </div>
               <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                Porque elegirnos?
+              Por qué elegirnos?
               </h3>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
                 ACKleaners es una compañía joven diseñada para brindar una

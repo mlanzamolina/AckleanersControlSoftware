@@ -76,98 +76,6 @@ export class Contact extends Component {
 
   render() {
     return (
-      // <div id="contact">
-      //   <br /> <br />
-      //   <div class="containerf">
-      //     <h2 style={{ textAlign: "center" }}>Programe su cita!</h2>
-      //     <br />
-
-      //     <div class="rowf">
-      //       <div class="col-25f">
-      //         <label for="fname">Nombre</label>
-      //       </div>
-
-      //       <div class="col-75f">
-      //         <input
-      //           id="name"
-      //           type="text"
-      //           name="name"
-      //           className="inputMarco"
-      //           onChange={this.handleChangeName}
-      //           required
-      //         />
-      //       </div>
-      //     </div>
-
-      //     <div class="rowf">
-      //       <div class="col-25f">
-      //         <label for="country">Email</label>
-      //       </div>
-
-      //       <div class="col-75f">
-      //         <input
-      //           required
-      //           id="email"
-      //           type="text"
-      //           name="email"
-      //           ref="email"
-      //           className="inputMarco"
-      //           onChange={this.handleChangeEmail}
-      //         />
-      //       </div>
-      //     </div>
-
-      //     <div class="rowf">
-      //       <div class="col-25f">
-      //         <label for="telefono">Tel.</label>
-      //       </div>
-
-      //       <div class="col-75f">
-      //         <input
-      //           id="tel"
-      //           className="inputMarco"
-      //           type="number"
-      //           name="phone"
-      //           ref="phone"
-      //           onChange={this.handleChangePhone}
-      //           required
-      //         />
-      //       </div>
-      //     </div>
-
-      //     <div class="rowf">
-      //       <div class="col-25f">
-      //         <label for="subject">Mensaje</label>
-      //       </div>
-
-      //       <div class="col-75f">
-      //         <input
-      //           id="msj"
-      //           className="inputMarco"
-      //           required
-      //           type="textarea"
-      //           name="message"
-      //           ref="message"
-      //           onChange={this.handleChangeMessage}
-      //         />
-      //       </div>
-      //     </div>
-
-      //     <div class="rowf">
-      //       <br />
-      //       <button
-      //         type="submit"
-      //         id="btnSend"
-      //         className="btn btn-primary"
-      //         style={{ float: "right" }}
-      //         onClick={this.sendMail}
-      //       >
-      //         Enviar
-      //       </button>
-      //     </div>
-      //   </div>
-      // </div>
-
       <div id="contact">
         <section className="pb-20 relative block bg-blueGray-800">
           <div
@@ -252,6 +160,25 @@ export class Contact extends Component {
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Nombre"
+                        onChange={this.handleChangeName}
+                        id="name"
+                        required
+                      />
+                    </div>
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="email"
+                      >
+                        Celular
+                      </label>
+                      <input
+                        type="number"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        placeholder="Celular"
+                        onChange={this.handleChangePhone}
+                        id="tel"
+                        required
                       />
                     </div>
 
@@ -263,9 +190,12 @@ export class Contact extends Component {
                         Correo
                       </label>
                       <input
-                        type="email"
+                        type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Correo"
+                        onChange={this.handleChangeEmail}
+                        id="email"
+                        required
                       />
                     </div>
 
@@ -281,12 +211,18 @@ export class Contact extends Component {
                         cols="80"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                         placeholder="Danos tu mensaje..."
+                        onChange={this.handleChangeMessage}
+                        id="msj"
+                        style = {{resize :"none"}}
+                        required
                       />
                     </div>
                     <div className="text-center mt-6">
                       <button
                         className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                         type="button"
+                        onClick={this.sendMail}
+
                       >
                         Enviar
                       </button>
