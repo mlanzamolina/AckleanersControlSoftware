@@ -261,7 +261,7 @@ const AdmiDocumentos=() =>{
     <br/>         
              <select onChange={(e)=>setTipo(e.target.value)}  id="tipo2" > 
                 <option>Eligir Opcion</option>
-                <option>Reporte</option>
+                <option>Report</option>
                 <option>Instructivo</option>
                 <option>Procedimiento</option>
                 <option>Manual</option>
