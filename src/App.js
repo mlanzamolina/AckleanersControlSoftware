@@ -123,7 +123,7 @@ function App() {
             <Route path="/descargarDocumento">
               <DescargarDocumento />
             </Route>
-            <Route path="/admiDocumentos">
+            <Route exact path="/admiDocumentos">
               <AdmiDocumentos/>
             </Route>
             
