@@ -28,6 +28,7 @@ import { Documentos } from "./views/Documents/interfazDocumentos"
 import EliminarEmpleados from "./views/Employees/eliminarEmpleados";
 import AgregarDocumento from "./views/Documents/agregarDocumento";
 import DescargarDocumento from "./views/Documents/descargarDocumento";
+import "./components/tailwind.css";
 import AdmiDocumentos from "./views/Documents/admiDocumentos";
 
 
