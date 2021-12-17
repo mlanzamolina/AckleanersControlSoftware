@@ -36,11 +36,11 @@ export const Documentos = () => {
                   </button>
                 </div>
                 <div class="offset-lg-2 espaciadoContenedor">
-                  <a href="/admiDocumentos">
+                  <Link to="/admiDocumentos">
                     <button className="rounded botonSize fondoActualizar">
                       Actualizar Documento
                     </button>
-                  </a>
+                  </Link>
                 </div>
               </form>
             </div>
