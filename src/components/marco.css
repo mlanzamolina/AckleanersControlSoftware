@@ -113,6 +113,25 @@ div.contentf {
     background-size: cover;
 }
 
+div.contentm h1 {
+  font-size: xx-large;
+}
+
+div.contentf h1 {
+  font-size: xx-large;
+}
+
+
+div.contentm {
+  
+  padding: 1px 16px;
+  height: 100%;
+   background-image: url("https://gradients.mijo-design.com/public/uploads/files/db13.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 @media screen and (max-width: 700px) {
   .sidebar {
     width: 100%;
