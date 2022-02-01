@@ -4,40 +4,49 @@ import { Link } from "react-router-dom";
 import "./Login.css";
 import logo from "../../img/logo.png"
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth , signInWithEmailAndPassword } from "../../components/firebase";
+import { auth , signInWithEmailAndPassword} from "../../components/firebase";
+import swal from "sweetalert";
+import Navigation from "../../components/navigation";
 
 export default function Login() {
-  const [user, setUser] = useState("");
+  const [usern, setUser] = useState("");
   const [pass, setPass] = useState("");
-  const [user1, loading, error] = useAuthState(auth);
+  const [user, loading, error] = useAuthState(auth);
 
-  /*useEffect(() => {
-    if (user1) history.replace("/dashboard");
-  }, [user1, loading]);*/
- 
+  function handleSubmit(e) {
 
-  function handleSubmit() {
-      
-    console.log(pass);
-    console.log(user);
+    e.preventDefault();
 
-    
-      
-        if (/^\w+([.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail)\.(?:|com|es)+$/.test(user)) {
+        if (/^\w+([.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail)\.(?:|com|es)+$/.test(usern)) {
           if (pass === null) {
-            alert("Ingrese Contraseña.");
+            swal({
+              title: "Campo Invalido.",
+              text: "Por favor ingrese una contraseña.",
+              icon: "warning",
+              button: "aceptar",
+            });
           } else {
             if (pass === "") {
-              alert("Ingrese Contraseña.");
+              swal({
+                title: "Campo Invalido.",
+                text: "Por favor ingrese una contraseña.",
+                icon: "warning",
+                button: "aceptar",
+              });
             }else{
               //alert("bienvenido =)");
-              signInWithEmailAndPassword(user, pass);
+              signInWithEmailAndPassword(usern, pass);
             }
           }
 
          
         }else{
-          alert("Ingrese un correo.");
+          swal({
+            title: "Campo Invalido.",
+            text: "Por favor ingrese un correo.",
+            icon: "warning",
+            button: "aceptar",
+          });
         }
       
     
@@ -45,7 +54,9 @@ export default function Login() {
 
    
     return (
-      
+      <>
+      <Navigation/>
+
       <div className="wrapper">
       <div className="form-wrapper">
       <h1>Iniciar Sesión</h1>
@@ -81,7 +92,7 @@ export default function Login() {
               <div className="createAccount">
                 <button onClick={handleSubmit}>INICIAR SESIÓN</button>
               </div>
-              <div>
+              {/*}<div>
                 <div>
                   <small>
                     ¿No tiene una cuenta?
@@ -91,10 +102,10 @@ export default function Login() {
                     </Link>
                   </small>
                 </div>
-              </div>
+              </div>{*/}
               </div>
               </form> 
-              <a href="/"><img src={logo} alt="logo ackleaners" width="250" style={{
+              <a href="/"><img src={logo} alt="logo ackleaners" width="12%" height="auto" style={{
               margin: 0,
               top: "auto",
               right: 45,
@@ -103,6 +114,7 @@ export default function Login() {
             }}/></a> 
       </div>
       </div>
+      </>
     );
   }
     
