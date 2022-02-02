@@ -132,7 +132,7 @@ export const AgregarDocumento = () => {
                   <option value="Manual">Manual</option>
                   <option value="Procedimiento">Procedimiento</option>
                   <option value="Formato">Formato</option>
-                  <option value="Report">Report</option>
+                  <option value="Reporte">Reporte</option>
                 </select>
               </div>
 
