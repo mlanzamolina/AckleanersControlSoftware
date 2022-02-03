@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import Nav from "../NavAdmin";
 
-export const AgregarDocumento = () => {
+export const AgregarInventarios = () => {
   const [archivoUrl, setArchivoUrl] = useState("");
 
   const archivoHandler = async (event) => {
@@ -83,11 +83,15 @@ export const AgregarDocumento = () => {
   return (
     <div className="hide">
       <Nav></Nav>
+      
       <form onSubmit={submitHandler}>
+          
         <div className="p-2 contenedorPrincipal">
           <div className="container rounded contenedorFormulario">
             <div style={{ marginTop: "12%", marginBottom: "100%" }}>
               <div class="mb-3 col-md-6">
+                  <br />
+            <h1>Agregar Inventarios</h1>
                 <label
                   for="exampleFormControlInput1"
                   className="form-label letrasFormulario"
@@ -176,4 +180,4 @@ export const AgregarDocumento = () => {
     </div>
   );
 };
-export default AgregarDocumento;
+export default AgregarInventarios;
