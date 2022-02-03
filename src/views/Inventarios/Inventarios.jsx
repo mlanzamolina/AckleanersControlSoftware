@@ -43,7 +43,7 @@ export default function Inventarios() {
                 <div class="offset-lg-2 espaciadoContenedor">
                   <Link to="/DescargarDocumento">
                     <button className="rounded botonSize fondoDescargarInv">
-                      Bajar Documento
+                      Bajar Inventario
                     </button>
                   </Link>
                 </div>
@@ -51,14 +51,14 @@ export default function Inventarios() {
                 <div class="offset-lg-1 espaciadoContenedor">
                   <Link to="DeleteInventario">
                   <button className="rounded botonSize fondoEliminarInv">
-                    Eliminar Documento
+                    Eliminar Inventario
                   </button>
                   </Link>
                 </div>
                 <div class="offset-lg-2 espaciadoContenedor">
                   <Link to="/admiDocumentos">
                     <button className="rounded botonSize fondoActualizarInv">
-                      Actualizar Documento
+                      Actualizar Inventario
                     </button>
                   </Link>
                 </div>
