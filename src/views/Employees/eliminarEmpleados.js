@@ -138,7 +138,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         title: "Formato de archivo no aceptable",
         text: "El archivo subido no es una foto, por favor asegurarse de subir una imagen formato png o jpeg",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       e.target.value = null;
       setimageURL(null);
@@ -165,7 +165,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
           title: "Numero de Documento Nacional de Identifacicion repetido",
           text: "Por favor reingrese un DNI unico o no se le dejara modificar",
           icon: "warning",
-          button: "aceptar",
+          button: "Aceptar",
         });
       }
     });
@@ -230,7 +230,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         title: "No se realizo",
         text: "No se modifico el empleado, verifique los campos",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
     } else {
       await updateDoc(empleadosDoc, {
@@ -245,7 +245,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
           title: "Surgio un error",
           text: "No se modifico",
           icon: "info",
-          button: "aceptar",
+          button: "Aceptar",
         });
       });
       console.log(nombre);
@@ -267,7 +267,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         title: "Empleado Modificado",
         text: "Se modifico el empleado exitosamente",
         icon: "info",
-        button: "aceptar",
+        button: "Aceptar",
       });
     }
   }; //Fin
@@ -456,7 +456,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                 id="direccion"
                 class="form-control"
                 name="direccion"
-                placeholder="Direccion donde reside el empleado"
+                placeholder="Dirección donde reside el empleado"
                 onChange={(e) => setDireccion(e.target.value)}
                 defaultValue={currentID && currentID.direccion}
               ></textarea>

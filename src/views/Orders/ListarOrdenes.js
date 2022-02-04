@@ -51,7 +51,7 @@ const ListarOrdenes = () => {
                 <th scope="col">Nombre </th>
                 <th scope="col">Unidades</th>
                 <th scope="col">Descripcion</th>
-                <th scope="col">Telefono</th>
+                <th scope="col">Teléfono</th>
                 <th scope="col">Estado</th>
               </tr>
             </thead>

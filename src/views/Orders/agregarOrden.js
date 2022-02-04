@@ -46,7 +46,7 @@ const AgregarOrden = () => {
         title: "Error",
         text: "El empleado seleccionado ya esta agregado a la orden.",
         icon: "error",
-        button: "aceptar",
+        button: "Aceptar",
       });
     }
   };
@@ -63,7 +63,7 @@ const AgregarOrden = () => {
         title: "No se realizo",
         text: "No se agregro una orden de trabajo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
     } else {
       await addDoc(tablaOrdenesRef, {
@@ -80,7 +80,7 @@ const AgregarOrden = () => {
         title: "Realizado",
         text: "Se agregro una orden de trabajo",
         icon: "info",
-        button: "aceptar",
+        button: "Aceptar",
       });
     }
   };
@@ -105,7 +105,7 @@ const AgregarOrden = () => {
               <div>
                 <h3 className="letra">Nombre Completo </h3>
                 <input
-                  placeholder="Ingrese Nombre"
+                  placeholder="Ingrese nombre"
                   className="form-control"
                   name="nombre"
                   onChange={handleInputChance}
@@ -140,7 +140,7 @@ const AgregarOrden = () => {
                   className="propiedadTextArea form-control"
                   name="descripcion"
                   onChange={handleInputChance}
-                  placeholder="Si tienes comentarios adicionales o un metodo de contacto adicional, puedes especificarlos..."
+                  placeholder="Si tienes comentarios adicionales o un método de contacto adicional, puedes especificarlos..."
                 ></textarea>
               </div>
               <form class="row g-3">

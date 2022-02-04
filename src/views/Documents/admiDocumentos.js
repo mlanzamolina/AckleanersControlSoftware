@@ -128,10 +128,10 @@ const AdmiDocumentos=() =>{
           deleteDoc(documentos);
           
           swal({
-            title: "Documento Eliminado",
+            title: "Documento eliminado",
             text: "Se elimino el documento exitosamente",
             icon: "info",
-            button: "aceptar",
+            button: "Aceptar",
           });
          setMostrarE(false);
          
@@ -200,7 +200,7 @@ const AdmiDocumentos=() =>{
         title: "No se realizo",
         text: "No se modifico el documento, verifique los campos",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
     
 
@@ -213,17 +213,17 @@ const AdmiDocumentos=() =>{
 
       }).catch((error) => {
         swal({
-          title: "Surgio un error",
+          title: "Surgió un error",
           text: "No se modifico",
           icon: "info",
-          button: "aceptar",
+          button: "Aceptar",
         });
       });
     
      
 
       swal({
-        title: "Documento Modificado",
+        title: "Documento modificado",
         text: "Se modifico el documento exitosamente",
         icon: "info",
         button: "aceptar",

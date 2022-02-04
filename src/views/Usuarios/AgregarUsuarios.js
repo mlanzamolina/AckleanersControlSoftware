@@ -141,7 +141,7 @@ const AgregarUsuarios = () => {
               onChange={(e) => setNombre(e.target.value)}
             />
 
-            <h5>Ingrese Telefono</h5>
+            <h5>Ingrese Teléfono</h5>
             <input
               type="text"
               name="telefono"
@@ -151,7 +151,7 @@ const AgregarUsuarios = () => {
               title="numero 8 digitos sin nada extra"
               value={telefono}
             />
-            <h5>Ingrese Correo Electronico</h5>
+            <h5>Ingrese Correo Electrónico</h5>
             <input
               type="email"
               name="correo"

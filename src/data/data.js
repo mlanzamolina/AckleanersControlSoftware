@@ -5,10 +5,10 @@ export default {
   },
   About: {
     paragraph:
-      " ACKleaners es una compañía joven diseñada para brindar una solución al mantenimiento de unidades de aire acondicionadas, las cuales están siendo cada vez exigidas por las altas temperaturas en la zona. Somos una empresa familiar, centrada en ofrecer el mejor servicio para todos nuestros clientes ya sea en el hogar o en tu negocio. ",
+      "ACKleaners es una compañía joven diseñada para brindar una solución al mantenimiento de unidades de aire acondicionado, las cuales están siendo cada vez exigidas por las altas temperaturas en la zona. Somos una empresa familiar, centrada en ofrecer el mejor servicio para todos nuestros clientes ya sea en el hogar o en tu negocio.",
     Why: [
       "Tiempo de respuesta del servicio.",
-      "Uso herramientas y proceso profesionales ",
+      "Uso herramientas y proceso profesionales",
       "Amplio conocimiento técnico",
       "Seguridad residencial",
     ],

@@ -33,7 +33,7 @@ export const AgregarDocumento = () => {
         title: "No se realizo",
         text: "Coloque un nombre para el archivo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
@@ -41,9 +41,9 @@ export const AgregarDocumento = () => {
     if (!descripcionArchivo) {
       swal({
         title: "No se realizo",
-        text: "Coloque una descripcion para el archivo",
+        text: "Coloque una descripción para el archivo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
@@ -54,7 +54,7 @@ export const AgregarDocumento = () => {
         title: "No se realizo",
         text: "Coloque un tipo para el archivo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
@@ -111,7 +111,7 @@ export const AgregarDocumento = () => {
                   Descripcion del Archivo
                 </label>
                 <textarea
-                  placeholder="Ingrese descripcion del archivo..."
+                  placeholder="Ingrese descripción del archivo..."
                   className="form-control"
                   id="i_descripcion"
                   style={{ resize: "none" }}
