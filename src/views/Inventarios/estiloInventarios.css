@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
-.estiloPrincipal{
+.estiloPrincipalInv{
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
     background-size: cover;
 }
-.contenedorPrincipal2{
+.contenedorPrincipal2Inv{
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
     background-size: cover;
 }
 
-.estiloContenedor{
+.estiloContenedorInv{
     background-color: rgba(0, 0, 0, 0.40);
     height: 50%;
     width: 70%;
@@ -16,13 +16,13 @@
     margin-bottom: 2%;
 }
 
-.espaciadoContenedor{
+.espaciadoContenedorInv{
     width: 210px;
     height: 210px;
     margin: 5% 12% 5% 15%;
 }
 
-.botonSize{
+.botonSizeInv{
     width: 210px;
     height: 210px;
     background-color: transparent;
@@ -30,14 +30,14 @@
     color: transparent;
 }
 
-.fondoAgregar{
+.fondoAgregarInv{
     background-image: url("https://cdn-icons-png.flaticon.com/512/2541/2541984.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
 }
 
-.fondoEliminar{
+.fondoEliminarInv{
     background-image: url("https://img.icons8.com/stickers/200/000000/filled-trash.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -45,14 +45,14 @@
     
 }
 
-.fondoDescargar{
+.fondoDescargarInv{
     background-image: url("https://cdn-icons-png.flaticon.com/512/892/892303.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
 }
 
-.fondoActualizar{
+.fondoActualizarInv{
     background-image: url("https://cdn-icons-png.flaticon.com/512/2920/2920100.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -60,8 +60,8 @@
     
 }
 
-.fondoActualizar:hover,.fondoDescargar:hover,
-.fondoEliminar:hover,.fondoAgregar:hover,.fondoActualizar:hover{
+.fondoActualizarInv:hover,.fondoDescargarInv:hover,
+.fondoEliminarInv:hover,.fondoAgregarInv:hover,.fondoActualizarInv:hover{
     background: rgba(52, 93, 206, 0.575);
     color: white;
     font-family: 'Raleway';
@@ -70,21 +70,28 @@
     border-style:dashed;
 }
 
-.letrasDescarga{
+.letrasDescargaInv{
     color: white;
 }
 
-.letrasDescarga:hover{
+.letrasDescargaInv:hover{
     color: green;
 }
 
-.contenedorFormularioBajar{
+.contenedorFormularioBajarInv{
     background-color: rgba(0, 0, 0, 0.40);
     height: 100%;
     width: 70%;
     margin-top: 2%;
     margin-bottom: 2%;
 }
-.hide{
-    overflow-y: hidden;
+
+#responsive {
+    width: 100%;
+    height: 93%;
+    background-image: url("https://gradients.mijo-design.com/public/uploads/files/db13.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    aspect-ratio: 100 / 29;
 }
