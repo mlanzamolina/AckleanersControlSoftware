@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState } from "react";
 import { app } from "../../components/firebase";
 import "../Employees/estiloEmpleado.css";
 import { Link } from "react-router-dom";
@@ -6,6 +6,8 @@ import swal from "sweetalert";
 import Nav from "../NavAdmin";
 
 export const AgregarDocumento = () => {
+
+  let fechaActual = new Date().toISOString().slice(0,10);
   const [archivoUrl, setArchivoUrl] = useState("");
 
   const archivoHandler = async (event) => {
@@ -49,7 +51,7 @@ export const AgregarDocumento = () => {
     }
 
     const tipoArchivo = event.target.tipo.value;
-    if (tipoArchivo == "Seleccione tipo de archivo") {
+    if (tipoArchivo === "Seleccione tipo de archivo") {
       swal({
         title: "No se realizo",
         text: "Coloque un tipo para el archivo",
@@ -57,7 +59,9 @@ export const AgregarDocumento = () => {
         button: "aceptar",
       });
       return;
-    }
+    } 
+    
+    const fechaArchivo = fechaActual;
 
     const tablaDocumentosRef = app.firestore().collection("Documentos");
     const documento = tablaDocumentosRef.doc().set({
@@ -65,6 +69,7 @@ export const AgregarDocumento = () => {
       descripcion: descripcionArchivo,
       tipo: tipoArchivo,
       url: archivoUrl,
+      fecha: fechaArchivo,
     });
     swal({
       title: "¡Agregado!",
@@ -79,7 +84,8 @@ export const AgregarDocumento = () => {
     document.getElementById("i_tipo").value = "Seleccione tipo de archivo";
     return;
   };
-
+    
+    
   return (
     <div className="hide">
       <Nav></Nav>
@@ -87,11 +93,19 @@ export const AgregarDocumento = () => {
         <div className="p-2 contenedorPrincipal">
           <div className="container rounded contenedorFormulario">
             <div style={{ marginTop: "12%", marginBottom: "100%" }}>
+              <div class="mb-3 col-md-12">
+                <label
+                  for="exampleFormControlInput1"
+                  className="form-label letrasFormulario"
+                  style={{ marginTop: "2%", paddingLeft: "80%", fontSize:"18px" }}
+                >
+                  Fecha actual: {fechaActual}
+                </label>
+              </div>
               <div class="mb-3 col-md-6">
                 <label
                   for="exampleFormControlInput1"
                   className="form-label letrasFormulario"
-                  style={{ marginTop: "10%" }}
                 >
                   Nombre del Archivo
                 </label>
