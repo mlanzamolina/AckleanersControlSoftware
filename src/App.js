@@ -32,7 +32,7 @@ import "./components/tailwind.css";
 import AdmiDocumentos from "./views/Documents/admiDocumentos";
 import DeleteInventarios from "./views/Inventarios/deleteInventarios";
 import AgregarInventarios from "./views/Inventarios/agregarInventarios";
-
+import { IOrdenes }  from "./views/Orders/interfazOrdenes";
 
 function App() {
   return (
@@ -134,7 +134,10 @@ function App() {
             <Route path="/agregarInventarios">
               <AgregarInventarios/>
             </Route>
-            
+
+            <Route path="/adminOrders">
+              <IOrdenes />
+            </Route>
           </div>
         </Switch>
 

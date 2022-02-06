@@ -1,67 +1,80 @@
 #navbar-brandt {
-  padding: 0px; /* firefox bug fix */
+  padding: 0px;
+  /* firefox bug fix */
 }
+
 #navbar-brandti {
   width: 170px;
   height: auto;
 }
+
 #responsiveAbout {
   width: 100%;
   height: auto;
 }
+
 .fotos {
   max-width: 960px;
   margin: 0 auto;
 }
+
 .cover {
-  background:white;
-  position:absolute;
-  top:0px;
-  right:0px;
-  bottom:0px;
-  left:0px;
+  background: white;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 
 }
+
 .centered {
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .centered3 {
-margin: 0px 800px;
+  margin: 0px 800px;
 }
+
 .centered2 {
   position: absolute;
   top: 53%;
   left: 48%;
   transform: translate(-50%, -50%);
 }
+
 #headerm {
   position: relative;
   text-align: center;
   color: white;
 }
+
 .myButtonm {
-	box-shadow:inset 0px 0px 15px 3px #23395e;
-	background:rgb(5, 117, 230);
-	background-color:rgb(5, 117, 230);
-	border-radius:17px;
-	display:inline-block;
-	cursor:pointer;
-	color: rgb(0, 242, 96);
-	font-size:15px;
-	padding:6px 13px;
-	text-decoration:none;
+  box-shadow: inset 0px 0px 15px 3px #23395e;
+  background: rgb(5, 117, 230);
+  background-color: rgb(5, 117, 230);
+  border-radius: 17px;
+  display: inline-block;
+  cursor: pointer;
+  color: rgb(0, 242, 96);
+  font-size: 15px;
+  padding: 6px 13px;
+  text-decoration: none;
 }
+
 .myButtonm:hover {
-	background: rgb(0, 242, 96);
-	background-color: rgb(0, 242, 96);
+  background: rgb(0, 242, 96);
+  background-color: rgb(0, 242, 96);
 }
+
 .myButtonm:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
+
 @media screen and (max-width: 800px) {
   .centered, .centered2 {
     display: none;
@@ -69,21 +82,22 @@ margin: 0px 800px;
 }
 
 
-#subjectin{
+#subjectin {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
 }
+
 .sidebar {
- 
+
   width: 200px;
   background-color: #E7E9EB;
   position: fixed;
   height: 94%;
   overflow: auto;
-  
+
 }
 
 .sidebar a {
@@ -92,7 +106,7 @@ margin: 0px 800px;
   padding: 16px;
   text-decoration: none;
 }
- 
+
 .sidebar a.active {
   background-color: #04AA6D;
   color: white;
@@ -104,13 +118,14 @@ margin: 0px 800px;
 }
 
 div.contentf {
-  margin-left: 200px;
+
   padding: 1px 16px;
+  width: 100%;
   height: 100%;
-   background-image: url("https://gradients.mijo-design.com/public/uploads/files/db13.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+  background-image: url("https://gradients.mijo-design.com/public/uploads/files/db13.png");
+  background-repeat: no-repeat;
+  background-attachment: local;
+  background-size: cover;
 }
 
 div.contentm h1 {
@@ -123,13 +138,13 @@ div.contentf h1 {
 
 
 div.contentm {
-  
+
   padding: 1px 16px;
   height: 100%;
-   background-image: url("https://gradients.mijo-design.com/public/uploads/files/db13.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+  background-image: url("https://gradients.mijo-design.com/public/uploads/files/db13.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 @media screen and (max-width: 700px) {
@@ -138,8 +153,15 @@ div.contentm {
     height: auto;
     position: relative;
   }
-  .sidebar a {float: left;}
-  div.contentf {margin-left: 0; height: 200%;}
+
+  .sidebar a {
+    float: left;
+  }
+
+  div.contentf {
+    margin-left: 0;
+    height: 200%;
+  }
 }
 
 @media screen and (max-width: 400px) {

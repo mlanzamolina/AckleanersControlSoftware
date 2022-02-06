@@ -48,18 +48,11 @@ const ModificarOrden = () => {
             icon: "info",
             button: "Aceptar"
         });
-        
+
     };
 
     return (
         <>
-            <Nav></Nav>
-      <div class="sidebar">
-        <a href="/Ordenes">Ordenes</a>
-        <a href="/ListarOrdenes">Listar ordenes</a>
-        <a href="/AgregarOrden">Agregar ordenes</a>
-        <a class="active" href="/ModificarOrden">Modificar ordenes</a>
-      </div>
             <Fragment>
                 <div class="contentf">
                     <h1 className="tituloh1">Soy modificar</h1>
@@ -93,6 +86,15 @@ const ModificarOrden = () => {
                                 : null}
                         </tbody>
                     </table>
+                    <Link to="/adminOrders">
+                        <button
+                            type="submit"
+                            class="btn btn-danger"
+                            style={{ marginBottom: "5%", marginLeft: "90%" }}
+                        >
+                            Regresar
+                        </button>
+                    </Link>
                 </div>
             </Fragment>
         </>
