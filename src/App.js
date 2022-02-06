@@ -30,6 +30,8 @@ import AgregarDocumento from "./views/Documents/agregarDocumento";
 import DescargarDocumento from "./views/Documents/descargarDocumento";
 import "./components/tailwind.css";
 import AdmiDocumentos from "./views/Documents/admiDocumentos";
+import DeleteInventarios from "./views/Inventarios/deleteInventarios";
+import AgregarInventarios from "./views/Inventarios/agregarInventarios";
 
 
 function App() {
@@ -125,6 +127,12 @@ function App() {
             </Route>
             <Route path="/admiDocumentos">
               <AdmiDocumentos/>
+            </Route>
+            <Route path="/DeleteInventarios">
+              <DeleteInventarios/>
+            </Route>
+            <Route path="/agregarInventarios">
+              <AgregarInventarios/>
             </Route>
             
           </div>
