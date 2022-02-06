@@ -7,7 +7,8 @@ import Nav from "../NavAdmin";
 
 export const AgregarDocumento = () => {
 
-  let fechaActual = new Date().toISOString().slice(0,10);
+  let hoy = new Date();
+  let fechaActual = hoy.getFullYear() + '-' + (hoy.getMonth()+1)+'-'+hoy.getDate();
   const [archivoUrl, setArchivoUrl] = useState("");
 
   const archivoHandler = async (event) => {
