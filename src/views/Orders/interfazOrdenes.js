@@ -17,7 +17,7 @@ export const IOrdenes = () => {
                             <form className="row g-3">
                                 <div class="offset-lg-4" style={{paddingLeft:"6%"}}>
                                     <Link to="/AgregarOrden">
-                                        <button className="rounded botonSize fondoAgregar">
+                                        <button className="rounded botonSize fondoAgregarOrden">
                                             Agregar Orden de Trabajo
                                         </button>
                                     </Link>
@@ -25,7 +25,7 @@ export const IOrdenes = () => {
 
                                 <div class="offset-lg-1 espaciadoContenedor" style={{paddingLeft:"5%", paddingRight:"25%",  marginTop:"10%"}}>
                                     <Link to="/ListarOrdenes">
-                                        <button className="rounded botonSize fondoDescargar">
+                                        <button className="rounded botonSize fondoListarOrden">
                                             Listar Ordenes de Trabajo
                                         </button>
                                     </Link>
@@ -33,7 +33,7 @@ export const IOrdenes = () => {
 
                                 <div class="offset-lg-1 espaciadoContenedor" style={{paddingLeft:"3%", marginTop:"10%"}}>
                                     <Link to="/ModificarOrden">
-                                    <button className="rounded botonSize fondoEliminar">
+                                    <button className="rounded botonSize fondoModificarOrden">
                                         Modificar Ordenes de Trabajo
                                     </button>
                                     </Link>
