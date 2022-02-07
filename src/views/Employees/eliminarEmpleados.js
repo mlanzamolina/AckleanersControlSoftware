@@ -61,6 +61,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
 
   const [paginated, setPaginated] = useState();
 
+
   const [page, setPage] = useState(1);
   const [vista, setVista] = useState({
     id: null,
@@ -87,6 +88,10 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
   const [idFire, setIDFire] = useState("");
   const [q, setQ] = useState("");
 
+  const [isLoading,setIsloading]=useState(false);
+
+
+  
   const getEmpleados = async () => {
     const temp = [];
     db.collection("Empleados").onSnapshot((querySnapshot) => {
@@ -233,6 +238,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         button: "aceptar",
       });
     } else {
+      setIsloading(true);
       await updateDoc(empleadosDoc, {
         nombre: nombre2,
         dni: id2,
@@ -249,6 +255,8 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         });
       });
       console.log(nombre);
+      //await new Promise(resolve=> setTimeout(resolve, 2000));
+      
 
       const uploadtask = almacenamiento
         .ref("/UsuarioFotos/" + idFire)
@@ -261,6 +269,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
           updateDoc(doc(db, "Empleados", idFire), {
             foto: url,
           });
+          setIsloading(false);
         });
 
       swal({
@@ -269,6 +278,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         icon: "info",
         button: "aceptar",
       });
+
     }
   }; //Fin
 
@@ -402,6 +412,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         <ModalBody>
           <div className="form-group">
             <form onSubmit={(e) => modificar(e)}>
+            
               <label>Nombre: </label>
               <br />
               <input
@@ -493,12 +504,16 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                   type="button"
                   class="btn btn-outline-danger"
                   onClick={() => SetmostrarM(false)}
+                  
                 >
                   SALIR
                 </Button>
                 <Button type="submit" class="btn btn-outline-danger">
-                  Modificar
+                  {isLoading ?  
+                               <h1><span class="spinner-border spinner-border-sm mr-2"></span>Enviando datos...</h1>  :  <h1>Modificar</h1>  }
+                  
                 </Button>
+                
               </ModalFooter>
             </form>
           </div>
