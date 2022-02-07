@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo, Component } from "react";
 import Nav from "../NavAdmin"
 import {
   Button,
@@ -57,6 +57,8 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
     direccion: "",
   });
 
+  
+
   const [mostrarV, setMostrarV] = useState(false);
 
   const [paginated, setPaginated] = useState();
@@ -86,6 +88,9 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
   const [imageurl, setimageURL] = useState("");
   const [idFire, setIDFire] = useState("");
   const [q, setQ] = useState("");
+  const [imageurl2, setimageURL2] = useState("");
+
+  
 
   const getEmpleados = async () => {
     const temp = [];
@@ -96,11 +101,22 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
 
       setData(temp);
     });
+   
   };
 
+
+
   useEffect(() => {
-    getEmpleados();
-  }, [data]);
+   const fecthData = async ()=>{
+     db.collection("Empleados").onSnapshot(function(data){
+       setData(data.docs.map(doc=>({...doc.data(),id:doc.id})))
+     })
+
+   }
+   fecthData();
+ 
+    
+  }, []);
 
   const { slice, range } = useTable(data, page, 5);
 
@@ -147,6 +163,8 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
     }
     setimageURL(URL.createObjectURL(e.target.files[0]));
     setImage(e.target.files[0]);
+   
+    
   };
 
   const handleInputChance = (event) => {
@@ -171,18 +189,9 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
     });
   };
 
-  const editRow = (empleados) => {
-    obtener(empleados);
-
-    if (mostrarM === false) {
-      SetmostrarM(!mostrarM);
-    } else {
-      SetmostrarM(!mostrarM);
-    }
-  };
-
   const obtener = (empleados) => {
-    setIDFire(empleados.id);
+    try {
+      setIDFire(empleados.id);
 
     setCurrentID({
       id: empleados.dni,
@@ -192,8 +201,37 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       foto: empleados.foto,
       estado: empleados.estado,
       direccion: empleados.direccion,
+  
+
     });
+   
+      
+    } catch (error) {
+      
+    }
+    
+    
+    console.log("entro");
   };
+
+  const editRow = (empleados) => {
+    obtener(empleados);
+    
+
+    if (mostrarM === false) {
+      SetmostrarM(!mostrarM);
+     
+    } else {
+      SetmostrarM(!mostrarM);
+    }
+    
+    
+      setimageURL(empleados.foto);
+    
+   
+  };
+
+  
 
   /*const obtener2 = ()=>{
 
@@ -206,7 +244,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
 
   const modificar = async (e) => {
     e.preventDefault();
-
+    
     const empleadosDoc = doc(db, "Empleados", idFire);
 
     var nombre2 = document.getElementById("nombre").value;
@@ -223,7 +261,9 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       telefono2 == " " ||
       id2 == " " ||
       correo2 == " " ||
-      dni_unico===true
+      dni_unico===true ||
+      imageurl === ""
+      
       
     ){
       swal({
@@ -270,7 +310,18 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         button: "aceptar",
       });
     }
+    setimageURL(null);
+    
   }; //Fin
+
+
+  const cambiarFoto=(e)=>{
+    e.target.src = imageurl;
+  
+  }
+
+
+
 
   const mostrarVistaEmpleado = (empleados) => {
     setVista({
@@ -283,7 +334,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       direccion: empleados.direccion,
       estado: empleados.estado,
     });
-    console.log(vista.foto);
+    
 
     if (mostrarV == false) {
       setMostrarV(!mostrarV);
@@ -294,6 +345,8 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
 
   return (
     <>
+
+   
      <Nav />
      <div class="sidebar">
         <a  href="/AgregarEmpleado">
@@ -475,7 +528,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
               <br />
 
               <div>
-                <img id="foto" src={imageurl} class="form-control" />;
+                <img id="foto" src={imageurl} class="form-control" />
               </div>
 
               <div class="form-control">
@@ -485,6 +538,8 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                   class="form-control-file"
                   accept=".jpg,.png"
                   onChange={handleFileSubmit}
+                  
+                  
                 />
               </div>
 
@@ -511,21 +566,21 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
           <img src={vista.foto} class="card-img-top" alt="..."></img>
           <div class="container">
             <div class="col">
-              <label>ID:</label>
-              <label>{vista.dni}</label>
+              <label><strong>ID:</strong></label>
+              <label>&nbsp;&nbsp;{vista.dni}</label>
             </div>
             <div class="col">
-              <label>Correo:</label>
-              <label>{vista.correo}</label>
+              <label><strong>Correo:</strong></label>
+              <label>&nbsp;&nbsp;{vista.correo}</label>
             </div>
             <div class="col">
-              <label>Telefono:</label>
-              <label>{vista.telefono}</label>
+              <label> <strong>Telefono:</strong></label>
+              <label>&nbsp;&nbsp;{vista.telefono}</label>
             </div>
 
             <div class="col align-self-start">
-              <label>Direccion:</label>
-              <label>{vista.direccion}</label>
+              <label><strong>Direccion:</strong></label>
+              <label>&nbsp;&nbsp;{vista.direccion}</label>
             </div>
           </div>
 
