@@ -14,6 +14,7 @@ import PasswordRecovery from "./views/PasswordRecovery/PasswordRecovery";
 import Usuarios from "./views/Usuarios/Usuarios";
 import Ordenes from "./views/Orders/Ordenes";
 import ListarOrdenes from "./views/Orders/ListarOrdenes";
+import {Empleados} from "./views/Employees/interfazEmpleados";
 import AgregarOrden from "./views/Orders/agregarOrden";
 import Reportes from "./views/Reports/Reportes";
 import ModificarOrden from "./views/Orders/modificarOrdenes";
@@ -52,6 +53,10 @@ function App() {
               <Probar />
             </Route>
 
+             <Route exact path="/interfazEmpleados">
+              <Empleados />
+            </Route>
+    
             <Route exact path="/AgregarEmpleado">
               <AgregarEmpleado />
             </Route>
