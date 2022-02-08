@@ -175,6 +175,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
   };
 
   const handleDni = (e) => {
+  try {
     setDni_unico(true);
     data.map((item) => {
       if (item.dni === e.target.value && item.dni !== currentID.id ) {
@@ -187,6 +188,11 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         });
       }
     });
+    
+  } catch (error) {
+    console.log("Error DNI");
+  }
+    
   };
 
   const obtener = (empleados) => {
@@ -211,7 +217,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
     }
     
     
-    console.log("entro");
+  
   };
 
   const editRow = (empleados) => {
@@ -225,8 +231,12 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       SetmostrarM(!mostrarM);
     }
     
-    
+    if(empleados.foto){
       setimageURL(empleados.foto);
+    }else{
+      setimageURL("");
+    }
+      
     
    
   };
@@ -261,7 +271,6 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       telefono2 == " " ||
       id2 == " " ||
       correo2 == " " ||
-      dni_unico===true ||
       imageurl === ""
       
       
@@ -472,7 +481,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                 type="text"
                 id="id"
                 className="form-control"
-                onBlur={handleDni}
+                //onBlur={handleDni}
                 onChange={(e) => setDNI(e.target.value)}
                 defaultValue={currentID && currentID.id}
                 pattern="[0-9]{13}"

@@ -53,46 +53,66 @@ const AdmiDocumentos=() =>{
     });
     const[mostrarM, SetmostrarM] = useState(false);
 
-    const getDocumentos = async () => {
+    
+    /*useEffect(() => {
+      const fecthData = async ()=>{
+        db.collection("Empleados").onSnapshot(function(data){
+          setData(data.docs.map(doc=>({...doc.data(),id:doc.id})))
+        })
+   
+      }
+      fecthData();
+    
+       
+     }, []);*/
+
+     
+
+
+
+      
+    useEffect(() => {
+      console.log(tipo);
+
+      const getDocumentos = async () => {
         const temp = [];
         var cad= "Eligir Opcion";
-
-       
         
         if(tipo===cad|| tipo===""){
-            db.collection("Documentos").onSnapshot((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                  temp.push({ ...doc.data(), id: doc.id });
-                });
-          
-                setData(temp);
-               
-               
-              });
+          db.collection("Documentos").onSnapshot(function(data){
+            setData(data.docs.map(doc=>({...doc.data(),id:doc.id})))
+          })
+  
             }else{
             var opcion= tipo;
-               
-
+           
             const docEmpleados = db.collection("Documentos");
-            const snapshot = await docEmpleados.where('tipo', '==',  opcion).get();
+            const snapshot = await docEmpleados.where('tipo', '==',  tipo).get();
             if(snapshot.empty){
               alert("No hay resultados");
               
               return;
-
+    
             }else{
               snapshot.forEach(doc=>{
               temp.push({...doc.data(),id:doc.id})
               })
               setData(temp);
              
-
             }
         }
         
-          
+      }
+      getDocumentos();
+    
+     
+    }, []);
 
-        }
+
+     
+
+
+
 
 
 
@@ -185,7 +205,6 @@ const AdmiDocumentos=() =>{
     var descripcion = document.getElementById("descripcion").value;
     var tipoDocu = document.getElementById("tipo").value;
 
-    
 
     if (
       nombre == " " ||
@@ -232,16 +251,17 @@ const AdmiDocumentos=() =>{
   }; //Fin
 
 
+  const handleChange=(e) =>{
+    setTipo(e.target.value);
+    
 
-      
+  }
 
 
 
 
-        
-      useEffect(() => {
-        getDocumentos();
-      }, [data]);
+
+
       const { slice, range } = useTable(data, page, 10);
 
     return (
@@ -259,7 +279,7 @@ const AdmiDocumentos=() =>{
           <div className="dropdown">
           <label><h5>BUSCAR</h5></label> 
     <br/>         
-             <select onChange={(e)=>setTipo(e.target.value)}  id="tipo2" > 
+             <select onChange={(e)=>handleChange(e)}  id="tipo2" > 
                 <option>Eligir Opcion</option>
                 <option>Report</option>
                 <option>Instructivo</option>
