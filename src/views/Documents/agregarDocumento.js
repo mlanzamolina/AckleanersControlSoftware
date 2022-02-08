@@ -28,6 +28,8 @@ export const AgregarDocumento = () => {
     setArchivoUrl(enlaceUrl);
   };
 
+  const [isLoading,setIsloading]=useState(false);
+  
   const submitHandler = async (event) => {
     event.preventDefault();
     const nombreArchivo = event.target.nombre.value;
@@ -58,6 +60,7 @@ export const AgregarDocumento = () => {
         text: "Coloque un tipo para el archivo",
         icon: "warning",
         button: "aceptar",
+        
       });
       return;
     } 
@@ -65,6 +68,7 @@ export const AgregarDocumento = () => {
     const fechaArchivo = fechaActual;
 
     const tablaDocumentosRef = app.firestore().collection("Documentos");
+    setIsloading(true);
     const documento = tablaDocumentosRef.doc().set({
       nombre: nombreArchivo,
       descripcion: descripcionArchivo,
@@ -72,13 +76,15 @@ export const AgregarDocumento = () => {
       url: archivoUrl,
       fecha: fechaArchivo,
     });
+    
     swal({
       title: "¡Agregado!",
       text: "Archivo agregado a la base de datos",
       icon: "info",
       button: "Aceptar",
     });
-
+    await new Promise(resolve=> setTimeout(resolve, 2000));
+    setIsloading(false);
     document.getElementById("i_nombre").value = null;
     document.getElementById("i_descripcion").value = null;
     document.getElementById("i_foto").value = null;
@@ -171,7 +177,11 @@ export const AgregarDocumento = () => {
                     marginTop: "5%",
                   }}
                 >
-                  Cargar documento
+                  {isLoading ?  
+                    <h1 class="btn btn-primary" type="button" disabled>
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                    <span class="sr-only">Loading...</span>
+                    </h1>:  <h1>Cargar Documento</h1>}
                 </button>
 
                 <Link to="/adminDocs">
