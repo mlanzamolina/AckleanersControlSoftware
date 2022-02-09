@@ -297,7 +297,7 @@ const AdmiDocumentos=() =>{
     <br/>         
              <select onChange={(e)=>handleChange(e)}  id="tipo2" > 
                 <option>Eligir Opcion</option>
-                <option>Report</option>
+                <option>Reporte</option>
                 <option>Instructivo</option>
                 <option>Procedimiento</option>
                 <option>Manual</option>

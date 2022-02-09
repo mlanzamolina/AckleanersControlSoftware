@@ -14,6 +14,7 @@ import PasswordRecovery from "./views/PasswordRecovery/PasswordRecovery";
 import Usuarios from "./views/Usuarios/Usuarios";
 import Ordenes from "./views/Orders/Ordenes";
 import ListarOrdenes from "./views/Orders/ListarOrdenes";
+import {Empleados} from "./views/Employees/interfazEmpleados";
 import AgregarOrden from "./views/Orders/agregarOrden";
 import Reportes from "./views/Reports/Reportes";
 import ModificarOrden from "./views/Orders/modificarOrdenes";
@@ -30,7 +31,9 @@ import AgregarDocumento from "./views/Documents/agregarDocumento";
 import DescargarDocumento from "./views/Documents/descargarDocumento";
 import "./components/tailwind.css";
 import AdmiDocumentos from "./views/Documents/admiDocumentos";
-
+import DeleteInventarios from "./views/Inventarios/deleteInventarios";
+import AgregarInventarios from "./views/Inventarios/agregarInventarios";
+import { IOrdenes }  from "./views/Orders/interfazOrdenes";
 
 function App() {
   return (
@@ -50,6 +53,10 @@ function App() {
               <Probar />
             </Route>
 
+             <Route exact path="/interfazEmpleados">
+              <Empleados />
+            </Route>
+    
             <Route exact path="/AgregarEmpleado">
               <AgregarEmpleado />
             </Route>
@@ -126,7 +133,16 @@ function App() {
             <Route path="/admiDocumentos">
               <AdmiDocumentos/>
             </Route>
-            
+            <Route path="/DeleteInventarios">
+              <DeleteInventarios/>
+            </Route>
+            <Route path="/agregarInventarios">
+              <AgregarInventarios/>
+            </Route>
+
+            <Route path="/adminOrders">
+              <IOrdenes />
+            </Route>
           </div>
         </Switch>
 

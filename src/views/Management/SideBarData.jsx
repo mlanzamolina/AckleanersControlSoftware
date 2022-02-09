@@ -5,7 +5,7 @@ import * as IoIcons from 'react-icons/io';
 
 export const SidebarData = [
   {
-    title: 'Home',
+    title: 'Inicio',
     path: '/Management',
     cName: 'nav-text'
   },
@@ -16,7 +16,7 @@ export const SidebarData = [
   },
   {
     title: 'Empleados',
-    path: '/AgregarEmpleado',
+    path: '/interfazEmpleados',
     cName: 'nav-text'
   },
   {
@@ -26,12 +26,12 @@ export const SidebarData = [
   },
   {
     title: 'Documentos',
-    path: '/admindocs',
+    path: '/adminDocs',
     cName: 'nav-text'
   },
   {
-    title: 'Ordenes de trabajo',
-    path: '/Ordenes',
+    title: 'Ordenes de Trabajo',
+    path: '/adminOrders',
     cName: 'nav-text'
   },
 ];

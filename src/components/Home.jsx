@@ -20,7 +20,7 @@ export class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{msOverflowY: "visible"}}>
         <Whatsapp />
         <Navigation />
         <Header data={this.state.resumeData.Header} />
