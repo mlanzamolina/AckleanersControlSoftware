@@ -510,7 +510,10 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                 </Button>
                 <Button type="submit" class="btn btn-outline-danger">
                   {isLoading ?  
-                               <h1><span class="spinner-border spinner-border-sm mr-2"></span>Enviando datos...</h1>  :  <h1>Modificar</h1>  }
+                              <h1 class="btn btn-primary" type="button" disabled>
+                              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                              <span class="sr-only">Loading...</span>
+                              </h1>:  <h1>Modificar</h1>  }
                   
                 </Button>
                 

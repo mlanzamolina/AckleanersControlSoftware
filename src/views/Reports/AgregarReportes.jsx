@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useParams } from "react-router-dom";
 import SingleImageUploadComponent from "./SingleImageUploadComponent ";
 import { jsPDF } from "jspdf";
@@ -6,7 +6,7 @@ import html2canvas from "html2canvas";
 import logito from "../../img/ack.png";
 import { useState,useEffect } from "react";
 import Reportes from "./Reportes";
-
+import ReactToPrint, {PrintContextConsumer} from "react-to-print";
 
 export default function AgregarReportes() {
   
@@ -173,8 +173,8 @@ setFecha(today);
       <label>CONCLUSION: </label>
       </div>
       <textarea name="texto" cols="80" rows="10" placeholder="Escribe aquí el texto...">
-    Este es el valor por defecto
   </textarea>
+
       <div>
       <label>Tel: 33067477  Correo Electronico : ackleaners@gmail.com</label>
       </div>
