@@ -44,12 +44,16 @@ const AdmiDocumentos=() =>{
     const [tipoD, setTipoD] = useState("");
     const [descripcion, setDescripcion] = useState("");
     const [idDoc, setIDDoc] = useState("");
+    const [url2, setURL2] = useState("");
+    let hoy = new Date();
+  let fechaActual = hoy.getFullYear() + '-' + (hoy.getMonth()+1)+'-'+hoy.getDate();
     const [currentID, setCurrentID] = useState({
       id: null,
       nombre: "",
       tipo:"",
       descripcion:"",
-      url:""
+      url:"",
+      fecha: ""
     });
     const[mostrarM, SetmostrarM] = useState(false);
 
@@ -103,7 +107,7 @@ const AdmiDocumentos=() =>{
 
       
     useEffect(() => {
-      console.log(tipo);
+    
 
       const getDocumentos = async () => {
         const temp = [];
@@ -119,7 +123,7 @@ const AdmiDocumentos=() =>{
         
       }
       getDocumentos();
-      console.log(tipo);
+      
       
      
     }, [tipo]);
@@ -189,26 +193,32 @@ const AdmiDocumentos=() =>{
 
         const editRow = (documentos) => {
           obtener(documentos);
+          setURL2(documentos.url);
+          console.log(url2);
       
           if (mostrarM === false) {
             SetmostrarM(!mostrarM);
           } else {
             SetmostrarM(!mostrarM);
           }
+          
+          
         };
       
         const obtener = (documentos) => {
           setIDDoc(documentos.id);
-          console.log(idDoc);
+         
       
           setCurrentID({
             id: documentos.id    ,
             nombre: documentos.nombre,
             descripcion: documentos.descripcion,
             tipo: documentos.tipo,
-            url: documentos.url
+            url: documentos.url,
+            fecha: documentos.fecha
           });
         };
+
 
 
 
@@ -220,15 +230,20 @@ const AdmiDocumentos=() =>{
     var nombre = document.getElementById("nombre").value;
     var descripcion = document.getElementById("descripcion").value;
     var tipoDocu = document.getElementById("tipo").value;
+    const nombreArchivo = currentID.url;
+    
+   
 
 
     if (
       nombre == " " ||
       descripcion == " " ||
-      tipoDocu == " "
+      tipoDocu == " " ||
+      url2 === ""
       
       
     )
+
 
      {
       swal({
@@ -237,6 +252,8 @@ const AdmiDocumentos=() =>{
         icon: "warning",
         button: "aceptar",
       });
+
+      return;
     
 
     } else {
@@ -244,7 +261,8 @@ const AdmiDocumentos=() =>{
         nombre: nombre,
         descripcion: descripcion,
         tipo: tipoDocu,
-        url: archivoUrl
+        url: archivoUrl,
+        fecha: fechaActual
 
       }).catch((error) => {
         swal({
@@ -278,7 +296,7 @@ const AdmiDocumentos=() =>{
 
 
 
-      const { slice, range } = useTable(data, page, 10);
+      const { slice, range } = useTable(data, page, 5);
 
     return (
       <>
@@ -320,6 +338,7 @@ const AdmiDocumentos=() =>{
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">TIPO</th>
+                <th scope="col">Fecha</th>
                 <th scope="col">EDITAR</th>
               </tr>
             </thead>
@@ -330,6 +349,7 @@ const AdmiDocumentos=() =>{
 
                   <td class="table-primary">{documentos.descripcion}</td>
                   <td class="table-primary">{documentos.tipo}</td>
+                  <td class="table-primary">{documentos.fecha}</td>
 
 
                   <td class="table-primary">

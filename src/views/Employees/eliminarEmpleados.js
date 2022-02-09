@@ -276,7 +276,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       telefono2 == " " ||
       id2 == " " ||
       correo2 == " " ||
-      imageurl === ""
+      imageurl === " "
       
       
     ){
