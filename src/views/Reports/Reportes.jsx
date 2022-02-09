@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { auth } from "../../components/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as FaIcons from "react-icons/fa";
@@ -170,14 +170,16 @@ export default function Reportes() {
   }, [user, loading]);
 
   return (
-    <div className="hide">
-      <Nav></Nav>
+    <Fragment>
+    <Nav></Nav>
+    <div class="contentf">
+      
       {/*<div class="sidebar">
         <a class="active" href="/Reportes">
           Reportes
         </a>
       </div>*/}
-      <div class="contentf">
+      <div>
       <div className="text-center" style={{ margin: "50px 0px" }}>
           <h1>Crear Reporte</h1>
           <hr></hr>
@@ -387,5 +389,6 @@ export default function Reportes() {
       </a> */}
       </div>
     </div>
+    </Fragment>
   );
 }
