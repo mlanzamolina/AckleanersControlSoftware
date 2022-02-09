@@ -6,7 +6,8 @@ import html2canvas from "html2canvas";
 import logito from "../../img/ack.png";
 import { useState,useEffect } from "react";
 import Reportes from "./Reportes";
-import ReactToPrint, {PrintContextConsumer} from "react-to-print";
+import "../Employees/estiloEmpleado.css";
+//import ReactToPrint, {PrintContextConsumer} from "react-to-print";
 
 export default function AgregarReportes() {
   
