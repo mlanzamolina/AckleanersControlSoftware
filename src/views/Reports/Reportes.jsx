@@ -178,7 +178,11 @@ export default function Reportes() {
         </a>
       </div>*/}
       <div class="contentf">
-        <h1 style={{ textAlign: "center" }}>Crear Reporte</h1>
+      <div className="text-center" style={{ margin: "50px 0px" }}>
+          <h1>Crear Reporte</h1>
+          <hr></hr>
+       
+        </div>
         <div className="containerf">
           <form className="row g-3">
             <form class="row g-3">

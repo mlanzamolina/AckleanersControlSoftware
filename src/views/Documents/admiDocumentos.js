@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Nav from "../NavAdmin"
+import Nav from "../NavAdmin";
 import {
   Button,
   Modal,
@@ -13,7 +13,7 @@ import {
   auth,
   registerWithEmailAndPassword,
   almacenamiento,
-  app
+  app,
 } from "../../components/firebase";
 import {
   collection,
@@ -32,33 +32,32 @@ import useTable from "./useTable";
 import TableFooter from "./TableFooter";
 import NavAdmin from "../NavAdmin";
 
+const AdmiDocumentos = () => {
+  const [data, setData] = useState([]);
 
-const AdmiDocumentos=() =>{
-    const [data, setData] = useState([]);
-    
-    const [page, setPage] = useState(1);
-    const [tipo, setTipo]= useState("");
-    const [mostrarE, setMostrarE, setMostrarEliminar] = useState(false);
-    const [idFire, setIDFire] = useState("");
-    const [nombre, setNombre]= useState("");
-    const [tipoD, setTipoD] = useState("");
-    const [descripcion, setDescripcion] = useState("");
-    const [idDoc, setIDDoc] = useState("");
-    const [url2, setURL2] = useState("");
-    let hoy = new Date();
-  let fechaActual = hoy.getFullYear() + '-' + (hoy.getMonth()+1)+'-'+hoy.getDate();
-    const [currentID, setCurrentID] = useState({
-      id: null,
-      nombre: "",
-      tipo:"",
-      descripcion:"",
-      url:"",
-      fecha: ""
-    });
-    const[mostrarM, SetmostrarM] = useState(false);
+  const [page, setPage] = useState(1);
+  const [tipo, setTipo] = useState("");
+  const [mostrarE, setMostrarE, setMostrarEliminar] = useState(false);
+  const [idFire, setIDFire] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [tipoD, setTipoD] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [idDoc, setIDDoc] = useState("");
+  const [url2, setURL2] = useState("");
+  let hoy = new Date();
+  let fechaActual =
+    hoy.getFullYear() + "-" + (hoy.getMonth() + 1) + "-" + hoy.getDate();
+  const [currentID, setCurrentID] = useState({
+    id: null,
+    nombre: "",
+    tipo: "",
+    descripcion: "",
+    url: "",
+    fecha: "",
+  });
+  const [mostrarM, SetmostrarM] = useState(false);
 
-    
-    /*useEffect(() => {
+  /*useEffect(() => {
       const fecthData = async ()=>{
         db.collection("Empleados").onSnapshot(function(data){
           setData(data.docs.map(doc=>({...doc.data(),id:doc.id})))
@@ -70,182 +69,126 @@ const AdmiDocumentos=() =>{
        
      }, []);*/
 
+  const getDocumentos2 = async () => {
+    db.collection("Documentos").onSnapshot(function (data) {
+      setData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
+  };
 
-     
+  const elegirTipo = async () => {
+    const temp = [];
 
-     const getDocumentos2 = async () => {
-        db.collection("Documentos").onSnapshot(function(data){
-          setData(data.docs.map(doc=>({...doc.data(),id:doc.id})))
-        })
-      
+    var opcion = tipo;
+
+    const docEmpleados = db.collection("Documentos");
+    const snapshot = await docEmpleados.where("tipo", "==", opcion).get();
+    if (snapshot.empty) {
+      alert("No hay resultados");
+
+      return;
+    } else {
+      snapshot.forEach((doc) => {
+        temp.push({ ...doc.data(), id: doc.id });
+      });
+      setData(temp);
     }
+  };
 
+  useEffect(() => {
+    const getDocumentos = async () => {
+      const temp = [];
+      var cad = "Eligir Opcion";
 
-    const elegirTipo= async()=>{
-      const temp=[]
-
-      var opcion= tipo;
-           
-      const docEmpleados = db.collection("Documentos");
-      const snapshot = await docEmpleados.where('tipo', '==',  opcion).get();
-      if(snapshot.empty){
-        alert("No hay resultados");
-        
-        return;
-
-      }else{
-        snapshot.forEach(doc=>{
-        temp.push({...doc.data(),id:doc.id})
-        })
-        setData(temp);
-       
+      if (tipo === cad || tipo === "") {
+        getDocumentos2();
+      } else {
+        elegirTipo();
       }
+    };
+    getDocumentos();
+  }, [tipo]);
 
+  const [archivoUrl, setArchivoUrl] = useState("");
+
+  const archivoHandler = async (event) => {
+    const archivo = event.target.files[0];
+    swal({
+      title: "¡Convirtiendo!",
+      icon: "warning",
+      text: "Un momento...",
+      timer: 5000,
+      button: false,
+    });
+    const storageRef = app.storage().ref("Documentos");
+    const archivoPath = storageRef.child(archivo.name);
+    await archivoPath.put(archivo);
+    console.log("Archivo cargado ", archivo.name);
+    const enlaceUrl = await archivoPath.getDownloadURL();
+    setArchivoUrl(enlaceUrl);
+  };
+
+  const eliminarDocumento = async (index, e) => {
+    e.preventDefault();
+    console.log(index);
+    const documentos = doc(db, "Documentos", index);
+    console.log(documentos);
+
+    deleteDoc(documentos);
+
+    swal({
+      title: "Documento Eliminado",
+      text: "Se elimino el documento exitosamente",
+      icon: "info",
+      button: "aceptar",
+    });
+    setMostrarE(false);
+  };
+
+  const mostrarModalEliminar = (index) => {
+    setIDFire(index);
+
+    if (mostrarE === false) {
+      setMostrarE(!mostrarE);
+    } else {
+      setMostrarE(!mostrarE);
     }
+  };
 
+  const editRow = (documentos) => {
+    obtener(documentos);
+    setURL2(documentos.url);
+    console.log(url2);
 
-
-      
-    useEffect(() => {
-    
-
-      const getDocumentos = async () => {
-        const temp = [];
-        var cad= "Eligir Opcion";
-        
-        if(tipo===cad|| tipo===""){
-         getDocumentos2();
-  
-            }else{
-              elegirTipo();
-           
-        }
-        
-      }
-      getDocumentos();
-      
-      
-     
-    }, [tipo]);
-
-
-     
-
-
-
-
-
-
-        const [archivoUrl, setArchivoUrl] = useState('');
-
-    const archivoHandler = async (event) => {
-        const archivo = event.target.files[0];
-        swal({
-            title: "¡Convirtiendo!",
-            icon: "warning",
-            text: "Un momento...",
-            timer: 5000,
-            button: false
-        });
-        const storageRef = app.storage().ref("Documentos");
-        const archivoPath = storageRef.child(archivo.name);
-        await archivoPath.put(archivo);
-        console.log("Archivo cargado ", archivo.name);
-        const enlaceUrl = await archivoPath.getDownloadURL();
-        setArchivoUrl(enlaceUrl);
+    if (mostrarM === false) {
+      SetmostrarM(!mostrarM);
+    } else {
+      SetmostrarM(!mostrarM);
     }
+  };
 
+  const obtener = (documentos) => {
+    setIDDoc(documentos.id);
 
+    setCurrentID({
+      id: documentos.id,
+      nombre: documentos.nombre,
+      descripcion: documentos.descripcion,
+      tipo: documentos.tipo,
+      url: documentos.url,
+      fecha: documentos.fecha,
+    });
+  };
 
-        const eliminarDocumento = async (index,e) => {
-          e.preventDefault();
-          console.log(index);
-          const documentos = doc(db, "Documentos", index);
-          console.log(documentos);
-          
-         
-      
-          deleteDoc(documentos);
-          
-          swal({
-            title: "Documento Eliminado",
-            text: "Se elimino el documento exitosamente",
-            icon: "info",
-            button: "aceptar",
-          });
-         setMostrarE(false);
-         
-      
-        };
-      
-        const mostrarModalEliminar = (index) => {
-        setIDFire(index);
-          
-      
-          if (mostrarE === false) {
-            setMostrarE(!mostrarE);
-          } else {
-            setMostrarE(!mostrarE);
-          }
-      
-          
-        };
-
-        const editRow = (documentos) => {
-          obtener(documentos);
-          setURL2(documentos.url);
-          console.log(url2);
-      
-          if (mostrarM === false) {
-            SetmostrarM(!mostrarM);
-          } else {
-            SetmostrarM(!mostrarM);
-          }
-          
-          
-        };
-      
-        const obtener = (documentos) => {
-          setIDDoc(documentos.id);
-         
-      
-          setCurrentID({
-            id: documentos.id    ,
-            nombre: documentos.nombre,
-            descripcion: documentos.descripcion,
-            tipo: documentos.tipo,
-            url: documentos.url,
-            fecha: documentos.fecha
-          });
-        };
-
-
-
-
-
-        const modificar = async (e) => {
-          e.preventDefault();
-        const documento = doc(db, "Documentos", idDoc);
+  const modificar = async (e) => {
+    e.preventDefault();
+    const documento = doc(db, "Documentos", idDoc);
 
     var nombre = document.getElementById("nombre").value;
     var descripcion = document.getElementById("descripcion").value;
     var tipoDocu = document.getElementById("tipo").value;
     const nombreArchivo = currentID.url;
-    
-   
 
-
-    if (
-      nombre == " " ||
-      descripcion == " " ||
-      tipoDocu == " " ||
-      url2 === ""
-      
-      
-    )
-
-
-     {
+    if (nombre == " " || descripcion == " " || tipoDocu == " " || url2 === "") {
       swal({
         title: "No se realizo",
         text: "No se modifico el documento, verifique los campos",
@@ -254,16 +197,13 @@ const AdmiDocumentos=() =>{
       });
 
       return;
-    
-
     } else {
       await updateDoc(documento, {
         nombre: nombre,
         descripcion: descripcion,
         tipo: tipoDocu,
         url: archivoUrl,
-        fecha: fechaActual
-
+        fecha: fechaActual,
       }).catch((error) => {
         swal({
           title: "Surgio un error",
@@ -272,8 +212,6 @@ const AdmiDocumentos=() =>{
           button: "aceptar",
         });
       });
-    
-     
 
       swal({
         title: "Documento Modificado",
@@ -284,241 +222,209 @@ const AdmiDocumentos=() =>{
     }
   }; //Fin
 
-
-  const handleChange=(e) =>{
+  const handleChange = (e) => {
     setTipo(e.target.value);
-    
+  };
 
-  }
+  const { slice, range } = useTable(data, page, 5);
 
-
-
-
-
-
-      const { slice, range } = useTable(data, page, 5);
-
-    return (
-      <>
+  return (
+    <>
       <NavAdmin></NavAdmin>
-        <div className="contentm">
-      <div className="text-center" style={{margin:"50px 0px"}}>
-        <h1>Documentos</h1>
-        <hr></hr>
-
-
-      </div>
-      <div className="container">
-
+      <div className="contentm">
+        <div className="text-center" style={{ margin: "50px 0px" }}>
+          <h1>Documentos</h1>
+          <hr></hr>
+        </div>
+        <div className="container">
           <div className="dropdown">
-          <label><h5>BUSCAR</h5></label> 
-    <br/>         
-             <select onChange={(e)=>handleChange(e)}  id="tipo2" > 
-                <option>Eligir Opcion</option>
-                <option>Reporte</option>
-                <option>Instructivo</option>
-                <option>Procedimiento</option>
-                <option>Manual</option>
-                <option>Formato</option>
-              </select>
-
+            <label>
+              <h5>BUSCAR</h5>
+            </label>
+            <br />
+            <select onChange={(e) => handleChange(e)} id="tipo2">
+              <option>Eligir Opcion</option>
+              <option>Reporte</option>
+              <option>Instructivo</option>
+              <option>Procedimiento</option>
+              <option>Manual</option>
+              <option>Formato</option>
+            </select>
           </div>
 
-   
-
-
-   
-
-        <div className="mt-4 mb-4 table-responsive">
-          <table className="table table-dark table-striped">
-            <thead className={styles.tableRowHeader}>
-              <tr className="align-me">
-
-
-                <th scope="col">Nombre</th>
-                <th scope="col">Descripcion</th>
-                <th scope="col">TIPO</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">EDITAR</th>
-              </tr>
-            </thead>
-            <tbody >
-              {slice.map((documentos, index) => (
-                <tr key={index}>
-                  <td  class="table-primary">{documentos.nombre}</td>
-
-                  <td class="table-primary">{documentos.descripcion}</td>
-                  <td class="table-primary">{documentos.tipo}</td>
-                  <td class="table-primary">{documentos.fecha}</td>
-
-
-                  <td class="table-primary">
-                    <div
-                      class="btn-group"
-                      role="group"
-                      aria-label="Basic example"
-                    >
-                      <Button onClick={()=>editRow(documentos)} 
-                        color="success"
-                
-                      >
-                        <i class="bi bi-pencil"></i>
-                      </Button>
-                      <Button onClick={()=>mostrarModalEliminar(documentos.id)} 
-                        color="success"
-                       
-                      >
-                        <i class="bi bi-archive"></i>
-                      </Button>
-
-                     
-                    </div>
-                  </td>
+          <div className="mt-4 mb-4 table-responsive">
+            <table className="table table-dark table-striped">
+              <thead className={styles.tableRowHeader}>
+                <tr className="align-me">
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Descripcion</th>
+                  <th scope="col">TIPO</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">EDITAR</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <TableFooter
-            range={range}
-            slice={slice}
-            setPage={setPage}
-            page={page}
-          />
+              </thead>
+              <tbody>
+                {slice.map((documentos, index) => (
+                  <tr key={index}>
+                    <td class="table-primary">{documentos.nombre}</td>
+
+                    <td class="table-primary">{documentos.descripcion}</td>
+                    <td class="table-primary">{documentos.tipo}</td>
+                    <td class="table-primary">{documentos.fecha}</td>
+
+                    <td class="table-primary">
+                      <div
+                        class="btn-group"
+                        role="group"
+                        aria-label="Basic example"
+                      >
+                        <Button
+                          onClick={() => editRow(documentos)}
+                          color="success"
+                        >
+                          <i class="bi bi-pencil"></i>
+                        </Button>
+                        <Button
+                          onClick={() => mostrarModalEliminar(documentos.id)}
+                          color="success"
+                        >
+                          <i class="bi bi-archive"></i>
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <TableFooter
+              range={range}
+              slice={slice}
+              setPage={setPage}
+              page={page}
+            />
+          </div>
         </div>
-      </div>
-      <Modal isOpen={mostrarE} >
-        <ModalHeader closeButton>¿DESEA ELIMINAR EL DOCUMENTO?</ModalHeader>
+        <Modal isOpen={mostrarE}>
+          <ModalHeader closeButton>¿DESEA ELIMINAR EL DOCUMENTO?</ModalHeader>
 
-        <ModalFooter>
-          <Button onClick={(e)=>eliminarDocumento(idFire,e)} 
-            type="button"
-            variant="primary"
-            
-          >
-            SI
-          </Button>
+          <ModalFooter>
+            <Button
+              onClick={(e) => eliminarDocumento(idFire, e)}
+              type="button"
+              variant="primary"
+            >
+              SI
+            </Button>
 
-          <Button onClick={()=>setMostrarE(false)}
-            type="button"
-            variant="secondary"
-            
-          >
-            NO
-          </Button>
-        </ModalFooter>
-      </Modal>
+            <Button
+              onClick={() => setMostrarE(false)}
+              type="button"
+              variant="secondary"
+            >
+              NO
+            </Button>
+          </ModalFooter>
+        </Modal>
 
-      <Modal isOpen={mostrarM}>
-        <ModalHeader>Modificar Documento</ModalHeader>
-        <ModalBody>
-          <div className="form-group">
-    
+        <Modal isOpen={mostrarM}>
+          <ModalHeader>Modificar Documento</ModalHeader>
+          <ModalBody>
+            <div className="form-group">
+              <form onSubmit={(e) => modificar(e)}>
+                <label>Nombre: </label>
 
-           <form  onSubmit={(e)=>modificar(e)} >
-              <label>Nombre: </label>
-              
-              
-              <input
-                type="text"
-                id="nombre"
-                className="form-control"
-                onChange={(e) => setNombre(e.target.value)}
-                defaultValue={currentID && currentID.nombre}
-                name="nombre"
-              />
+                <input
+                  type="text"
+                  id="nombre"
+                  className="form-control"
+                  onChange={(e) => setNombre(e.target.value)}
+                  defaultValue={currentID && currentID.nombre}
+                  name="nombre"
+                />
 
+                <br />
+                <br />
 
-              <br />
-              <br />
+                <label>Tipo Reporte:</label>
+                <br />
 
-              <label>Tipo Reporte:</label>
-              <br />
-             
-              
-
-              <select
-                id="tipo"
-                onChange={(e) => setTipoD(e.target.value)}
-                defaultValue={currentID && currentID.tipo}
-              >
-
-
-                <option>Reporte</option>
-                <option>Instructivo</option>
-                <option>Procedimiento</option>
-                <option>Manual</option>
-                <option>Formato</option>
+                <select
+                  id="tipo"
+                  onChange={(e) => setTipoD(e.target.value)}
+                  defaultValue={currentID && currentID.tipo}
+                >
+                  <option>Reporte</option>
+                  <option>Instructivo</option>
+                  <option>Procedimiento</option>
+                  <option>Manual</option>
+                  <option>Formato</option>
                 </select>
 
                 <br />
                 <br />
-                
 
                 <label>Descripcion</label>
-              
-              <textarea
-                id="descripcion"
-                class="form-control"
-                name="descripcion"
-                onChange={(e) => setDescripcion(e.target.value)}
-                defaultValue={currentID && currentID.descripcion}
-              ></textarea>
-              <br />
-              <br />
-              
 
+                <textarea
+                  id="descripcion"
+                  class="form-control"
+                  name="descripcion"
+                  onChange={(e) => setDescripcion(e.target.value)}
+                  defaultValue={currentID && currentID.descripcion}
+                ></textarea>
+                <br />
+                <br />
 
-              <div class="offset-lg-1">
+                <div class="offset-lg-1">
+                  <input
+                    id="i_foto"
+                    type="file"
+                    placeholder="Cargar documento..."
+                    style={{ marginTop: "5%" }}
+                    onChange={archivoHandler}
+                  />
+                  <br />
+                </div>
 
-              <input
-              id="i_foto"
-              type="file"
-              placeholder="Cargar documento..."
-              style={{ "marginTop": "5%" }}
-               onChange={archivoHandler}
-              />
-              <br />
+                <br />
 
-              </div>
+                <label>URL:</label>
+                <br />
 
-              <br/>
-
-              <label>URL:</label>
-              <br/>
-
-              <a className="form-control"  target="_blank" href={currentID.url}> Documento PDF</a>
-          
-
-
-              
-
-              <ModalFooter>
-                <Button
-                  type="button"
-                  class="btn btn-outline-danger"
-                  onClick={() => SetmostrarM(false)}
+                <a
+                  className="form-control"
+                  target="_blank"
+                  href={currentID.url}
                 >
-                  SALIR
-                </Button>
-                <Button type="submit" class="btn btn-outline-danger">
-                  Modificar
-                </Button>
-              </ModalFooter>
+                  {" "}
+                  Documento PDF
+                </a>
 
-
-              </form> 
-
-          </div>
-
-
-        </ModalBody>
+                <ModalFooter>
+                  <Button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    onClick={() => SetmostrarM(false)}
+                  >
+                    SALIR
+                  </Button>
+                  <Button type="submit" class="btn btn-outline-danger">
+                    Modificar
+                  </Button>
+                </ModalFooter>
+              </form>
+            </div>
+          </ModalBody>
         </Modal>
 
-      
-    </div>
+        <Link to="adminDocs">
+          <button type="button" class="btn btn-danger">
+            Regresar
+          </button>
+        </Link>
+      </div>
     </>
   );
 };
-    
 
 export default AdmiDocumentos;

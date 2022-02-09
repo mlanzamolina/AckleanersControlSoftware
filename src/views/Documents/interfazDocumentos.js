@@ -10,8 +10,11 @@ export const Documentos = () => {
         className="contenedorPrincipal2"
         style={{ width: "100%", height: "100%" }}
       >
-        <a className="navbar-brand" style={{margin: "0px 10px"}} href="/admindocs">Documentos</a>
         <div className="p-3 estiloPrincipal">
+          <div className="text-center" id="marh1" style={{ margin: "50px 0px" }}>
+            <h1>Documentos</h1>
+            <hr></hr>
+          </div>
           <div className="container rounded estiloContenedor">
             <div>
               <form className="row g-3">

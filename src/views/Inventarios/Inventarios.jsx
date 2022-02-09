@@ -36,8 +36,11 @@ export default function Inventarios() {
         className="contenedorPrincipal2Inv"
         style={{ width: "100%", height: "100%" }}
       >
-        <a className="navbar-brand" style={{margin: "0px 10px"}} href="/inventarios">Inventarios</a>
         <div className="p-3 estiloPrincipalInv">
+        <div className="text-center" id="marh1" style={{ margin: "50px 0px" }}>
+          <h1>Empleados</h1>
+          <hr></hr>
+        </div>
           <div className="container rounded estiloContenedorInv">
             <div>
               <form className="row g-3">

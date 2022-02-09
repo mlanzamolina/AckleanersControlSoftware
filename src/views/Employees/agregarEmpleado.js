@@ -47,8 +47,6 @@ const AgregarEmpleado = () => {
   };
 
   const handleDni = (e) => {
-    
-
     setDni_unico(true);
     empleados.map((item) => {
       if (item.dni === e.target.value) {
@@ -91,7 +89,7 @@ const AgregarEmpleado = () => {
       dats.numero == " " ||
       dats.id == " " ||
       dats.correo == " " ||
-      image === null 
+      image === null
     ) {
       swal({
         title: "No se realizo",
@@ -156,14 +154,24 @@ const AgregarEmpleado = () => {
         </a>
         <a href="/eliminarEmpleados">Modificar Empleado</a>
       </div>*/}
+
       <div class="contentf">
         <div
           className="contenedorPrincipal"
           style={{ width: "100%", height: "100%" }}
         >
+          <div className="text-center" style={{ margin: "50px 0px" }}>
+            <h1>Agregar Empleado</h1>
+            <hr></hr>
+          </div>
           <div className="container rounded contenedorFormulario">
             <div>
               <form className="row g-3">
+                <Link to="/EliminarEmpleados">
+                  <button type="button" class="btn btn-success">
+                    Listar Empleados
+                  </button>
+                </Link>
                 <div className="col-md-6">
                   <label
                     htmlFor="inputAddress"

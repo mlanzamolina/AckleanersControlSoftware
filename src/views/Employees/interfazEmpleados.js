@@ -15,7 +15,7 @@ export const Empleados = () => {
             <div>
               <form className="row g-3">
               <div class="offset-lg-2 espaciadoContenedor">
-                  <Link to="/ListarEmpleado">
+                  <Link to="/EliminarEmpleados">
                     <button className="rounded botonSize fondoListarEmpleado">
                       Listar Empleados
                     </button>
@@ -25,22 +25,6 @@ export const Empleados = () => {
                   <Link to="/AgregarEmpleado">
                     <button className="rounded botonSize fondoAgregarEmpleado">
                       Agregar Empleado
-                    </button>
-                  </Link>
-                </div>
-
-                <div class="offset-lg-2 espaciadoContenedor">
-                  <Link to="/ModificarEmpleado">
-                    <button className="rounded botonSize fondoModificarEmpleado">
-                      Modificar Empleado
-                    </button>
-                  </Link>
-                </div>
-
-                <div class="offset-lg-1 espaciadoContenedor">
-                <Link to="/EliminarEmpleados">
-                    <button className="rounded botonSize fondoEliminarEmpleado">
-                      Eliminar Empleado
                     </button>
                   </Link>
                 </div>
