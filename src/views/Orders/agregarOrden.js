@@ -21,7 +21,7 @@ const AgregarOrden = () => {
     { idField: "id" }
   );
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const [dats, setDatos] = useState({
     nombre: " ",
@@ -88,14 +88,7 @@ const AgregarOrden = () => {
   return (
     <>
       <Nav />
-      <div class="sidebar">
-        <a href="/Ordenes">Ordenes</a>
-        <a href="/ListarOrdenes">Listar Ordenes</a>
-        <a class="active" href="/AgregarOrden">
-          Agregar Orden
-        </a>
-        <a href="/ModificarOrden">Modificar Orden</a>
-      </div>
+      
       <div className="contentf">
         <Fragment>
           <h1 className="tituloh1">Agregar Orden de Trabajo</h1>
@@ -155,15 +148,15 @@ const AgregarOrden = () => {
                       setSelect_emp(e.target.value);
                     }}
                   >
-                    <option selected>Seleccioné un empleado</option>
+                    <option selected>Seleccione un empleado</option>
                     {empleados
                       ? empleados.map((item) => {
-                          return (
-                            <option key={item.id} value={item.nombre}>
-                              {item.nombre}
-                            </option>
-                          );
-                        })
+                        return (
+                          <option key={item.id} value={item.nombre}>
+                            {item.nombre}
+                          </option>
+                        );
+                      })
                       : null}
                   </select>
                 </div>
@@ -199,9 +192,9 @@ const AgregarOrden = () => {
                 </div>
               </form>
               <div>
-                <Link to="/">
-                  <button type="submit" className="btn btn-danger">
-                    Salir
+                <Link to="/adminOrders">
+                  <button type="submit" className="btn btn-danger" style={{marginLeft:"80%", marginRight:"2%"}}>
+                    Regresar
                   </button>
                 </Link>
 
@@ -215,6 +208,7 @@ const AgregarOrden = () => {
               </div>
             </form>
           </div>
+          
         </Fragment>
       </div>
     </>

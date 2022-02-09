@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo, Component } from "react";
 import Nav from "../NavAdmin"
 import {
   Button,
@@ -57,9 +57,12 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
     direccion: "",
   });
 
+  
+
   const [mostrarV, setMostrarV] = useState(false);
 
   const [paginated, setPaginated] = useState();
+
 
   const [page, setPage] = useState(1);
   const [vista, setVista] = useState({
@@ -86,7 +89,14 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
   const [imageurl, setimageURL] = useState("");
   const [idFire, setIDFire] = useState("");
   const [q, setQ] = useState("");
+  const [imageurl2, setimageURL2] = useState("");
 
+  
+
+  const [isLoading,setIsloading]=useState(false);
+
+
+  
   const getEmpleados = async () => {
     const temp = [];
     db.collection("Empleados").onSnapshot((querySnapshot) => {
@@ -96,11 +106,22 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
 
       setData(temp);
     });
+   
   };
 
+
+
   useEffect(() => {
-    getEmpleados();
-  }, [data]);
+   const fecthData = async ()=>{
+     db.collection("Empleados").onSnapshot(function(data){
+       setData(data.docs.map(doc=>({...doc.data(),id:doc.id})))
+     })
+
+   }
+   fecthData();
+ 
+    
+  }, []);
 
   const { slice, range } = useTable(data, page, 5);
 
@@ -147,6 +168,8 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
     }
     setimageURL(URL.createObjectURL(e.target.files[0]));
     setImage(e.target.files[0]);
+   
+    
   };
 
   const handleInputChance = (event) => {
@@ -157,6 +180,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
   };
 
   const handleDni = (e) => {
+  try {
     setDni_unico(true);
     data.map((item) => {
       if (item.dni === e.target.value && item.dni !== currentID.id ) {
@@ -169,20 +193,16 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         });
       }
     });
-  };
-
-  const editRow = (empleados) => {
-    obtener(empleados);
-
-    if (mostrarM === false) {
-      SetmostrarM(!mostrarM);
-    } else {
-      SetmostrarM(!mostrarM);
-    }
+    
+  } catch (error) {
+    console.log("Error DNI");
+  }
+    
   };
 
   const obtener = (empleados) => {
-    setIDFire(empleados.id);
+    try {
+      setIDFire(empleados.id);
 
     setCurrentID({
       id: empleados.dni,
@@ -192,8 +212,41 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       foto: empleados.foto,
       estado: empleados.estado,
       direccion: empleados.direccion,
+  
+
     });
+   
+      
+    } catch (error) {
+      
+    }
+    
+    
+  
   };
+
+  const editRow = (empleados) => {
+    obtener(empleados);
+    
+
+    if (mostrarM === false) {
+      SetmostrarM(!mostrarM);
+     
+    } else {
+      SetmostrarM(!mostrarM);
+    }
+    
+    if(empleados.foto){
+      setimageURL(empleados.foto);
+    }else{
+      setimageURL("");
+    }
+      
+    
+   
+  };
+
+  
 
   /*const obtener2 = ()=>{
 
@@ -206,7 +259,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
 
   const modificar = async (e) => {
     e.preventDefault();
-
+    
     const empleadosDoc = doc(db, "Empleados", idFire);
 
     var nombre2 = document.getElementById("nombre").value;
@@ -223,7 +276,8 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       telefono2 == " " ||
       id2 == " " ||
       correo2 == " " ||
-      dni_unico===true
+      imageurl === " "
+      
       
     ){
       swal({
@@ -233,6 +287,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         button: "Aceptar",
       });
     } else {
+      setIsloading(true);
       await updateDoc(empleadosDoc, {
         nombre: nombre2,
         dni: id2,
@@ -249,6 +304,8 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         });
       });
       console.log(nombre);
+      //await new Promise(resolve=> setTimeout(resolve, 2000));
+      
 
       const uploadtask = almacenamiento
         .ref("/UsuarioFotos/" + idFire)
@@ -261,6 +318,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
           updateDoc(doc(db, "Empleados", idFire), {
             foto: url,
           });
+          setIsloading(false);
         });
 
       swal({
@@ -269,8 +327,20 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         icon: "info",
         button: "Aceptar",
       });
+
     }
+    setimageURL(null);
+    
   }; //Fin
+
+
+  const cambiarFoto=(e)=>{
+    e.target.src = imageurl;
+  
+  }
+
+
+
 
   const mostrarVistaEmpleado = (empleados) => {
     setVista({
@@ -283,7 +353,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       direccion: empleados.direccion,
       estado: empleados.estado,
     });
-    console.log(vista.foto);
+    
 
     if (mostrarV == false) {
       setMostrarV(!mostrarV);
@@ -294,6 +364,8 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
 
   return (
     <>
+
+   
      <Nav />
      <div class="sidebar">
         <a  href="/AgregarEmpleado">
@@ -402,6 +474,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         <ModalBody>
           <div className="form-group">
             <form onSubmit={(e) => modificar(e)}>
+            
               <label>Nombre: </label>
               <br />
               <input
@@ -419,7 +492,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                 type="text"
                 id="id"
                 className="form-control"
-                onBlur={handleDni}
+                //onBlur={handleDni}
                 onChange={(e) => setDNI(e.target.value)}
                 defaultValue={currentID && currentID.id}
                 pattern="[0-9]{13}"
@@ -475,7 +548,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
               <br />
 
               <div>
-                <img id="foto" src={imageurl} class="form-control" />;
+                <img id="foto" src={imageurl} class="form-control" />
               </div>
 
               <div class="form-control">
@@ -485,6 +558,8 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                   class="form-control-file"
                   accept=".jpg,.png"
                   onChange={handleFileSubmit}
+                  
+                  
                 />
               </div>
 
@@ -493,12 +568,19 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                   type="button"
                   class="btn btn-outline-danger"
                   onClick={() => SetmostrarM(false)}
+                  
                 >
                   SALIR
                 </Button>
                 <Button type="submit" class="btn btn-outline-danger">
-                  Modificar
+                  {isLoading ?  
+                              <h1 class="btn btn-primary" type="button" disabled>
+                              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                              <span class="sr-only">Loading...</span>
+                              </h1>:  <h1>Modificar</h1>  }
+                  
                 </Button>
+                
               </ModalFooter>
             </form>
           </div>
@@ -511,21 +593,21 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
           <img src={vista.foto} class="card-img-top" alt="..."></img>
           <div class="container">
             <div class="col">
-              <label>ID:</label>
-              <label>{vista.dni}</label>
+              <label><strong>ID:</strong></label>
+              <label>&nbsp;&nbsp;{vista.dni}</label>
             </div>
             <div class="col">
-              <label>Correo:</label>
-              <label>{vista.correo}</label>
+              <label><strong>Correo:</strong></label>
+              <label>&nbsp;&nbsp;{vista.correo}</label>
             </div>
             <div class="col">
-              <label>Telefono:</label>
-              <label>{vista.telefono}</label>
+              <label> <strong>Telefono:</strong></label>
+              <label>&nbsp;&nbsp;{vista.telefono}</label>
             </div>
 
             <div class="col align-self-start">
-              <label>Direccion:</label>
-              <label>{vista.direccion}</label>
+              <label><strong>Direccion:</strong></label>
+              <label>&nbsp;&nbsp;{vista.direccion}</label>
             </div>
           </div>
 

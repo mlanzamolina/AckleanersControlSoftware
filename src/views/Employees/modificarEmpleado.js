@@ -14,7 +14,7 @@ import Nav from "../NavAdmin";
 const ModificarEmpleado = () => {
   const [sidebar, setSidebar] = useState(false);
   const tablaEmpleadosRef = collection(dbEmpleado, "Empleados");
-  const showSidebar = () => setSidebar(!sidebar);
+  //const showSidebar = () => setSidebar(!sidebar);
   const [dats, setDatos] = useState({
     nombre: " ",
     id: " ",
@@ -22,13 +22,13 @@ const ModificarEmpleado = () => {
     correo: " ",
   });
 
-  const handleInputChance = (event) => {
-    console.log(event.target.value);
-    setDatos({
-      ...dats,
-      [event.target.name]: event.target.value,
-    });
-  };
+  // const handleInputChance = (event) => {
+  //   console.log(event.target.value);
+  //   setDatos({
+  //     ...dats,
+  //     [event.target.name]: event.target.value,
+  //   });
+  // };
 
   const [empleados, loading, error] = useCollectionData(
     collection(db, "Empleados"),

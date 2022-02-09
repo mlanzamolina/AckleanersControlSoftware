@@ -3,18 +3,15 @@ import { auth } from "../../components/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import { Link, useHistory, useParams } from "react-router-dom";
-import { SidebarData } from "./SideBarData";
-import {
-  useCollectionData,
-  useDocumentData,
-} from "react-firebase-hooks/firestore";
-import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
+import { useHistory } from "react-router-dom";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { collection, doc, updateDoc } from "firebase/firestore";
 import { dbOrdenes, db } from "../../components/firebase";
-
 import swal from "sweetalert";
 import "./table.css";
+import "../Employees/estiloEmpleado.css"
 import Nav from "../NavAdmin";
+import * as emailjs from "emailjs-com";
 
 export default function Reportes() {
   const tablaOrdenesRef = collection(dbOrdenes, "OrdenesTrabajo");
@@ -63,8 +60,8 @@ export default function Reportes() {
     }
   };
   const [user, loading, error] = useAuthState(auth);
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
+  //const [sidebar, setSidebar] = useState(false);
+  //const showSidebar = () => setSidebar(!sidebar);
   const history = useHistory();
   const [dats, setDatos] = useState({
     numero: 0,
@@ -72,13 +69,14 @@ export default function Reportes() {
     telefono: "",
   });
   const [fecha, setFecha] = useState("");
+  const [fecha2, setFecha2] = useState("");
 
   useEffect(() => {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!
+    var mm2= today.toLocaleString('es', {month: 'long'});
     var yyyy = today.getFullYear();
-
     if (dd < 10) {
       dd = "0" + dd;
     }
@@ -86,9 +84,11 @@ export default function Reportes() {
     if (mm < 10) {
       mm = "0" + mm;
     }
-
-    today = mm + "/" + dd + "/" + yyyy;
+    
+    today = dd + " de " + mm2 + ", " + yyyy;
     setFecha(today);
+    today = mm + "/" + dd + "/" + yyyy;
+    setFecha2(today);
   });
 
   const handleInputChance = (event) => {
@@ -142,6 +142,19 @@ export default function Reportes() {
         });
       })
       .then(() => {
+        var template_params = {
+          nombre: nomCliente,
+          tel: telCliente,
+          fecha1: fecha,
+          fecha2: fecha2,
+        };
+        emailjs
+          .send(
+            "service_bv2gre1",
+            "template_94rmrwe",
+            template_params,
+            emailjs.init("user_KnXE6C3gbj7LvCi9G8oET")
+          )
         history.push(
           `/AgregarReportes/${cantUnidades}/${nomCliente}/${telCliente}`
         );
@@ -157,13 +170,13 @@ export default function Reportes() {
   }, [user, loading]);
 
   return (
-    <>
+    <div className="hide">
       <Nav></Nav>
-      <div class="sidebar">
+      {/*<div class="sidebar">
         <a class="active" href="/Reportes">
           Reportes
         </a>
-      </div>
+      </div>*/}
       <div class="contentf">
         <h1 style={{ textAlign: "center" }}>Crear Reporte</h1>
         <div className="containerf">
@@ -237,7 +250,7 @@ export default function Reportes() {
                 class="form-control"
                 id="inputFecha"
                 disabled
-                value={fecha}
+                value={fecha2}
               />
             </div>
             <div className="col-md-6">
@@ -369,6 +382,6 @@ export default function Reportes() {
         />
       </a> */}
       </div>
-    </>
+    </div>
   );
 }

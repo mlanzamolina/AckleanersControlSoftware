@@ -1,8 +1,8 @@
 import React from "react";
-import "./estiloDocs.css";
+import "./estiloReporte.css";
 import { Link } from "react-router-dom";
 import Nav from "../NavAdmin";
-export const Documentos = () => {
+export const Reportes = () => {
   return (
     <>
       <Nav></Nav>
@@ -10,39 +10,45 @@ export const Documentos = () => {
         className="contenedorPrincipal2"
         style={{ width: "100%", height: "100%" }}
       >
-        <a className="navbar-brand" style={{margin: "0px 10px"}} href="/admindocs">Documentos</a>
+        <a
+          className="navbar-brand"
+          style={{ margin: "0px 10px" }}
+          href="/Reportes"
+        >
+          Reportes
+        </a>
         <div className="p-3 estiloPrincipal">
           <div className="container rounded estiloContenedor">
             <div>
               <form className="row g-3">
                 <div class="offset-lg-1 espaciadoContenedor">
-                  <Link to="/AgregarDocumento">
+                  <Link to="/CrearReportes">
                     <button className="rounded botonSize fondoAgregar">
-                      Subir Documento
+                      Crear Reporte
                     </button>
                   </Link>
                 </div>
 
-                <div class="offset-lg-2 espaciadoContenedor">
-                  <Link to="/DescargarDocumento">
+                {/*<div class="offset-lg-2 espaciadoContenedor">
+                  <Link to="/DescargarReporte">
                     <button className="rounded botonSize fondoDescargar">
-                      Bajar Documento
+                      Bajar Reporte
                     </button>
                   </Link>
                 </div>
 
                 <div class="offset-lg-1 espaciadoContenedor">
                   <button className="rounded botonSize fondoEliminar">
-                    Eliminar Documento
+                    Eliminar Reporte
                   </button>
                 </div>
                 <div class="offset-lg-2 espaciadoContenedor">
-                  <Link to="/admiDocumentos">
+                  <Link to="/admiReportes">
                     <button className="rounded botonSize fondoActualizar">
-                      Actualizar Documento
+                      Actualizar Reporte
                     </button>
                   </Link>
-                </div>
+                </div>*/}
               </form>
             </div>
           </div>

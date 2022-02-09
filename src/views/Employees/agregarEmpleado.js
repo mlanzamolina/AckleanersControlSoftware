@@ -47,6 +47,8 @@ const AgregarEmpleado = () => {
   };
 
   const handleDni = (e) => {
+    
+
     setDni_unico(true);
     empleados.map((item) => {
       if (item.dni === e.target.value) {
@@ -89,8 +91,7 @@ const AgregarEmpleado = () => {
       dats.numero == " " ||
       dats.id == " " ||
       dats.correo == " " ||
-      image === null ||
-      !dni_unico
+      image === null 
     ) {
       swal({
         title: "No se realizo",
@@ -149,12 +150,12 @@ const AgregarEmpleado = () => {
   return (
     <Fragment>
       <Nav />
-      <div class="sidebar">
+      {/*<div class="sidebar">
         <a class="active" href="/AgregarEmpleado">
           Agregar Empleado
         </a>
         <a href="/eliminarEmpleados">Modificar Empleado</a>
-      </div>
+      </div>*/}
       <div class="contentf">
         <div
           className="contenedorPrincipal"
@@ -218,7 +219,7 @@ const AgregarEmpleado = () => {
                     pattern="[0-9]{13}"
                     title="Numero 13 dígitos sin guiones"
                     onChange={handleInputChance}
-                    onBlur={handleDni}
+                    //onBlur={handleDni}
                     autoFocus
                     required
                   ></input>
