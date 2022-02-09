@@ -44,55 +44,95 @@ const AdmiDocumentos=() =>{
     const [tipoD, setTipoD] = useState("");
     const [descripcion, setDescripcion] = useState("");
     const [idDoc, setIDDoc] = useState("");
+    const [url2, setURL2] = useState("");
+    let hoy = new Date();
+  let fechaActual = hoy.getFullYear() + '-' + (hoy.getMonth()+1)+'-'+hoy.getDate();
     const [currentID, setCurrentID] = useState({
       id: null,
       nombre: "",
       tipo:"",
       descripcion:"",
-      url:""
+      url:"",
+      fecha: ""
     });
     const[mostrarM, SetmostrarM] = useState(false);
 
-    const getDocumentos = async () => {
+    
+    /*useEffect(() => {
+      const fecthData = async ()=>{
+        db.collection("Empleados").onSnapshot(function(data){
+          setData(data.docs.map(doc=>({...doc.data(),id:doc.id})))
+        })
+   
+      }
+      fecthData();
+    
+       
+     }, []);*/
+
+
+     
+
+     const getDocumentos2 = async () => {
+        db.collection("Documentos").onSnapshot(function(data){
+          setData(data.docs.map(doc=>({...doc.data(),id:doc.id})))
+        })
+      
+    }
+
+
+    const elegirTipo= async()=>{
+      const temp=[]
+
+      var opcion= tipo;
+           
+      const docEmpleados = db.collection("Documentos");
+      const snapshot = await docEmpleados.where('tipo', '==',  opcion).get();
+      if(snapshot.empty){
+        alert("No hay resultados");
+        
+        return;
+
+      }else{
+        snapshot.forEach(doc=>{
+        temp.push({...doc.data(),id:doc.id})
+        })
+        setData(temp);
+       
+      }
+
+    }
+
+
+
+      
+    useEffect(() => {
+    
+
+      const getDocumentos = async () => {
         const temp = [];
         var cad= "Eligir Opcion";
-
-       
         
         if(tipo===cad|| tipo===""){
-            db.collection("Documentos").onSnapshot((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                  temp.push({ ...doc.data(), id: doc.id });
-                });
-          
-                setData(temp);
-               
-               
-              });
+         getDocumentos2();
+  
             }else{
-            var opcion= tipo;
-               
-
-            const docEmpleados = db.collection("Documentos");
-            const snapshot = await docEmpleados.where('tipo', '==',  opcion).get();
-            if(snapshot.empty){
-              alert("No hay resultados");
-              
-              return;
-
-            }else{
-              snapshot.forEach(doc=>{
-              temp.push({...doc.data(),id:doc.id})
-              })
-              setData(temp);
-             
-
-            }
+              elegirTipo();
+           
         }
         
-          
+      }
+      getDocumentos();
+      
+      
+     
+    }, [tipo]);
 
-        }
+
+     
+
+
+
 
 
 
@@ -153,26 +193,32 @@ const AdmiDocumentos=() =>{
 
         const editRow = (documentos) => {
           obtener(documentos);
+          setURL2(documentos.url);
+          console.log(url2);
       
           if (mostrarM === false) {
             SetmostrarM(!mostrarM);
           } else {
             SetmostrarM(!mostrarM);
           }
+          
+          
         };
       
         const obtener = (documentos) => {
           setIDDoc(documentos.id);
-          console.log(idDoc);
+         
       
           setCurrentID({
             id: documentos.id    ,
             nombre: documentos.nombre,
             descripcion: documentos.descripcion,
             tipo: documentos.tipo,
-            url: documentos.url
+            url: documentos.url,
+            fecha: documentos.fecha
           });
         };
+
 
 
 
@@ -184,16 +230,20 @@ const AdmiDocumentos=() =>{
     var nombre = document.getElementById("nombre").value;
     var descripcion = document.getElementById("descripcion").value;
     var tipoDocu = document.getElementById("tipo").value;
-
+    const nombreArchivo = currentID.url;
     
+   
+
 
     if (
       nombre == " " ||
       descripcion == " " ||
-      tipoDocu == " "
+      tipoDocu == " " ||
+      url2 === ""
       
       
     )
+
 
      {
       swal({
@@ -202,6 +252,8 @@ const AdmiDocumentos=() =>{
         icon: "warning",
         button: "aceptar",
       });
+
+      return;
     
 
     } else {
@@ -209,7 +261,8 @@ const AdmiDocumentos=() =>{
         nombre: nombre,
         descripcion: descripcion,
         tipo: tipoDocu,
-        url: archivoUrl
+        url: archivoUrl,
+        fecha: fechaActual
 
       }).catch((error) => {
         swal({
@@ -232,17 +285,18 @@ const AdmiDocumentos=() =>{
   }; //Fin
 
 
+  const handleChange=(e) =>{
+    setTipo(e.target.value);
+    
 
-      
+  }
 
 
 
 
-        
-      useEffect(() => {
-        getDocumentos();
-      }, [data]);
-      const { slice, range } = useTable(data, page, 10);
+
+
+      const { slice, range } = useTable(data, page, 5);
 
     return (
       <>
@@ -259,7 +313,7 @@ const AdmiDocumentos=() =>{
           <div className="dropdown">
           <label><h5>BUSCAR</h5></label> 
     <br/>         
-             <select onChange={(e)=>setTipo(e.target.value)}  id="tipo2" > 
+             <select onChange={(e)=>handleChange(e)}  id="tipo2" > 
                 <option>Eligir Opcion</option>
                 <option>Reporte</option>
                 <option>Instructivo</option>
@@ -284,6 +338,7 @@ const AdmiDocumentos=() =>{
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">TIPO</th>
+                <th scope="col">Fecha</th>
                 <th scope="col">EDITAR</th>
               </tr>
             </thead>
@@ -294,6 +349,7 @@ const AdmiDocumentos=() =>{
 
                   <td class="table-primary">{documentos.descripcion}</td>
                   <td class="table-primary">{documentos.tipo}</td>
+                  <td class="table-primary">{documentos.fecha}</td>
 
 
                   <td class="table-primary">
