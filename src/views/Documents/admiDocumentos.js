@@ -66,7 +66,38 @@ const AdmiDocumentos=() =>{
        
      }, []);*/
 
+
      
+
+     const getDocumentos2 = async () => {
+        db.collection("Documentos").onSnapshot(function(data){
+          setData(data.docs.map(doc=>({...doc.data(),id:doc.id})))
+        })
+      
+    }
+
+
+    const elegirTipo= async()=>{
+      const temp=[]
+
+      var opcion= tipo;
+           
+      const docEmpleados = db.collection("Documentos");
+      const snapshot = await docEmpleados.where('tipo', '==',  opcion).get();
+      if(snapshot.empty){
+        alert("No hay resultados");
+        
+        return;
+
+      }else{
+        snapshot.forEach(doc=>{
+        temp.push({...doc.data(),id:doc.id})
+        })
+        setData(temp);
+       
+      }
+
+    }
 
 
 
@@ -79,34 +110,19 @@ const AdmiDocumentos=() =>{
         var cad= "Eligir Opcion";
         
         if(tipo===cad|| tipo===""){
-          db.collection("Documentos").onSnapshot(function(data){
-            setData(data.docs.map(doc=>({...doc.data(),id:doc.id})))
-          })
+         getDocumentos2();
   
             }else{
-            var opcion= tipo;
+              elegirTipo();
            
-            const docEmpleados = db.collection("Documentos");
-            const snapshot = await docEmpleados.where('tipo', '==',  tipo).get();
-            if(snapshot.empty){
-              alert("No hay resultados");
-              
-              return;
-    
-            }else{
-              snapshot.forEach(doc=>{
-              temp.push({...doc.data(),id:doc.id})
-              })
-              setData(temp);
-             
-            }
         }
         
       }
       getDocumentos();
-    
+      console.log(tipo);
+      
      
-    }, []);
+    }, [tipo]);
 
 
      
