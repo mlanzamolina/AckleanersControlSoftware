@@ -292,7 +292,7 @@ export default function Reportes() {
               </div>
 
               <form class="row g-3">
-                <h6 className="letrasFormularioOrdenes">Empleado que genero el reporte</h6>
+                <h6 className="letrasFormularioOrdenes">Empleado Que Genero el Reporte</h6>
                 <div class="col-auto">
                   <select
                     id="select"

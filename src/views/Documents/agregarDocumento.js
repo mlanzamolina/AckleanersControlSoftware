@@ -148,7 +148,7 @@ export const AgregarDocumento = () => {
                   style={{ color: "black" }}
                   aria-label="Default select example"
                 >
-                  <option selected>Seleccione tipo de archivo</option>
+                  <option selected>Seleccione Tipo de Archivo</option>
                   <option value="Instructivo">Instructivo</option>
                   <option value="Manual">Manual</option>
                   <option value="Procedimiento">Procedimiento</option>
