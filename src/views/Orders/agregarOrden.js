@@ -123,7 +123,7 @@ const AgregarOrden = () => {
                 ></input>
               </div>
               <div>
-                <h3 className="letrasFormularioOrdenes" style={{paddingTop:"1%"}}>Cantidad de unidades </h3>
+                <h3 className="letrasFormularioOrdenes" style={{paddingTop:"1%"}}>Cantidad de Unidades </h3>
                 <input
                   placeholder="Unidades"
                   className="form-control propiedadUnidades"
@@ -134,7 +134,7 @@ const AgregarOrden = () => {
                 ></input>
               </div>
               <div>
-                <h3 className="letrasFormularioOrdenes" style={{paddingTop:"1%"}}>Descripcion </h3>
+                <h3 className="letrasFormularioOrdenes" style={{paddingTop:"1%"}}>Descripción</h3>
                 <textarea
                   className="propiedadTextArea form-control"
                   name="descripcion"
@@ -154,7 +154,7 @@ const AgregarOrden = () => {
                       setSelect_emp(e.target.value);
                     }}
                   >
-                    <option selected>Seleccione un empleado</option>
+                    <option selected>Seleccione un Empleado</option>
                     {empleados
                       ? empleados.map((item) => {
                         return (

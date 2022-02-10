@@ -166,7 +166,7 @@ const AgregarEmpleado = () => {
                     className="form-label letrasFormulario"
                     style={{ marginTop: "5%" }}
                   >
-                    Nombre completo
+                    Nombre Completo
                   </label>
                   <input
                     id="i_nombre"
@@ -184,7 +184,7 @@ const AgregarEmpleado = () => {
                     className="form-label letrasFormulario"
                     style={{ marginTop: "8%" }}
                   >
-                    Correo electronico
+                    Correo Electronico
                   </label>
                   <input
                     id="i_email"

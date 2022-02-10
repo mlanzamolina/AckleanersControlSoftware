@@ -45,6 +45,14 @@
     
 }
 
+.fondoDescargar{
+    background-image: url("https://cdn-icons-png.flaticon.com/512/3039/3039520.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: local;
+    
+}
+
 .fondoActualizar:hover,.fondoAdministrar:hover{
     background: rgba(52, 93, 206, 0.575);
     color: white;

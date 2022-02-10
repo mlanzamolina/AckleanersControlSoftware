@@ -98,8 +98,17 @@ export const AgregarDocumento = () => {
       <Nav></Nav>
       <form onSubmit={submitHandler}>
         <div className="p-2 contenedorPrincipal">
+        <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"80px",
+            borderBottom:"2px solid black",
+            fontSize:"30px"
+          }}
+            >Agregar Documento</h1>
           <div className="container rounded contenedorFormulario">
-            <div style={{ marginTop: "12%", marginBottom: "100%" }}>
+            <div style={{ marginBottom: "100%" }}>
               <div class="mb-3 col-md-12">
                 <label
                   for="exampleFormControlInput1"
@@ -148,7 +157,7 @@ export const AgregarDocumento = () => {
                   style={{ color: "black" }}
                   aria-label="Default select example"
                 >
-                  <option selected>Seleccione tipo de archivo</option>
+                  <option selected>Seleccione Tipo de Archivo</option>
                   <option value="Instructivo">Instructivo</option>
                   <option value="Manual">Manual</option>
                   <option value="Procedimiento">Procedimiento</option>
@@ -197,7 +206,7 @@ export const AgregarDocumento = () => {
                     <button
                     class="btn btn-secondary"
                     >
-                      Ver Documentos
+                      Administrar Documentos
                     </button>
                   </Link>
               </div>
