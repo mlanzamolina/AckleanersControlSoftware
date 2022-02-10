@@ -16,10 +16,13 @@ class Navigation extends Component {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
+      cancelButtonText: "Regresar",
       confirmButtonText: "¡Soy empleado!",
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.href = "/Login";
+      }else{
+        window.location.href = "/"
       }
     });
   }
