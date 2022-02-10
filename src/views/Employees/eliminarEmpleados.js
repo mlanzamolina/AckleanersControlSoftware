@@ -322,10 +322,14 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
     <>
       <Nav />
       <div className="contentf">
-        <div className="text-center" style={{ margin: "50px 0px" }}>
-          <h1>Lista de empleados</h1>
-          <hr></hr>
-        </div>
+      <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"80px",
+            borderBottom:"2px solid black"
+          }}
+            >Administración de Empleados</h1>
         <div className="container">
           <div className="mt-4 mb-4 table-responsive">
             <table className="table table-dark table-striped">
@@ -390,8 +394,13 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
             />
           </div>
           <Link to="/AgregarEmpleado">
-            <button type="button" class="btn btn-success">
-              Agregar Empleado
+            <button type="button" class="btn btn-success" style={{marginLeft:"75%"}}>
+              Ir a Agregar Empleado
+            </button>
+          </Link>
+          <Link to="/interfazEmpleados">
+            <button type="button" class="btn btn-danger" style={{marginLeft:"1%"}}>
+              Volver
             </button>
           </Link>
         </div>

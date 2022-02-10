@@ -1,15 +1,12 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../img/logo.png";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import { SidebarData } from "./SideBarData";
 import { dbOrdenes, db } from "../../components/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { collection, addDoc } from "firebase/firestore";
 import "./Formulario.css";
 import swal from "sweetalert";
 import Nav from "../NavAdmin";
+import "./estiloOrdenes.css"
 
 const AgregarOrden = () => {
   const tablaOrdenesRef = collection(dbOrdenes, "OrdenesTrabajo");
@@ -91,12 +88,21 @@ const AgregarOrden = () => {
       
       <div className="contentf">
         <Fragment>
-          <h1 className="tituloh1">Agregar Orden de Trabajo</h1>
-
+        <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"80px",
+            borderBottom:"2px solid black"
+          }}
+            >Agregar Orden de Trabajo</h1>
+            <div container rounded contenedorFormulario
+            style={{ height:"520px", width:"100%", background:"rgba(0, 0, 0, 0.40)", borderRadius:"1%"}}
+            >
           <div className="container-sm">
             <form>
               <div>
-                <h3 className="letra">Nombre Completo </h3>
+                <h3 className="letrasFormularioOrdenes" style={{paddingTop:"2%"}}>Nombre Completo </h3>
                 <input
                   placeholder="Ingrese Nombre"
                   className="form-control"
@@ -106,7 +112,7 @@ const AgregarOrden = () => {
                 ></input>
               </div>
               <div>
-                <h3 className="letra">No. Contacto </h3>
+                <h3 className="letrasFormularioOrdenes" style={{paddingTop:"1%"}}>No. Contacto </h3>
                 <input
                   placeholder="Numero de contacto"
                   className="form-control"
@@ -117,7 +123,7 @@ const AgregarOrden = () => {
                 ></input>
               </div>
               <div>
-                <h3 className="letra">Cantidad de unidades </h3>
+                <h3 className="letrasFormularioOrdenes" style={{paddingTop:"1%"}}>Cantidad de unidades </h3>
                 <input
                   placeholder="Unidades"
                   className="form-control propiedadUnidades"
@@ -128,7 +134,7 @@ const AgregarOrden = () => {
                 ></input>
               </div>
               <div>
-                <h3 className="letra">Descripcion </h3>
+                <h3 className="letrasFormularioOrdenes" style={{paddingTop:"1%"}}>Descripcion </h3>
                 <textarea
                   className="propiedadTextArea form-control"
                   name="descripcion"
@@ -137,7 +143,7 @@ const AgregarOrden = () => {
                 ></textarea>
               </div>
               <form class="row g-3">
-                <h3 className="letra">Empleado</h3>
+                <h3 className="letrasFormularioOrdenes" style={{paddingTop:"1%"}}>Empleado(s)</h3>
                 <div class="col-auto">
                   <select
                     id="select"
@@ -193,7 +199,7 @@ const AgregarOrden = () => {
               </form>
               <div>
                 <Link to="/adminOrders">
-                  <button type="submit" className="btn btn-danger" style={{marginLeft:"80%", marginRight:"2%"}}>
+                  <button type="submit" className="btn btn-danger" style={{marginLeft:"70%", marginRight:"2%"}}>
                     Regresar
                   </button>
                 </Link>
@@ -208,7 +214,7 @@ const AgregarOrden = () => {
               </div>
             </form>
           </div>
-          
+          </div>
         </Fragment>
       </div>
     </>

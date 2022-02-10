@@ -31,37 +31,23 @@
 }
 
 .fondoAgregarInv{
-    background-image: url("https://cdn-icons-png.flaticon.com/512/2541/2541984.png");
+    background-image: url("https://cdn-icons-png.flaticon.com/512/2897/2897763.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
 }
 
-.fondoEliminarInv{
-    background-image: url("https://img.icons8.com/stickers/200/000000/filled-trash.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: local;
-    
-}
-
-.fondoDescargarInv{
-    background-image: url("https://cdn-icons-png.flaticon.com/512/892/892303.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-attachment: local;
-}
-
-.fondoActualizarInv{
-    background-image: url("https://cdn-icons-png.flaticon.com/512/2920/2920100.png");
+.fondoAdministrarInv{
+    background-image: url("https://cdn-icons-png.flaticon.com/512/1458/1458235.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
     
 }
 
-.fondoActualizarInv:hover,.fondoDescargarInv:hover,
-.fondoEliminarInv:hover,.fondoAgregarInv:hover,.fondoActualizarInv:hover{
+
+
+.fondoAgregarInv:hover,.fondoAdministrarInv:hover{
     background: rgba(52, 93, 206, 0.575);
     color: white;
     font-family: 'Raleway';
@@ -70,13 +56,6 @@
     border-style:dashed;
 }
 
-.letrasDescargaInv{
-    color: white;
-}
-
-.letrasDescargaInv:hover{
-    color: green;
-}
 
 .contenedorFormularioBajarInv{
     background-color: rgba(0, 0, 0, 0.40);
@@ -85,6 +64,7 @@
     margin-top: 2%;
     margin-bottom: 2%;
 }
+
 
 #responsive {
     width: 100%;

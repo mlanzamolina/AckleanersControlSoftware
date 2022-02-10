@@ -181,14 +181,21 @@ export default function Reportes() {
       </div>*/}
       <div>
       <div className="text-center" style={{ margin: "50px 0px" }}>
-          <h1>Crear Reporte</h1>
-          <hr></hr>
+      <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"25px",
+            borderBottom:"2px solid black",
+            fontSize:"30px"
+          }}
+            >Crear Reporte</h1>
        
         </div>
-        <div className="containerf">
+        <div className="containerf" style={{background:"rgba(0, 0, 0, 0.40)", boxShadow:"none"}}>
           <form className="row g-3">
             <form class="row g-3">
-              <h6>Orden de trabajo</h6>
+              <h6 className="letrasFormularioOrdenes">Orden de trabajo</h6>
               <div class="col-auto">
                 <select
                   id="select"
@@ -236,7 +243,7 @@ export default function Reportes() {
             </form>
 
             <div class="col-md-6">
-              <label for="inputNombre">Nombre del Cliente</label>
+              <label for="inputNombre" className="letrasFormularioOrdenes">Nombre del Cliente</label>
               <input
                 required
                 type="text"
@@ -250,7 +257,7 @@ export default function Reportes() {
               />
             </div>
             <div className="col-md-6">
-              <label for="inputFecha">Fecha</label>
+              <label for="inputFecha" className="letrasFormularioOrdenes">Fecha</label>
               <input
                 type="text"
                 class="form-control"
@@ -260,7 +267,7 @@ export default function Reportes() {
               />
             </div>
             <div className="col-md-6">
-              <label>Telefono del Cliente</label>
+              <label className="letrasFormularioOrdenes">Telefono del Cliente</label>
               <input
                 type="text"
                 class="form-control"
@@ -271,7 +278,7 @@ export default function Reportes() {
               />
             </div>
             <div class="col-md-6">
-              <label>Cantidad de unidades: </label>
+              <label className="letrasFormularioOrdenes">Cantidad de unidades: </label>
               <input
                 placeholder="Ingrese la cantidad de unidades"
                 className="form-control"
@@ -286,7 +293,7 @@ export default function Reportes() {
             </div>
 
             <form class="row g-3">
-              <h6>Empleados que genero el reporte</h6>
+              <h6 className="letrasFormularioOrdenes">Empleados que genero el reporte</h6>
               <div class="col-auto">
                 <select
                   id="select"
@@ -310,7 +317,7 @@ export default function Reportes() {
               </div>
             </form>
             <form class="row g-3">
-              <h6>Empleados que trabajaron en la orden</h6>
+              <h6 className="letrasFormularioOrdenes">Empleados que trabajaron en la orden</h6>
               <div class="col-auto">
                 <select
                   id="select"
@@ -367,7 +374,7 @@ export default function Reportes() {
             </form>
 
             <div className="alinkcrear">
-              <button type="button"className="btn btn-primary" onClick={handleSubmit}>
+              <button type="button"className="btn btn-success" onClick={handleSubmit} style={{fontSize:"20px", paddingLeft:"110px", paddingRight:"110px"}}>
                 Crear
               </button>
             </div>

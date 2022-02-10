@@ -37,7 +37,14 @@ const ListarOrdenes = () => {
     
       <Fragment>
         <div class="contentf">
-          <h1 className="tituloh1">Listar Ordenes</h1>
+        <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"30px",
+            borderBottom:"2px solid black"
+          }}
+            >Ordenes de Trabajo</h1>
           <table className="table table-dark" align="center">
             {/*<table className="ta" align="center">*/}
             <thead>
