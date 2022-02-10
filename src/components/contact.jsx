@@ -116,7 +116,7 @@ export class Contact extends Component {
                   <i className="fas fa-medal text-xl"></i>
                 </div>
                 <h6 className="text-xl mt-5 font-semibold text-white">
-                  Instalacion
+                  Instalación
                 </h6>
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
@@ -132,7 +132,7 @@ export class Contact extends Component {
                   <i className="fas fa-lightbulb text-xl"></i>
                 </div>
                 <h5 className="text-xl mt-5 font-semibold text-white">
-                  Reparacion
+                  Reparación
                 </h5>
                 <h5>
                   s
