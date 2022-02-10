@@ -10,16 +10,19 @@ class Navigation extends Component {
   }
   handleClick() {
     Swal.fire({
-      title: "Alto ahi!",
+      title: "¡Alto ahi!",
       text: "Espacio para empleados",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Soy empleado!",
+      cancelButtonText: "Regresar",
+      confirmButtonText: "¡Soy empleado!",
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.href = "/Login";
+      }else{
+        window.location.href = "/"
       }
     });
   }

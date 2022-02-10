@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import "./index.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -25,7 +24,6 @@ import ListarUsuarios from "./views/Usuarios/ListarUsuarios";
 import AgregarUsuarios from "./views/Usuarios/AgregarUsuarios";
 import Inventarios from "./views/Inventarios/Inventarios";
 import NewPassword from "./views/NewPassword/NewPassword";
-import Probar from "./views/Probandocss/probar";
 import { Documentos } from "./views/Documents/interfazDocumentos";
 import EliminarEmpleados from "./views/Employees/eliminarEmpleados";
 import AgregarDocumento from "./views/Documents/agregarDocumento";
@@ -41,16 +39,14 @@ function App() {
     <>
       <Router>
         <Switch>
+
           <Route exact path="/">
             <Home />
           </Route>
+
           <div className="cover">
             <Route path="/Login">
               <Login />
-            </Route>
-
-            <Route path="/probar">
-              <Probar />
             </Route>
 
             <Route exact path="/interfazEmpleados">
