@@ -8,12 +8,21 @@ import { SidebarData } from "./SideBarData";
 import logo from "../../img/logo.png";
 import Nav from "../NavAdmin";
 import "../Inventarios/estiloInventarios.css";
+import swal from "sweetalert";
 
 export default function Inventarios() {
   const [user, loading, error] = useAuthState(auth);
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
+  function error404(){
+    swal({
+      title: "Pagina en contruccion",
+      text: "Estamos trabajando en ello",
+      icon: "warning",
+      button: "aceptar",
+    });
+  }
 
   useEffect(() => {
     if (loading) return;
@@ -27,38 +36,25 @@ export default function Inventarios() {
         className="contenedorPrincipal2Inv"
         style={{ width: "100%", height: "100%" }}
       >
-        <a className="navbar-brand" style={{margin: "0px 10px"}} href="/inventarios">Inventarios</a>
         <div className="p-3 estiloPrincipalInv">
+        <div className="text-center" id="marh1" style={{ margin: "50px 0px" }}>
+          <h1>Empleados</h1>
+          <hr></hr>
+        </div>
           <div className="container rounded estiloContenedorInv">
             <div>
               <form className="row g-3">
                 <div class="offset-lg-1 espaciadoContenedorInv">
-                  <Link to="/agregarInventarios">
-                    <button className="rounded botonSize fondoAgregarInv">
+                  <Link to="/inventarios">
+                    <button className="rounded botonSize fondoAgregarInv"  onClick={error404}>
                       Subir Inventario
                     </button>
                   </Link>
                 </div>
-
                 <div class="offset-lg-2 espaciadoContenedor">
-                  <Link to="/DescargarDocumento">
-                    <button className="rounded botonSize fondoDescargarInv">
+                  <Link to="/inventarios">
+                    <button className="rounded botonSize fondoDescargarInv" onClick={error404} >
                       Bajar Inventario
-                    </button>
-                  </Link>
-                </div>
-
-                <div class="offset-lg-1 espaciadoContenedor">
-                  <Link to="DeleteInventario">
-                  <button className="rounded botonSize fondoEliminarInv">
-                    Eliminar Inventario
-                  </button>
-                  </Link>
-                </div>
-                <div class="offset-lg-2 espaciadoContenedor">
-                  <Link to="/admiDocumentos">
-                    <button className="rounded botonSize fondoActualizarInv">
-                      Actualizar Inventario
                     </button>
                   </Link>
                 </div>

@@ -89,8 +89,7 @@ const AgregarEmpleado = () => {
       dats.numero == " " ||
       dats.id == " " ||
       dats.correo == " " ||
-      image === null ||
-      !dni_unico
+      image === null
     ) {
       swal({
         title: "No se realizo",
@@ -149,20 +148,30 @@ const AgregarEmpleado = () => {
   return (
     <Fragment>
       <Nav />
-      <div class="sidebar">
+      {/*<div class="sidebar">
         <a class="active" href="/AgregarEmpleado">
           Agregar Empleado
         </a>
         <a href="/eliminarEmpleados">Modificar Empleado</a>
-      </div>
+      </div>*/}
+
       <div class="contentf">
         <div
           className="contenedorPrincipal"
           style={{ width: "100%", height: "100%" }}
         >
+          <div className="text-center" style={{ margin: "50px 0px" }}>
+            <h1>Agregar Empleado</h1>
+            <hr></hr>
+          </div>
           <div className="container rounded contenedorFormulario">
             <div>
               <form className="row g-3">
+                <Link to="/EliminarEmpleados">
+                  <button type="button" class="btn btn-success">
+                    Listar Empleados
+                  </button>
+                </Link>
                 <div className="col-md-6">
                   <label
                     htmlFor="inputAddress"
@@ -218,7 +227,7 @@ const AgregarEmpleado = () => {
                     pattern="[0-9]{13}"
                     title="Numero 13 digitos sin guiones"
                     onChange={handleInputChance}
-                    onBlur={handleDni}
+                    //onBlur={handleDni}
                     autoFocus
                     required
                   ></input>

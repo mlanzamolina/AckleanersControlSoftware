@@ -11,12 +11,12 @@ export const SidebarData = [
   },
   {
     title: 'Reportes',
-    path: '/Reportes',
+    path: '/CrearReportes',
     cName: 'nav-text'
   },
   {
     title: 'Empleados',
-    path: '/AgregarEmpleado',
+    path: '/interfazEmpleados',
     cName: 'nav-text'
   },
   {

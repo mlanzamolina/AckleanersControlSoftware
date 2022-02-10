@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { auth } from "../../components/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import { Link, useHistory, useParams } from "react-router-dom";
-import { SidebarData } from "./SideBarData";
-import {
-  useCollectionData,
-  useDocumentData,
-} from "react-firebase-hooks/firestore";
-import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
+import { useHistory } from "react-router-dom";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { collection, doc, updateDoc } from "firebase/firestore";
 import { dbOrdenes, db } from "../../components/firebase";
 import swal from "sweetalert";
 import "./table.css";
+import "../Employees/estiloEmpleado.css"
 import Nav from "../NavAdmin";
 import * as emailjs from "emailjs-com";
 
@@ -63,8 +60,8 @@ export default function Reportes() {
     }
   };
   const [user, loading, error] = useAuthState(auth);
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
+  //const [sidebar, setSidebar] = useState(false);
+  //const showSidebar = () => setSidebar(!sidebar);
   const history = useHistory();
   const [dats, setDatos] = useState({
     numero: 0,
@@ -173,15 +170,21 @@ export default function Reportes() {
   }, [user, loading]);
 
   return (
-    <>
-      <Nav></Nav>
-      <div class="sidebar">
+    <Fragment>
+    <Nav></Nav>
+    <div class="contentf">
+      
+      {/*<div class="sidebar">
         <a class="active" href="/Reportes">
           Reportes
         </a>
-      </div>
-      <div class="contentf">
-        <h1 style={{ textAlign: "center" }}>Crear Reporte</h1>
+      </div>*/}
+      <div>
+      <div className="text-center" style={{ margin: "50px 0px" }}>
+          <h1>Crear Reporte</h1>
+          <hr></hr>
+       
+        </div>
         <div className="containerf">
           <form className="row g-3">
             <form class="row g-3">
@@ -385,6 +388,7 @@ export default function Reportes() {
         />
       </a> */}
       </div>
-    </>
+    </div>
+    </Fragment>
   );
 }
