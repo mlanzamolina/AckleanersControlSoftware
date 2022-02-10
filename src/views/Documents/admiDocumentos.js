@@ -316,6 +316,7 @@ const AdmiDocumentos = () => {
               onClick={(e) => eliminarDocumento(idFire, e)}
               type="button"
               variant="primary"
+              style={{background:"red"}}
             >
               SI
             </Button>
@@ -324,6 +325,7 @@ const AdmiDocumentos = () => {
               onClick={() => setMostrarE(false)}
               type="button"
               variant="secondary"
+              style={{background:"rgb(70,130,180)"}}
             >
               NO
             </Button>
@@ -408,11 +410,16 @@ const AdmiDocumentos = () => {
                   <Button
                     type="button"
                     class="btn btn-outline-danger"
+                    style={{background:"red"}}
                     onClick={() => SetmostrarM(false)}
                   >
-                    SALIR
+                    Salir
                   </Button>
-                  <Button type="submit" class="btn btn-outline-danger">
+                  <Button 
+                  type="submit" 
+                  class="btn btn-outline-danger"
+                  style={{background:"rgb(70,130,180)"}}
+                  >
                     Modificar
                   </Button>
                 </ModalFooter>

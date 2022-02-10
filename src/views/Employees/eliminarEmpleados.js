@@ -412,6 +412,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
               type="button"
               variant="primary"
               onClick={() => eliminarEmpleado(id)}
+              style={{background:"red"}}
             >
               SI
             </Button>
@@ -420,6 +421,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
               type="button"
               variant="secondary"
               onClick={() => mostrarModalEliminar()}
+              style={{background:"rgb(70,130,180)"}}
             >
               NO
             </Button>
@@ -524,10 +526,11 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                     type="button"
                     class="btn btn-outline-danger"
                     onClick={() => SetmostrarM(false)}
+                    style={{background:"red"}}
                   >
-                    SALIR
+                    Salir
                   </Button>
-                  <Button type="submit" class="btn btn-outline-danger">
+                  <Button type="submit" class="btn btn-outline-danger" style={{background:"rgb(70,130,180)"}}>
                     {isLoading ? (
                       <h1 class="btn btn-primary" type="button" disabled>
                         <span
@@ -585,8 +588,9 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                 type="button"
                 class="btn btn-outline-danger"
                 onClick={() => setMostrarV(false)}
+                style={{background:"red"}}
               >
-                SALIR
+                Salir
               </Button>
             </ModalFooter>
           </ModalBody>
