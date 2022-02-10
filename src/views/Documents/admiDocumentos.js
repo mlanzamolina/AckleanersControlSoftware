@@ -418,8 +418,13 @@ const AdmiDocumentos = () => {
         </Modal>
 
         <Link to="adminDocs">
-          <button type="button" class="btn btn-danger">
+          <button type="button" class="btn btn-danger" style={{marginLeft:"75%", marginRight:"1%"}}>
             Regresar
+          </button>
+        </Link>
+        <Link to="AgregarDocumento">
+          <button type="button" class="btn btn-secondary" >
+            Agregar Documento
           </button>
         </Link>
       </div>

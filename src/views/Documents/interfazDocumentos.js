@@ -11,38 +11,29 @@ export const Documentos = () => {
         style={{ width: "100%", height: "100%" }}
       >
         <div className="p-3 estiloPrincipal">
-          <div className="text-center" id="marh1" style={{ margin: "50px 0px" }}>
-            <h1>Documentos</h1>
-            <hr></hr>
-          </div>
+        <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"140px",
+            borderBottom:"2px solid black",
+            fontSize:"30px"
+          }}
+            >Documentos</h1>
           <div className="container rounded estiloContenedor">
             <div>
-              <form className="row g-3">
-                <div class="offset-lg-1 espaciadoContenedor">
+              <form className="row g-3" style={{paddingLeft:"4%"}}>
+              <div class="offset-lg-4 espaciadoContenedor" style={{paddingLeft:"3%"}}>
                   <Link to="/AgregarDocumento">
-                    <button className="rounded botonSize fondoAgregar">
-                      Subir Documento
+                    <button className="rounded botonSize fondoAgregar" >
+                      Agregar Documento
                     </button>
                   </Link>
                 </div>
-
-                <div class="offset-lg-2 espaciadoContenedor">
-                  <Link to="/DescargarDocumento">
-                    <button className="rounded botonSize fondoDescargar">
-                      Bajar Documento
-                    </button>
-                  </Link>
-                </div>
-
-                <div class="offset-lg-1 espaciadoContenedor">
-                  <button className="rounded botonSize fondoEliminar">
-                    Eliminar Documento
-                  </button>
-                </div>
-                <div class="offset-lg-2 espaciadoContenedor">
-                  <Link to="/admiDocumentos">
-                    <button className="rounded botonSize fondoActualizar">
-                      Actualizar Documento
+                <div class="offset-lg-1 espaciadoContenedor" style={{paddingLeft:"3%"}}>
+                  <Link to="/AdmiDocumentos">
+                    <button className="rounded botonSize fondoAdministrar">
+                      Administrar Documentos
                     </button>
                   </Link>
                 </div>

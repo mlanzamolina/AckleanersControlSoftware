@@ -2,6 +2,16 @@ import React from "react";
 import "./estiloOrdenes.css";
 import { Link } from "react-router-dom";
 import Nav from "../NavAdmin";
+import swal from "sweetalert";
+
+function enProceso(){
+  swal({
+    title: "Pagina en contruccion",
+    text: "Estamos trabajando en ello",
+    icon: "warning",
+    button: "aceptar",
+  });
+}
 export const IOrdenes = () => {
   return (
     <>
@@ -11,18 +21,19 @@ export const IOrdenes = () => {
         style={{ width: "100%", height: "100%" }}
       >
         <div className="p-3 estiloPrincipal">
-          <div
-            className="text-center"
-            id="marh1"
-            style={{ margin: "50px 0px" }}
-          >
-            <h1>Empleados</h1>
-            <hr></hr>
-          </div>
+        <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"25px",
+            borderBottom:"2px solid black",
+            fontSize:"30px"
+          }}
+            >Ordenes de Trabajo</h1>
           <div className="container rounded estiloContenedor">
             <div>
               <form className="row g-3">
-                <div class="offset-lg-4" style={{ paddingLeft: "6%" }}>
+                <div class="offset-lg-4" style={{ paddingLeft: "10%" }}>
                   <Link to="/AgregarOrden">
                     <button className="rounded botonSize fondoAgregarOrden">
                       Agregar Orden de Trabajo
@@ -34,7 +45,7 @@ export const IOrdenes = () => {
                   class="offset-lg-1 espaciadoContenedor"
                   style={{
                     paddingLeft: "5%",
-                    paddingRight: "25%",
+                    paddingRight: "20%",
                     marginTop: "10%",
                   }}
                 >
@@ -49,8 +60,8 @@ export const IOrdenes = () => {
                   class="offset-lg-1 espaciadoContenedor"
                   style={{ paddingLeft: "3%", marginTop: "10%" }}
                 >
-                  <Link to="/ModificarOrden">
-                    <button className="rounded botonSize fondoModificarOrden">
+                  <Link to="/adminOrders">
+                    <button className="rounded botonSize fondoModificarOrden" onClick={enProceso}>
                       Modificar Ordenes de Trabajo
                     </button>
                   </Link>

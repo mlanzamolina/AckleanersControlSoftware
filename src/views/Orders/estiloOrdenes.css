@@ -72,6 +72,12 @@
     color: green;
 }
 
+.letrasFormularioOrdenes{
+    color: white;
+    font-family: 'Raleway';
+    font-weight: bold;
+    font-size: 20px;
+}
 .contenedorFormularioBajar {
     background-color: rgba(0, 0, 0, 0.40);
     height: 100%;

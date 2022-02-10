@@ -1,15 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../img/logo.png";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import { SidebarData } from "./SideBarData";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { dbEmpleado, almacenamiento, auth } from "../../components/firebase";
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import swal from "sweetalert";
-import { Interfaz } from "./empleadoNav";
 import "./estiloEmpleado.css";
 import Nav from "../NavAdmin";
 
@@ -89,7 +84,8 @@ const AgregarEmpleado = () => {
       dats.numero == " " ||
       dats.id == " " ||
       dats.correo == " " ||
-      image === null
+      image === null ||
+      !dni_unico
     ) {
       swal({
         title: "No se realizo",
@@ -148,30 +144,22 @@ const AgregarEmpleado = () => {
   return (
     <Fragment>
       <Nav />
-      {/*<div class="sidebar">
-        <a class="active" href="/AgregarEmpleado">
-          Agregar Empleado
-        </a>
-        <a href="/eliminarEmpleados">Modificar Empleado</a>
-      </div>*/}
-
       <div class="contentf">
         <div
           className="contenedorPrincipal"
           style={{ width: "100%", height: "100%" }}
         >
-          <div className="text-center" style={{ margin: "50px 0px" }}>
-            <h1>Agregar Empleado</h1>
-            <hr></hr>
-          </div>
+          <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"20px",
+            borderBottom:"2px solid black"
+          }}
+            >Agregar Empleado</h1>
           <div className="container rounded contenedorFormulario">
             <div>
               <form className="row g-3">
-                <Link to="/EliminarEmpleados">
-                  <button type="button" class="btn btn-success">
-                    Listar Empleados
-                  </button>
-                </Link>
                 <div className="col-md-6">
                   <label
                     htmlFor="inputAddress"
@@ -227,7 +215,7 @@ const AgregarEmpleado = () => {
                     pattern="[0-9]{13}"
                     title="Numero 13 digitos sin guiones"
                     onChange={handleInputChance}
-                    //onBlur={handleDni}
+                    onBlur={handleDni}
                     autoFocus
                     required
                   ></input>
@@ -296,14 +284,25 @@ const AgregarEmpleado = () => {
                     Registrar Empleado
                   </button>
 
-                  <Link to="/">
+                  <Link to="/eliminarEmpleados">
+                    <button
+                      id="b_cancelar"
+                      type="submit"
+                      class="btn btn-secondary"
+                      style={{ marginBottom: "3%", marginRight: "2%" }}
+                    >
+                      Ver Empleados
+                    </button>
+                    </Link>
+
+                  <Link to="/interfazEmpleados">
                     <button
                       id="b_cancelar"
                       type="submit"
                       class="btn btn-danger"
                       style={{ marginBottom: "3%" }}
                     >
-                      Cancelar
+                      Volver
                     </button>
                   </Link>
                 </div>

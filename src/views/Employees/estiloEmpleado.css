@@ -11,7 +11,7 @@
 
 .contenedorFormulario{
     background-color: rgba(0, 0, 0, 0.40);
-    height: 100%;
+    height: auto;
     width: 60%;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -34,15 +34,7 @@
 
 .fondoAgregarEmpleado
 {
-    background-image: url("https://pngimage.net/wp-content/uploads/2018/05/agregar-usuario-icono-png-4.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-attachment: local;
-}
-
-.fondoEliminarEmpleado
-{
-    background-image: url("https://www.tdoc.es/wp-content/uploads/2017/06/ico_eliminar.jpg");
+    background-image: url("https://cdn-icons-png.flaticon.com/512/476/476863.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
@@ -50,18 +42,20 @@
 
 .fondoModificarEmpleado
 {
-    background-image: url("https://w1.pngwing.com/pngs/305/121/png-transparent-pencil-option-computer-employee-option-text-line-area-diagram.png");
+    background-image: url("https://cdn-icons-png.flaticon.com/512/4406/4406352.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
 }
 
-.fondoListarEmpleado
-{
-    background-image: url("https://thumbs.dreamstime.com/z/lista-de-candidatos-para-el-lugar-trabajo-con-un-breve-resumen-cada-uno-los-principales-selecci%C3%B3n-empleados-ilustraci%C3%B3n-del-169517233.jpg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-attachment: local;
+.fondoAgregarEmpleado:hover,
+.fondoModificarEmpleado:hover{
+    background: rgba(52, 93, 206, 0.575);
+    color: white;
+    font-family: 'Raleway';
+    font-weight: bold;
+    border: black;
+    border-style:dashed;
 }
 
 .hide{
