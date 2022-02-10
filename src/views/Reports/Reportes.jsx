@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { auth } from "../../components/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import { Link, useHistory, useParams } from "react-router-dom";
-import { SidebarData } from "./SideBarData";
-import {
-  useCollectionData,
-  useDocumentData,
-} from "react-firebase-hooks/firestore";
-import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
+import { useHistory } from "react-router-dom";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { collection, doc, updateDoc } from "firebase/firestore";
 import { dbOrdenes, db } from "../../components/firebase";
-
 import swal from "sweetalert";
 import "./table.css";
+import "../Employees/estiloEmpleado.css"
 import Nav from "../NavAdmin";
+import * as emailjs from "emailjs-com";
 
 export default function Reportes() {
   const tablaOrdenesRef = collection(dbOrdenes, "OrdenesTrabajo");
@@ -63,8 +58,8 @@ export default function Reportes() {
     }
   };
   const [user, loading, error] = useAuthState(auth);
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
+  //const [sidebar, setSidebar] = useState(false);
+  //const showSidebar = () => setSidebar(!sidebar);
   const history = useHistory();
   const [dats, setDatos] = useState({
     numero: 0,
@@ -72,13 +67,14 @@ export default function Reportes() {
     telefono: "",
   });
   const [fecha, setFecha] = useState("");
+  const [fecha2, setFecha2] = useState("");
 
   useEffect(() => {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!
+    var mm2 = today.toLocaleString('es', { month: 'long' });
     var yyyy = today.getFullYear();
-
     if (dd < 10) {
       dd = "0" + dd;
     }
@@ -87,8 +83,10 @@ export default function Reportes() {
       mm = "0" + mm;
     }
 
-    today = mm + "/" + dd + "/" + yyyy;
+    today = dd + " de " + mm2 + ", " + yyyy;
     setFecha(today);
+    today = mm + "/" + dd + "/" + yyyy;
+    setFecha2(today);
   });
 
   const handleInputChance = (event) => {
@@ -104,14 +102,14 @@ export default function Reportes() {
       setTelefono("");
     } else {
       nombreOrden.map((item) => {
-        if(item.id === data){ 
-      setTelefono(item.numero_telefono);
-      setNombreCliente(item.nombre);
-      setcantUnidades(item.cantidad_unidades);
-      }
-         
-        })
-   
+        if (item.id === data) {
+          setTelefono(item.numero_telefono);
+          setNombreCliente(item.nombre);
+          setcantUnidades(item.cantidad_unidades);
+        }
+
+      })
+
     }
   }
 
@@ -125,8 +123,8 @@ export default function Reportes() {
       });
     } else {
       setTrueReporte();
-   
-    
+
+
     }
   }
 
@@ -142,6 +140,19 @@ export default function Reportes() {
         });
       })
       .then(() => {
+        var template_params = {
+          nombre: nomCliente,
+          tel: telCliente,
+          fecha1: fecha,
+          fecha2: fecha2,
+        };
+        emailjs
+          .send(
+            "service_bv2gre1",
+            "template_94rmrwe",
+            template_params,
+            emailjs.init("user_KnXE6C3gbj7LvCi9G8oET")
+          )
         history.push(
           `/AgregarReportes/${cantUnidades}/${nomCliente}/${telCliente}`
         );
@@ -157,204 +168,218 @@ export default function Reportes() {
   }, [user, loading]);
 
   return (
-    <>
+    <Fragment>
       <Nav></Nav>
-      <div class="sidebar">
+      <div class="contentf">
+
+        {/*<div class="sidebar">
         <a class="active" href="/Reportes">
           Reportes
         </a>
-      </div>
-      <div class="contentf">
-        <h1 style={{ textAlign: "center" }}>Crear Reporte</h1>
-        <div className="containerf">
-          <form className="row g-3">
-            <form class="row g-3">
-              <h6>Orden de trabajo</h6>
-              <div class="col-auto">
-                <select
-                  id="select"
-                  class="form-select"
-                  disabled={nor_loading}
-                  onChange={(e) => {
-                    setIndex(e.target.value);
-                    handleOrdenData(e.target.value);
-                  }}
-                >
-                  <option selected value="primero">Seleccioné una orden</option>
-                  {nombreOrden
-                    ? nombreOrden.map((item) => {
-                      if(!item.reporte){ return (
-                        <option key={item.id} value={item.id}>
-                          [Cliente: {item.nombre}]-[Unidades:{" "}
-                          {item.cantidad_unidades}]-[Descripcion:{" "}
-                          {item.descripcion}]
-                        </option>
-                      );}
-                       
+      </div>*/}
+        <div>
+          <div className="text-center" style={{ margin: "50px 0px" }}>
+            <h1 style={{
+              width: "100%",
+              textAlign: "center",
+              marginTop: "1%",
+              marginBottom: "25px",
+              borderBottom: "2px solid black",
+              fontSize: "30px"
+            }}
+            >Crear Reporte</h1>
+          </div>
+          <div className="containerf" style={{ background: "rgba(0, 0, 0, 0.40)", boxShadow: "none" }}>
+            <form className="row g-3">
+              <form class="row g-3">
+                <h6 className="letrasFormularioOrdenes">Orden de Trabajo</h6>
+                <div class="col-auto">
+                  <select
+                    id="select"
+                    class="form-select"
+                    disabled={nor_loading}
+                    onChange={(e) => {
+                      setIndex(e.target.value);
+                      handleOrdenData(e.target.value);
+                    }}
+                  >
+                    <option selected value="primero">Seleccione Una Orden</option>
+                    {nombreOrden
+                      ? nombreOrden.map((item) => {
+                        if (!item.reporte) {
+                          return (
+                            <option key={item.id} value={item.id}>
+                              [Cliente: {item.nombre}]-[Unidades:{" "}
+                              {item.cantidad_unidades}]-[Descripcion:{" "}
+                              {item.descripcion}]
+                            </option>
+                          );
+                        }
+
                       })
-                    : null}
-                </select>
-              </div>
-              <div class="col-auto">
-                <ul>
-                  {orden.map((item, index) => (
-                    <li key={index}>
-                      {item}
-                      <button
-                        type="button"
-                        class="btn-close"
-                        aria-label="Close"
-                        onClick={() => {
-                          const temp = [...orden];
-                          temp.splice(temp.indexOf(item), 1);
-                          setOrden(temp);
-                        }}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </form>
+                      : null}
+                  </select>
+                </div>
+                <div class="col-auto">
+                  <ul>
+                    {orden.map((item, index) => (
+                      <li key={index}>
+                        {item}
+                        <button
+                          type="button"
+                          class="btn-close"
+                          aria-label="Close"
+                          onClick={() => {
+                            const temp = [...orden];
+                            temp.splice(temp.indexOf(item), 1);
+                            setOrden(temp);
+                          }}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </form>
 
-            <div class="col-md-6">
-              <label for="inputNombre">Nombre del Cliente</label>
-              <input
-                required
-                type="text"
-                name="nombre"
-                class="form-control"
-                onChange={handleInputChance}
-                id="inputNombre"
-                placeholder="Nombre Cliente"
-                value={nomCliente}
-                disabled
-              />
-            </div>
-            <div className="col-md-6">
-              <label for="inputFecha">Fecha</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputFecha"
-                disabled
-                value={fecha}
-              />
-            </div>
-            <div className="col-md-6">
-              <label>Telefono del Cliente</label>
-              <input
-                type="text"
-                class="form-control"
-                onChange={handleInputChance}
-                value={telCliente}
-                placeholder="Telefono"
-                disabled
-              />
-            </div>
-            <div class="col-md-6">
-              <label>Cantidad de unidades: </label>
-              <input
-                placeholder="Ingrese la cantidad de unidades"
-                className="form-control"
-                type="number"
-                name="numero"
-                pattern="[0-9]{1}"
-                title="numero de 0-9"
-                onChange={handleInputChance}
-                value={cantUnidades}
-                disabled
-              ></input>
-            </div>
+              <div class="col-md-6">
+                <label for="inputNombre" className="letrasFormularioOrdenes">Nombre del Cliente</label>
+                <input
+                  required
+                  type="text"
+                  name="nombre"
+                  class="form-control"
+                  onChange={handleInputChance}
+                  id="inputNombre"
+                  placeholder="Nombre Cliente"
+                  value={nomCliente}
+                  disabled
+                />
+              </div>
+              <div className="col-md-6">
+                <label for="inputFecha" className="letrasFormularioOrdenes">Fecha</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputFecha"
+                  disabled
+                  value={fecha2}
+                />
+              </div>
+              <div className="col-md-6">
+                <label className="letrasFormularioOrdenes">Telefono del Cliente</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  onChange={handleInputChance}
+                  value={telCliente}
+                  placeholder="Telefono"
+                  disabled
+                />
+              </div>
+              <div class="col-md-6">
+                <label className="letrasFormularioOrdenes">Cantidad de Unidades: </label>
+                <input
+                  placeholder="Ingrese la cantidad de unidades"
+                  className="form-control"
+                  type="number"
+                  name="numero"
+                  pattern="[0-9]{1}"
+                  title="numero de 0-9"
+                  onChange={handleInputChance}
+                  value={cantUnidades}
+                  disabled
+                ></input>
+              </div>
 
-            <form class="row g-3">
-              <h6>Empleados que genero el reporte</h6>
-              <div class="col-auto">
-                <select
-                  id="select"
-                  class="form-select"
-                  disabled={emp_loading}
-                  onChange={(e) => {
-                    setEmpAdmin(e.target.value);
-                  }}
-                >
-                  <option selected>Seleccioné un empleado</option>
-                  {empleados
-                    ? empleados.map((item) => {
+              <form class="row g-3">
+                <h6 className="letrasFormularioOrdenes">Empleado Que Genero el Reporte</h6>
+                <div class="col-auto">
+                  <select
+                    id="select"
+                    class="form-select"
+                    disabled={emp_loading}
+                    onChange={(e) => {
+                      setEmpAdmin(e.target.value);
+                    }}
+                  >
+                    <option selected>Seleccione Un Empleado</option>
+                    {empleados
+                      ? empleados.map((item) => {
                         return (
                           <option key={item.id} value={item.nombre}>
                             {item.nombre}
                           </option>
                         );
                       })
-                    : null}
-                </select>
-              </div>
-            </form>
-            <form class="row g-3">
-              <h6>Empleados que trabajaron en la orden</h6>
-              <div class="col-auto">
-                <select
-                  id="select"
-                  class="form-select"
-                  disabled={emp_loading}
-                  onChange={(e) => {
-                    setFlag(e.target.selectedIndex === 0);
-                    setSelect_emp(e.target.value);
-                  }}
-                >
-                  <option selected>Seleccioné un empleado</option>
-                  {empleados
-                    ? empleados.map((item) => {
+                      : null}
+                  </select>
+                </div>
+              </form>
+              <form class="row g-3">
+                <h6 className="letrasFormularioOrdenes">Empleados Que Trabajaron En La Orden</h6>
+                <div class="col-auto">
+                  <select
+                    id="select"
+                    class="form-select"
+                    disabled={emp_loading}
+                    onChange={(e) => {
+                      setFlag(e.target.selectedIndex === 0);
+                      setSelect_emp(e.target.value);
+                    }}
+                  >
+                    <option selected>Seleccione Un Empleado</option>
+                    {empleados
+                      ? empleados.map((item) => {
                         return (
                           <option key={item.id} value={item.nombre}>
                             {item.nombre}
                           </option>
                         );
                       })
-                    : null}
-                </select>
-              </div>
-              <div class="col-auto">
-                <button
-                  id="boton"
-                  type="button"
-                  class="btn btn-primary mb-3"
-                  disabled={flag}
-                  onClick={handleEmpleado}
-                >
-                  Agregar
+                      : null}
+                  </select>
+                </div>
+                <div class="col-auto">
+                  <button
+                    id="boton"
+                    type="button"
+                    class="btn btn-primary mb-3"
+                    disabled={flag}
+                    onClick={handleEmpleado}
+                  >
+                    Agregar
+                  </button>
+                </div>
+                <div class="col-auto">
+                  <ul>
+                    {orden_emps.map((element, index) => (
+                      <li key={index}>
+                        {element + "        "}
+
+                        <button
+                          type="button"
+                          class="btn-close"
+                          aria-label="Close"
+                          onClick={() => {
+                            const temp = [...orden_emps];
+                            temp.splice(temp.indexOf(element), 1);
+                            setOrden_emps(temp);
+                          }}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </form>
+
+              <div className="alinkcrear">
+                <button type="button" className="btn btn-success" onClick={handleSubmit} style={{ fontSize: "20px", paddingLeft: "110px", paddingRight: "110px" }}>
+                  Crear
                 </button>
               </div>
-              <div class="col-auto">
-                <ul>
-                  {orden_emps.map((element, index) => (
-                    <li key={index}>
-                      {element + "        "}
-
-                      <button
-                        type="button"
-                        class="btn-close"
-                        aria-label="Close"
-                        onClick={() => {
-                          const temp = [...orden_emps];
-                          temp.splice(temp.indexOf(element), 1);
-                          setOrden_emps(temp);
-                        }}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </form>
-
-            <div className="alinkcrear">
-              <button type="button"className="btn btn-primary" onClick={handleSubmit}>
-                Crear
-              </button>
-            </div>
-          </form>
-        </div>
-        {/* <a href="/">
+          </div>
+          {/* <a href="/">
         <img
           src={logo}
           alt="logo ackleaners"
@@ -368,7 +393,8 @@ export default function Reportes() {
           }}
         />
       </a> */}
+        </div>
       </div>
-    </>
+    </Fragment>
   );
 }
