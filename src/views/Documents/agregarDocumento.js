@@ -98,8 +98,17 @@ export const AgregarDocumento = () => {
       <Nav></Nav>
       <form onSubmit={submitHandler}>
         <div className="p-2 contenedorPrincipal">
+        <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"80px",
+            borderBottom:"2px solid black",
+            fontSize:"30px"
+          }}
+            >Agregar Documento</h1>
           <div className="container rounded contenedorFormulario">
-            <div style={{ marginTop: "12%", marginBottom: "100%" }}>
+            <div style={{ marginBottom: "100%" }}>
               <div class="mb-3 col-md-12">
                 <label
                   for="exampleFormControlInput1"
