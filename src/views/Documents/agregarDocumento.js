@@ -197,7 +197,7 @@ export const AgregarDocumento = () => {
                     <button
                     class="btn btn-secondary"
                     >
-                      Ver Documentos
+                      Administrar Documentos
                     </button>
                   </Link>
               </div>

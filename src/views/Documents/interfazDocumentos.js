@@ -24,7 +24,7 @@ export const Documentos = () => {
             <div>
               <form className="row g-3">
                 <div class="offset-lg-4" style={{ paddingLeft: "10%" }}>
-                  <Link to="/AgregarOrden">
+                  <Link to="/AgregarDocumento">
                     <button className="rounded botonSize fondoAgregar">
                       Agregar Documento
                     </button>
