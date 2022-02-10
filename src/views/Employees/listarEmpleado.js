@@ -49,11 +49,11 @@ const ListarEmpleado = () => {
             }}
           />
         </a>
-        <div class="sidebar">
+        {/*<div class="sidebar">
           <a class="active" href="/ListarEmpleado">Listar Empleado</a>
           <a href="/AgregarEmpleado">Agregar Empleado</a>
           <a href="/ModificarEmpleado">Modificar Empleado</a>
-        </div>
+        </div>*/}
         <div class="contentf">
           <h1 className="tituloh1">Listar Empleado</h1>
           <table className="ta" align="center">

@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
-.estiloPrincipal{
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
-    background-size: cover;
-}
-.contenedorPrincipal2{
+
+.estiloPrincipal {
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
     background-size: cover;
 }
 
-.estiloContenedor{
+.contenedorPrincipal2 {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
+    background-size: cover;
+}
+
+.estiloContenedor {
     background-color: rgba(0, 0, 0, 0.40);
     height: 50%;
     width: 70%;
@@ -16,13 +18,13 @@
     margin-bottom: 2%;
 }
 
-.espaciadoContenedor{
+.espaciadoContenedor {
     width: 210px;
     height: 210px;
-    margin: 5% 12% 5% 15%;
+    margin: 5% 12% 5% 10%;
 }
 
-.botonSize{
+.botonSize {
     width: 210px;
     height: 210px;
     background-color: transparent;
@@ -30,53 +32,56 @@
     color: transparent;
 }
 
-.fondoAgregar{
-    background-image: url("https://cdn-icons-png.flaticon.com/512/3143/3143571.png");
+.fondoAgregarOrden {
+    background-image: url("https://cdn-icons-png.flaticon.com/512/3979/3979404.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
 }
 
-.fondoAdministrar{
-    background-image: url("https://cdn-icons-png.flaticon.com/512/4370/4370853.png");
+.fondoListarOrden {
+    background-image: url("https://cdn-icons-png.flaticon.com/512/942/942748.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
-    
 }
 
-.fondoDescargar{
-    background-image: url("https://cdn-icons-png.flaticon.com/512/3039/3039520.png");
+.fondoModificarOrden {
+    background-image: url("https://cdn-icons-png.flaticon.com/512/1187/1187525.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
-    
 }
 
-.fondoActualizar:hover,.fondoAdministrar:hover{
+.fondoListarOrden:hover,
+.fondoAgregarOrden:hover,
+.fondoModificarOrden:hover {
     background: rgba(52, 93, 206, 0.575);
     color: white;
     font-family: 'Raleway';
     font-weight: bold;
     border: black;
-    border-style:dashed;
+    border-style: dashed;
 }
 
-.letrasDescarga{
+.letrasDescarga {
     color: white;
 }
 
-.letrasDescarga:hover{
+.letrasDescarga:hover {
     color: green;
 }
 
-.contenedorFormularioBajar{
+.letrasFormularioOrdenes{
+    color: white;
+    font-family: 'Raleway';
+    font-weight: bold;
+    font-size: 20px;
+}
+.contenedorFormularioBajar {
     background-color: rgba(0, 0, 0, 0.40);
     height: 100%;
     width: 70%;
     margin-top: 2%;
     margin-bottom: 2%;
-}
-.hide{
-    overflow-y: hidden;
 }

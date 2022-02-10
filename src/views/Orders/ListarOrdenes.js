@@ -34,15 +34,17 @@ const ListarOrdenes = () => {
   return (
     <>
     <Nav></Nav>
-    <div class="sidebar">
-        <a href="/Ordenes">Ordenes</a>
-        <a class="active" href="/ListarOrdenes">Listar Ordenes</a>
-        <a href="/AgregarOrden">Agregar Orden</a>
-        <a href="/ModificarOrden">Modificar Orden</a>
-      </div>
+    
       <Fragment>
         <div class="contentf">
-          <h1 className="tituloh1">Listar Ordenes</h1>
+        <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"30px",
+            borderBottom:"2px solid black"
+          }}
+            >Ordenes de Trabajo</h1>
           <table className="table table-dark" align="center">
             {/*<table className="ta" align="center">*/}
             <thead>
@@ -72,7 +74,17 @@ const ListarOrdenes = () => {
                 : null}
             </tbody>
           </table>
+          <Link to="/adminOrders">
+                  <button
+                    type="submit"
+                    class="btn btn-danger"
+                    style={{ marginBottom: "5%", marginLeft: "90%" }}
+                  >
+                    Regresar
+                  </button>
+                  </Link>
         </div>
+        
       </Fragment>
     </>
   );

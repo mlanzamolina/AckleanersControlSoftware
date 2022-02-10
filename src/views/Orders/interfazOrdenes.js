@@ -1,8 +1,18 @@
 import React from "react";
-import "./estiloDocs.css";
+import "./estiloOrdenes.css";
 import { Link } from "react-router-dom";
 import Nav from "../NavAdmin";
-export const Documentos = () => {
+import swal from "sweetalert";
+
+function enProceso(){
+  swal({
+    title: "Pagina en contruccion",
+    text: "Estamos trabajando en ello",
+    icon: "warning",
+    button: "aceptar",
+  });
+}
+export const IOrdenes = () => {
   return (
     <>
       <Nav></Nav>
@@ -19,14 +29,14 @@ export const Documentos = () => {
             borderBottom:"2px solid black",
             fontSize:"30px"
           }}
-            >Documentos</h1>
+            >Ordenes de Trabajo</h1>
           <div className="container rounded estiloContenedor">
             <div>
               <form className="row g-3">
                 <div class="offset-lg-4" style={{ paddingLeft: "10%" }}>
-                  <Link to="/AgregarDocumento">
-                    <button className="rounded botonSize fondoAgregar">
-                      Agregar Documento
+                  <Link to="/AgregarOrden">
+                    <button className="rounded botonSize fondoAgregarOrden">
+                      Agregar Orden de Trabajo
                     </button>
                   </Link>
                 </div>
@@ -39,9 +49,9 @@ export const Documentos = () => {
                     marginTop: "10%",
                   }}
                 >
-                  <Link to="/DescargarDocumento">
-                    <button className="rounded botonSize fondoDescargar">
-                      Descargar Documentos
+                  <Link to="/ListarOrdenes">
+                    <button className="rounded botonSize fondoListarOrden">
+                      Listar Ordenes de Trabajo
                     </button>
                   </Link>
                 </div>
@@ -50,9 +60,9 @@ export const Documentos = () => {
                   class="offset-lg-1 espaciadoContenedor"
                   style={{ paddingLeft: "3%", marginTop: "10%" }}
                 >
-                  <Link to="/admiDocumentos">
-                    <button className="rounded botonSize fondoAdministrar"   >
-                      Administrar Documentos
+                  <Link to="/adminOrders">
+                    <button className="rounded botonSize fondoModificarOrden" onClick={enProceso}>
+                      Modificar Ordenes de Trabajo
                     </button>
                   </Link>
                 </div>
