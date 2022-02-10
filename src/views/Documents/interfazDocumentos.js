@@ -15,24 +15,43 @@ export const Documentos = () => {
             width:"100%",
             textAlign:"center", 
             marginTop:"1%", 
-            marginBottom:"140px",
+            marginBottom:"25px",
             borderBottom:"2px solid black",
             fontSize:"30px"
           }}
             >Documentos</h1>
           <div className="container rounded estiloContenedor">
             <div>
-              <form className="row g-3" style={{paddingLeft:"4%"}}>
-              <div class="offset-lg-4 espaciadoContenedor" style={{paddingLeft:"3%"}}>
-                  <Link to="/AgregarDocumento">
-                    <button className="rounded botonSize fondoAgregar" >
+              <form className="row g-3">
+                <div class="offset-lg-4" style={{ paddingLeft: "10%" }}>
+                  <Link to="/AgregarOrden">
+                    <button className="rounded botonSize fondoAgregar">
                       Agregar Documento
                     </button>
                   </Link>
                 </div>
-                <div class="offset-lg-1 espaciadoContenedor" style={{paddingLeft:"3%"}}>
-                  <Link to="/AdmiDocumentos">
-                    <button className="rounded botonSize fondoAdministrar">
+
+                <div
+                  class="offset-lg-1 espaciadoContenedor"
+                  style={{
+                    paddingLeft: "5%",
+                    paddingRight: "20%",
+                    marginTop: "10%",
+                  }}
+                >
+                  <Link to="/DescargarDocumento">
+                    <button className="rounded botonSize fondoDescargar">
+                      Descargar Documentos
+                    </button>
+                  </Link>
+                </div>
+
+                <div
+                  class="offset-lg-1 espaciadoContenedor"
+                  style={{ paddingLeft: "3%", marginTop: "10%" }}
+                >
+                  <Link to="/admiDocumentos">
+                    <button className="rounded botonSize fondoAdministrar"   >
                       Administrar Documentos
                     </button>
                   </Link>
