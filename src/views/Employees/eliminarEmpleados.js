@@ -1,5 +1,5 @@
 import React, { useEffect, useState, memo, Component } from "react";
-import Nav from "../NavAdmin"
+import Nav from "../NavAdmin";
 import {
   Button,
   Modal,
@@ -57,12 +57,9 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
     direccion: "",
   });
 
-  
-
   const [mostrarV, setMostrarV] = useState(false);
 
   const [paginated, setPaginated] = useState();
-
 
   const [page, setPage] = useState(1);
   const [vista, setVista] = useState({
@@ -91,12 +88,8 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
   const [q, setQ] = useState("");
   const [imageurl2, setimageURL2] = useState("");
 
-  
+  const [isLoading, setIsloading] = useState(false);
 
-  const [isLoading,setIsloading]=useState(false);
-
-
-  
   const getEmpleados = async () => {
     const temp = [];
     db.collection("Empleados").onSnapshot((querySnapshot) => {
@@ -106,21 +99,15 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
 
       setData(temp);
     });
-   
   };
 
-
-
   useEffect(() => {
-   const fecthData = async ()=>{
-     db.collection("Empleados").onSnapshot(function(data){
-       setData(data.docs.map(doc=>({...doc.data(),id:doc.id})))
-     })
-
-   }
-   fecthData();
- 
-    
+    const fecthData = async () => {
+      db.collection("Empleados").onSnapshot(function (data) {
+        setData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      });
+    };
+    fecthData();
   }, []);
 
   const { slice, range } = useTable(data, page, 5);
@@ -168,8 +155,6 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
     }
     setimageURL(URL.createObjectURL(e.target.files[0]));
     setImage(e.target.files[0]);
-   
-    
   };
 
   const handleInputChance = (event) => {
@@ -180,73 +165,55 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
   };
 
   const handleDni = (e) => {
-  try {
-    setDni_unico(true);
-    data.map((item) => {
-      if (item.dni === e.target.value && item.dni !== currentID.id ) {
-        setDni_unico(false);
-        swal({
-          title: "Numero de Documento Nacional de Identifacicion repetido",
-          text: "Por favor reingrese un DNI unico o no se le dejara modificar",
-          icon: "warning",
-          button: "aceptar",
-        });
-      }
-    });
-    
-  } catch (error) {
-    console.log("Error DNI");
-  }
-    
+    try {
+      setDni_unico(true);
+      data.map((item) => {
+        if (item.dni === e.target.value && item.dni !== currentID.id) {
+          setDni_unico(false);
+          swal({
+            title: "Numero de Documento Nacional de Identifacicion repetido",
+            text: "Por favor reingrese un DNI unico o no se le dejara modificar",
+            icon: "warning",
+            button: "aceptar",
+          });
+        }
+      });
+    } catch (error) {
+      console.log("Error DNI");
+    }
   };
 
   const obtener = (empleados) => {
     try {
       setIDFire(empleados.id);
 
-    setCurrentID({
-      id: empleados.dni,
-      nombre: empleados.nombre,
-      correo: empleados.correo,
-      telefono: empleados.n_telefono,
-      foto: empleados.foto,
-      estado: empleados.estado,
-      direccion: empleados.direccion,
-  
-
-    });
-   
-      
-    } catch (error) {
-      
-    }
-    
-    
-  
+      setCurrentID({
+        id: empleados.dni,
+        nombre: empleados.nombre,
+        correo: empleados.correo,
+        telefono: empleados.n_telefono,
+        foto: empleados.foto,
+        estado: empleados.estado,
+        direccion: empleados.direccion,
+      });
+    } catch (error) {}
   };
 
   const editRow = (empleados) => {
     obtener(empleados);
-    
 
     if (mostrarM === false) {
       SetmostrarM(!mostrarM);
-     
     } else {
       SetmostrarM(!mostrarM);
     }
-    
-    if(empleados.foto){
+
+    if (empleados.foto) {
       setimageURL(empleados.foto);
-    }else{
+    } else {
       setimageURL("");
     }
-      
-    
-   
   };
-
-  
 
   /*const obtener2 = ()=>{
 
@@ -259,7 +226,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
 
   const modificar = async (e) => {
     e.preventDefault();
-    
+
     const empleadosDoc = doc(db, "Empleados", idFire);
 
     var nombre2 = document.getElementById("nombre").value;
@@ -277,9 +244,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       id2 == " " ||
       correo2 == " " ||
       imageurl === " "
-      
-      
-    ){
+    ) {
       swal({
         title: "No se realizo",
         text: "No se modifico el empleado, verifique los campos",
@@ -305,7 +270,6 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       });
       console.log(nombre);
       //await new Promise(resolve=> setTimeout(resolve, 2000));
-      
 
       const uploadtask = almacenamiento
         .ref("/UsuarioFotos/" + idFire)
@@ -327,20 +291,13 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         icon: "info",
         button: "aceptar",
       });
-
     }
     setimageURL(null);
-    
   }; //Fin
 
-
-  const cambiarFoto=(e)=>{
+  const cambiarFoto = (e) => {
     e.target.src = imageurl;
-  
-  }
-
-
-
+  };
 
   const mostrarVistaEmpleado = (empleados) => {
     setVista({
@@ -353,7 +310,6 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       direccion: empleados.direccion,
       estado: empleados.estado,
     });
-    
 
     if (mostrarV == false) {
       setMostrarV(!mostrarV);
@@ -364,265 +320,282 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
 
   return (
     <>
-
-   
-     <Nav />
-     <div class="sidebar">
-        <a  href="/AgregarEmpleado">
-          Agregar Empleado
-        </a>
-        <a class="active" href="/eliminarEmpleados">Modificar Empleado</a>
-        </div>
-  
-    <div className="contentf">
-      <div className="text-center" style={{margin:"50px 0px"}}>
-        <h1>Empleados</h1>
-        <hr></hr>
-      </div>
-      <div className="container">
-        <div className="mt-4 mb-4 table-responsive">
-          <table className="table table-dark table-striped">
-            <thead className={styles.tableRowHeader}>
-              <tr className="text-center">
-                <th scope="col">NOMBRE</th>
-
-                <th scope="col">DNI</th>
-                <th scope="col">TELEFONO</th>
-                <th scope="col">CORREO</th>
-                <th scope="col">ESTADO</th>
-                <th scope="col">DIRECCION</th>
-                <th scope="col">EDITAR</th>
-              </tr>
-            </thead>
-            <tbody>
-              {slice.map((empleados, index) => (
-                <tr key={index}>
-                  <td class="table-primary">{empleados.nombre}</td>
-
-                  <td class="table-primary">{empleados.dni}</td>
-                  <td class="table-primary">{empleados.n_telefono}</td>
-                  <td class="table-primary">{empleados.correo}</td>
-                  <td class="table-primary">{empleados.estado}</td>
-                  <td class="table-primary">{empleados.direccion}</td>
-
-                  <td class="table-primary">
-                    <div
-                      class="btn-group"
-                      role="group"
-                      aria-label="Basic example"
-                    >
-                      <Button
-                        color="success"
-                        onClick={() => editRow(empleados)}
-                      >
-                        <i class="bi bi-pencil"></i>
-                      </Button>
-                      <Button
-                        color="success"
-                        onClick={() => setMostrarE(true)}
-                        onClick={() => mostrarModalEliminar(empleados.id)}
-                      >
-                        <i class="bi bi-person-x"></i>
-                      </Button>
-
-                      <Button
-                        color="success"
-                        onClick={() => mostrarVistaEmpleado(empleados)}
-                      >
-                        <i class="bi bi-person-video"></i>
-                      </Button>
-                    </div>
-                  </td>
+      <Nav />
+      <div className="contentf">
+      <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"80px",
+            borderBottom:"2px solid black"
+          }}
+            >Administración de Empleados</h1>
+        <div className="container">
+          <div className="mt-4 mb-4 table-responsive">
+            <table className="table table-dark table-striped">
+              <thead className={styles.tableRowHeader}>
+                <tr className="text-center">
+                  <th scope="col">NOMBRE</th>
+                  <th scope="col">DNI</th>
+                  <th scope="col">TELEFONO</th>
+                  <th scope="col">CORREO</th>
+                  <th scope="col">ESTADO</th>
+                  <th scope="col">DIRECCION</th>
+                  <th scope="col">EDITAR</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <TableFooter
-            range={range}
-            slice={slice}
-            setPage={setPage}
-            page={page}
-          />
+              </thead>
+              <tbody>
+                {slice.map((empleados, index) => (
+                  <tr key={index}>
+                    <td class="table-primary">{empleados.nombre}</td>
+                    <td class="table-primary">{empleados.dni}</td>
+                    <td class="table-primary">{empleados.n_telefono}</td>
+                    <td class="table-primary">{empleados.correo}</td>
+                    <td class="table-primary">{empleados.estado}</td>
+                    <td class="table-primary">{empleados.direccion}</td>
+
+                    <td class="table-primary">
+                      <div
+                        class="btn-group"
+                        role="group"
+                        aria-label="Basic example"
+                      >
+                        <Button
+                          color="success"
+                          onClick={() => editRow(empleados)}
+                        >
+                          <i class="bi bi-pencil"></i>
+                        </Button>
+                        <Button
+                          color="success"
+                          onClick={() => setMostrarE(true)}
+                          onClick={() => mostrarModalEliminar(empleados.id)}
+                        >
+                          <i class="bi bi-person-x"></i>
+                        </Button>
+
+                        <Button
+                          color="success"
+                          onClick={() => mostrarVistaEmpleado(empleados)}
+                        >
+                          <i class="bi bi-person-video"></i>
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <TableFooter
+              range={range}
+              slice={slice}
+              setPage={setPage}
+              page={page}
+            />
+          </div>
+          <Link to="/AgregarEmpleado">
+            <button type="button" class="btn btn-success" style={{marginLeft:"75%"}}>
+              Ir a Agregar Empleado
+            </button>
+          </Link>
+          <Link to="/interfazEmpleados">
+            <button type="button" class="btn btn-danger" style={{marginLeft:"1%"}}>
+              Volver
+            </button>
+          </Link>
         </div>
-      </div>
-      <Modal isOpen={mostrarE}>
-        <ModalHeader closeButton>¿DESEA ELIMINAR EL EMPLEADO?</ModalHeader>
-
-        <ModalFooter>
-          <Button
-            type="button"
-            variant="primary"
-            onClick={() => eliminarEmpleado(id)}
-          >
-            SI
-          </Button>
-
-          <Button
-            type="button"
-            variant="secondary"
-            onClick={() => mostrarModalEliminar()}
-          >
-            NO
-          </Button>
-        </ModalFooter>
-      </Modal>
-
-      {/* MODAL PARA MOSTRAR OBJETOS */}
-
-      <Modal isOpen={mostrarM}>
-        <ModalHeader>Modificar Empleado</ModalHeader>
-        <ModalBody>
-          <div className="form-group">
-            <form onSubmit={(e) => modificar(e)}>
-            
-              <label>Nombre: </label>
-              <br />
-              <input
-                type="text"
-                id="nombre"
-                className="form-control"
-                onChange={(e) => setNombre(e.target.value)}
-                defaultValue={currentID && currentID.nombre}
-                name="nombre"
-              />
-              <br />
-              <label>DNI: </label>
-              <br />
-              <input
-                type="text"
-                id="id"
-                className="form-control"
-                //onBlur={handleDni}
-                onChange={(e) => setDNI(e.target.value)}
-                defaultValue={currentID && currentID.id}
-                pattern="[0-9]{13}"
-                title="numero 13 digitos sin nada extra"
-              />
-              <br />
-              <label>Correo: </label>
-              <br />
-              <input
-                type="text"
-                id="correo"
-                className="form-control"
-                onChange={(e) => setCorreo(e.target.value)}
-                defaultValue={currentID && currentID.correo}
-                name="correo"
-              />
-              <br />
-              <label>Telefono </label>
-              <br />
-              <input
-                type="text"
-                id="telefono"
-                className="form-control"
-                onChange={(e) => setTelefono(e.target.value)}
-                pattern="[0-9]{8}"
-                title="numero 8 digitos sin nada extra"
-                defaultValue={currentID && currentID.telefono}
-                name="telefono"
-              />
-              <br />
-              <label>Direccion</label>
-              <br />
-              <textarea
-                id="direccion"
-                class="form-control"
-                name="direccion"
-                placeholder="Direccion donde reside el empleado"
-                onChange={(e) => setDireccion(e.target.value)}
-                defaultValue={currentID && currentID.direccion}
-              ></textarea>
-              <label>Estado Empleado</label>
-              <br />
-              <select
-                id="estado"
-                onChange={(e) => setEstado(e.target.value)}
-                defaultValue={currentID && currentID.estado}
-              >
-                <option>Activo</option>
-                <option>Inactivo</option>
-              </select>
-
-              <label> Foto Empleado </label>
-              <br />
-
-              <div>
-                <img id="foto" src={imageurl} class="form-control" />
-              </div>
-
-              <div class="form-control">
-                <input
-                  id="b_file"
-                  type="file"
-                  class="form-control-file"
-                  accept=".jpg,.png"
-                  onChange={handleFileSubmit}
-                  
-                  
-                />
-              </div>
-
-              <ModalFooter>
-                <Button
-                  type="button"
-                  class="btn btn-outline-danger"
-                  onClick={() => SetmostrarM(false)}
-                  
-                >
-                  SALIR
-                </Button>
-                <Button type="submit" class="btn btn-outline-danger">
-                  {isLoading ?  
-                              <h1 class="btn btn-primary" type="button" disabled>
-                              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                              <span class="sr-only">Loading...</span>
-                              </h1>:  <h1>Modificar</h1>  }
-                  
-                </Button>
-                
-              </ModalFooter>
-            </form>
-          </div>
-        </ModalBody>
-      </Modal>
-
-      <Modal isOpen={mostrarV}>
-        <ModalHeader>{vista.nombre}</ModalHeader>
-        <ModalBody>
-          <img src={vista.foto} class="card-img-top" alt="..."></img>
-          <div class="container">
-            <div class="col">
-              <label><strong>ID:</strong></label>
-              <label>&nbsp;&nbsp;{vista.dni}</label>
-            </div>
-            <div class="col">
-              <label><strong>Correo:</strong></label>
-              <label>&nbsp;&nbsp;{vista.correo}</label>
-            </div>
-            <div class="col">
-              <label> <strong>Telefono:</strong></label>
-              <label>&nbsp;&nbsp;{vista.telefono}</label>
-            </div>
-
-            <div class="col align-self-start">
-              <label><strong>Direccion:</strong></label>
-              <label>&nbsp;&nbsp;{vista.direccion}</label>
-            </div>
-          </div>
+        <Modal isOpen={mostrarE}>
+          <ModalHeader closeButton>¿DESEA ELIMINAR EL EMPLEADO?</ModalHeader>
 
           <ModalFooter>
             <Button
               type="button"
-              class="btn btn-outline-danger"
-              onClick={() => setMostrarV(false)}
+              variant="primary"
+              onClick={() => eliminarEmpleado(id)}
+              style={{background:"red"}}
             >
-              SALIR
+              SI
+            </Button>
+
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={() => mostrarModalEliminar()}
+              style={{background:"rgb(70,130,180)"}}
+            >
+              NO
             </Button>
           </ModalFooter>
-        </ModalBody>
-      </Modal>
-    </div>
+        </Modal>
+
+        {/* MODAL PARA MOSTRAR OBJETOS */}
+
+        <Modal isOpen={mostrarM}>
+          <ModalHeader>Modificar Empleado</ModalHeader>
+          <ModalBody>
+            <div className="form-group">
+              <form onSubmit={(e) => modificar(e)}>
+                <label>Nombre: </label>
+                <br />
+                <input
+                  type="text"
+                  id="nombre"
+                  className="form-control"
+                  onChange={(e) => setNombre(e.target.value)}
+                  defaultValue={currentID && currentID.nombre}
+                  name="nombre"
+                />
+                <br />
+                <label>DNI: </label>
+                <br />
+                <input
+                  type="text"
+                  id="id"
+                  className="form-control"
+                  //onBlur={handleDni}
+                  onChange={(e) => setDNI(e.target.value)}
+                  defaultValue={currentID && currentID.id}
+                  pattern="[0-9]{13}"
+                  title="numero 13 digitos sin nada extra"
+                />
+                <br />
+                <label>Correo: </label>
+                <br />
+                <input
+                  type="text"
+                  id="correo"
+                  className="form-control"
+                  onChange={(e) => setCorreo(e.target.value)}
+                  defaultValue={currentID && currentID.correo}
+                  name="correo"
+                />
+                <br />
+                <label>Telefono </label>
+                <br />
+                <input
+                  type="text"
+                  id="telefono"
+                  className="form-control"
+                  onChange={(e) => setTelefono(e.target.value)}
+                  pattern="[0-9]{8}"
+                  title="numero 8 digitos sin nada extra"
+                  defaultValue={currentID && currentID.telefono}
+                  name="telefono"
+                />
+                <br />
+                <label>Direccion</label>
+                <br />
+                <textarea
+                  id="direccion"
+                  class="form-control"
+                  name="direccion"
+                  placeholder="Direccion donde reside el empleado"
+                  onChange={(e) => setDireccion(e.target.value)}
+                  defaultValue={currentID && currentID.direccion}
+                ></textarea>
+                <label>Estado Empleado</label>
+                <br />
+                <select
+                  id="estado"
+                  onChange={(e) => setEstado(e.target.value)}
+                  defaultValue={currentID && currentID.estado}
+                >
+                  <option>Activo</option>
+                  <option>Inactivo</option>
+                </select>
+
+                <label> Foto Empleado </label>
+                <br />
+
+                <div>
+                  <img id="foto" src={imageurl} class="form-control" />
+                </div>
+
+                <div class="form-control">
+                  <input
+                    id="b_file"
+                    type="file"
+                    class="form-control-file"
+                    accept=".jpg,.png"
+                    onChange={handleFileSubmit}
+                  />
+                </div>
+
+                <ModalFooter>
+                  <Button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    onClick={() => SetmostrarM(false)}
+                    style={{background:"red"}}
+                  >
+                    Salir
+                  </Button>
+                  <Button type="submit" class="btn btn-outline-danger" style={{background:"rgb(70,130,180)"}}>
+                    {isLoading ? (
+                      <h1 class="btn btn-primary" type="button" disabled>
+                        <span
+                          class="spinner-grow spinner-grow-sm"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                        <span class="sr-only">Loading...</span>
+                      </h1>
+                    ) : (
+                      <h1>Modificar</h1>
+                    )}
+                  </Button>
+                </ModalFooter>
+              </form>
+            </div>
+          </ModalBody>
+        </Modal>
+
+        <Modal isOpen={mostrarV}>
+          <ModalHeader>{vista.nombre}</ModalHeader>
+          <ModalBody>
+            <img src={vista.foto} class="card-img-top" alt="..."></img>
+            <div class="container">
+              <div class="col">
+                <label>
+                  <strong>ID:</strong>
+                </label>
+                <label>&nbsp;&nbsp;{vista.dni}</label>
+              </div>
+              <div class="col">
+                <label>
+                  <strong>Correo:</strong>
+                </label>
+                <label>&nbsp;&nbsp;{vista.correo}</label>
+              </div>
+              <div class="col">
+                <label>
+                  {" "}
+                  <strong>Telefono:</strong>
+                </label>
+                <label>&nbsp;&nbsp;{vista.telefono}</label>
+              </div>
+
+              <div class="col align-self-start">
+                <label>
+                  <strong>Direccion:</strong>
+                </label>
+                <label>&nbsp;&nbsp;{vista.direccion}</label>
+              </div>
+            </div>
+
+            <ModalFooter>
+              <Button
+                type="button"
+                class="btn btn-outline-danger"
+                onClick={() => setMostrarV(false)}
+                style={{background:"red"}}
+              >
+                Salir
+              </Button>
+            </ModalFooter>
+          </ModalBody>
+        </Modal>
+      </div>
     </>
   );
 };

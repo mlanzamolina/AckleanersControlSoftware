@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { app } from "../../components/firebase";
 import "../Employees/estiloEmpleado.css";
 import { Link } from "react-router-dom";
@@ -6,10 +6,11 @@ import swal from "sweetalert";
 import Nav from "../NavAdmin";
 
 export const AgregarDocumento = () => {
-
   let hoy = new Date();
-  let fechaActual = hoy.getFullYear() + '-' + (hoy.getMonth()+1)+'-'+hoy.getDate();
+  let fechaActual = hoy.getFullYear() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getDate();
   const [archivoUrl, setArchivoUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const archivoHandler = async (event) => {
     const archivo = event.target.files[0];
@@ -17,19 +18,19 @@ export const AgregarDocumento = () => {
       title: "¡Revisando el documento!",
       icon: "warning",
       text: "Un momento...",
-      timer: 5000,
+      timer: 2000,
       button: false,
     });
+    setIsLoading(true);
     const storageRef = app.storage().ref("Documentos");
     const archivoPath = storageRef.child(archivo.name);
     await archivoPath.put(archivo);
     console.log("Archivo cargado ", archivo.name);
     const enlaceUrl = await archivoPath.getDownloadURL();
     setArchivoUrl(enlaceUrl);
+    setIsLoading(false);
   };
 
-  const [isLoading,setIsloading]=useState(false);
-  
   const submitHandler = async (event) => {
     event.preventDefault();
     const nombreArchivo = event.target.nombre.value;
@@ -54,21 +55,19 @@ export const AgregarDocumento = () => {
     }
 
     const tipoArchivo = event.target.tipo.value;
-    if (tipoArchivo === "Seleccione tipo de archivo") {
+    if (tipoArchivo == "Seleccione tipo de archivo") {
       swal({
         title: "No se realizo",
         text: "Coloque un tipo para el archivo",
         icon: "warning",
         button: "aceptar",
-        
       });
       return;
-    } 
-    
+    }
+
     const fechaArchivo = fechaActual;
 
     const tablaDocumentosRef = app.firestore().collection("Documentos");
-    setIsloading(true);
     const documento = tablaDocumentosRef.doc().set({
       nombre: nombreArchivo,
       descripcion: descripcionArchivo,
@@ -76,35 +75,43 @@ export const AgregarDocumento = () => {
       url: archivoUrl,
       fecha: fechaArchivo,
     });
-    
+
     swal({
       title: "¡Agregado!",
       text: "Archivo agregado a la base de datos",
       icon: "info",
       button: "Aceptar",
     });
-    await new Promise(resolve=> setTimeout(resolve, 2000));
-    setIsloading(false);
+
+    await new Promise(resolve => setTimeout(resolve, 2000));
     document.getElementById("i_nombre").value = null;
     document.getElementById("i_descripcion").value = null;
     document.getElementById("i_foto").value = null;
     document.getElementById("i_tipo").value = "Seleccione tipo de archivo";
     return;
   };
-    
-    
+
   return (
-    <div className="hide">
+    <>
       <Nav></Nav>
       <form onSubmit={submitHandler}>
         <div className="p-2 contenedorPrincipal">
+        <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"80px",
+            borderBottom:"2px solid black",
+            fontSize:"30px"
+          }}
+            >Agregar Documento</h1>
           <div className="container rounded contenedorFormulario">
-            <div style={{ marginTop: "12%", marginBottom: "100%" }}>
+            <div style={{ marginBottom: "100%" }}>
               <div class="mb-3 col-md-12">
                 <label
                   for="exampleFormControlInput1"
                   className="form-label letrasFormulario"
-                  style={{ marginTop: "2%", paddingLeft: "80%", fontSize:"18px" }}
+                  style={{ marginTop: "2%", paddingLeft: "80%", fontSize: "18px" }}
                 >
                   Fecha actual: {fechaActual}
                 </label>
@@ -177,11 +184,12 @@ export const AgregarDocumento = () => {
                     marginTop: "5%",
                   }}
                 >
-                  {isLoading ?  
-                    <h1 class="btn btn-primary" type="button" disabled>
-                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                    <span class="sr-only">Loading...</span>
-                    </h1>:  <h1>Cargar Documento</h1>}
+                  {isLoading ? 
+                  <h1 class="btn btn-primary" type="button" disabled>
+                  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                  <span class="sr-only">Cargando...</span>
+                </h1> : <h1>Cargar Documento</h1>
+                  }
                 </button>
 
                 <Link to="/adminDocs">
@@ -193,12 +201,22 @@ export const AgregarDocumento = () => {
                     Regresar
                   </button>
                 </Link>
+
+                <Link to="/admiDocumentos">
+                  <button
+                    type="submit"
+                    class="btn btn-secondary"
+                    style={{ marginLeft: "2%", marginBottom: "5%", marginTop: "5%" }}
+                  >
+                    Administrar Documentos
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </form>
-    </div>
+    </>
   );
 };
 export default AgregarDocumento;

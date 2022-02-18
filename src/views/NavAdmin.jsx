@@ -9,7 +9,7 @@ export class NavAdmin extends Component {
           <div>
               
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark  fixed-top sticky-top">
-<a class="navbar-brand" style={{margin: "0px 10px"}} href="/">Ackleaners Administracion</a>
+<a class="navbar-brand" style={{margin: "0px 10px"}} href="/Management">Ackleaners Administración</a>
         <button
           className="navbar-toggler"
           type="button"

@@ -4,28 +4,6 @@ import Iframe from "react-iframe";
 export class features extends Component {
   render() {
     return (
-      // <div id="features" className="text-center">
-      //   <br /> <br />
-      //   <h2 style={{ padding: "42px" }}>Servicios</h2>
-      //   <div className="container">
-      //     <div className=""></div>
-      //     <div className="row">
-      //       {this.props.data
-      //         ? this.props.data.map((d, i) => (
-      //             <div style={{ padding: "50px" }} className="col-sm" key={i}>
-      //               <i className={d.icon} />
-      //               <h3>{d.title}</h3>
-      //               <p>{d.text}</p>
-      //               <div>
-      //                 <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F106521830930162%2Fvideos%2F417711099124406%2F&show_text=false&width=560&t=0" />
-      //               </div>
-      //             </div>
-      //           ))
-      //         : "Loading..."}
-      //     </div>
-      //   </div>
-      // </div>
-
       <>
         <section className="relative py-20">
           <div
@@ -64,9 +42,9 @@ export class features extends Component {
                   <h3 className="text-3xl font-semibold">
                     ¿Por qué limpiar mi aire acondicionado?
                   </h3>
-                  <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
+                  <p className="mt-4 text-lg leading-relaxed text-blueGray-500" style={{ color: "black", textAlign: "justify" }}>
                     Limpiar tu aire no solo ayuda a que pueda llegar a
-                    temperaturas mas frias, tambien tiene otros beneficios que
+                    temperaturas más frias, tambien tiene otros beneficios que
                     tal vez no sabias.
                   </p>
                   <ul className="list-none mt-6">
@@ -78,7 +56,7 @@ export class features extends Component {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-500" style={{ color: "black" }}>
                             Mejor calidad de aire
                           </h4>
                         </div>
@@ -92,7 +70,7 @@ export class features extends Component {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-500" style={{ color: "black" }}>
                             Ahorro de energia
                           </h4>
                         </div>
@@ -106,7 +84,7 @@ export class features extends Component {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-500" style={{ color: "black" }}>
                             Evita malos olores
                           </h4>
                         </div>
@@ -119,7 +97,7 @@ export class features extends Component {
           </div>
         </section>
 
-        
+
       </>
     );
   }
