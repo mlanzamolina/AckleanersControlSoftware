@@ -97,6 +97,12 @@ const AgregarOrden = () => {
         icon: "info",
         button: "aceptar",
       });
+      document.getElementById("a_nombre").value = null;
+      document.getElementById("a_contacto").value = null;
+      document.getElementById("a_cantidad").value = null;
+      document.getElementById("a_descripcion").value = null;
+      document.getElementById("a_tipo").value = null;
+      document.getElementById("select").value = "Seleccione un Empleado";
     }
   };
 
@@ -142,6 +148,7 @@ const AgregarOrden = () => {
                     className="form-control"
                     name="nombre"
                     onChange={handleInputChance}
+                    id="a_nombre"
                     required
                   ></input>
                 </div>
@@ -158,6 +165,7 @@ const AgregarOrden = () => {
                     type="number"
                     name="numero_telefono"
                     onChange={handleInputChance}
+                    id="a_contacto"
                     required
                   ></input>
                 </div>
@@ -174,6 +182,7 @@ const AgregarOrden = () => {
                     type="number"
                     name="cantidad_unidades"
                     onChange={handleInputChance}
+                    id="a_cantidad"
                     required
                   ></input>
                 </div>
@@ -187,6 +196,7 @@ const AgregarOrden = () => {
                   <textarea
                     className="propiedadTextArea form-control"
                     name="descripcion"
+                    id="a_descripcion"
                     onChange={handleInputChance}
                     placeholder="Si tienes comentarios adicionales o un metodo de contacto adicional, puedes especificarlos..."
                   ></textarea>
@@ -205,7 +215,8 @@ const AgregarOrden = () => {
                       type="radio"
                       name="tipo_vivienda"
                       id="Radios1"
-                      value="casa"
+                      value="Casa"
+                      id="a_tipo"
                     />
                     <label class="form-check-label letrasFormularioOrdenes" for="Radios1">
                       Casa
@@ -217,7 +228,7 @@ const AgregarOrden = () => {
                       type="radio"
                       name="tipo_vivienda"
                       id="Radios2"
-                      value="negocio"
+                      value="Negocio"
                     />
                     <label  class="form-check-label letrasFormularioOrdenes" for="Radios2">
                       Negocio
