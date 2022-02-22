@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SideBarData";
 import logo from "../../img/logo.png";
 import Nav from "../NavAdmin";
-import "../Inventarios/estiloInventarios.css";
+import "./estiloInventario.css";
 import swal from "sweetalert";
 
 export default function Inventarios() {
@@ -52,8 +52,8 @@ export default function Inventarios() {
             <div>
               <form className="row g-3" style={{paddingLeft:"4%"}}>
                 <div class="offset-lg-1 espaciadoContenedorInv">
-                  <Link to="/inventarios">
-                    <button className="rounded botonSize fondoAgregarInv"  onClick={error404}>
+                  <Link to="/agregarInventario">
+                    <button className="rounded botonSize fondoAgregarInv">
                       Subir Inventario
                     </button>
                   </Link>

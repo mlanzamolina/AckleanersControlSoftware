@@ -122,7 +122,7 @@ const AgregarOrden = () => {
             rounded
             contenedorFormulario
             style={{
-              height: "550px",
+              height: "630px",
               width: "100%",
               background: "rgba(0, 0, 0, 0.40)",
               borderRadius: "1%",
@@ -197,7 +197,7 @@ const AgregarOrden = () => {
                     className="letrasFormularioOrdenes"
                     style={{ paddingTop: "1%" }}
                   >
-                    Tipo de Vivienda
+                    Seleccione el Tipo de Servicio
                   </h3>
                   <div class="form-check">
                     <input
@@ -207,7 +207,7 @@ const AgregarOrden = () => {
                       id="Radios1"
                       value="casa"
                     />
-                    <label class="form-check-label" for="Radios1">
+                    <label class="form-check-label letrasFormularioOrdenes" for="Radios1">
                       Casa
                     </label>
                   </div>
@@ -219,7 +219,7 @@ const AgregarOrden = () => {
                       id="Radios2"
                       value="negocio"
                     />
-                    <label class="form-check-label" for="Radios2">
+                    <label  class="form-check-label letrasFormularioOrdenes" for="Radios2">
                       Negocio
                     </label>
                   </div>
@@ -298,7 +298,7 @@ const AgregarOrden = () => {
 
                   <button
                     type="button"
-                    className="btn btn-primary"
+                    className="btn btn-success"
                     onClick={handleSubmit}
                   >
                     Realizar Orden

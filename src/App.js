@@ -31,8 +31,9 @@ import DescargarDocumento from "./views/Documents/descargarDocumento";
 import "./components/tailwind.css";
 import AdmiDocumentos from "./views/Documents/admiDocumentos";
 import DeleteInventarios from "./views/Inventarios/deleteInventarios";
-import AgregarInventarios from "./views/Inventarios/agregarInventarios";
 import { IOrdenes } from "./views/Orders/interfazOrdenes";
+import AgregarInventario from "./views/Inventarios/agregarInventario"
+
 
 function App() {
   return (
@@ -136,8 +137,8 @@ function App() {
             <Route path="/DeleteInventarios">
               <DeleteInventarios />
             </Route>
-            <Route path="/agregarInventarios">
-              <AgregarInventarios />
+            <Route path="/agregarInventario">
+              <AgregarInventario />
             </Route>
 
             <Route path="/adminOrders">
