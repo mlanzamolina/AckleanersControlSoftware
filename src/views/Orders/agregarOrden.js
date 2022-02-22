@@ -197,7 +197,7 @@ const AgregarOrden = () => {
                     className="letrasFormularioOrdenes"
                     style={{ paddingTop: "1%" }}
                   >
-                    Tipo de Vivienda
+                    Seleccione el Tipo de Servicio
                   </h3>
                   <div class="form-check">
                     <input
