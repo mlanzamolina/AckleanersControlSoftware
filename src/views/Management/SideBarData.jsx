@@ -7,7 +7,7 @@ export const SidebarData = [
   {
     title: 'Inicio',
     path: '/Management',
-    cName: 'nav-text'
+    cName: 'nav-text',
   },
   {
     title: 'Reportes',

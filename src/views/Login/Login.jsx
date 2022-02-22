@@ -90,7 +90,7 @@ export default function Login() {
                 </small>
               </div>
               <div className="createAccount">
-                <button onClick={handleSubmit}>INICIAR SESIÓN</button>
+                <button name="loginButton" onClick={handleSubmit}>INICIAR SESIÓN</button>
               </div>
               {/*}<div>
                 <div>

@@ -179,7 +179,7 @@ export default function Reportes() {
       </div>*/}
         <div>
           <div className="text-center" style={{ margin: "50px 0px" }}>
-            <h1 style={{
+            <h1 name="texto" style={{
               width: "100%",
               textAlign: "center",
               marginTop: "1%",

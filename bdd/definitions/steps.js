@@ -24,11 +24,17 @@ When('Ingreso el usuario correcto', async () => {
     await driver.findElement(By.name('email')).sendKeys('mlanzamolina@gmail.com')
 });
 
-When('Ingreso la contraseña correcta', async () => {
-    await driver.findElement(By.name('password')).sendKeys('contra' + '\n')
+When('Ingreso la contraseña correcta {string}', async (string) => {
+    await driver.findElement(By.name('password')).sendKeys(string)
 });
 
-Then('Puedo ver el modulo administrativo', async () => {
-    let text = await driver.findElement(By.id('react-landing-page')).getText()
-    console.log(text);
+When('Hago clic en el boton de iniciar sesion', async () => {
+    await driver.findElement(By.name('loginButton')).click();
+});
+
+Then('Puedo ingresar exitosamente', async () => {
+    let code="";
+    await driver.findElement(By.id('react-landing-page')).getText().then(function(text){
+        code = text;
+    });
 });

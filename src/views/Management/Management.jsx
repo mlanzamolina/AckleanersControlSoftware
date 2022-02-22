@@ -26,10 +26,10 @@ function SideMenu() {
       <Nav />
 
       <div class="contentf">
-        <h3>
-          Bienvenido ,Nombre de persona, al hub de herramientas administrativas
-          hoy es , fecha de hoy, lista de clientes que tienen pendiente limpieza
-          por fecha
+        <h3 name="bienvenido">
+        Bienvenido ,Nombre de persona, al hub de herramientas administrativas
+        hoy es , fecha de hoy, lista de clientes que tienen pendiente limpieza
+        por fecha
         </h3>
       </div>
     </>
