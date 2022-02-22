@@ -14,14 +14,15 @@ import { dbOrdenes, db } from "../../components/firebase";
 import styles from "./Table.module.css";
 
 function SideMenu() {
+
   const [dats, setDatos] = useState({
     nombre: " ",
     numero_telefono: " ",
     cantidad_unidades: " ",
     descripcion: " ",
-    numero_telefono: " ",
     proxima_revision: " ",
   });
+
   const handleInputChance = (event) => {
     console.log(event.target.value);
     setDatos({
