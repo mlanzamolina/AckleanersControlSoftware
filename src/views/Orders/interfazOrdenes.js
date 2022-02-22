@@ -60,8 +60,8 @@ export const IOrdenes = () => {
                   class="offset-lg-1 espaciadoContenedor"
                   style={{ paddingLeft: "3%", marginTop: "10%" }}
                 >
-                  <Link to="/adminOrders">
-                    <button className="rounded botonSize fondoModificarOrden" onClick={enProceso}>
+                  <Link to="/modificarOrden">
+                    <button className="rounded botonSize fondoModificarOrden">
                       Modificar Ordenes de Trabajo
                     </button>
                   </Link>
