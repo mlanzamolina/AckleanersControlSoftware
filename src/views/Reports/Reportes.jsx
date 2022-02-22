@@ -7,7 +7,7 @@ import { collection, doc, updateDoc } from "firebase/firestore";
 import { dbOrdenes, db } from "../../components/firebase";
 import swal from "sweetalert";
 import "./table.css";
-import "../Employees/estiloEmpleado.css"
+import "../Employees/estiloEmpleado.css";
 import Nav from "../NavAdmin";
 import * as emailjs from "emailjs-com";
 
@@ -73,7 +73,7 @@ export default function Reportes() {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!
-    var mm2 = today.toLocaleString('es', { month: 'long' });
+    var mm2 = today.toLocaleString("es", { month: "long" });
     var yyyy = today.getFullYear();
     if (dd < 10) {
       dd = "0" + dd;
@@ -107,9 +107,7 @@ export default function Reportes() {
           setNombreCliente(item.nombre);
           setcantUnidades(item.cantidad_unidades);
         }
-
-      })
-
+      });
     }
   }
 
@@ -123,8 +121,6 @@ export default function Reportes() {
       });
     } else {
       setTrueReporte();
-
-
     }
   }
 
@@ -146,13 +142,12 @@ export default function Reportes() {
           fecha1: fecha,
           fecha2: fecha2,
         };
-        emailjs
-          .send(
-            "service_bv2gre1",
-            "template_94rmrwe",
-            template_params,
-            emailjs.init("user_KnXE6C3gbj7LvCi9G8oET")
-          )
+        emailjs.send(
+          "service_bv2gre1",
+          "template_94rmrwe",
+          template_params,
+          emailjs.init("user_KnXE6C3gbj7LvCi9G8oET")
+        );
         history.push(
           `/AgregarReportes/${cantUnidades}/${nomCliente}/${telCliente}`
         );
@@ -171,7 +166,6 @@ export default function Reportes() {
     <Fragment>
       <Nav></Nav>
       <div class="contentf">
-
         {/*<div class="sidebar">
         <a class="active" href="/Reportes">
           Reportes
@@ -179,17 +173,23 @@ export default function Reportes() {
       </div>*/}
         <div>
           <div className="text-center" style={{ margin: "50px 0px" }}>
-            <h1 style={{
-              width: "100%",
-              textAlign: "center",
-              marginTop: "1%",
-              marginBottom: "25px",
-              borderBottom: "2px solid black",
-              fontSize: "30px"
-            }}
-            >Crear Reporte</h1>
+            <h1
+              style={{
+                width: "100%",
+                textAlign: "center",
+                marginTop: "1%",
+                marginBottom: "25px",
+                borderBottom: "2px solid black",
+                fontSize: "30px",
+              }}
+            >
+              Crear Reporte
+            </h1>
           </div>
-          <div className="containerf" style={{ background: "rgba(0, 0, 0, 0.40)", boxShadow: "none" }}>
+          <div
+            className="containerf"
+            style={{ background: "rgba(0, 0, 0, 0.40)", boxShadow: "none" }}
+          >
             <form className="row g-3">
               <form class="row g-3">
                 <h6 className="letrasFormularioOrdenes">Orden de Trabajo</h6>
@@ -203,20 +203,21 @@ export default function Reportes() {
                       handleOrdenData(e.target.value);
                     }}
                   >
-                    <option selected value="primero">Seleccione Una Orden</option>
+                    <option selected value="primero">
+                      Seleccione Una Orden
+                    </option>
                     {nombreOrden
                       ? nombreOrden.map((item) => {
-                        if (!item.reporte) {
-                          return (
-                            <option key={item.id} value={item.id}>
-                              [Cliente: {item.nombre}]-[Unidades:{" "}
-                              {item.cantidad_unidades}]-[Descripcion:{" "}
-                              {item.descripcion}]
-                            </option>
-                          );
-                        }
-
-                      })
+                          if (!item.reporte) {
+                            return (
+                              <option key={item.id} value={item.id}>
+                                [Cliente: {item.nombre}]-[Unidades:{" "}
+                                {item.cantidad_unidades}]-[Descripcion:{" "}
+                                {item.descripcion}]
+                              </option>
+                            );
+                          }
+                        })
                       : null}
                   </select>
                 </div>
@@ -242,7 +243,9 @@ export default function Reportes() {
               </form>
 
               <div class="col-md-6">
-                <label for="inputNombre" className="letrasFormularioOrdenes">Nombre del Cliente</label>
+                <label for="inputNombre" className="letrasFormularioOrdenes">
+                  Nombre del Cliente
+                </label>
                 <input
                   required
                   type="text"
@@ -256,7 +259,9 @@ export default function Reportes() {
                 />
               </div>
               <div className="col-md-6">
-                <label for="inputFecha" className="letrasFormularioOrdenes">Fecha</label>
+                <label for="inputFecha" className="letrasFormularioOrdenes">
+                  Fecha
+                </label>
                 <input
                   type="text"
                   class="form-control"
@@ -266,7 +271,9 @@ export default function Reportes() {
                 />
               </div>
               <div className="col-md-6">
-                <label className="letrasFormularioOrdenes">Telefono del Cliente</label>
+                <label className="letrasFormularioOrdenes">
+                  Telefono del Cliente
+                </label>
                 <input
                   type="text"
                   class="form-control"
@@ -277,7 +284,9 @@ export default function Reportes() {
                 />
               </div>
               <div class="col-md-6">
-                <label className="letrasFormularioOrdenes">Cantidad de Unidades: </label>
+                <label className="letrasFormularioOrdenes">
+                  Cantidad de Unidades:{" "}
+                </label>
                 <input
                   placeholder="Ingrese la cantidad de unidades"
                   className="form-control"
@@ -292,7 +301,9 @@ export default function Reportes() {
               </div>
 
               <form class="row g-3">
-                <h6 className="letrasFormularioOrdenes">Empleado Que Genero el Reporte</h6>
+                <h6 className="letrasFormularioOrdenes">
+                  Empleado Que Genero el Reporte
+                </h6>
                 <div class="col-auto">
                   <select
                     id="select"
@@ -305,18 +316,20 @@ export default function Reportes() {
                     <option selected>Seleccione Un Empleado</option>
                     {empleados
                       ? empleados.map((item) => {
-                        return (
-                          <option key={item.id} value={item.nombre}>
-                            {item.nombre}
-                          </option>
-                        );
-                      })
+                          return (
+                            <option key={item.id} value={item.nombre}>
+                              {item.nombre}
+                            </option>
+                          );
+                        })
                       : null}
                   </select>
                 </div>
               </form>
               <form class="row g-3">
-                <h6 className="letrasFormularioOrdenes">Empleados Que Trabajaron En La Orden</h6>
+                <h6 className="letrasFormularioOrdenes">
+                  Empleados Que Trabajaron En La Orden
+                </h6>
                 <div class="col-auto">
                   <select
                     id="select"
@@ -330,12 +343,12 @@ export default function Reportes() {
                     <option selected>Seleccione Un Empleado</option>
                     {empleados
                       ? empleados.map((item) => {
-                        return (
-                          <option key={item.id} value={item.nombre}>
-                            {item.nombre}
-                          </option>
-                        );
-                      })
+                          return (
+                            <option key={item.id} value={item.nombre}>
+                              {item.nombre}
+                            </option>
+                          );
+                        })
                       : null}
                   </select>
                 </div>
@@ -373,7 +386,16 @@ export default function Reportes() {
               </form>
 
               <div className="alinkcrear">
-                <button type="button" className="btn btn-success" onClick={handleSubmit} style={{ fontSize: "20px", paddingLeft: "110px", paddingRight: "110px" }}>
+                <button
+                  type="button"
+                  className="btn btn-success"
+                  onClick={handleSubmit}
+                  style={{
+                    fontSize: "20px",
+                    paddingLeft: "110px",
+                    paddingRight: "110px",
+                  }}
+                >
                   Crear
                 </button>
               </div>
