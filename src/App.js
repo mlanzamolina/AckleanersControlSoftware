@@ -17,6 +17,7 @@ import { Empleados } from "./views/Employees/interfazEmpleados";
 import AgregarOrden from "./views/Orders/agregarOrden";
 import { Reportes } from "./views/Reports/interfazReportes";
 import CrearReportes from "./views/Reports/Reportes";
+import ConfirmReport from "./views/Reports/Confirm";
 import ModificarOrden from "./views/Orders/modificarOrdenes";
 import AgregarReportes from "./views/Reports/AgregarReportes";
 import ModificarUsuarios from "./views/Usuarios/ModificarUsuario";
@@ -95,6 +96,10 @@ function App() {
 
             <Route path="/AgregarReportes/:id/:nombre/:telefono">
               <AgregarReportes />
+            </Route>
+
+            <Route path="/ConfirmReport/:id"exact>
+              <ConfirmReport />
             </Route>
 
             <Route path="/ModificarOrden">
