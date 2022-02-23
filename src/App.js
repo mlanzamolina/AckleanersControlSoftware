@@ -33,6 +33,7 @@ import AdmiDocumentos from "./views/Documents/admiDocumentos";
 import DeleteInventarios from "./views/Inventarios/deleteInventarios";
 import AgregarInventarios from "./views/Inventarios/agregarInventarios";
 import { IOrdenes } from "./views/Orders/interfazOrdenes";
+import AdmiInventario from "./views/Inventarios/admiInventario";
 
 function App() {
   return (
@@ -142,6 +143,9 @@ function App() {
 
             <Route path="/adminOrders">
               <IOrdenes />
+            </Route>
+            <Route path="/admiInventario" >
+              <AdmiInventario/>
             </Route>
           </div>
         </Switch>

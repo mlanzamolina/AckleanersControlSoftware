@@ -59,8 +59,8 @@ export default function Inventarios() {
                   </Link>
                 </div>
                 <div class="offset-lg-2 espaciadoContenedor" style={{paddingLeft:"5%"}}>
-                  <Link to="/inventarios">
-                    <button className="rounded botonSize fondoAdministrarInv" onClick={error404} >
+                  <Link to="/admiInventario">
+                    <button className="rounded botonSize fondoAdministrarInv"  onClick={error404} >
                       Administrar Inventario
                     </button>
                   </Link>
