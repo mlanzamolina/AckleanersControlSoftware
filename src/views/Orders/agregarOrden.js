@@ -85,7 +85,7 @@ const AgregarOrden = () => {
       if (dd < 10) {
         dd = "0" + dd;
       }
-      hoy = dd + "/" + mm + "/" + yyyy;
+      hoy = dd + "-" + mm + "-" + yyyy;
       await addDoc(tablaOrdenesRef, {
         nombre: dats.nombre,
         numero_telefono: dats.numero_telefono,
@@ -97,7 +97,7 @@ const AgregarOrden = () => {
         reporte: false,
         proxima_revision: fecha,
         recordad: false,
-        fecha_creacion: hoy,
+        fecha: hoy,
       });
       setOrden_emps([]);
       swal({
