@@ -66,6 +66,7 @@ const AgregarOrden = () => {
     } else {
       //var hoy = new Date();
       var fecha = new Date();
+      var hoy = new Date();
       if (dats.tipo_vivienda === "casa") {
         fecha.setDate(fecha.getDate() + 90);
       } else {
@@ -78,6 +79,13 @@ const AgregarOrden = () => {
         dd = "0" + dd;
       }
       fecha = dd + "/" + mm + "/" + yyyy;
+      dd = hoy.getDate();
+      mm = hoy.getMonth() + 1; //January is 0!
+      yyyy = hoy.getFullYear();
+      if (dd < 10) {
+        dd = "0" + dd;
+      }
+      hoy = dd + "/" + mm + "/" + yyyy;
       await addDoc(tablaOrdenesRef, {
         nombre: dats.nombre,
         numero_telefono: dats.numero_telefono,
@@ -89,6 +97,7 @@ const AgregarOrden = () => {
         reporte: false,
         proxima_revision: fecha,
         recordad: false,
+        fecha_creacion: hoy,
       });
       setOrden_emps([]);
       swal({
@@ -207,7 +216,10 @@ const AgregarOrden = () => {
                       id="Radios1"
                       value="casa"
                     />
-                    <label class="form-check-label letrasFormularioOrdenes" for="Radios1">
+                    <label
+                      class="form-check-label letrasFormularioOrdenes"
+                      for="Radios1"
+                    >
                       Casa
                     </label>
                   </div>
@@ -219,7 +231,10 @@ const AgregarOrden = () => {
                       id="Radios2"
                       value="negocio"
                     />
-                    <label  class="form-check-label letrasFormularioOrdenes" for="Radios2">
+                    <label
+                      class="form-check-label letrasFormularioOrdenes"
+                      for="Radios2"
+                    >
                       Negocio
                     </label>
                   </div>
