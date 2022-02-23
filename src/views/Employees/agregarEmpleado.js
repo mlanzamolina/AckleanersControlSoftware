@@ -50,7 +50,7 @@ const AgregarEmpleado = () => {
           title: "Numero de Documento Nacional de Identifacicion repetido",
           text: "Por favor reingrese un DNI unico o no se le dejara avanzar a agregar",
           icon: "warning",
-          button: "aceptar",
+          button: "Aceptar",
         });
       }
     });
@@ -67,7 +67,7 @@ const AgregarEmpleado = () => {
         title: "Formato de archivo no aceptable",
         text: "El archivo subido no es una foto, por favor asegurarse de subir una imagen formato png o jpeg",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       e.target.value = null;
       setimageURL(null);
@@ -91,7 +91,7 @@ const AgregarEmpleado = () => {
         title: "No se realizo",
         text: "No se agregro el empleado, verifique los campos",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
     } else {
       var n_empleado_id = null;
@@ -135,7 +135,7 @@ const AgregarEmpleado = () => {
             title: "Realizado",
             text: "Se agregro el empleado",
             icon: "info",
-            button: "aceptar",
+            button: "Aceptar",
           });
         });
     }
@@ -213,7 +213,7 @@ const AgregarEmpleado = () => {
                     placeholder="Eje. 1804198002033"
                     name="dni"
                     pattern="[0-9]{13}"
-                    title="Numero 13 digitos sin guiones"
+                    title="Numero 13 dígitos sin guiones"
                     onChange={handleInputChance}
                     onBlur={handleDni}
                     autoFocus
@@ -231,7 +231,7 @@ const AgregarEmpleado = () => {
                     name="numero"
                     placeholder="Eje. 9940-1110"
                     pattern="[0-9]{8}"
-                    title="Numero 8 digitos sin nada extra"
+                    title="Numero 8 dígitos sin nada extra"
                     onChange={handleInputChance}
                     required
                   ></input>
@@ -251,7 +251,7 @@ const AgregarEmpleado = () => {
                     rows="3"
                     onChange={handleInputChance}
                     required
-                    placeholder="Direccion donde reside el empleado"
+                    placeholder="Dirección donde reside el empleado"
                   ></textarea>
                 </div>
 

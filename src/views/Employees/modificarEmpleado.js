@@ -78,7 +78,7 @@ const ModificarEmpleado = () => {
               <tr className="ta">
                 <th scope="col">Nombre De Empleado</th>
                 <th scope="col">DNI</th>
-                <th scope="col">Numero de Telefono</th>
+                <th scope="col">Numero de Teléfono</th>
                 <th scope="col">Correo Electronico</th>
                 <th scope="col">Estado</th>
               </tr>
