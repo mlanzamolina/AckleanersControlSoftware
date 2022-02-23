@@ -21,9 +21,18 @@ export const DescargarDocumento = () => {
     <>
       <Nav />
       <div className="p-2 contenedorPrincipal">
+      <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"80px",
+            borderBottom:"2px solid black",
+            fontSize:"30px"
+          }}
+            >Descargar Documentos</h1>
         <div
           className="container rounded contenedorFormularioBajar"
-          style={{ marginTop: "12%", marginBottom: "100%" }}
+          style={{ marginBottom: "100%" }}
         >
           <table class="table table-hover table-responsive">
             <thead>

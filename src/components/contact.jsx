@@ -102,7 +102,7 @@ export class Contact extends Component {
             <div className="flex flex-wrap text-center justify-center">
               <div className="w-full lg:w-6/12 px-4">
                 <h2 className="text-4xl font-semibold text-white">
-                  Contactanos!
+                  ¡Contactanos!
                 </h2>
                 <p className="text-lg leading-relaxed mt-4 mb-4 text-blueGray-400">
                   Para que esperar si nos podes hablar ya y reservar la limpieza
@@ -116,7 +116,7 @@ export class Contact extends Component {
                   <i className="fas fa-medal text-xl"></i>
                 </div>
                 <h6 className="text-xl mt-5 font-semibold text-white">
-                  Instalacion
+                  Instalación
                 </h6>
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
@@ -132,7 +132,7 @@ export class Contact extends Component {
                   <i className="fas fa-lightbulb text-xl"></i>
                 </div>
                 <h5 className="text-xl mt-5 font-semibold text-white">
-                  Reparacion
+                  Reparación
                 </h5>
                 <h5>
                   s
@@ -148,9 +148,9 @@ export class Contact extends Component {
               <div className="w-full lg:w-6/12 px-4">
                 <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200">
                   <div className="flex-auto p-5 lg:p-10">
-                    <h4 className="text-2xl font-semibold">Nos reservas?</h4>
+                    <h4 className="text-2xl font-semibold">¿Nos reservas?</h4>
                     <p className="leading-relaxed mt-1 mb-4 text-blueGray-500">
-                      Llena estos datos para poder comunicarte con nosotros!
+                      ¡Llena estos datos para poder comunicarte con nosotros!
                     </p>
                     <div className="relative w-full mb-3 mt-8">
                       <label

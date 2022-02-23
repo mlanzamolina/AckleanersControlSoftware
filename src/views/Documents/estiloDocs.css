@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+
 .estiloPrincipal{
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
     background-size: cover;
@@ -31,37 +32,29 @@
 }
 
 .fondoAgregar{
-    background-image: url("https://cdn-icons-png.flaticon.com/512/2541/2541984.png");
+    background-image: url("https://cdn-icons-png.flaticon.com/512/3143/3143571.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
 }
 
-.fondoEliminar{
-    background-image: url("https://img.icons8.com/stickers/200/000000/filled-trash.png");
+.fondoAdministrar{
+    background-image: url("https://cdn-icons-png.flaticon.com/512/4370/4370853.png");
     background-repeat: no-repeat;
-    background-position: center;
+    background-size: contain;
     background-attachment: local;
     
 }
 
 .fondoDescargar{
-    background-image: url("https://cdn-icons-png.flaticon.com/512/892/892303.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-attachment: local;
-}
-
-.fondoActualizar{
-    background-image: url("https://cdn-icons-png.flaticon.com/512/2920/2920100.png");
+    background-image: url("https://cdn-icons-png.flaticon.com/512/3039/3039520.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
     
 }
 
-.fondoActualizar:hover,.fondoDescargar:hover,
-.fondoEliminar:hover,.fondoAgregar:hover,.fondoActualizar:hover{
+.fondoActualizar:hover,.fondoAdministrar:hover{
     background: rgba(52, 93, 206, 0.575);
     color: white;
     font-family: 'Raleway';

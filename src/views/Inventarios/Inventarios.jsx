@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SideBarData";
 import logo from "../../img/logo.png";
 import Nav from "../NavAdmin";
-import "../Inventarios/estiloInventarios.css";
+import "./estiloInventario.css";
 import swal from "sweetalert";
 
 export default function Inventarios() {
@@ -36,22 +36,32 @@ export default function Inventarios() {
         className="contenedorPrincipal2Inv"
         style={{ width: "100%", height: "100%" }}
       >
-        <a className="navbar-brand" style={{margin: "0px 10px"}} href="/inventarios">Inventarios</a>
         <div className="p-3 estiloPrincipalInv">
+        <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"140px",
+            borderBottom:"2px solid black",
+            fontSize:"30px"
+          }}
+            >Inventario</h1>
+        <div className="text-center" id="marh1" style={{ margin: "50px 0px" }}>
+        </div>
           <div className="container rounded estiloContenedorInv">
             <div>
-              <form className="row g-3">
+              <form className="row g-3" style={{paddingLeft:"4%"}}>
                 <div class="offset-lg-1 espaciadoContenedorInv">
-                  <Link to="/inventarios">
-                    <button className="rounded botonSize fondoAgregarInv"  onClick={error404}>
+                  <Link to="/agregarInventario">
+                    <button className="rounded botonSize fondoAgregarInv">
                       Subir Inventario
                     </button>
                   </Link>
                 </div>
-                <div class="offset-lg-2 espaciadoContenedor">
+                <div class="offset-lg-2 espaciadoContenedor" style={{paddingLeft:"5%"}}>
                   <Link to="/inventarios">
-                    <button className="rounded botonSize fondoDescargarInv" onClick={error404} >
-                      Bajar Inventario
+                    <button className="rounded botonSize fondoAdministrarInv" onClick={error404} >
+                      Administrar Inventario
                     </button>
                   </Link>
                 </div>

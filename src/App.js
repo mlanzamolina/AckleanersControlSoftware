@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import "./index.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -25,7 +24,6 @@ import ListarUsuarios from "./views/Usuarios/ListarUsuarios";
 import AgregarUsuarios from "./views/Usuarios/AgregarUsuarios";
 import Inventarios from "./views/Inventarios/Inventarios";
 import NewPassword from "./views/NewPassword/NewPassword";
-import Probar from "./views/Probandocss/probar";
 import { Documentos } from "./views/Documents/interfazDocumentos";
 import EliminarEmpleados from "./views/Employees/eliminarEmpleados";
 import AgregarDocumento from "./views/Documents/agregarDocumento";
@@ -33,24 +31,23 @@ import DescargarDocumento from "./views/Documents/descargarDocumento";
 import "./components/tailwind.css";
 import AdmiDocumentos from "./views/Documents/admiDocumentos";
 import DeleteInventarios from "./views/Inventarios/deleteInventarios";
-import AgregarInventarios from "./views/Inventarios/agregarInventarios";
 import { IOrdenes } from "./views/Orders/interfazOrdenes";
+import AgregarInventario from "./views/Inventarios/agregarInventario"
+
 
 function App() {
   return (
     <>
       <Router>
         <Switch>
+
           <Route exact path="/">
             <Home />
           </Route>
+
           <div className="cover">
             <Route path="/Login">
               <Login />
-            </Route>
-
-            <Route path="/probar">
-              <Probar />
             </Route>
 
             <Route exact path="/interfazEmpleados">
@@ -140,8 +137,8 @@ function App() {
             <Route path="/DeleteInventarios">
               <DeleteInventarios />
             </Route>
-            <Route path="/agregarInventarios">
-              <AgregarInventarios />
+            <Route path="/agregarInventario">
+              <AgregarInventario />
             </Route>
 
             <Route path="/adminOrders">

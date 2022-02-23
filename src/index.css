@@ -16,3 +16,11 @@
   text-align: center;
   letter-spacing: 5px;
 }
+#marh1 {
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+}

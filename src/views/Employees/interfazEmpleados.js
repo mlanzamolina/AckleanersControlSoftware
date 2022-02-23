@@ -11,36 +11,29 @@ export const Empleados = () => {
         style={{ width: "100%", height: "100%" }}
       >
         <div className="p-3 estiloPrincipal">
+        <h1 style={{
+            width:"100%",
+            textAlign:"center", 
+            marginTop:"1%", 
+            marginBottom:"140px",
+            borderBottom:"2px solid black",
+            fontSize:"30px"
+          }}
+            >Empleados</h1>
           <div className="container rounded estiloContenedor">
             <div>
-              <form className="row g-3">
-              <div class="offset-lg-2 espaciadoContenedor">
-                  <Link to="/ListarEmpleado">
-                    <button className="rounded botonSize fondoListarEmpleado">
-                      Listar Empleados
-                    </button>
-                  </Link>
-                </div>
-                <div class="offset-lg-1 espaciadoContenedor">
+              <form className="row g-3" style={{paddingLeft:"4%"}}>
+              <div class="offset-lg-4 espaciadoContenedor" style={{paddingLeft:"3%"}}>
                   <Link to="/AgregarEmpleado">
-                    <button className="rounded botonSize fondoAgregarEmpleado">
-                      Agregar Empleado
+                    <button className="rounded botonSize fondoAgregarEmpleado" >
+                      Agregar Empleados
                     </button>
                   </Link>
                 </div>
-
-                <div class="offset-lg-2 espaciadoContenedor">
-                  <Link to="/ModificarEmpleado">
+                <div class="offset-lg-1 espaciadoContenedor" style={{paddingLeft:"3%"}}>
+                  <Link to="/EliminarEmpleados">
                     <button className="rounded botonSize fondoModificarEmpleado">
-                      Modificar Empleado
-                    </button>
-                  </Link>
-                </div>
-
-                <div class="offset-lg-1 espaciadoContenedor">
-                <Link to="/EliminarEmpleados">
-                    <button className="rounded botonSize fondoEliminarEmpleado">
-                      Eliminar Empleado
+                      Administrar Empleados
                     </button>
                   </Link>
                 </div>
