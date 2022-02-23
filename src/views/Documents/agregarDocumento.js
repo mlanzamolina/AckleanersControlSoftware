@@ -8,6 +8,7 @@ import Nav from "../NavAdmin";
 export const AgregarDocumento = () => {
   let hoy = new Date();
   let fechaActual = hoy.getDate() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getFullYear();
+  let fechaActualFormat = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
   const [archivoUrl, setArchivoUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -113,7 +114,7 @@ export const AgregarDocumento = () => {
                   className="form-label letrasFormulario"
                   style={{ marginTop: "2%", paddingLeft: "80%", fontSize: "18px" }}
                 >
-                  Fecha actual: {fechaActual}
+                  Fecha actual: {fechaActualFormat}
                 </label>
               </div>
               <div class="mb-3 col-md-6">

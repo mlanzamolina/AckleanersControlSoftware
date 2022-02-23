@@ -9,6 +9,7 @@ export const AgregarInventario = () => {
 
   let hoy = new Date();
   let fechaActual = hoy.getDate() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getFullYear();
+  let fechaActualFormat = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
   const [articuloUrl, setArticuloUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -115,7 +116,7 @@ export const AgregarInventario = () => {
                   className="form-label letrasFormularioInv"
                   style={{ marginTop: "2%", paddingLeft: "80%", fontSize: "18px" }}
                 >
-                  Fecha actual: {fechaActual}
+                  Fecha actual: {fechaActualFormat}
                 </label>
               </div>
               <div class="mb-3 col-md-6">
