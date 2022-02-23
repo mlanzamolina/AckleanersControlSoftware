@@ -14,7 +14,6 @@ import { dbOrdenes, db } from "../../components/firebase";
 import styles from "./Table.module.css";
 
 function SideMenu() {
-
   const [dats, setDatos] = useState({
     nombre: " ",
     numero_telefono: " ",
@@ -31,7 +30,7 @@ function SideMenu() {
     });
   };
 
-  const [empleados, loading2, error2] = useCollectionData(
+  const [clientes, loading2, error2] = useCollectionData(
     collection(db, "OrdenesTrabajo"),
     { idField: "id" }
   );
@@ -76,11 +75,10 @@ function SideMenu() {
               </tr>
             </thead>
             <tbody>
-              {empleados
-                ? empleados.map((item, index) => {
+              {clientes
+                ? clientes.map((item, index) => {
                     return (
                       <tr key={item.id} className="text-center">
-                     
                         <td className="table-primary">{index + 1}</td>
                         <td className="table-primary">{item.nombre}</td>
                         <td className="table-primary">
@@ -95,8 +93,7 @@ function SideMenu() {
                 : null}
             </tbody>
           </table>
-          <Link to="/adminOrders">
-          </Link>
+          <Link to="/adminOrders"></Link>
         </div>
       </Fragment>
     </>
