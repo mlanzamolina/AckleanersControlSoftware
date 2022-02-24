@@ -197,11 +197,9 @@ export default function AgregarReportes() {
     );
   }
 
-  function print()
-  {
-      window.print();
+  function print() {
+    window.print();
   }
-
 
   return (
     <>
@@ -264,28 +262,27 @@ export default function AgregarReportes() {
           rows="10"
           placeholder="Escribe aquí el texto..."
         ></textarea>
-
-        <div>
-          <label>Tel: 33067477 Correo Electronico : ackleaners@gmail.com</label>
-        </div>
-      </div>
-
-      <button type="button" className="btn btn-info" onClick={print}>
-            Download
+         <div class="btn-group">
+        <button type="button" className="btn btn-info" onClick={print}>
+          Download
         </button>
-   
-      <div class="row">
-        <Link to={"/AgregarDocumento"}>
+        <Link  to={"/AgregarDocumento"}>
           <button type="button" className="btn btn-success" onClick={sendMail}>
             Enviar reporte
           </button>
         </Link>
-        <Link to="/createReport">
+        <Link  to="/CrearReportes">
           <button type="button" className="btn btn-danger">
             Regresar
           </button>
         </Link>
       </div>
+
+        <div>
+          <label>Tel: 33067477 Correo Electronico : ackleaners@gmail.com</label>
+        </div>
+      </div>
+     
     </>
   );
 }
