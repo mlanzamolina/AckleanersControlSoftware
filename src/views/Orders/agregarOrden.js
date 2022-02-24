@@ -85,7 +85,7 @@ const AgregarOrden = () => {
       if (dd < 10) {
         dd = "0" + dd;
       }
-      hoy = dd + "-" + mm + "-" + yyyy;
+      hoy = dd + "/" + mm + "/" + yyyy;
       await addDoc(tablaOrdenesRef, {
         nombre: dats.nombre,
         numero_telefono: dats.numero_telefono,
@@ -102,9 +102,9 @@ const AgregarOrden = () => {
       setOrden_emps([]);
       swal({
         title: "Realizado",
-        text: "Se agregro una orden de trabajo",
+        text: "Se agrego una orden de trabajo",
         icon: "info",
-        button: "aceptar",
+        button: "Aceptar",
       });
       document.getElementById("a_nombre").value = null;
       document.getElementById("a_contacto").value = null;
@@ -240,6 +240,7 @@ const AgregarOrden = () => {
                       type="radio"
                       name="tipo_vivienda"
                       id="Radios2"
+                      id="a_tipo"
                       value="Negocio"
                     />
                     <label
@@ -316,7 +317,7 @@ const AgregarOrden = () => {
                     <button
                       type="submit"
                       className="btn btn-danger"
-                      style={{ marginLeft: "70%", marginRight: "2%" }}
+                      style={{ marginLeft: "56%", marginRight: "2%" }}
                     >
                       Regresar
                     </button>
@@ -329,6 +330,16 @@ const AgregarOrden = () => {
                   >
                     Realizar Orden
                   </button>
+
+                  <Link to="/modificarOrden">
+                    <button
+                      type="submit"
+                      className="btn btn-secondary"
+                      style={{ marginLeft: "2%", marginRight: "2%" }}
+                    >
+                      Administrar Ordenes de Trabajo
+                    </button>
+                  </Link>
                 </div>
               </form>
             </div>

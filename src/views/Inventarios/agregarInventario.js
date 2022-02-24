@@ -8,7 +8,7 @@ import Nav from "../NavAdmin";
 export const AgregarInventario = () => {
 
   let hoy = new Date();
-  let fechaActual = hoy.getDate() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getFullYear();
+  let fechaActual = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
   const [articuloUrl, setArticuloUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -203,7 +203,7 @@ export const AgregarInventario = () => {
                   </button>
                 </Link>
 
-                <Link to="/inventarios">
+                <Link to="/admiInventario">
                   <button
                     type="submit"
                     class="btn btn-secondary"

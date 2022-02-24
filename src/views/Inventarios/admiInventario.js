@@ -39,14 +39,14 @@ const AdmiInventario = ({ rowsPerPage }) => {
   const [mostrarM, SetmostrarM] = useState(false);
   let hoy = new Date();
   let fechaActual =
-   hoy.getDate()+"-"+ (hoy.getMonth() + 1) +"-"+hoy.getFullYear();
+    hoy.getDate() + "-" + (hoy.getMonth() + 1) + "-" + hoy.getFullYear();
 
-  const [cantidad,setCantidad] = useState("");
+  const [cantidad, setCantidad] = useState("");
   const [currentID, setCurrentID] = useState({
     id: null,
     nombre: "",
     descripcion: "",
-    cantidad:"",
+    cantidad: "",
     url: ""
   });
 
@@ -54,7 +54,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
   const [currentID2, setCurrentID2] = useState({
     id: null,
     nombre: "",
-    descripcion:"",
+    descripcion: "",
     cantidad: "",
     url: ""
   });
@@ -67,18 +67,18 @@ const AdmiInventario = ({ rowsPerPage }) => {
   const [vista, setVista] = useState({
     id: null,
     nombre: "",
-    descripcion:"",
+    descripcion: "",
     disponibilidad: "",
     url: ""
   });
 
- 
+
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [disponibilidad, setDisponibilidad] = useState("");
 
   //const [url, setUrl] = useState("");
- 
+
 
   const [image, setImage] = useState("");
   const [imageurl, setimageURL] = useState("");
@@ -120,7 +120,6 @@ const AdmiInventario = ({ rowsPerPage }) => {
     deleteDoc(inventario);
     mostrarModalEliminar();
 
-  
   };
 
   const mostrarModalEliminar = (index) => {
@@ -176,12 +175,12 @@ const AdmiInventario = ({ rowsPerPage }) => {
         cantidad: inventario.cantidad,
         url: inventario.url
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const editRow = (inventario) => {
     obtener(inventario);
-   
+
     if (mostrarM === false) {
       SetmostrarM(!mostrarM);
     } else {
@@ -212,10 +211,10 @@ const AdmiInventario = ({ rowsPerPage }) => {
     var nombre2 = document.getElementById("nombre").value;
     var descripcion2 = document.getElementById("descripcion").value;
     var cantidad2 = document.getElementById("cantidad").value;
-    
-   
 
-  
+
+
+
 
     if (
       nombre2 == " " ||
@@ -269,7 +268,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
         button: "aceptar",
       });
     }
-   
+
   }; //Fin
 
   const cambiarFoto = (e) => {
@@ -283,7 +282,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
       fecha: inventario.fecha,
       url: inventario.url,
       cantidad: inventario.cantidad
-     
+
     });
 
     if (mostrarV == false) {
@@ -296,86 +295,107 @@ const AdmiInventario = ({ rowsPerPage }) => {
   return (
     <>
 
-   
-    <Nav />
-    
- 
-   <div className="contentf">
-     <div className="text-center" style={{margin:"50px 0px"}}>
-       <h1>Inventario</h1>
-       <hr></hr>
-     </div>
+
+      <Nav />
 
 
-     <div className="container">
-       <div className="mt-4 mb-4 table-responsive">
-         <table className="table table-hover table-dark">
-           <thead className={styles.tableRowHeader}>
-             <tr className="align-me">    
-                     
-               <th scope="col">Nombre</th>
-               <th scope="col">Descripcion</th>
-               <th scope="col">Cantidad</th>
-               <th scope="col">Fecha</th>
-               <th scope="col">EDITAR</th>
-             </tr>
-           </thead>
-           <tbody>
-             {slice.map((inventario, index) => (
+      <div className="contentf">
+        <div className="text-center" style={{ margin: "50px 0px" }}>
+          <h1>Administración de Inventario</h1>
+          <hr></hr>
+        </div>
 
-               <tr key={index}>
+
+        <div className="container">
+          <div className="mt-4 mb-4 table-responsive">
+            <table className="table table-hover table-dark">
+              <thead className={styles.tableRowHeader}>
+                <tr className="align-me">
+
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Descripcion</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">EDITAR</th>
+                </tr>
+              </thead>
+              <tbody>
+                {slice.map((inventario, index) => (
+
+                  <tr key={index}>
+
+                    <td class="table-primary">{inventario.nombre}</td>
+
+                    <td class="table-primary">{inventario.descripcion}</td>
+                    <td class="table-primary">{inventario.cantidad}</td>
+                    <td class="table-primary">{inventario.fecha}</td>
+
+
+                    <td class="table-primary">
+                      <div
+                        class="btn-group"
+                        role="group"
+                        aria-label="Basic example"
+                      >
+                        <Button
+                          color="success"
+                          onClick={() => editRow(inventario)}
+
+
+                        >
+                          <i class="bi bi-pencil"></i>
+                        </Button>
+
+                        <Button
+                          color="success"
+                          onClick={() => setMostrarE(true)}
+                          onClick={() => mostrarModalEliminar(inventario.id)}
+                        >
+                          <i class="bi bi-trash2"></i>
+                        </Button>
+
+                        <Button
+                          color="success"
+                          onClick={() => mostrarVistaEmpleado(inventario)}
+                        >
+                          <i class="bi bi-view-list"></i>
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
               
-                 <td class="table-primary">{inventario.nombre}</td>
+            </table>
+            <TableFooter
+              range={range}
+              slice={slice}
+              setPage={setPage}
+              page={page}
+            />
+            <Link to="/inventarios">
+                  <button
+                    type="submit"
+                    class="btn btn-danger"
+                    style={{ marginLeft:"70%", marginBottom: "5%", marginTop: "5%" }}
+                  >
+                    Regresar
+                  </button>
+                </Link>
 
-                 <td class="table-primary">{inventario.descripcion}</td>
-                 <td class="table-primary">{inventario.cantidad}</td>
-                 <td class="table-primary">{inventario.fecha}</td>
+                <Link to="/agregarInventario">
+                  <button
+                    type="submit"
+                    class="btn btn-success"
+                    style={{ marginLeft:"2%", marginBottom: "5%", marginTop: "5%" }}
+                  >
+                    Agregar Inventario
+                  </button>
+                </Link>
 
-                 
-                 <td class="table-primary">
-                   <div
-                     class="btn-group"
-                     role="group"
-                     aria-label="Basic example"
-                   >
-                     <Button
-                       color="success"
-                       onClick={() => editRow(inventario)}
-                       
-                       
-                     >
-                       <i class="bi bi-pencil"></i>
-                     </Button>
-
-                     <Button
-                       color="success"
-                       onClick={() => setMostrarE(true)}
-                       onClick={() => mostrarModalEliminar(inventario.id)}
-                     >
-                       <i class="bi bi-trash2"></i>
-                     </Button>
-
-                     <Button
-                       color="success"
-                       onClick={() => mostrarVistaEmpleado(inventario)}
-                     >
-                      <i class="bi bi-view-list"></i>
-                     </Button>
-                   </div>
-                 </td>
-               </tr>
-             ))}
-           </tbody>
-         </table>
-         <TableFooter
-           range={range}
-           slice={slice}
-           setPage={setPage}
-           page={page}
-         />
-       </div>
-     </div>
-     <Modal isOpen={mostrarE}>
+          </div>
+        </div>
+        <Modal isOpen={mostrarE}>
           <ModalHeader closeButton>¿DESEA ELIMINAR EL EMPLEADO?</ModalHeader>
 
           <ModalFooter>
@@ -383,7 +403,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
               type="button"
               variant="primary"
               onClick={() => eliminarInventario(id)}
-              style={{background:"red"}}
+              style={{ background: "red" }}
             >
               SI
             </Button>
@@ -392,7 +412,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
               type="button"
               variant="secondary"
               onClick={() => mostrarModalEliminar()}
-              style={{background:"rgb(70,130,180)"}}
+              style={{ background: "rgb(70,130,180)" }}
             >
               NO
             </Button>
@@ -418,7 +438,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
                 /
                 >
 
-            <label>Cantidad: </label>
+                <label>Cantidad: </label>
                 <br />
                 <input
                   type="number"
@@ -427,11 +447,11 @@ const AdmiInventario = ({ rowsPerPage }) => {
                   onChange={(e) => setCantidad(e.target.value)}
                   defaultValue={currentID && currentID.cantidad}
                   name="cantidad"
-                
+
                 />
-                
+
                 <br />
-               
+
                 <label>Descripcion</label>
                 <br />
                 <textarea
@@ -442,8 +462,8 @@ const AdmiInventario = ({ rowsPerPage }) => {
                   onChange={(e) => setDescripcion(e.target.value)}
                   defaultValue={currentID && currentID.descripcion}
                 ></textarea>
-            
-                
+
+
 
                 <label> Foto Herramienta </label>
                 <br />
@@ -467,11 +487,11 @@ const AdmiInventario = ({ rowsPerPage }) => {
                     type="button"
                     class="btn btn-outline-danger"
                     onClick={() => SetmostrarM(false)}
-                    style={{background:"red"}}
+                    style={{ background: "red" }}
                   >
                     Salir
                   </Button>
-                  <Button type="submit" class="btn btn-outline-danger" style={{background:"rgb(70,130,180)"}}>
+                  <Button type="submit" class="btn btn-outline-danger" style={{ background: "rgb(70,130,180)" }}>
                     {isLoading ? (
                       <h1 class="btn btn-primary" type="button" disabled>
                         <span
@@ -479,7 +499,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
                           role="status"
                           aria-hidden="true"
                         ></span>
-                        <span class="sr-only">Loading...</span>
+                        <span class="sr-only">Cargando...</span>
                       </h1>
                     ) : (
                       <h1>Modificar</h1>
@@ -496,7 +516,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
           <ModalBody>
             <img src={vista.url} class="card-img-top" alt="..."></img>
             <div class="container">
-             
+
               <div class="col">
                 <label>
                   {" "}
@@ -521,14 +541,14 @@ const AdmiInventario = ({ rowsPerPage }) => {
               </div>
             </div>
 
-            
+
 
             <ModalFooter>
               <Button
                 type="button"
                 class="btn btn-outline-danger"
                 onClick={() => setMostrarV(false)}
-                style={{background:"red"}}
+                style={{ background: "red" }}
               >
                 Salir
               </Button>
