@@ -30,7 +30,7 @@ function SideMenu() {
     });
   };
 
-  const [empleados, loading2, error2] = useCollectionData(
+  const [empleados] = useCollectionData(
     collection(db, "OrdenesTrabajo"),
     { idField: "id" }
   );

@@ -33,15 +33,14 @@ import AdmiDocumentos from "./views/Documents/admiDocumentos";
 import DeleteInventarios from "./views/Inventarios/deleteInventarios";
 import { IOrdenes } from "./views/Orders/interfazOrdenes";
 import AdmiInventario from "./views/Inventarios/admiInventario";
-import AgregarInventario from "./views/Inventarios/agregarInventario"
-
+import AgregarInventario from "./views/Inventarios/agregarInventario";
+import ConfirmReport from "./views/Reports/ConfirmReport";
 
 function App() {
   return (
     <>
       <Router>
         <Switch>
-
           <Route exact path="/">
             <Home />
           </Route>
@@ -94,7 +93,7 @@ function App() {
               <CrearReportes />
             </Route>
 
-            <Route path="/AgregarReportes/:id/:nombre/:telefono">
+            <Route path="/AgregarReportes/:id/:nombre/:telefono/:currentOrder">
               <AgregarReportes />
             </Route>
 
@@ -145,8 +144,11 @@ function App() {
             <Route path="/adminOrders">
               <IOrdenes />
             </Route>
-            <Route path="/admiInventario" >
-              <AdmiInventario/>
+            <Route path="/admiInventario">
+              <AdmiInventario />
+            </Route>
+            <Route path="/confirmReport/:id">
+              <ConfirmReport />
             </Route>
           </div>
         </Switch>
