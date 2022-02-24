@@ -292,7 +292,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         button: "aceptar",
       });
     }
-    setimageURL(null);
+  
   }; //Fin
 
   const cambiarFoto = (e) => {

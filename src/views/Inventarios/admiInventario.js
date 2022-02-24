@@ -325,14 +325,14 @@ const AdmiInventario = ({ rowsPerPage }) => {
 
                <tr key={index}>
               
-                 <td >{inventario.nombre}</td>
+                 <td class="table-primary">{inventario.nombre}</td>
 
-                 <td >{inventario.descripcion}</td>
-                 <td >{inventario.cantidad}</td>
-                 <td >{inventario.fecha}</td>
+                 <td class="table-primary">{inventario.descripcion}</td>
+                 <td class="table-primary">{inventario.cantidad}</td>
+                 <td class="table-primary">{inventario.fecha}</td>
 
                  
-                 <td class="">
+                 <td class="table-primary">
                    <div
                      class="btn-group"
                      role="group"
