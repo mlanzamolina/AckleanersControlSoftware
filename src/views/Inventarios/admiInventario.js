@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo, Component } from "react";
+import React, { useEffect, useState, Component } from "react";
 import Nav from "../NavAdmin";
 import {
   Button,
@@ -24,37 +24,39 @@ import {
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
-
 import "bootstrap-icons/font/bootstrap-icons.css";
 import styles from "./Table.module.css";
 import useTable from "./useTable";
 import TableFooter from "./TableFooter";
 
-const EliminarEmpleados = ({ rowsPerPage }) => {
+
+
+const AdmiInventario = ({ rowsPerPage }) => {
   const [data, setData] = useState([]);
   const [mostrarE, setMostrarE] = useState(false);
   const [opcionE, setopcionE] = useState(false);
   const [id, setID] = useState("");
   const [mostrarM, SetmostrarM] = useState(false);
+  let hoy = new Date();
+  let fechaActual =
+    hoy.getDate() + "-" + (hoy.getMonth() + 1) + "-" + hoy.getFullYear();
+
+  const [cantidad, setCantidad] = useState("");
   const [currentID, setCurrentID] = useState({
     id: null,
     nombre: "",
-    dni: "",
-    correo: "",
-    telefono: "",
-    estado: "",
-    foto: "",
-    direccion: "",
+    descripcion: "",
+    cantidad: "",
+    url: ""
   });
+
+
   const [currentID2, setCurrentID2] = useState({
     id: null,
     nombre: "",
-    dni: "",
-    correo: "",
-    telefono: "",
-    estado: "",
-    foto: "",
-    direccion: "",
+    descripcion: "",
+    cantidad: "",
+    url: ""
   });
 
   const [mostrarV, setMostrarV] = useState(false);
@@ -65,22 +67,18 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
   const [vista, setVista] = useState({
     id: null,
     nombre: "",
-    dni: "",
-    correo: "",
-    telefono: "",
-    estado: "",
-    foto: "",
-    direccion: "",
+    descripcion: "",
+    disponibilidad: "",
+    url: ""
   });
 
-  const [correo, setCorreo] = useState("");
+
   const [nombre, setNombre] = useState("");
-  const [dni, setDNI] = useState("");
-  const [telefono, setTelefono] = useState("");
-  const [estado, setEstado] = useState("");
-  const [foto, setFoto] = useState("");
-  const [direccion, setDireccion] = useState("");
-  const [dni_unico, setDni_unico] = useState(false);
+  const [descripcion, setDescripcion] = useState("");
+  const [disponibilidad, setDisponibilidad] = useState("");
+
+  //const [url, setUrl] = useState("");
+
 
   const [image, setImage] = useState("");
   const [imageurl, setimageURL] = useState("");
@@ -90,9 +88,9 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
 
   const [isLoading, setIsloading] = useState(false);
 
-  const getEmpleados = async () => {
+  const getInventario = async () => {
     const temp = [];
-    db.collection("Empleados").onSnapshot((querySnapshot) => {
+    db.collection("Inventario").onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         temp.push({ ...doc.data(), id: doc.id });
       });
@@ -103,7 +101,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
 
   useEffect(() => {
     const fecthData = async () => {
-      db.collection("Empleados").onSnapshot(function (data) {
+      db.collection("Inventario").onSnapshot(function (data) {
         setData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       });
     };
@@ -116,13 +114,12 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
     window.location.reload(false);
   };
 
-  const eliminarEmpleado = async (id) => {
-    const empleado = doc(db, "Empleados", id);
+  const eliminarInventario = async (id) => {
+    const inventario = doc(db, "Inventario", id);
 
-    deleteDoc(empleado);
+    deleteDoc(inventario);
     mostrarModalEliminar();
 
-    getEmpleados();
   };
 
   const mostrarModalEliminar = (index) => {
@@ -164,43 +161,25 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
     });
   };
 
-  const handleDni = (e) => {
-    try {
-      setDni_unico(true);
-      data.map((item) => {
-        if (item.dni === e.target.value && item.dni !== currentID.id) {
-          setDni_unico(false);
-          swal({
-            title: "Numero de Documento Nacional de Identifacicion repetido",
-            text: "Por favor reingrese un DNI unico o no se le dejara modificar",
-            icon: "warning",
-            button: "aceptar",
-          });
-        }
-      });
-    } catch (error) {
-      console.log("Error DNI");
-    }
-  };
 
-  const obtener = (empleados) => {
+
+  const obtener = (inventario) => {
     try {
-      setIDFire(empleados.id);
+      console.log("Entro");
+      setIDFire(inventario.id);
 
       setCurrentID({
-        id: empleados.dni,
-        nombre: empleados.nombre,
-        correo: empleados.correo,
-        telefono: empleados.n_telefono,
-        foto: empleados.foto,
-        estado: empleados.estado,
-        direccion: empleados.direccion,
+        id: inventario.id,
+        nombre: inventario.nombre,
+        descripcion: inventario.descripcion,
+        cantidad: inventario.cantidad,
+        url: inventario.url
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 
-  const editRow = (empleados) => {
-    obtener(empleados);
+  const editRow = (inventario) => {
+    obtener(inventario);
 
     if (mostrarM === false) {
       SetmostrarM(!mostrarM);
@@ -208,8 +187,8 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       SetmostrarM(!mostrarM);
     }
 
-    if (empleados.foto) {
-      setimageURL(empleados.foto);
+    if (inventario.url) {
+      setimageURL(inventario.url);
     } else {
       setimageURL("");
     }
@@ -227,23 +206,21 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
   const modificar = async (e) => {
     e.preventDefault();
 
-    const empleadosDoc = doc(db, "Empleados", idFire);
+    const empleadosDoc = doc(db, "Inventario", idFire);
 
     var nombre2 = document.getElementById("nombre").value;
-    var id2 = document.getElementById("id").value;
-    var telefono2 = document.getElementById("telefono").value;
-    var correo2 = document.getElementById("correo").value;
-    var direccion2 = document.getElementById("direccion").value;
-    var estado2 = document.getElementById("estado").value;
+    var descripcion2 = document.getElementById("descripcion").value;
+    var cantidad2 = document.getElementById("cantidad").value;
 
-    console.log(id2);
+
+
+
 
     if (
       nombre2 == " " ||
-      telefono2 == " " ||
-      id2 == " " ||
-      correo2 == " " ||
-      imageurl === " "
+      descripcion == " " ||
+      cantidad2 == " " ||
+      imageurl == " "
     ) {
       swal({
         title: "No se realizo",
@@ -255,11 +232,10 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       setIsloading(true);
       await updateDoc(empleadosDoc, {
         nombre: nombre2,
-        dni: id2,
-        correo: correo2,
-        n_telefono: telefono2,
-        estado: estado2,
-        direccion: direccion2,
+        cantidad: cantidad2,
+        fecha: fechaActual,
+        descripcion: descripcion2,
+        url: imageurl
       }).catch((error) => {
         swal({
           title: "Surgio un error",
@@ -272,43 +248,41 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       //await new Promise(resolve=> setTimeout(resolve, 2000));
 
       const uploadtask = almacenamiento
-        .ref("/UsuarioFotos/" + idFire)
+        .ref("Inventario/" + idFire)
         .put(image);
       uploadtask
         .then((uploadtaskSnapshot) => {
           return uploadtaskSnapshot.ref.getDownloadURL();
         })
         .then((url) => {
-          updateDoc(doc(db, "Empleados", idFire), {
+          updateDoc(doc(db, "Inventario", idFire), {
             foto: url,
           });
           setIsloading(false);
         });
 
       swal({
-        title: "Empleado Modificado",
+        title: "Inventario Modificado",
         text: "Se modifico el empleado exitosamente",
         icon: "info",
         button: "aceptar",
       });
     }
-  
+
   }; //Fin
 
   const cambiarFoto = (e) => {
     e.target.src = imageurl;
   };
 
-  const mostrarVistaEmpleado = (empleados) => {
+  const mostrarVistaEmpleado = (inventario) => {
     setVista({
-      nombre: empleados.nombre,
-      telefono: empleados.n_telefono,
-      dni: empleados.dni,
-      correo: empleados.correo,
-      id: empleados.id,
-      foto: empleados.foto,
-      direccion: empleados.direccion,
-      estado: empleados.estado,
+      nombre: inventario.nombre,
+      descripcion: inventario.descripcion,
+      fecha: inventario.fecha,
+      url: inventario.url,
+      cantidad: inventario.cantidad
+
     });
 
     if (mostrarV == false) {
@@ -320,39 +294,42 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
 
   return (
     <>
+
+
       <Nav />
+
+
       <div className="contentf">
-      <h1 style={{
-            width:"100%",
-            textAlign:"center", 
-            marginTop:"1%", 
-            marginBottom:"80px",
-            borderBottom:"2px solid black"
-          }}
-            >Administración de Empleados</h1>
+        <div className="text-center" style={{ margin: "50px 0px" }}>
+          <h1>Administración de Inventario</h1>
+          <hr></hr>
+        </div>
+
+
         <div className="container">
           <div className="mt-4 mb-4 table-responsive">
-            <table className="table table-dark table-striped">
+            <table className="table table-hover table-dark">
               <thead className={styles.tableRowHeader}>
-                <tr className="text-center">
-                  <th scope="col">NOMBRE</th>
-                  <th scope="col">DNI</th>
-                  <th scope="col">TELEFONO</th>
-                  <th scope="col">CORREO</th>
-                  <th scope="col">ESTADO</th>
-                  <th scope="col">DIRECCION</th>
+                <tr className="align-me">
+
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Descripcion</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Fecha</th>
                   <th scope="col">EDITAR</th>
                 </tr>
               </thead>
               <tbody>
-                {slice.map((empleados, index) => (
+                {slice.map((inventario, index) => (
+
                   <tr key={index}>
-                    <td class="table-primary">{empleados.nombre}</td>
-                    <td class="table-primary">{empleados.dni}</td>
-                    <td class="table-primary">{empleados.n_telefono}</td>
-                    <td class="table-primary">{empleados.correo}</td>
-                    <td class="table-primary">{empleados.estado}</td>
-                    <td class="table-primary">{empleados.direccion}</td>
+
+                    <td class="table-primary">{inventario.nombre}</td>
+
+                    <td class="table-primary">{inventario.descripcion}</td>
+                    <td class="table-primary">{inventario.cantidad}</td>
+                    <td class="table-primary">{inventario.fecha}</td>
+
 
                     <td class="table-primary">
                       <div
@@ -362,29 +339,33 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                       >
                         <Button
                           color="success"
-                          onClick={() => editRow(empleados)}
+                          onClick={() => editRow(inventario)}
+
+
                         >
                           <i class="bi bi-pencil"></i>
-                        </Button>
-                        <Button
-                          color="success"
-                          onClick={() => setMostrarE(true)}
-                          onClick={() => mostrarModalEliminar(empleados.id)}
-                        >
-                          <i class="bi bi-person-x"></i>
                         </Button>
 
                         <Button
                           color="success"
-                          onClick={() => mostrarVistaEmpleado(empleados)}
+                          onClick={() => setMostrarE(true)}
+                          onClick={() => mostrarModalEliminar(inventario.id)}
                         >
-                          <i class="bi bi-person-video"></i>
+                          <i class="bi bi-trash2"></i>
+                        </Button>
+
+                        <Button
+                          color="success"
+                          onClick={() => mostrarVistaEmpleado(inventario)}
+                        >
+                          <i class="bi bi-view-list"></i>
                         </Button>
                       </div>
                     </td>
                   </tr>
                 ))}
               </tbody>
+              
             </table>
             <TableFooter
               range={range}
@@ -392,17 +373,27 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
               setPage={setPage}
               page={page}
             />
+            <Link to="/inventarios">
+                  <button
+                    type="submit"
+                    class="btn btn-danger"
+                    style={{ marginLeft:"70%", marginBottom: "5%", marginTop: "5%" }}
+                  >
+                    Regresar
+                  </button>
+                </Link>
+
+                <Link to="/agregarInventario">
+                  <button
+                    type="submit"
+                    class="btn btn-success"
+                    style={{ marginLeft:"2%", marginBottom: "5%", marginTop: "5%" }}
+                  >
+                    Agregar Inventario
+                  </button>
+                </Link>
+
           </div>
-          <Link to="/AgregarEmpleado">
-            <button type="button" class="btn btn-success" style={{marginLeft:"75%"}}>
-              Ir a Agregar Empleado
-            </button>
-          </Link>
-          <Link to="/interfazEmpleados">
-            <button type="button" class="btn btn-danger" style={{marginLeft:"1%"}}>
-              Volver
-            </button>
-          </Link>
         </div>
         <Modal isOpen={mostrarE}>
           <ModalHeader closeButton>¿DESEA ELIMINAR EL EMPLEADO?</ModalHeader>
@@ -411,8 +402,8 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
             <Button
               type="button"
               variant="primary"
-              onClick={() => eliminarEmpleado(id)}
-              style={{background:"red"}}
+              onClick={() => eliminarInventario(id)}
+              style={{ background: "red" }}
             >
               SI
             </Button>
@@ -421,7 +412,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
               type="button"
               variant="secondary"
               onClick={() => mostrarModalEliminar()}
-              style={{background:"rgb(70,130,180)"}}
+              style={{ background: "rgb(70,130,180)" }}
             >
               NO
             </Button>
@@ -431,11 +422,11 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         {/* MODAL PARA MOSTRAR OBJETOS */}
 
         <Modal isOpen={mostrarM}>
-          <ModalHeader>Modificar Empleado</ModalHeader>
+          <ModalHeader>Modificar Inventario</ModalHeader>
           <ModalBody>
             <div className="form-group">
               <form onSubmit={(e) => modificar(e)}>
-                <label>Nombre: </label>
+                <label>Nombre herramienta: </label>
                 <br />
                 <input
                   type="text"
@@ -444,67 +435,37 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                   onChange={(e) => setNombre(e.target.value)}
                   defaultValue={currentID && currentID.nombre}
                   name="nombre"
-                />
-                <br />
-                <label>DNI: </label>
-                <br />
-                <input
-                  type="text"
-                  id="id"
-                  className="form-control"
-                  //onBlur={handleDni}
-                  onChange={(e) => setDNI(e.target.value)}
-                  defaultValue={currentID && currentID.id}
-                  pattern="[0-9]{13}"
-                  title="numero 13 digitos sin nada extra"
-                />
-                <br />
-                <label>Correo: </label>
+                /
+                >
+
+                <label>Cantidad: </label>
                 <br />
                 <input
-                  type="text"
-                  id="correo"
+                  type="number"
+                  id="cantidad"
                   className="form-control"
-                  onChange={(e) => setCorreo(e.target.value)}
-                  defaultValue={currentID && currentID.correo}
-                  name="correo"
+                  onChange={(e) => setCantidad(e.target.value)}
+                  defaultValue={currentID && currentID.cantidad}
+                  name="cantidad"
+
                 />
+
                 <br />
-                <label>Telefono </label>
-                <br />
-                <input
-                  type="text"
-                  id="telefono"
-                  className="form-control"
-                  onChange={(e) => setTelefono(e.target.value)}
-                  pattern="[0-9]{8}"
-                  title="numero 8 digitos sin nada extra"
-                  defaultValue={currentID && currentID.telefono}
-                  name="telefono"
-                />
-                <br />
-                <label>Direccion</label>
+
+                <label>Descripcion</label>
                 <br />
                 <textarea
-                  id="direccion"
+                  id="descripcion"
                   class="form-control"
-                  name="direccion"
-                  placeholder="Direccion donde reside el empleado"
-                  onChange={(e) => setDireccion(e.target.value)}
-                  defaultValue={currentID && currentID.direccion}
+                  name="descripcion"
+                  placeholder="Descripcion herramienta"
+                  onChange={(e) => setDescripcion(e.target.value)}
+                  defaultValue={currentID && currentID.descripcion}
                 ></textarea>
-                <label>Estado Empleado</label>
-                <br />
-                <select
-                  id="estado"
-                  onChange={(e) => setEstado(e.target.value)}
-                  defaultValue={currentID && currentID.estado}
-                >
-                  <option>Activo</option>
-                  <option>Inactivo</option>
-                </select>
 
-                <label> Foto Empleado </label>
+
+
+                <label> Foto Herramienta </label>
                 <br />
 
                 <div>
@@ -526,11 +487,11 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                     type="button"
                     class="btn btn-outline-danger"
                     onClick={() => SetmostrarM(false)}
-                    style={{background:"red"}}
+                    style={{ background: "red" }}
                   >
                     Salir
                   </Button>
-                  <Button type="submit" class="btn btn-outline-danger" style={{background:"rgb(70,130,180)"}}>
+                  <Button type="submit" class="btn btn-outline-danger" style={{ background: "rgb(70,130,180)" }}>
                     {isLoading ? (
                       <h1 class="btn btn-primary" type="button" disabled>
                         <span
@@ -538,7 +499,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                           role="status"
                           aria-hidden="true"
                         ></span>
-                        <span class="sr-only">Loading...</span>
+                        <span class="sr-only">Cargando...</span>
                       </h1>
                     ) : (
                       <h1>Modificar</h1>
@@ -553,42 +514,41 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         <Modal isOpen={mostrarV}>
           <ModalHeader>{vista.nombre}</ModalHeader>
           <ModalBody>
-            <img src={vista.foto} class="card-img-top" alt="..."></img>
+            <img src={vista.url} class="card-img-top" alt="..."></img>
             <div class="container">
-              <div class="col">
-                <label>
-                  <strong>ID:</strong>
-                </label>
-                <label>&nbsp;&nbsp;{vista.dni}</label>
-              </div>
-              <div class="col">
-                <label>
-                  <strong>Correo:</strong>
-                </label>
-                <label>&nbsp;&nbsp;{vista.correo}</label>
-              </div>
+
               <div class="col">
                 <label>
                   {" "}
-                  <strong>Telefono:</strong>
+                  <strong>Descripcion:</strong>
                 </label>
-                <label>&nbsp;&nbsp;{vista.telefono}</label>
+                <label>&nbsp;&nbsp;{vista.descripcion}</label>
+              </div>
+
+              <div class="col">
+                <label>
+                  {" "}
+                  <strong>Fecha:</strong>
+                </label>
+                <label>&nbsp;&nbsp;{vista.fecha}</label>
               </div>
 
               <div class="col align-self-start">
                 <label>
-                  <strong>Direccion:</strong>
+                  <strong>Cantidad:</strong>
                 </label>
-                <label>&nbsp;&nbsp;{vista.direccion}</label>
+                <label>&nbsp;&nbsp;{vista.cantidad}</label>
               </div>
             </div>
+
+
 
             <ModalFooter>
               <Button
                 type="button"
                 class="btn btn-outline-danger"
                 onClick={() => setMostrarV(false)}
-                style={{background:"red"}}
+                style={{ background: "red" }}
               >
                 Salir
               </Button>
@@ -600,4 +560,4 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
   );
 };
 
-export default EliminarEmpleados;
+export default AdmiInventario;

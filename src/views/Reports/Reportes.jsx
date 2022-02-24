@@ -130,7 +130,7 @@ export default function Reportes() {
 
   const setTrueReporte = async () => {
     const dbOrdenes = doc(db, "OrdenesTrabajo", index);
-    await updateDoc(dbOrdenes, { reporte: true })
+    await updateDoc(dbOrdenes, { reporte: false })
       .then(() => {
         swal({
           title: "Completada",

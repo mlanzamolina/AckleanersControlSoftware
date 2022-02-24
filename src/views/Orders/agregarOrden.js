@@ -66,6 +66,7 @@ const AgregarOrden = () => {
     } else {
       //var hoy = new Date();
       var fecha = new Date();
+      var hoy = new Date();
       if (dats.tipo_vivienda === "casa") {
         fecha.setDate(fecha.getDate() + 90);
       } else {
@@ -78,6 +79,13 @@ const AgregarOrden = () => {
         dd = "0" + dd;
       }
       fecha = dd + "/" + mm + "/" + yyyy;
+      dd = hoy.getDate();
+      mm = hoy.getMonth() + 1; //January is 0!
+      yyyy = hoy.getFullYear();
+      if (dd < 10) {
+        dd = "0" + dd;
+      }
+      hoy = dd + "/" + mm + "/" + yyyy;
       await addDoc(tablaOrdenesRef, {
         nombre: dats.nombre,
         numero_telefono: dats.numero_telefono,
@@ -89,13 +97,14 @@ const AgregarOrden = () => {
         reporte: false,
         proxima_revision: fecha,
         recordad: false,
+        fecha: hoy,
       });
       setOrden_emps([]);
       swal({
         title: "Realizado",
-        text: "Se agregro una orden de trabajo",
+        text: "Se agrego una orden de trabajo",
         icon: "info",
-        button: "aceptar",
+        button: "Aceptar",
       });
       document.getElementById("a_nombre").value = null;
       document.getElementById("a_contacto").value = null;
@@ -218,7 +227,10 @@ const AgregarOrden = () => {
                       value="Casa"
                       id="a_tipo"
                     />
-                    <label class="form-check-label letrasFormularioOrdenes" for="Radios1">
+                    <label
+                      class="form-check-label letrasFormularioOrdenes"
+                      for="Radios1"
+                    >
                       Casa
                     </label>
                   </div>
@@ -228,9 +240,13 @@ const AgregarOrden = () => {
                       type="radio"
                       name="tipo_vivienda"
                       id="Radios2"
+                      id="a_tipo"
                       value="Negocio"
                     />
-                    <label  class="form-check-label letrasFormularioOrdenes" for="Radios2">
+                    <label
+                      class="form-check-label letrasFormularioOrdenes"
+                      for="Radios2"
+                    >
                       Negocio
                     </label>
                   </div>
@@ -301,7 +317,7 @@ const AgregarOrden = () => {
                     <button
                       type="submit"
                       className="btn btn-danger"
-                      style={{ marginLeft: "70%", marginRight: "2%" }}
+                      style={{ marginLeft: "56%", marginRight: "2%" }}
                     >
                       Regresar
                     </button>
@@ -314,6 +330,16 @@ const AgregarOrden = () => {
                   >
                     Realizar Orden
                   </button>
+
+                  <Link to="/modificarOrden">
+                    <button
+                      type="submit"
+                      className="btn btn-secondary"
+                      style={{ marginLeft: "2%", marginRight: "2%" }}
+                    >
+                      Administrar Ordenes de Trabajo
+                    </button>
+                  </Link>
                 </div>
               </form>
             </div>
