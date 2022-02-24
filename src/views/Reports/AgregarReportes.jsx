@@ -197,6 +197,12 @@ export default function AgregarReportes() {
     );
   }
 
+  function print()
+  {
+      window.print();
+  }
+
+
   return (
     <>
       <form>
@@ -263,6 +269,11 @@ export default function AgregarReportes() {
           <label>Tel: 33067477 Correo Electronico : ackleaners@gmail.com</label>
         </div>
       </div>
+
+      <button type="button" className="btn btn-info" onClick={print}>
+            Download
+        </button>
+   
       <div class="row">
         <Link to={"/AgregarDocumento"}>
           <button type="button" className="btn btn-success" onClick={sendMail}>
