@@ -181,6 +181,8 @@ setFecha(today);
       </div>
 
     </div>
+    <button type="button" class="btn btn-success">Enviar reporte</button>
+    <button type="button" class="btn btn-danger">Regresar</button>
     </>
   );
 }
