@@ -13,7 +13,7 @@ import { collection, doc, Firestore, updateDoc } from "firebase/firestore";
 import { dbOrdenes, db } from "../../components/firebase";
 import styles from "./Table.module.css";
 
-let contador=0;
+
 
 function SideMenu() {
   const [dats, setDatos] = useState({
@@ -32,7 +32,7 @@ function SideMenu() {
     });
   };
 
-  const [empleados] = useCollectionData(
+  const [clientes] = useCollectionData(
     collection(db, "OrdenesTrabajo"),
     { idField: "id" }
   );
@@ -76,7 +76,7 @@ function SideMenu() {
             borderBottom: "2px solid black",
             fontSize:"25px"
           }}>
-            Resumen de Servicios Pendientes: {contador}</h2>
+            Resumen de Servicios Pendientes</h2>
           <table className="table table-dark table-striped" align="center">
             {/*<table className="ta" align="center">*/}
             <thead className={styles.tableRowHeader}>
@@ -90,8 +90,8 @@ function SideMenu() {
               </tr>
             </thead>
             <tbody>
-              {empleados
-                ? empleados.map((item, index) => {
+              {clientes
+                ? clientes.map((item, index) => {
                     if (item.proxima_revision !== "") {
                       //fecha dividir en un arreglo pos 0=dia pos 1=mes pos 2=año
                       const fechArr = item.proxima_revision.split("/");
