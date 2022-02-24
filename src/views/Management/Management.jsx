@@ -36,11 +36,9 @@ function SideMenu() {
     collection(db, "OrdenesTrabajo"),
     { idField: "id" }
   );
-  const [user, loading, error] = useAuthState(auth);
-  const [sidebar, setSidebar] = useState(false);
-  const [userName, setUserName] = useState("");
+  const [user, loading] = useAuthState(auth);
 
-  const showSidebar = () => setSidebar(!sidebar);
+  const [userName, setUserName] = useState("");
   const [fechaactual, setfechaactual] = useState([]);
 
   useEffect(() => {
@@ -111,7 +109,6 @@ function SideMenu() {
                       );
                       //enviar recordatorio aqui
                       if (fechaactual.getTime() >= pDate.getTime()) {
-                        contador = contador + 1;
                         return (
                           <tr key={item.id} className="text-center">
                             <td className="table-primary">{item.nombre}</td>                            
