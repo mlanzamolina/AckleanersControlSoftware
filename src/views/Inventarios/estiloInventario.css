@@ -1,11 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+
 .estiloPrincipalInv{
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
     background-size: cover;
 }
+
+.contenedorPrincipalInv{
+    background-image: url("https://gradients.mijo-design.com/public/uploads/files/db13.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 .contenedorPrincipal2Inv{
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
     background-size: cover;
+}
+
+
+.letrasFormularioInv{
+    color: white;
+    font-family: 'Raleway';
+    font-weight: bold;
+}
+
+.contenedorFormularioInv{
+    background-color: rgba(0, 0, 0, 0.40);
+    height: auto;
+    width: 60%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .estiloContenedorInv{
@@ -44,7 +70,6 @@
     background-attachment: local;
     
 }
-
 
 
 .fondoAgregarInv:hover,.fondoAdministrarInv:hover{

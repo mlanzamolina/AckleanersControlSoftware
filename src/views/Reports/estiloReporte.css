@@ -89,3 +89,10 @@
 .hide {
   overflow-y: hidden;
 }
+
+.letrasFormularioReportes{
+  color: white;
+  font-family: 'Raleway';
+  font-weight: bold;
+  font-size: 20px;
+}

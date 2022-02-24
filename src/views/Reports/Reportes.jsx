@@ -18,6 +18,7 @@ export default function Reportes() {
   const [flag, setFlag] = useState(true);
   const [cantUnidades, setcantUnidades] = useState(0);
   const [nomCliente, setNombreCliente] = useState("");
+  const [id, setID] = useState("");
   const [index, setIndex] = useState("");
   const [telCliente, setTelefono] = useState("");
   const [select_emp, setSelect_emp] = useState("");
@@ -100,12 +101,14 @@ export default function Reportes() {
       setNombreCliente("");
       setcantUnidades(0);
       setTelefono("");
+      setID("");
     } else {
       nombreOrden.map((item) => {
         if (item.id === data) {
           setTelefono(item.numero_telefono);
           setNombreCliente(item.nombre);
           setcantUnidades(item.cantidad_unidades);
+          setID(item.id);
         }
 
       })
@@ -130,7 +133,7 @@ export default function Reportes() {
 
   const setTrueReporte = async () => {
     const dbOrdenes = doc(db, "OrdenesTrabajo", index);
-    await updateDoc(dbOrdenes, { reporte: true })
+    await updateDoc(dbOrdenes, { reporte: false })
       .then(() => {
         swal({
           title: "Completada",
@@ -154,7 +157,7 @@ export default function Reportes() {
             emailjs.init("user_KnXE6C3gbj7LvCi9G8oET")
           )
         history.push(
-          `/AgregarReportes/${cantUnidades}/${nomCliente}/${telCliente}`
+          `/AgregarReportes/${cantUnidades}/${nomCliente}/${telCliente}/${id}`
         );
       })
       .catch((e) => {

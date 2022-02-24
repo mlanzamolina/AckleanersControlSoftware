@@ -25,44 +25,25 @@ export const IOrdenes = () => {
             width:"100%",
             textAlign:"center", 
             marginTop:"1%", 
-            marginBottom:"25px",
+            marginBottom:"140px",
             borderBottom:"2px solid black",
             fontSize:"30px"
           }}
             >Ordenes de Trabajo</h1>
           <div className="container rounded estiloContenedor">
             <div>
-              <form className="row g-3">
-                <div class="offset-lg-4" style={{ paddingLeft: "10%" }}>
-                  <Link to="/AgregarOrden">
-                    <button className="rounded botonSize fondoAgregarOrden">
+              <form className="row g-3" style={{paddingLeft:"4%"}}>
+              <div class="offset-lg-4 espaciadoContenedor" style={{paddingLeft:"3%"}}>
+                  <Link to="/agregarOrden">
+                    <button className="rounded botonSize fondoAgregarOrden" >
                       Agregar Orden de Trabajo
                     </button>
                   </Link>
                 </div>
-
-                <div
-                  class="offset-lg-1 espaciadoContenedor"
-                  style={{
-                    paddingLeft: "5%",
-                    paddingRight: "20%",
-                    marginTop: "10%",
-                  }}
-                >
-                  <Link to="/ListarOrdenes">
-                    <button className="rounded botonSize fondoListarOrden">
-                      Listar Ordenes de Trabajo
-                    </button>
-                  </Link>
-                </div>
-
-                <div
-                  class="offset-lg-1 espaciadoContenedor"
-                  style={{ paddingLeft: "3%", marginTop: "10%" }}
-                >
-                  <Link to="/adminOrders">
-                    <button className="rounded botonSize fondoModificarOrden" onClick={enProceso}>
-                      Modificar Ordenes de Trabajo
+                <div class="offset-lg-1 espaciadoContenedor" style={{paddingLeft:"3%"}}>
+                  <Link to="/modificarOrden">
+                    <button className="rounded botonSize fondoModificarOrden">
+                      Administrar Ordenes de Trabajo
                     </button>
                   </Link>
                 </div>
