@@ -98,6 +98,7 @@ const AgregarOrden = () => {
         proxima_revision: fecha,
         recordad: false,
         fecha: hoy,
+        Randomid: "",
       });
       setOrden_emps([]);
       swal({
