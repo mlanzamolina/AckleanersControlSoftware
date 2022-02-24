@@ -264,7 +264,7 @@ export default function AgregarReportes() {
         </div>
       </div>
       <div class="row">
-        <Link to={`/confirmReport/${currentOrder}`}>
+        <Link to={"/AgregarDocumento"}>
           <button type="button" className="btn btn-success" onClick={sendMail}>
             Enviar reporte
           </button>
