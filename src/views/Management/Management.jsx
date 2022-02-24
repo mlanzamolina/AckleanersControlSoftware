@@ -13,6 +13,8 @@ import { collection, doc, Firestore, updateDoc } from "firebase/firestore";
 import { dbOrdenes, db } from "../../components/firebase";
 import styles from "./Table.module.css";
 
+let contador=0;
+
 function SideMenu() {
   const [dats, setDatos] = useState({
     nombre: " ",
@@ -66,7 +68,15 @@ function SideMenu() {
           >
             Hola, {userName}{" "}
           </h1>
-          <h2>Clientes a contactar para revision</h2>
+          <h2
+          style={{
+            width: "100%",
+            textAlign: "center",
+            marginTop: "1%",
+            borderBottom: "2px solid black",
+            fontSize:"25px"
+          }}>
+            Resumen de Servicios Pendientes: {contador}</h2>
           <table className="table table-dark table-striped" align="center">
             {/*<table className="ta" align="center">*/}
             <thead className={styles.tableRowHeader}>
@@ -75,6 +85,7 @@ function SideMenu() {
 
                 <th scope="col">Nombre</th>
                 <th scope="col">Telefono</th>
+                <th scope="col">Tipo de Servicio</th>
                 <th scope="col">Proxima Revision</th>
               </tr>
             </thead>
@@ -100,11 +111,15 @@ function SideMenu() {
                       );
                       //enviar recordatorio aqui
                       if (fechaactual.getTime() >= pDate.getTime()) {
+                        contador = contador + 1;
                         return (
                           <tr key={item.id} className="text-center">
-                            <td className="table-primary">{item.nombre}</td>
+                            <td className="table-primary">{item.nombre}</td>                            
                             <td className="table-primary">
                               {item.numero_telefono}
+                            </td>
+                            <td className="table-primary">
+                              {item.tipo_vivienda}
                             </td>
                             <td className="table-primary">
                               {item.proxima_revision}
