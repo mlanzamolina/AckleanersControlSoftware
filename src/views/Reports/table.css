@@ -36,3 +36,6 @@
   
 
 }
+.btn-group button:hover {
+  background-color: grey; /*color del boton al pasar el mouse*/
+}
