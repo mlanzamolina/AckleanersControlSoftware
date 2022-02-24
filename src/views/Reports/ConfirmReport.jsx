@@ -2,11 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import { auth } from "../../components/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import { Link, useParams } from "react-router-dom";
-import { SidebarData } from "./SideBarData";
-import logo from "../../img/logo.png";
 import Nav from "../NavAdmin";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { collection, doc, Firestore, updateDoc } from "firebase/firestore";
@@ -71,7 +67,6 @@ function ConfirmReport() {
             ? documentos.map((item, index) => {
               if (item.idreporte === id) {
                 //download a pdf of reports to review
-
                 return (
                   <Fragment>
                     <label key={item.id} className="letrasFormularioReportes">Título Reporte: {item.nombre} </label>
@@ -98,10 +93,8 @@ function ConfirmReport() {
                   </Fragment>
                 );
               }
-
             })
             : null}
-
           <div class="col-12 offset-lg-1">
             <button
               type="button"
@@ -112,11 +105,9 @@ function ConfirmReport() {
                 paddingLeft: "8%",
                 paddingRight: "8%",
                 marginTop: "6%"
-
               }}
             >
               Completar, Enviar Reporte a Cliente
-
             </button>
             <a href="/CrearReportes">
               {" "}
@@ -133,7 +124,6 @@ function ConfirmReport() {
               >
                 Denegar, Rehacer el Reporte
               </button>
-
             </a>
           </div>
         </div>
