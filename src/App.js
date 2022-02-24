@@ -32,6 +32,7 @@ import "./components/tailwind.css";
 import AdmiDocumentos from "./views/Documents/admiDocumentos";
 import DeleteInventarios from "./views/Inventarios/deleteInventarios";
 import { IOrdenes } from "./views/Orders/interfazOrdenes";
+import AdmiInventario from "./views/Inventarios/admiInventario";
 import AgregarInventario from "./views/Inventarios/agregarInventario"
 
 
@@ -143,6 +144,9 @@ function App() {
 
             <Route path="/adminOrders">
               <IOrdenes />
+            </Route>
+            <Route path="/admiInventario" >
+              <AdmiInventario/>
             </Route>
           </div>
         </Switch>
