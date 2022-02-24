@@ -98,6 +98,7 @@ function SideMenu() {
                         pDate.getMonth(),
                         pDate.getDate() - 7
                       );
+                      //enviar recordatorio aqui
                       if (fechaactual.getTime() >= pDate.getTime()) {
                         return (
                           <tr key={item.id} className="text-center">
