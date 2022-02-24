@@ -192,6 +192,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
     } else {
       setimageURL("");
     }
+    
   };
 
   /*const obtener2 = ()=>{
@@ -256,7 +257,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
         })
         .then((url) => {
           updateDoc(doc(db, "Inventario", idFire), {
-            foto: url,
+            url: url,
           });
           setIsloading(false);
         });
