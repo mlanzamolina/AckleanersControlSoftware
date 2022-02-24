@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
+import { useHistory } from "react-router-dom";
 import { auth } from "../../components/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as FaIcons from "react-icons/fa";
@@ -13,6 +14,7 @@ import { dbOrdenes, db } from "../../components/firebase";
 import swal from "sweetalert";
 
 function ConfirmReport() {
+  const history= useHistory();
   const [data, setData] = useState([]);
   let { id } = useParams();
   const [ordenes] = useCollectionData(collection(db, "OrdenesTrabajo"), {
@@ -39,6 +41,7 @@ function ConfirmReport() {
       .catch((e) => {
         alert(e);
       });
+      history.push("/Management");
   };
 
   return (
@@ -67,6 +70,7 @@ function ConfirmReport() {
             })
           : null}
 
+        
         <button
           type="button"
           className="btn btn-success"
@@ -77,7 +81,7 @@ function ConfirmReport() {
             paddingRight: "110px",
           }}
         >
-          Accept
+          Accept: enviar a cliente reporte finalizado
         </button>
         <a href="/CrearReportes">
           {" "}
@@ -90,7 +94,7 @@ function ConfirmReport() {
               paddingRight: "110px",
             }}
           >
-            Deny
+            Deny: volver a hacer el reporte
           </button>
         </a>
       </div>
