@@ -380,7 +380,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
                 class="btn btn-danger"
                 style={{ marginLeft: "70%", marginBottom: "5%", marginTop: "5%" }}
               >
-                Regresar
+                Volver
               </button>
             </Link>
 

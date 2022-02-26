@@ -168,7 +168,7 @@ export const DeleteInventarios = () => {
                     class="btn btn-danger"
                     style={{ marginBottom: "5%", marginTop: "5%" }}
                   >
-                    Regresar
+                    Volver
                   </button>
                 </Link>
               </div>

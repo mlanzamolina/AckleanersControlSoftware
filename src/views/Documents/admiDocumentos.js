@@ -430,7 +430,7 @@ const AdmiDocumentos = () => {
 
         <Link to="adminDocs">
           <button type="button" class="btn btn-danger" style={{ marginLeft: "75%", marginRight: "1%" }}>
-            Regresar
+            Volver
           </button>
         </Link>
         <Link to="AgregarDocumento">

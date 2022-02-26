@@ -80,7 +80,7 @@ const ListarOrdenes = () => {
                     class="btn btn-danger"
                     style={{ marginBottom: "5%", marginLeft: "90%" }}
                   >
-                    Regresar
+                    Volver
                   </button>
                   </Link>
         </div>
