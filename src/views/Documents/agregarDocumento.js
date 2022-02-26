@@ -10,7 +10,16 @@ export const AgregarDocumento = () => {
   let fechaActual = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
   const [archivoUrl, setArchivoUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  
+  function habilitarID(){
+    var seleccionado = document.getElementById("i_tipo").value
+    if(seleccionado == "Reporte"){
+      document.getElementById("id_reporte").removeAttribute("disabled") 
+    }else{
+      document.getElementById("id_reporte").setAttribute("disabled", true)
+      document.getElementById("id_reporte").value=null
+    }
+  }
 
   const archivoHandler = async (event) => {
     const archivo = event.target.files[0];
@@ -43,16 +52,7 @@ export const AgregarDocumento = () => {
       });
       return;
     }
-    const idReporte = event.target.idreporte.value;
-    if (!idReporte && tipoArchivo === "Reporte") {
-      swal({
-        title: "No se realizo",
-        text: "Coloque un id para el reporte archivo",
-        icon: "warning",
-        button: "aceptar",
-      });
-      return;
-    }
+
     const descripcionArchivo = event.target.descripcion.value;
     if (!descripcionArchivo) {
       swal({
@@ -76,16 +76,37 @@ export const AgregarDocumento = () => {
     }
 
     const fechaArchivo = fechaActual;
-
+    const idDeReporte = event.target.idreporte.value;
     const tablaDocumentosRef = app.firestore().collection("Documentos");
-    const documento = tablaDocumentosRef.doc().set({
-      nombre: nombreArchivo,
-      descripcion: descripcionArchivo,
-      tipo: tipoArchivo,
-      url: archivoUrl,
-      fecha: fechaArchivo,
-      idreporte: idReporte,
-    });
+
+    if (tipoArchivo == "Reporte") {
+      if(!idDeReporte || idDeReporte == " "){
+        swal({
+          title: "No se realizo",
+          text: "Coloque un ID valido para archivo reporte",
+          icon: "warning",
+          button: "aceptar",
+        });
+        return;
+      }else{
+        const documento = tablaDocumentosRef.doc().set({
+          nombre: nombreArchivo,
+          descripcion: descripcionArchivo,
+          tipo: tipoArchivo,
+          url: archivoUrl,
+          fecha: fechaArchivo,
+          idreporte: idDeReporte,
+        });
+      }
+    }else{
+      const documento = tablaDocumentosRef.doc().set({
+        nombre: nombreArchivo,
+        descripcion: descripcionArchivo,
+        tipo: tipoArchivo,
+        url: archivoUrl,
+        fecha: fechaArchivo,
+      });
+    }
 
     swal({
       title: "¡Agregado!",
@@ -108,15 +129,15 @@ export const AgregarDocumento = () => {
       <Nav></Nav>
       <form onSubmit={submitHandler}>
         <div className="p-2 contenedorPrincipal">
-        <h1 style={{
-            width:"100%",
-            textAlign:"center", 
-            marginTop:"1%", 
-            marginBottom:"80px",
-            borderBottom:"2px solid black",
-            fontSize:"30px"
+          <h1 style={{
+            width: "100%",
+            textAlign: "center",
+            marginTop: "1%",
+            marginBottom: "80px",
+            borderBottom: "2px solid black",
+            fontSize: "30px"
           }}
-            >Agregar Documento</h1>
+          >Agregar Documento</h1>
           <div className="container rounded contenedorFormulario">
             <div style={{ marginBottom: "100%" }}>
               <div class="mb-3 col-md-12">
@@ -137,7 +158,7 @@ export const AgregarDocumento = () => {
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  class="form-control rounded"
                   id="i_nombre"
                   placeholder="Ingrese nombre"
                   name="nombre"
@@ -148,14 +169,15 @@ export const AgregarDocumento = () => {
                   for="exampleFormControlInput1"
                   className="form-label letrasFormulario"
                 >
-                  ID para reporte
+                  ID de Reporte
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  class="form-control rounded"
                   id="id_reporte"
-                  placeholder="Ingrese ID"
+                  placeholder="Ingrese un ID valido"
                   name="idreporte"
+                  disabled
                 ></input>
               </div>
               <div class="mb-3 col-md-8">
@@ -181,6 +203,7 @@ export const AgregarDocumento = () => {
                   class="form-select letrasFormulario"
                   style={{ color: "black" }}
                   aria-label="Default select example"
+                  onChange={habilitarID}
                 >
                   <option selected>Seleccione tipo de archivo</option>
                   <option value="Instructivo">Instructivo</option>
@@ -211,11 +234,11 @@ export const AgregarDocumento = () => {
                     marginTop: "5%",
                   }}
                 >
-                  {isLoading ? 
-                  <h1 class="btn btn-sucess" type="button" disabled>
-                  <span style={{background:"white"}} class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                  <span style={{color:"white"}} class="sr-only">Cargando...</span>
-                </h1> : <h1>Cargar Documento</h1>
+                  {isLoading ?
+                    <h1 class="btn btn-sucess" type="button" disabled>
+                      <span style={{ background: "white" }} class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                      <span style={{ color: "white" }} class="sr-only">Cargando...</span>
+                    </h1> : <h1>Cargar Documento</h1>
                   }
                 </button>
 
