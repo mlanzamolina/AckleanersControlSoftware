@@ -40,7 +40,7 @@ export const AgregarInventario = () => {
         title: "No se realizo",
         text: "Coloque un nombre para el articulo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
@@ -50,7 +50,7 @@ export const AgregarInventario = () => {
         title: "No se realizo",
         text: "Coloque una descripcion para el articulo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
@@ -61,7 +61,7 @@ export const AgregarInventario = () => {
         title: "No se realizo",
         text: "Coloque una cantidad valida para el articulo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
