@@ -136,7 +136,7 @@ const AdmiDocumentos = () => {
       title: "Documento Eliminado",
       text: "Se elimino el documento exitosamente",
       icon: "info",
-      button: "aceptar",
+      button: "Aceptar",
     });
     setMostrarE(false);
   };
@@ -190,7 +190,7 @@ const AdmiDocumentos = () => {
         title: "No se realizo",
         text: "No se modifico el documento, verifique los campos",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
 
       return;
@@ -206,7 +206,7 @@ const AdmiDocumentos = () => {
           title: "Surgio un error",
           text: "No se modifico",
           icon: "info",
-          button: "aceptar",
+          button: "Aceptar",
         });
       });
 
@@ -214,7 +214,7 @@ const AdmiDocumentos = () => {
         title: "Documento Modificado",
         text: "Se modifico el documento exitosamente",
         icon: "info",
-        button: "aceptar",
+        button: "Aceptar",
       });
     }
   }; //Fin

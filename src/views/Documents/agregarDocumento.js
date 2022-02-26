@@ -48,7 +48,7 @@ export const AgregarDocumento = () => {
         title: "No se realizo",
         text: "Coloque un nombre para el archivo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
@@ -59,7 +59,7 @@ export const AgregarDocumento = () => {
         title: "No se realizo",
         text: "Coloque una descripcion para el archivo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
@@ -70,7 +70,7 @@ export const AgregarDocumento = () => {
         title: "No se realizo",
         text: "Coloque un tipo para el archivo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
@@ -85,7 +85,7 @@ export const AgregarDocumento = () => {
           title: "No se realizo",
           text: "Coloque un ID valido para archivo reporte",
           icon: "warning",
-          button: "aceptar",
+          button: "Aceptar",
         });
         return;
       }else{
