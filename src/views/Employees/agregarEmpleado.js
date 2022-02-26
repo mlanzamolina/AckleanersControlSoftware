@@ -50,7 +50,7 @@ const AgregarEmpleado = () => {
           title: "Numero de Documento Nacional de Identifacicion repetido",
           text: "Por favor reingrese un DNI unico o no se le dejara avanzar a agregar",
           icon: "warning",
-          button: "aceptar",
+          button: "Aceptar",
         });
       }
     });
@@ -67,7 +67,7 @@ const AgregarEmpleado = () => {
         title: "Formato de archivo no aceptable",
         text: "El archivo subido no es una foto, por favor asegurarse de subir una imagen formato png o jpeg",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       e.target.value = null;
       setimageURL(null);
@@ -91,7 +91,7 @@ const AgregarEmpleado = () => {
         title: "No se realizo",
         text: "No se agregro el empleado, verifique los campos",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
     } else {
       var n_empleado_id = null;
@@ -135,7 +135,7 @@ const AgregarEmpleado = () => {
             title: "Realizado",
             text: "Se agregro el empleado",
             icon: "info",
-            button: "aceptar",
+            button: "Aceptar",
           });
         });
     }
@@ -150,13 +150,13 @@ const AgregarEmpleado = () => {
           style={{ width: "100%", height: "100%" }}
         >
           <h1 style={{
-            width:"100%",
-            textAlign:"center", 
-            marginTop:"1%", 
-            marginBottom:"20px",
-            borderBottom:"2px solid black"
+            width: "100%",
+            textAlign: "center",
+            marginTop: "1%",
+            marginBottom: "20px",
+            borderBottom: "2px solid black"
           }}
-            >Agregar Empleado</h1>
+          >Agregar Empleado</h1>
           <div className="container rounded contenedorFormulario">
             <div>
               <form className="row g-3">
@@ -293,7 +293,7 @@ const AgregarEmpleado = () => {
                     >
                       Ver Empleados
                     </button>
-                    </Link>
+                  </Link>
 
                   <Link to="/interfazEmpleados">
                     <button

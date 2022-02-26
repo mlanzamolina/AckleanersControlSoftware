@@ -170,7 +170,7 @@ const ModificarOrden = () => {
                 title: "No se realizo",
                 text: "No se modifico el documento, verifique los campos",
                 icon: "warning",
-                button: "aceptar",
+                button: "Aceptar",
             });
 
             return;
@@ -403,7 +403,7 @@ const ModificarOrden = () => {
 
                 <Link to="adminOrders">
                     <button type="button" class="btn btn-danger" style={{ marginLeft: "70%", marginRight: "1%" }}>
-                        Regresar
+                        Volver
                     </button>
                 </Link>
                 <Link to="AgregarOrden">

@@ -10,14 +10,14 @@ export const AgregarDocumento = () => {
   let fechaActual = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
   const [archivoUrl, setArchivoUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  
-  function habilitarID(){
+
+  function habilitarID() {
     var seleccionado = document.getElementById("i_tipo").value
-    if(seleccionado == "Reporte"){
-      document.getElementById("id_reporte").removeAttribute("disabled") 
-    }else{
+    if (seleccionado == "Reporte") {
+      document.getElementById("id_reporte").removeAttribute("disabled")
+    } else {
       document.getElementById("id_reporte").setAttribute("disabled", true)
-      document.getElementById("id_reporte").value=null
+      document.getElementById("id_reporte").value = null
     }
   }
 
@@ -80,7 +80,7 @@ export const AgregarDocumento = () => {
     const tablaDocumentosRef = app.firestore().collection("Documentos");
 
     if (tipoArchivo == "Reporte") {
-      if(!idDeReporte || idDeReporte == " "){
+      if (!idDeReporte || idDeReporte == " ") {
         swal({
           title: "No se realizo",
           text: "Coloque un ID valido para archivo reporte",
@@ -88,7 +88,7 @@ export const AgregarDocumento = () => {
           button: "Aceptar",
         });
         return;
-      }else{
+      } else {
         const documento = tablaDocumentosRef.doc().set({
           nombre: nombreArchivo,
           descripcion: descripcionArchivo,
@@ -98,7 +98,7 @@ export const AgregarDocumento = () => {
           idreporte: idDeReporte,
         });
       }
-    }else{
+    } else {
       const documento = tablaDocumentosRef.doc().set({
         nombre: nombreArchivo,
         descripcion: descripcionArchivo,
@@ -248,7 +248,7 @@ export const AgregarDocumento = () => {
                     class="btn btn-danger"
                     style={{ marginBottom: "5%", marginTop: "5%" }}
                   >
-                    Regresar
+                    Volver
                   </button>
                 </Link>
 

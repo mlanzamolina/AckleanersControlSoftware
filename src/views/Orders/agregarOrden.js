@@ -357,7 +357,7 @@ const AgregarOrden = () => {
                       className="btn btn-danger"
                       style={{ marginLeft: "56%", marginRight: "2%" }}
                     >
-                      Regresar
+                      Volver
                     </button>
                   </Link>
 

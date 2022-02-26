@@ -56,7 +56,7 @@ export class Contact extends Component {
             iconHtml: '<img src="' + check + '">',
             title: "Realizado",
             text: "Se envio al correo ackleaners@gmail.com",
-            button: "aceptar",
+            button: "Aceptar",
           });
         },
         function (err) {
@@ -64,7 +64,7 @@ export class Contact extends Component {
             title: "No Realizado",
             text: "No se pudo enviar el correo",
             icon: "warning",
-            button: "aceptar",
+            button: "Aceptar",
           });
         }
       );
@@ -216,7 +216,7 @@ export class Contact extends Component {
                         placeholder="Danos tu mensaje..."
                         onChange={this.handleChangeMessage}
                         id="msj"
-                        style = {{resize :"none"}}
+                        style={{ resize: "none" }}
                         required
                       />
                     </div>

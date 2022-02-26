@@ -40,7 +40,7 @@ export const AgregarInventario = () => {
         title: "No se realizo",
         text: "Coloque un nombre para el articulo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
@@ -50,22 +50,22 @@ export const AgregarInventario = () => {
         title: "No se realizo",
         text: "Coloque una descripcion para el articulo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
 
     const cantidadArticulo = event.target.cantidad.value;
-    if(cantidadArticulo <= 0 || cantidadArticulo === null){
+    if (cantidadArticulo <= 0 || cantidadArticulo === null) {
       swal({
         title: "No se realizo",
         text: "Coloque una cantidad valida para el articulo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
-  
+
 
     const fechaArticulo = fechaActual;
 
@@ -98,15 +98,15 @@ export const AgregarInventario = () => {
       <Nav></Nav>
       <form onSubmit={submitHandler}>
         <div className="p-2 contenedorPrincipalInv">
-        <h1 style={{
-            width:"100%",
-            textAlign:"center", 
-            marginTop:"1%", 
-            marginBottom:"80px",
-            borderBottom:"2px solid black",
-            fontSize:"30px"
+          <h1 style={{
+            width: "100%",
+            textAlign: "center",
+            marginTop: "1%",
+            marginBottom: "80px",
+            borderBottom: "2px solid black",
+            fontSize: "30px"
           }}
-            >Agregar Inventario</h1>
+          >Agregar Inventario</h1>
           <div className="container rounded contenedorFormularioInv">
             <div style={{ marginBottom: "100%" }}>
               <div class="mb-3 col-md-12">
@@ -150,7 +150,7 @@ export const AgregarInventario = () => {
                 ></textarea>
               </div>
               <div class="mb-3 col-md-4">
-              <label
+                <label
                   for="exampleFormControlInput1"
                   className="form-label letrasFormularioInv"
                 >
@@ -185,11 +185,11 @@ export const AgregarInventario = () => {
                     marginTop: "5%",
                   }}
                 >
-                  {isLoading ? 
-                  <h1 class="btn btn-sucess" type="button" disabled>
-                  <span style={{background:"white"}} class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                  <span class="sr-only" style={{color:"white"}} >Cargando...</span>
-                </h1> : <h1>Ingresar Articulo</h1>
+                  {isLoading ?
+                    <h1 class="btn btn-sucess" type="button" disabled>
+                      <span style={{ background: "white" }} class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                      <span class="sr-only" style={{ color: "white" }} >Cargando...</span>
+                    </h1> : <h1>Ingresar Articulo</h1>
                   }
                 </button>
 
@@ -199,7 +199,7 @@ export const AgregarInventario = () => {
                     class="btn btn-danger"
                     style={{ marginBottom: "5%", marginTop: "5%" }}
                   >
-                    Regresar
+                    Volver
                   </button>
                 </Link>
 

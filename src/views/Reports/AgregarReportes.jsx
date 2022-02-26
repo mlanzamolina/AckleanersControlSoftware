@@ -68,7 +68,7 @@ export default function AgregarReportes() {
       .then(
         swal({
           title: "¡Enviado!",
-          text: "Se envio un correo de confirmacion",
+          text: "Se envio un correo de confirmación",
           icon: "info",
           button: "Aceptar",
         })
@@ -78,9 +78,9 @@ export default function AgregarReportes() {
   useEffect(() => {
     setUrl(
       "https://ackleaners-86539.web.app/confirmReport/" +
-        String(currentOrder) +
-        " || Dev url: local`http://localhost:3000/confirmReport/" +
-        String(currentOrder)
+      String(currentOrder) +
+      " || Dev url: local`http://localhost:3000/confirmReport/" +
+      String(currentOrder)
     );
     console.log(urlReportes);
     var today = new Date();
@@ -262,27 +262,27 @@ export default function AgregarReportes() {
           rows="10"
           placeholder="Escribe aquí el texto..."
         ></textarea>
-         <div class="btn-group">
-        <button type="button" className="btn btn-info" onClick={print}>
-          Download
-        </button>
-        <Link  to={"/AgregarDocumento"}>
-          <button type="button" className="btn btn-success" onClick={sendMail}>
-            Enviar reporte
+        <div class="btn-group">
+          <button style={{display:"", marginLeft:"20%", marginBottom:"10%"}} type="button" className="btn btn-primary rounded" onClick={print}>
+            Descargar
           </button>
-        </Link>
-        <Link  to="/CrearReportes">
-          <button type="button" className="btn btn-danger">
-            Regresar
-          </button>
-        </Link>
-      </div>
+          <Link to={"/AgregarDocumento"}>
+            <button style={{ marginLeft:"10%", width:"200px"}} type="button" className="btn btn-success" onClick={sendMail}>
+              Enviar reporte
+            </button>
+          </Link>
+          <Link to="/CrearReportes">
+            <button style={{display:"", marginLeft:"70%"}} type="button" className="btn btn-danger">
+              Volver
+            </button>
+          </Link>
+        </div>
 
         <div>
           <label>Tel: 33067477 Correo Electronico : ackleaners@gmail.com</label>
         </div>
       </div>
-     
+
     </>
   );
 }

@@ -9,7 +9,7 @@ function enProceso(){
     title: "Pagina en contruccion",
     text: "Estamos trabajando en ello",
     icon: "warning",
-    button: "aceptar",
+    button: "Aceptar",
   });
 }
 export const IOrdenes = () => {
