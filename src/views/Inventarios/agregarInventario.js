@@ -157,10 +157,10 @@ export const AgregarInventario = () => {
                   Cantidad del Articulo
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   class="form-control rounded"
                   id="i_cantidad"
-                  placeholder="Ingrese nombre"
+                  placeholder="Ingrese cantidad"
                   name="cantidad"
                 ></input>
               </div>
