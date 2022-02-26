@@ -13,6 +13,7 @@ import { collection, doc, Firestore, updateDoc } from "firebase/firestore";
 import { dbOrdenes, db } from "../../components/firebase";
 import styles from "./Table.module.css";
 
+
 function SideMenu() {
   const [dats, setDatos] = useState({
     nombre: " ",
@@ -30,15 +31,13 @@ function SideMenu() {
     });
   };
 
-  const [empleados, loading2, error2] = useCollectionData(
+  const [clientes] = useCollectionData(
     collection(db, "OrdenesTrabajo"),
     { idField: "id" }
   );
-  const [user, loading, error] = useAuthState(auth);
-  const [sidebar, setSidebar] = useState(false);
-  const [userName, setUserName] = useState("");
+  const [user, loading] = useAuthState(auth);
 
-  const showSidebar = () => setSidebar(!sidebar);
+  const [userName, setUserName] = useState("");
   const [fechaactual, setfechaactual] = useState([]);
 
   useEffect(() => {
@@ -66,7 +65,15 @@ function SideMenu() {
           >
             Hola, {userName}{" "}
           </h1>
-
+          <h2
+          style={{
+            width: "100%",
+            textAlign: "center",
+            marginTop: "1%",
+            borderBottom: "2px solid black",
+            fontSize:"25px"
+          }}>
+            Resumen de Servicios Pendientes</h2>
           <table className="table table-dark table-striped" align="center">
             {/*<table className="ta" align="center">*/}
             <thead className={styles.tableRowHeader}>
@@ -75,12 +82,13 @@ function SideMenu() {
 
                 <th scope="col">Nombre</th>
                 <th scope="col">Telefono</th>
+                <th scope="col">Tipo de Servicio</th>
                 <th scope="col">Proxima Revision</th>
               </tr>
             </thead>
             <tbody>
-              {empleados
-                ? empleados.map((item, index) => {
+              {clientes
+                ? clientes.map((item, index) => {
                     if (item.proxima_revision !== "") {
                       //fecha dividir en un arreglo pos 0=dia pos 1=mes pos 2=año
                       const fechArr = item.proxima_revision.split("/");
@@ -102,9 +110,12 @@ function SideMenu() {
                       if (fechaactual.getTime() >= pDate.getTime()) {
                         return (
                           <tr key={item.id} className="text-center">
-                            <td className="table-primary">{item.nombre}</td>
+                            <td className="table-primary">{item.nombre}</td>                            
                             <td className="table-primary">
                               {item.numero_telefono}
+                            </td>
+                            <td className="table-primary">
+                              {item.tipo_vivienda}
                             </td>
                             <td className="table-primary">
                               {item.proxima_revision}

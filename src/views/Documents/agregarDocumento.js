@@ -43,6 +43,16 @@ export const AgregarDocumento = () => {
       });
       return;
     }
+    const idReporte = event.target.idreporte.value;
+    if (!idReporte && tipoArchivo === "Reporte") {
+      swal({
+        title: "No se realizo",
+        text: "Coloque un id para el reporte archivo",
+        icon: "warning",
+        button: "aceptar",
+      });
+      return;
+    }
     const descripcionArchivo = event.target.descripcion.value;
     if (!descripcionArchivo) {
       swal({
@@ -74,6 +84,7 @@ export const AgregarDocumento = () => {
       tipo: tipoArchivo,
       url: archivoUrl,
       fecha: fechaArchivo,
+      idreporte: idReporte,
     });
 
     swal({
@@ -86,6 +97,7 @@ export const AgregarDocumento = () => {
     await new Promise(resolve => setTimeout(resolve, 2000));
     document.getElementById("i_nombre").value = null;
     document.getElementById("i_descripcion").value = null;
+    document.getElementById("id_reporte").value = null;
     document.getElementById("i_foto").value = null;
     document.getElementById("i_tipo").value = "Seleccione tipo de archivo";
     return;
@@ -129,6 +141,21 @@ export const AgregarDocumento = () => {
                   id="i_nombre"
                   placeholder="Ingrese nombre"
                   name="nombre"
+                ></input>
+              </div>
+              <div class="mb-3 col-md-6">
+                <label
+                  for="exampleFormControlInput1"
+                  className="form-label letrasFormulario"
+                >
+                  ID para reporte
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="id_reporte"
+                  placeholder="Ingrese ID"
+                  name="idreporte"
                 ></input>
               </div>
               <div class="mb-3 col-md-8">

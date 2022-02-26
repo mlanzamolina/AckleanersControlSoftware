@@ -37,7 +37,8 @@
     "react-to-print": "^2.14.4",
     "reactstrap": "^9.0.1",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.3.0"
+    "sweetalert2": "^11.3.0",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
