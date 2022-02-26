@@ -33,7 +33,7 @@ export const DeleteInventarios = () => {
         title: "No se realizo",
         text: "Coloque un nombre para el archivo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
@@ -43,7 +43,7 @@ export const DeleteInventarios = () => {
         title: "No se realizo",
         text: "Coloque una descripcion para el archivo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }
@@ -54,7 +54,7 @@ export const DeleteInventarios = () => {
         title: "No se realizo",
         text: "Coloque un tipo para el archivo",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       return;
     }

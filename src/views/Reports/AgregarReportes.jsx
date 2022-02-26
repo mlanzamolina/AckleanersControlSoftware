@@ -68,7 +68,7 @@ export default function AgregarReportes() {
       .then(
         swal({
           title: "¡Enviado!",
-          text: "Se envio un correo de confirmacion",
+          text: "Se envio un correo de confirmación",
           icon: "info",
           button: "Aceptar",
         })

@@ -170,7 +170,7 @@ const ModificarOrden = () => {
                 title: "No se realizo",
                 text: "No se modifico el documento, verifique los campos",
                 icon: "warning",
-                button: "aceptar",
+                button: "Aceptar",
             });
 
             return;

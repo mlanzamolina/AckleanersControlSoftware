@@ -66,10 +66,10 @@ const ModificarEmpleado = () => {
           />
         </a>
         <div class="sidebar">
-        <a  href="/AgregarEmpleado">
-          Agregar Empleado
-        </a>
-        <a class="active" href="/eliminarEmpleados">Modificar Empleado</a>
+          <a href="/AgregarEmpleado">
+            Agregar Empleado
+          </a>
+          <a class="active" href="/eliminarEmpleados">Modificar Empleado</a>
         </div>
         <div class="contentf">
           <h1 className="tituloh1">Modificar Empleado</h1>
@@ -86,25 +86,25 @@ const ModificarEmpleado = () => {
             <tbody>
               {empleados
                 ? empleados.map((item) => {
-                    return (
-                      <tr className="ta" key={item.id}>
-                        <td>{item.nombre}</td>
-                        <td>{item.dni}</td>
-                        <td>{item.n_telefono}</td>
-                        <td>{item.correo}</td>
-                        <td>
-                          {item.estado}{" "}
-                          <button
-                            onClick={() => {
-                              inactivarEmpleado(item.id, item.estado);
-                            }}
-                          >
-                            Inactivar
-                          </button>{" "}
-                        </td>
-                      </tr>
-                    );
-                  })
+                  return (
+                    <tr className="ta" key={item.id}>
+                      <td>{item.nombre}</td>
+                      <td>{item.dni}</td>
+                      <td>{item.n_telefono}</td>
+                      <td>{item.correo}</td>
+                      <td>
+                        {item.estado}{" "}
+                        <button
+                          onClick={() => {
+                            inactivarEmpleado(item.id, item.estado);
+                          }}
+                        >
+                          Inactivar
+                        </button>{" "}
+                      </td>
+                    </tr>
+                  );
+                })
                 : null}
             </tbody>
           </table>

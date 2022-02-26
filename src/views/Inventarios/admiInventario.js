@@ -143,7 +143,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
         title: "Formato de archivo no aceptable",
         text: "El archivo subido no es una foto, por favor asegurarse de subir una imagen formato png o jpeg",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       e.target.value = null;
       setimageURL(null);
@@ -192,7 +192,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
     } else {
       setimageURL("");
     }
-    
+
   };
 
   /*const obtener2 = ()=>{
@@ -227,7 +227,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
         title: "No se realizo",
         text: "No se modifico el empleado, verifique los campos",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
     } else {
       setIsloading(true);
@@ -242,7 +242,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
           title: "Surgio un error",
           text: "No se modifico",
           icon: "info",
-          button: "aceptar",
+          button: "Aceptar",
         });
       });
       console.log(nombre);
@@ -266,7 +266,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
         title: "Inventario Modificado",
         text: "Se modifico el empleado exitosamente",
         icon: "info",
-        button: "aceptar",
+        button: "Aceptar",
       });
     }
 
@@ -366,7 +366,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
                   </tr>
                 ))}
               </tbody>
-              
+
             </table>
             <TableFooter
               range={range}
@@ -375,24 +375,24 @@ const AdmiInventario = ({ rowsPerPage }) => {
               page={page}
             />
             <Link to="/inventarios">
-                  <button
-                    type="submit"
-                    class="btn btn-danger"
-                    style={{ marginLeft:"70%", marginBottom: "5%", marginTop: "5%" }}
-                  >
-                    Regresar
-                  </button>
-                </Link>
+              <button
+                type="submit"
+                class="btn btn-danger"
+                style={{ marginLeft: "70%", marginBottom: "5%", marginTop: "5%" }}
+              >
+                Regresar
+              </button>
+            </Link>
 
-                <Link to="/agregarInventario">
-                  <button
-                    type="submit"
-                    class="btn btn-success"
-                    style={{ marginLeft:"2%", marginBottom: "5%", marginTop: "5%" }}
-                  >
-                    Agregar Inventario
-                  </button>
-                </Link>
+            <Link to="/agregarInventario">
+              <button
+                type="submit"
+                class="btn btn-success"
+                style={{ marginLeft: "2%", marginBottom: "5%", marginTop: "5%" }}
+              >
+                Agregar Inventario
+              </button>
+            </Link>
 
           </div>
         </div>

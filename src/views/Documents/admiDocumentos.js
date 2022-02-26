@@ -230,15 +230,15 @@ const AdmiDocumentos = () => {
       <NavAdmin></NavAdmin>
       <div className="contentm">
         <div className="text-center" style={{ margin: "50px 0px" }}>
-        <h1 style={{
-            width:"100%",
-            textAlign:"center", 
-            marginTop:"1%", 
-            marginBottom:"80px",
-            borderBottom:"2px solid black",
-            fontSize:"30px"
+          <h1 style={{
+            width: "100%",
+            textAlign: "center",
+            marginTop: "1%",
+            marginBottom: "80px",
+            borderBottom: "2px solid black",
+            fontSize: "30px"
           }}
-            >Administración de Documentos</h1>
+          >Administración de Documentos</h1>
         </div>
         <div className="container">
           <div className="dropdown">
@@ -316,7 +316,7 @@ const AdmiDocumentos = () => {
               onClick={(e) => eliminarDocumento(idFire, e)}
               type="button"
               variant="primary"
-              style={{background:"red"}}
+              style={{ background: "red" }}
             >
               SI
             </Button>
@@ -325,7 +325,7 @@ const AdmiDocumentos = () => {
               onClick={() => setMostrarE(false)}
               type="button"
               variant="secondary"
-              style={{background:"rgb(70,130,180)"}}
+              style={{ background: "rgb(70,130,180)" }}
             >
               NO
             </Button>
@@ -410,15 +410,15 @@ const AdmiDocumentos = () => {
                   <Button
                     type="button"
                     class="btn btn-outline-danger"
-                    style={{background:"red"}}
+                    style={{ background: "red" }}
                     onClick={() => SetmostrarM(false)}
                   >
                     Salir
                   </Button>
-                  <Button 
-                  type="submit" 
-                  class="btn btn-outline-danger"
-                  style={{background:"rgb(70,130,180)"}}
+                  <Button
+                    type="submit"
+                    class="btn btn-outline-danger"
+                    style={{ background: "rgb(70,130,180)" }}
                   >
                     Modificar
                   </Button>
