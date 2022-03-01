@@ -138,7 +138,7 @@ export const AgregarDocumento = () => {
             fontSize: "30px"
           }}
           >Agregar Documento</h1>
-          <div className="container rounded contenedorFormulario">
+          <div style={{width:"90%"}} className="container rounded contenedorFormulario">
             <div style={{ marginBottom: "100%" }}>
               <div class="mb-3 col-md-12">
                 <label

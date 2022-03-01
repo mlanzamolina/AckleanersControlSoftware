@@ -157,7 +157,7 @@ const AgregarEmpleado = () => {
             borderBottom: "2px solid black"
           }}
           >Agregar Empleado</h1>
-          <div className="container rounded contenedorFormulario">
+          <div style={{width:"90%"}} className="container rounded contenedorFormulario">
             <div>
               <form className="row g-3">
                 <div className="col-md-6">
@@ -171,7 +171,7 @@ const AgregarEmpleado = () => {
                   <input
                     id="i_nombre"
                     type="text"
-                    className="form-control"
+                    className="form-control rounded"
                     placeholder="Eje. Carlos Flores"
                     name="nombre"
                     onChange={handleInputChance}
@@ -189,7 +189,7 @@ const AgregarEmpleado = () => {
                   <input
                     id="i_email"
                     type="email"
-                    className="form-control"
+                    className="form-control rounded"
                     placeholder="Eje. test@mail.com"
                     onChange={handleInputChance}
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
@@ -209,7 +209,7 @@ const AgregarEmpleado = () => {
                   <input
                     id="i_dni"
                     type="text"
-                    class="form-control"
+                    class="form-control rounded"
                     placeholder="Eje. 1804198002033"
                     name="dni"
                     pattern="[0-9]{13}"
@@ -227,7 +227,7 @@ const AgregarEmpleado = () => {
                   <input
                     id="i_telefono"
                     type="text"
-                    class="form-control"
+                    class="form-control rounded"
                     name="numero"
                     placeholder="Eje. 9940-1110"
                     pattern="[0-9]{8}"
@@ -245,7 +245,7 @@ const AgregarEmpleado = () => {
                   </label>
                   <textarea
                     id="i_dirrecion"
-                    class="form-control"
+                    class="form-control rounded"
                     style={{ resize: "none" }}
                     name="direccion"
                     rows="3"
