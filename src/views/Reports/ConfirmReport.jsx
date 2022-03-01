@@ -149,7 +149,7 @@ function ConfirmReport() {
           fontSize: "30px"
         }}
         >Confirmar Reporte de Orden de Trabajo</h1>
-        <div className="container rounded contenedorFormulario" style={{ width: "90%", height: "70%" }}>
+        <div className="container rounded estiloContenedorReporte" style={{ width: "90%", height: "70%" }}>
           <div class="row">
             <div style={{ marginTop: "2%", color: "white" }} class="col-lg-8 col-md-12 mb-4">
 
