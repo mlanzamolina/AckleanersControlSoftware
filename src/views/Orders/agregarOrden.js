@@ -43,31 +43,65 @@ const AgregarOrden = () => {
         title: "Error",
         text: "El empleado seleccionado ya esta agregado a la orden.",
         icon: "error",
-        button: "aceptar",
+        button: "Aceptar",
       });
     }
   };
 
   const handleSubmit = async (e) => {
     //console.log(JSON.stringify(dats))
-    if (
-      dats.descripcion == " " ||
-      dats.numero_telefono == " " ||
-      dats.cantidad_unidades == " " ||
-      orden_emps.length === 0 ||
-      dats.tipo_vivienda == " "
-    ) {
+    if (!dats.nombre || dats.nombre == " ") {
       swal({
         title: "No se realizo",
-        text: "No se agregro una orden de trabajo",
+        text: "Por favor, ingrese nombre de cliente",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
-    } else {
-      //var hoy = new Date();
+      return;
+    }else if(!dats.numero_telefono || dats.numero_telefono == " "){
+      swal({
+        title: "No se realizo",
+        text: "Por favor, ingrese un numero de telefono",
+        icon: "warning",
+        button: "Aceptar",
+      });
+      return;
+    }else if(!dats.cantidad_unidades || dats.cantidad_unidades == " " || dats.cantidad_unidades <= 0){
+      swal({
+        title: "No se realizo",
+        text: "Por favor, ingrese una cantidad de unidades validas",
+        icon: "warning",
+        button: "Aceptar",
+      });
+      return; 
+    }else if(!dats.descripcion || dats.descripcion == " "){
+      swal({
+        title: "No se realizo",
+        text: "Por favor, ingrese una descripción para más detalles",
+        icon: "warning",
+        button: "Aceptar",
+      });
+      return;
+    }else if(!dats.tipo_vivienda || dats.tipo_vivienda == " "){
+      swal({
+        title: "No se realizo",
+        text: "Por favor, ingrese un tipo de servicio",
+        icon: "warning",
+        button: "Aceptar",
+      });
+      return;
+    }else if(orden_emps.length === 0){
+      swal({
+        title: "No se realizo",
+        text: "Por favor, ingrese al menos un empleado",
+        icon: "warning",
+        button: "Aceptar",
+      });
+      return;
+    }else {
       var fecha = new Date();
       var hoy = new Date();
-      if (dats.tipo_vivienda === "casa") {
+      if (dats.tipo_vivienda === "Casa") {
         fecha.setDate(fecha.getDate() + 90);
       } else {
         fecha.setDate(fecha.getDate() + 120);
@@ -85,7 +119,7 @@ const AgregarOrden = () => {
       if (dd < 10) {
         dd = "0" + dd;
       }
-      hoy = dd + "-" + mm + "-" + yyyy;
+      hoy = dd + "/" + mm + "/" + yyyy;
       await addDoc(tablaOrdenesRef, {
         nombre: dats.nombre,
         numero_telefono: dats.numero_telefono,
@@ -98,14 +132,21 @@ const AgregarOrden = () => {
         proxima_revision: fecha,
         recordad: false,
         fecha: hoy,
+        Randomid: "",
       });
       setOrden_emps([]);
       swal({
         title: "Realizado",
-        text: "Se agregro una orden de trabajo",
+        text: "Se agrego una orden de trabajo",
         icon: "info",
-        button: "aceptar",
+        button: "Aceptar",
       });
+      document.getElementById("a_nombre").value = null;
+      document.getElementById("a_contacto").value = null;
+      document.getElementById("a_cantidad").value = null;
+      document.getElementById("a_descripcion").value = null;
+      document.getElementById("a_tipo").value = null;
+      document.getElementById("select").value = "Seleccione un Empleado";
     }
   };
 
@@ -148,9 +189,11 @@ const AgregarOrden = () => {
                   </h3>
                   <input
                     placeholder="Ingrese Nombre"
-                    className="form-control"
+                    className="form-control rounded"
                     name="nombre"
                     onChange={handleInputChance}
+                    id="a_nombre"
+                    style={{width:"40%"}}
                     required
                   ></input>
                 </div>
@@ -163,10 +206,12 @@ const AgregarOrden = () => {
                   </h3>
                   <input
                     placeholder="Numero de contacto"
-                    className="form-control"
+                    className="form-control rounded"
                     type="number"
                     name="numero_telefono"
                     onChange={handleInputChance}
+                    id="a_contacto"
+                    style={{width:"40%"}}
                     required
                   ></input>
                 </div>
@@ -179,10 +224,11 @@ const AgregarOrden = () => {
                   </h3>
                   <input
                     placeholder="Unidades"
-                    className="form-control propiedadUnidades"
+                    className="form-control propiedadUnidades rounded"
                     type="number"
                     name="cantidad_unidades"
                     onChange={handleInputChance}
+                    id="a_cantidad"
                     required
                   ></input>
                 </div>
@@ -196,8 +242,10 @@ const AgregarOrden = () => {
                   <textarea
                     className="propiedadTextArea form-control"
                     name="descripcion"
+                    id="a_descripcion"
                     onChange={handleInputChance}
                     placeholder="Si tienes comentarios adicionales o un metodo de contacto adicional, puedes especificarlos..."
+                    style={{width:"70%"}}
                   ></textarea>
                 </div>
 
@@ -214,7 +262,8 @@ const AgregarOrden = () => {
                       type="radio"
                       name="tipo_vivienda"
                       id="Radios1"
-                      value="casa"
+                      value="Casa"
+                      id="a_tipo"
                     />
                     <label
                       class="form-check-label letrasFormularioOrdenes"
@@ -229,7 +278,8 @@ const AgregarOrden = () => {
                       type="radio"
                       name="tipo_vivienda"
                       id="Radios2"
-                      value="negocio"
+                      id="a_tipo"
+                      value="Negocio"
                     />
                     <label
                       class="form-check-label letrasFormularioOrdenes"
@@ -305,9 +355,9 @@ const AgregarOrden = () => {
                     <button
                       type="submit"
                       className="btn btn-danger"
-                      style={{ marginLeft: "70%", marginRight: "2%" }}
+                      style={{ marginLeft: "56%", marginRight: "2%" }}
                     >
-                      Regresar
+                      Volver
                     </button>
                   </Link>
 
@@ -318,6 +368,16 @@ const AgregarOrden = () => {
                   >
                     Realizar Orden
                   </button>
+
+                  <Link to="/modificarOrden">
+                    <button
+                      type="submit"
+                      className="btn btn-secondary"
+                      style={{ marginLeft: "2%", marginRight: "2%" }}
+                    >
+                      Administrar Ordenes de Trabajo
+                    </button>
+                  </Link>
                 </div>
               </form>
             </div>

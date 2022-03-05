@@ -20,7 +20,7 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Inventarios',
+    title: 'Inventario',
     path: '/inventarios',
     cName: 'nav-text'
   },
@@ -32,6 +32,11 @@ export const SidebarData = [
   {
     title: 'Ordenes de Trabajo',
     path: '/adminOrders',
+    cName: 'nav-text'
+  },
+  {
+    title: 'Cuadrillas',
+    path: '/interfazCuadrillas',
     cName: 'nav-text'
   },
 ];

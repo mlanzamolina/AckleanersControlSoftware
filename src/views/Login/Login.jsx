@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./Login.css";
 import logo from "../../img/logo.png"
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth , signInWithEmailAndPassword} from "../../components/firebase";
+import { auth, signInWithEmailAndPassword } from "../../components/firebase";
 import swal from "sweetalert";
 import Navigation from "../../components/navigation";
 
@@ -17,50 +17,50 @@ export default function Login() {
 
     e.preventDefault();
 
-        if (/^\w+([.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail)\.(?:|com|es)+$/.test(usern)) {
-          if (pass === null) {
-            swal({
-              title: "Campo Invalido.",
-              text: "Por favor ingrese una contraseña.",
-              icon: "warning",
-              button: "aceptar",
-            });
-          } else {
-            if (pass === "") {
-              swal({
-                title: "Campo Invalido.",
-                text: "Por favor ingrese una contraseña.",
-                icon: "warning",
-                button: "aceptar",
-              });
-            }else{
-              //alert("bienvenido =)");
-              signInWithEmailAndPassword(usern, pass);
-            }
-          }
-
-         
-        }else{
+    if (/^\w+([.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail)\.(?:|com|es)+$/.test(usern)) {
+      if (pass === null) {
+        swal({
+          title: "Campo Invalido.",
+          text: "Por favor ingrese una contraseña.",
+          icon: "warning",
+          button: "Aceptar",
+        });
+      } else {
+        if (pass === "") {
           swal({
             title: "Campo Invalido.",
-            text: "Por favor ingrese un correo.",
+            text: "Por favor ingrese una contraseña.",
             icon: "warning",
-            button: "aceptar",
+            button: "Aceptar",
           });
+        } else {
+          //alert("bienvenido =)");
+          signInWithEmailAndPassword(usern, pass);
         }
-      
-    
-   }
+      }
 
-   
-    return (
-      <>
-      <Navigation/>
+
+    } else {
+      swal({
+        title: "Campo Invalido.",
+        text: "Por favor ingrese un correo.",
+        icon: "warning",
+        button: "Aceptar",
+      });
+    }
+
+
+  }
+
+
+  return (
+    <>
+      <Navigation />
 
       <div className="wrapper">
-      <div className="form-wrapper">
-      <h1>Iniciar Sesión</h1>
-      <form >
+        <div className="form-wrapper">
+          <h1>Iniciar Sesión</h1>
+          <form >
             <div className="login-form">
               <div className="email">
                 <label htmlFor="email">Correo Electrónico</label>
@@ -72,7 +72,7 @@ export default function Login() {
                   onChange={(e) => { setUser(e.target.value); }}
                 />
               </div>
-             
+
 
               <div className="password">
                 <label htmlFor="password">Contraseña</label>
@@ -86,7 +86,7 @@ export default function Login() {
               </div>
               <div>
                 <small>
-                <Link to="/passwordRecovery">¿Olvidó su contraseña?</Link>
+                  <Link to="/passwordRecovery">¿Olvidó su contraseña?</Link>
                 </small>
               </div>
               <div className="createAccount">
@@ -103,18 +103,17 @@ export default function Login() {
                   </small>
                 </div>
               </div>{*/}
-              </div>
-              </form> 
-              <a href="/"><img src={logo} alt="logo ackleaners" width="12%" height="auto" style={{
-              margin: 0,
-              top: "auto",
-              right: 45,
-              bottom: 40,
-              position: "fixed",
-            }}/></a> 
+            </div>
+          </form>
+          <a href="/"><img src={logo} alt="logo ackleaners" width="12%" height="auto" style={{
+            margin: 0,
+            top: "auto",
+            right: 45,
+            bottom: 40,
+            position: "fixed",
+          }} /></a>
+        </div>
       </div>
-      </div>
-      </>
-    );
-  }
-    
+    </>
+  );
+}

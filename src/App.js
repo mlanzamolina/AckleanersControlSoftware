@@ -32,15 +32,18 @@ import "./components/tailwind.css";
 import AdmiDocumentos from "./views/Documents/admiDocumentos";
 import DeleteInventarios from "./views/Inventarios/deleteInventarios";
 import { IOrdenes } from "./views/Orders/interfazOrdenes";
-import AgregarInventario from "./views/Inventarios/agregarInventario"
-
+import AdmiInventario from "./views/Inventarios/admiInventario";
+import AgregarInventario from "./views/Inventarios/agregarInventario";
+import ConfirmReport from "./views/Reports/ConfirmReport";
+import { InterfazCuadrillas } from "./views/Cuadrillas/interfazCuadrillas";
+import { AgregarCuadrilla } from "./views/Cuadrillas/agregarCuadrilla";
+import { ModificarCuadrilla } from "./views/Cuadrillas/modificarCuadrilla";
 
 function App() {
   return (
     <>
       <Router>
         <Switch>
-
           <Route exact path="/">
             <Home />
           </Route>
@@ -93,7 +96,7 @@ function App() {
               <CrearReportes />
             </Route>
 
-            <Route path="/AgregarReportes/:id/:nombre/:telefono">
+            <Route path="/AgregarReportes/:id/:nombre/:telefono/:currentOrder">
               <AgregarReportes />
             </Route>
 
@@ -108,18 +111,23 @@ function App() {
             <Route path="/ModificarUsuarios">
               <ModificarUsuarios />
             </Route>
+
             <Route path="/AgregarUsuarios">
               <AgregarUsuarios />
             </Route>
+
             <Route path="/inventarios">
               <Inventarios />
             </Route>
+
             <Route path="/NewPassword">
               <NewPassword />
             </Route>
+
             <Route path="/adminDocs">
               <Documentos />
             </Route>
+
             <Route path="/eliminarEmpleados">
               <EliminarEmpleados />
             </Route>
@@ -131,12 +139,15 @@ function App() {
             <Route path="/descargarDocumento">
               <DescargarDocumento />
             </Route>
+
             <Route path="/admiDocumentos">
               <AdmiDocumentos />
             </Route>
+
             <Route path="/DeleteInventarios">
               <DeleteInventarios />
             </Route>
+
             <Route path="/agregarInventario">
               <AgregarInventario />
             </Route>
@@ -144,6 +155,27 @@ function App() {
             <Route path="/adminOrders">
               <IOrdenes />
             </Route>
+
+            <Route path="/admiInventario">
+              <AdmiInventario />
+            </Route>
+
+            <Route path="/confirmReport/:id">
+              <ConfirmReport />
+            </Route>
+
+            <Route path="/interfazCuadrillas">
+              <InterfazCuadrillas />
+            </Route>
+
+            <Route path="/agregarCuadrilla">
+              <AgregarCuadrilla />
+            </Route>
+
+            <Route path="/modificarCuadrilla">
+              <ModificarCuadrilla />
+            </Route>
+
           </div>
         </Switch>
       </Router>
