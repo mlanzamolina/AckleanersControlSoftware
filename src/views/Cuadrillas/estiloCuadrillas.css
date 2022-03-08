@@ -9,7 +9,7 @@
     overflow-y: hidden;
 }
 
-.contenedorFormulario{
+.contenedorFormularioCuadrillas{
     background-color: rgba(0, 0, 0, 0.40);
     height: auto;
     width: 60%;
@@ -52,4 +52,20 @@
 
 .hide{
     overflow-x: hidden;
+}
+.estiloAgregados{
+    height: auto;
+    background-color: transparent;
+    margin-top: 2%;
+    border: rgb(211,211,211);
+    border-style: solid;
+}
+
+.letrasAgregados{
+    color: white;
+    font-family: 'Raleway';
+}
+
+.indentadoAgregados{
+    margin-left: 4%;
 }
