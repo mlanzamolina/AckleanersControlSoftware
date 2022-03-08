@@ -1,15 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../img/logo.png";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import { SidebarData } from "./SideBarData";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { dbEmpleado, almacenamiento, auth } from "../../components/firebase";
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import swal from "sweetalert";
-import { Interfaz } from "./empleadoNav";
 import "./estiloEmpleado.css";
 import Nav from "../NavAdmin";
 
@@ -55,7 +50,7 @@ const AgregarEmpleado = () => {
           title: "Numero de Documento Nacional de Identifacicion repetido",
           text: "Por favor reingrese un DNI unico o no se le dejara avanzar a agregar",
           icon: "warning",
-          button: "aceptar",
+          button: "Aceptar",
         });
       }
     });
@@ -72,7 +67,7 @@ const AgregarEmpleado = () => {
         title: "Formato de archivo no aceptable",
         text: "El archivo subido no es una foto, por favor asegurarse de subir una imagen formato png o jpeg",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       e.target.value = null;
       setimageURL(null);
@@ -96,7 +91,7 @@ const AgregarEmpleado = () => {
         title: "No se realizo",
         text: "No se agregro el empleado, verifique los campos",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
     } else {
       var n_empleado_id = null;
@@ -140,7 +135,7 @@ const AgregarEmpleado = () => {
             title: "Realizado",
             text: "Se agregro el empleado",
             icon: "info",
-            button: "aceptar",
+            button: "Aceptar",
           });
         });
     }
@@ -149,18 +144,20 @@ const AgregarEmpleado = () => {
   return (
     <Fragment>
       <Nav />
-      <div class="sidebar">
-        <a class="active" href="/AgregarEmpleado">
-          Agregar Empleado
-        </a>
-        <a href="/eliminarEmpleados">Modificar Empleado</a>
-      </div>
       <div class="contentf">
         <div
           className="contenedorPrincipal"
           style={{ width: "100%", height: "100%" }}
         >
-          <div className="container rounded contenedorFormulario">
+          <h1 style={{
+            width: "100%",
+            textAlign: "center",
+            marginTop: "1%",
+            marginBottom: "20px",
+            borderBottom: "2px solid black"
+          }}
+          >Agregar Empleado</h1>
+          <div style={{width:"90%"}} className="container rounded contenedorFormulario">
             <div>
               <form className="row g-3">
                 <div className="col-md-6">
@@ -169,12 +166,12 @@ const AgregarEmpleado = () => {
                     className="form-label letrasFormulario"
                     style={{ marginTop: "5%" }}
                   >
-                    Nombre completo
+                    Nombre Completo
                   </label>
                   <input
                     id="i_nombre"
                     type="text"
-                    className="form-control"
+                    className="form-control rounded"
                     placeholder="Eje. Carlos Flores"
                     name="nombre"
                     onChange={handleInputChance}
@@ -187,12 +184,12 @@ const AgregarEmpleado = () => {
                     className="form-label letrasFormulario"
                     style={{ marginTop: "8%" }}
                   >
-                    Correo electronico
+                    Correo Electronico
                   </label>
                   <input
                     id="i_email"
                     type="email"
-                    className="form-control"
+                    className="form-control rounded"
                     placeholder="Eje. test@mail.com"
                     onChange={handleInputChance}
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
@@ -212,7 +209,7 @@ const AgregarEmpleado = () => {
                   <input
                     id="i_dni"
                     type="text"
-                    class="form-control"
+                    class="form-control rounded"
                     placeholder="Eje. 1804198002033"
                     name="dni"
                     pattern="[0-9]{13}"
@@ -230,7 +227,7 @@ const AgregarEmpleado = () => {
                   <input
                     id="i_telefono"
                     type="text"
-                    class="form-control"
+                    class="form-control rounded"
                     name="numero"
                     placeholder="Eje. 9940-1110"
                     pattern="[0-9]{8}"
@@ -248,7 +245,7 @@ const AgregarEmpleado = () => {
                   </label>
                   <textarea
                     id="i_dirrecion"
-                    class="form-control"
+                    class="form-control rounded"
                     style={{ resize: "none" }}
                     name="direccion"
                     rows="3"
@@ -287,14 +284,25 @@ const AgregarEmpleado = () => {
                     Registrar Empleado
                   </button>
 
-                  <Link to="/">
+                  <Link to="/eliminarEmpleados">
+                    <button
+                      id="b_cancelar"
+                      type="submit"
+                      class="btn btn-secondary"
+                      style={{ marginBottom: "3%", marginRight: "2%" }}
+                    >
+                      Ver Empleados
+                    </button>
+                  </Link>
+
+                  <Link to="/interfazEmpleados">
                     <button
                       id="b_cancelar"
                       type="submit"
                       class="btn btn-danger"
                       style={{ marginBottom: "3%" }}
                     >
-                      Cancelar
+                      Volver
                     </button>
                   </Link>
                 </div>

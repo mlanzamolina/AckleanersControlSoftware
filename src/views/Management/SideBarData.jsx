@@ -5,33 +5,38 @@ import * as IoIcons from 'react-icons/io';
 
 export const SidebarData = [
   {
-    title: 'Home',
+    title: 'Inicio',
     path: '/Management',
     cName: 'nav-text'
   },
   {
     title: 'Reportes',
-    path: '/Reportes',
+    path: '/CrearReportes',
     cName: 'nav-text'
   },
   {
     title: 'Empleados',
-    path: '/AgregarEmpleado',
+    path: '/interfazEmpleados',
     cName: 'nav-text'
   },
   {
-    title: 'Inventarios',
+    title: 'Inventario',
     path: '/inventarios',
     cName: 'nav-text'
   },
   {
     title: 'Documentos',
-    path: '/admindocs',
+    path: '/adminDocs',
     cName: 'nav-text'
   },
   {
-    title: 'Ordenes de trabajo',
-    path: '/Ordenes',
+    title: 'Ordenes de Trabajo',
+    path: '/adminOrders',
+    cName: 'nav-text'
+  },
+  {
+    title: 'Cuadrillas',
+    path: '/interfazCuadrillas',
     cName: 'nav-text'
   },
 ];

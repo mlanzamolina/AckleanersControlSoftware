@@ -1,112 +1,82 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { app } from "../../components/firebase";
-import "../Employees/estiloEmpleado.css";
+import "./estiloInventario.css";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import Nav from "../NavAdmin";
 
-export const AgregarDocumento = () => {
+export const AgregarInventario = () => {
+
   let hoy = new Date();
   let fechaActual = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
-  const [archivoUrl, setArchivoUrl] = useState("");
+  const [articuloUrl, setArticuloUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  function habilitarID() {
-    var seleccionado = document.getElementById("i_tipo").value
-    if (seleccionado == "Reporte") {
-      document.getElementById("id_reporte").removeAttribute("disabled")
-    } else {
-      document.getElementById("id_reporte").setAttribute("disabled", true)
-      document.getElementById("id_reporte").value = null
-    }
-  }
 
   const archivoHandler = async (event) => {
     const archivo = event.target.files[0];
     swal({
-      title: "¡Revisando el documento!",
+      title: "¡Añadiendo el articulo!",
       icon: "warning",
       text: "Un momento...",
       timer: 2000,
       button: false,
     });
     setIsLoading(true);
-    const storageRef = app.storage().ref("Documentos");
+    const storageRef = app.storage().ref("Inventario");
     const archivoPath = storageRef.child(archivo.name);
     await archivoPath.put(archivo);
-    console.log("Archivo cargado ", archivo.name);
     const enlaceUrl = await archivoPath.getDownloadURL();
-    setArchivoUrl(enlaceUrl);
+    setArticuloUrl(enlaceUrl);
     setIsLoading(false);
   };
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    const nombreArchivo = event.target.nombre.value;
-    if (!nombreArchivo) {
+
+    const nombreArticulo = event.target.nombre.value;
+    if (!nombreArticulo) {
       swal({
         title: "No se realizo",
-        text: "Coloque un nombre para el archivo",
+        text: "Coloque un nombre para el articulo",
+        icon: "warning",
+        button: "Aceptar",
+      });
+      return;
+    }
+    const descripcionArticulo = event.target.descripcion.value;
+    if (!descripcionArticulo) {
+      swal({
+        title: "No se realizo",
+        text: "Coloque una descripcion para el articulo",
         icon: "warning",
         button: "Aceptar",
       });
       return;
     }
 
-    const descripcionArchivo = event.target.descripcion.value;
-    if (!descripcionArchivo) {
+    const cantidadArticulo = event.target.cantidad.value;
+    if (cantidadArticulo <= 0 || cantidadArticulo === null) {
       swal({
         title: "No se realizo",
-        text: "Coloque una descripcion para el archivo",
+        text: "Coloque una cantidad valida para el articulo",
         icon: "warning",
         button: "Aceptar",
       });
       return;
     }
 
-    const tipoArchivo = event.target.tipo.value;
-    if (tipoArchivo == "Seleccione tipo de archivo") {
-      swal({
-        title: "No se realizo",
-        text: "Coloque un tipo para el archivo",
-        icon: "warning",
-        button: "Aceptar",
-      });
-      return;
-    }
 
-    const fechaArchivo = fechaActual;
-    const idDeReporte = event.target.idreporte.value;
-    const tablaDocumentosRef = app.firestore().collection("Documentos");
+    const fechaArticulo = fechaActual;
 
-    if (tipoArchivo == "Reporte") {
-      if (!idDeReporte || idDeReporte == " ") {
-        swal({
-          title: "No se realizo",
-          text: "Coloque un ID valido para archivo reporte",
-          icon: "warning",
-          button: "Aceptar",
-        });
-        return;
-      } else {
-        const documento = tablaDocumentosRef.doc().set({
-          nombre: nombreArchivo,
-          descripcion: descripcionArchivo,
-          tipo: tipoArchivo,
-          url: archivoUrl,
-          fecha: fechaArchivo,
-          idreporte: idDeReporte,
-        });
-      }
-    } else {
-      const documento = tablaDocumentosRef.doc().set({
-        nombre: nombreArchivo,
-        descripcion: descripcionArchivo,
-        tipo: tipoArchivo,
-        url: archivoUrl,
-        fecha: fechaArchivo,
-      });
-    }
+    const tablaDocumentosRef = app.firestore().collection("Inventario");
+    const documento = tablaDocumentosRef.doc().set({
+      nombre: nombreArticulo,
+      descripcion: descripcionArticulo,
+      cantidad: cantidadArticulo,
+      url: articuloUrl,
+      fecha: fechaArticulo,
+    });
 
     swal({
       title: "¡Agregado!",
@@ -118,9 +88,8 @@ export const AgregarDocumento = () => {
     await new Promise(resolve => setTimeout(resolve, 2000));
     document.getElementById("i_nombre").value = null;
     document.getElementById("i_descripcion").value = null;
-    document.getElementById("id_reporte").value = null;
+    document.getElementById("i_cantidad").value = null;
     document.getElementById("i_foto").value = null;
-    document.getElementById("i_tipo").value = "Seleccione tipo de archivo";
     return;
   };
 
@@ -128,7 +97,7 @@ export const AgregarDocumento = () => {
     <>
       <Nav></Nav>
       <form onSubmit={submitHandler}>
-        <div className="p-2 contenedorPrincipal">
+        <div className="p-2 contenedorPrincipalInv">
           <h1 style={{
             width: "100%",
             textAlign: "center",
@@ -137,13 +106,13 @@ export const AgregarDocumento = () => {
             borderBottom: "2px solid black",
             fontSize: "30px"
           }}
-          >Agregar Documento</h1>
-          <div style={{width:"90%"}} className="container rounded contenedorFormulario">
+          >Agregar Inventario</h1>
+          <div className="container rounded contenedorFormularioInv">
             <div style={{ marginBottom: "100%" }}>
               <div class="mb-3 col-md-12">
                 <label
                   for="exampleFormControlInput1"
-                  className="form-label letrasFormulario"
+                  className="form-label letrasFormularioInv"
                   style={{ marginTop: "2%", paddingLeft: "80%", fontSize: "18px" }}
                 >
                   Fecha actual: {fechaActual}
@@ -152,9 +121,9 @@ export const AgregarDocumento = () => {
               <div class="mb-3 col-md-6">
                 <label
                   for="exampleFormControlInput1"
-                  className="form-label letrasFormulario"
+                  className="form-label letrasFormularioInv"
                 >
-                  Nombre del Archivo
+                  Nombre del Articulo
                 </label>
                 <input
                   type="text"
@@ -164,31 +133,15 @@ export const AgregarDocumento = () => {
                   name="nombre"
                 ></input>
               </div>
-              <div class="mb-3 col-md-6">
-                <label
-                  for="exampleFormControlInput1"
-                  className="form-label letrasFormulario"
-                >
-                  ID de Reporte
-                </label>
-                <input
-                  type="text"
-                  class="form-control rounded"
-                  id="id_reporte"
-                  placeholder="Ingrese un ID valido"
-                  name="idreporte"
-                  disabled
-                ></input>
-              </div>
               <div class="mb-3 col-md-8">
                 <label
                   for="exampleFormControlTextarea1"
-                  className="form-label letrasFormulario"
+                  className="form-label letrasFormularioInv"
                 >
-                  Descripcion del Archivo
+                  Descripcion del Articulo
                 </label>
                 <textarea
-                  placeholder="Ingrese descripcion del archivo..."
+                  placeholder="Ingrese descripcion del articulo..."
                   className="form-control"
                   id="i_descripcion"
                   style={{ resize: "none" }}
@@ -196,22 +149,20 @@ export const AgregarDocumento = () => {
                   name="descripcion"
                 ></textarea>
               </div>
-              <div class="mb-3 col-md-8">
-                <select
-                  name="tipo"
-                  id="i_tipo"
-                  class="form-select letrasFormulario"
-                  style={{ color: "black" }}
-                  aria-label="Default select example"
-                  onChange={habilitarID}
+              <div class="mb-3 col-md-4">
+                <label
+                  for="exampleFormControlInput1"
+                  className="form-label letrasFormularioInv"
                 >
-                  <option selected>Seleccione tipo de archivo</option>
-                  <option value="Instructivo">Instructivo</option>
-                  <option value="Manual">Manual</option>
-                  <option value="Procedimiento">Procedimiento</option>
-                  <option value="Formato">Formato</option>
-                  <option value="Reporte">Reporte</option>
-                </select>
+                  Cantidad del Articulo
+                </label>
+                <input
+                  type="number"
+                  class="form-control rounded"
+                  id="i_cantidad"
+                  placeholder="Ingrese cantidad"
+                  name="cantidad"
+                ></input>
               </div>
 
               <div class="offset-lg-4">
@@ -237,12 +188,12 @@ export const AgregarDocumento = () => {
                   {isLoading ?
                     <h1 class="btn btn-sucess" type="button" disabled>
                       <span style={{ background: "white" }} class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                      <span style={{ color: "white" }} class="sr-only">Cargando...</span>
-                    </h1> : <h1>Cargar Documento</h1>
+                      <span class="sr-only" style={{ color: "white" }} >Cargando...</span>
+                    </h1> : <h1>Ingresar Articulo</h1>
                   }
                 </button>
 
-                <Link to="/adminDocs">
+                <Link to="/inventarios">
                   <button
                     type="submit"
                     class="btn btn-danger"
@@ -252,13 +203,13 @@ export const AgregarDocumento = () => {
                   </button>
                 </Link>
 
-                <Link to="/admiDocumentos">
+                <Link to="/admiInventario">
                   <button
                     type="submit"
                     class="btn btn-secondary"
                     style={{ marginLeft: "2%", marginBottom: "5%", marginTop: "5%" }}
                   >
-                    Administrar Documentos
+                    Administrar Inventario
                   </button>
                 </Link>
               </div>
@@ -269,4 +220,4 @@ export const AgregarDocumento = () => {
     </>
   );
 };
-export default AgregarDocumento;
+export default AgregarInventario;

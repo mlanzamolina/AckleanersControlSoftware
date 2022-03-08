@@ -14,7 +14,7 @@ import Nav from "../NavAdmin";
 const ModificarEmpleado = () => {
   const [sidebar, setSidebar] = useState(false);
   const tablaEmpleadosRef = collection(dbEmpleado, "Empleados");
-  const showSidebar = () => setSidebar(!sidebar);
+  //const showSidebar = () => setSidebar(!sidebar);
   const [dats, setDatos] = useState({
     nombre: " ",
     id: " ",
@@ -22,13 +22,13 @@ const ModificarEmpleado = () => {
     correo: " ",
   });
 
-  const handleInputChance = (event) => {
-    console.log(event.target.value);
-    setDatos({
-      ...dats,
-      [event.target.name]: event.target.value,
-    });
-  };
+  // const handleInputChance = (event) => {
+  //   console.log(event.target.value);
+  //   setDatos({
+  //     ...dats,
+  //     [event.target.name]: event.target.value,
+  //   });
+  // };
 
   const [empleados, loading, error] = useCollectionData(
     collection(db, "Empleados"),
@@ -66,10 +66,10 @@ const ModificarEmpleado = () => {
           />
         </a>
         <div class="sidebar">
-        <a  href="/AgregarEmpleado">
-          Agregar Empleado
-        </a>
-        <a class="active" href="/eliminarEmpleados">Modificar Empleado</a>
+          <a href="/AgregarEmpleado">
+            Agregar Empleado
+          </a>
+          <a class="active" href="/eliminarEmpleados">Modificar Empleado</a>
         </div>
         <div class="contentf">
           <h1 className="tituloh1">Modificar Empleado</h1>
@@ -86,25 +86,25 @@ const ModificarEmpleado = () => {
             <tbody>
               {empleados
                 ? empleados.map((item) => {
-                    return (
-                      <tr className="ta" key={item.id}>
-                        <td>{item.nombre}</td>
-                        <td>{item.dni}</td>
-                        <td>{item.n_telefono}</td>
-                        <td>{item.correo}</td>
-                        <td>
-                          {item.estado}{" "}
-                          <button
-                            onClick={() => {
-                              inactivarEmpleado(item.id, item.estado);
-                            }}
-                          >
-                            Inactivar
-                          </button>{" "}
-                        </td>
-                      </tr>
-                    );
-                  })
+                  return (
+                    <tr className="ta" key={item.id}>
+                      <td>{item.nombre}</td>
+                      <td>{item.dni}</td>
+                      <td>{item.n_telefono}</td>
+                      <td>{item.correo}</td>
+                      <td>
+                        {item.estado}{" "}
+                        <button
+                          onClick={() => {
+                            inactivarEmpleado(item.id, item.estado);
+                          }}
+                        >
+                          Inactivar
+                        </button>{" "}
+                      </td>
+                    </tr>
+                  );
+                })
                 : null}
             </tbody>
           </table>

@@ -37,7 +37,7 @@ export class Header extends Component {
                       ACKLEANERS
                     </h1>
                     <p className="mt-4 text-lg text-blueGray-200">
-                      Cuidamos tu clima
+                      ¡Cuidamos Tu Clima!
                     </p>
                   </div>
                 </div>

@@ -9,7 +9,7 @@
     overflow-y: hidden;
 }
 
-.contenedorFormulario{
+.contenedorFormularioCuadrillas{
     background-color: rgba(0, 0, 0, 0.40);
     height: auto;
     width: 60%;
@@ -23,33 +23,25 @@
     font-weight: bold;
 }
 
-.foto{
-    width: 250px;
-    height: 250px;
-    background-image: url("http://simpleicon.com/wp-content/uploads/user1.png");
-    background-size:cover;
-    border: solid;
-    
-}
 
-.fondoAgregarEmpleado
+.fondoAgregarCuadrilla
 {
-    background-image: url("https://cdn-icons-png.flaticon.com/512/476/476863.png");
+    background-image: url("https://cdn-icons-png.flaticon.com/512/4490/4490381.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
 }
 
-.fondoModificarEmpleado
+.fondoModificarCuadrilla
 {
-    background-image: url("https://cdn-icons-png.flaticon.com/512/4406/4406352.png");
+    background-image: url("https://cdn-icons-png.flaticon.com/512/1283/1283187.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
 }
 
-.fondoAgregarEmpleado:hover,
-.fondoModificarEmpleado:hover{
+.fondoAgregarCuadrilla:hover,
+.fondoModificarCuadrilla:hover{
     background: rgba(52, 93, 206, 0.575);
     color: white;
     font-family: 'Raleway';
@@ -60,4 +52,20 @@
 
 .hide{
     overflow-x: hidden;
+}
+.estiloAgregados{
+    height: auto;
+    background-color: transparent;
+    margin-top: 2%;
+    border: rgb(211,211,211);
+    border-style: solid;
+}
+
+.letrasAgregados{
+    color: white;
+    font-family: 'Raleway';
+}
+
+.indentadoAgregados{
+    margin-left: 4%;
 }

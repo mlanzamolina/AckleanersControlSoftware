@@ -1,5 +1,5 @@
-import React, { useState, useEffect} from "react";
-import {auth} from "../../components/firebase";
+import React, { useState, useEffect, Fragment } from "react";
+import { auth } from "../../components/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
@@ -7,74 +7,110 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SideBarData";
 import "./Management.css";
 import logo from "../../img/logo.png";
-<<<<<<< Updated upstream
-import Nav from "../NavAdmin"
-
-=======
 import Nav from "../NavAdmin";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { collection, doc, Firestore, updateDoc } from "firebase/firestore";
 import { dbOrdenes, db } from "../../components/firebase";
 import styles from "./Table.module.css";
-import * as emailjs from "emailjs-com";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Form,
+} from "reactstrap";
+import { set } from "react-hook-form";
 import swal from "sweetalert";
->>>>>>> Stashed changes
+
+
 
 function SideMenu() {
-  const [user, loading, error] = useAuthState(auth);
-  const [sidebar, setSidebar] = useState(false);
+  const [dats, setDatos] = useState({
+    nombre: " ",
+    numero_telefono: " ",
+    cantidad_unidades: " ",
+    descripcion: " ",
+    proxima_revision: " ",
+  });
 
-  const showSidebar = () => setSidebar(!sidebar);
+  const handleInputChance = (event) => {
+    console.log(event.target.value);
+    setDatos({
+      ...dats,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const [clientes] = useCollectionData(
+    collection(db, "OrdenesTrabajo"),
+    { idField: "id" }
+  );
+  const [user, loading] = useAuthState(auth);
+
+  const [userName, setUserName] = useState("");
+  const [fechaactual, setfechaactual] = useState([]);
+  const [ventanaConfirm, setVentanaConfirm] = useState(false);
+  const [recordatorio, setRecordatorio] = useState(false);
+  const [id,SetID] = useState("");
+
+
+
+  const obtenerID=(id2)=>{
+  SetID(id2);
+  console.log(id);
+  }
+
+
+  const modificarRecordatorio= async (e)=>{
+    e.preventDefault();
+    console.log(id);
+    const record = doc(db, "OrdenesTrabajo", id);
+  
+    await updateDoc(record, {
+      recordad: recordatorio
+    }).catch((error) => {
+      swal({
+        title: "Surgio un error",
+        text: "No se modifico",
+        icon: "info",
+        button: "aceptar",
+      });
+    });
+
+    swal({
+      title: "Ordenes revisada",
+      text: "Recordatorio confirmado",
+      icon: "info",
+      button: "aceptar",
+    });
+
+    setVentanaConfirm(false);
+
+  }
+
+  const editRow = (id2) => {
+   SetID(id2);
+   setRecordatorio(true);
+   console.log(id);
+    if (ventanaConfirm === false) {
+      setVentanaConfirm(!ventanaConfirm);
+    } else {
+      setVentanaConfirm(!ventanaConfirm);
+    }
+  };
 
   useEffect(() => {
-    console.log(user);
-    if(loading) return;
+    var date = new Date();
+    date.setDate(date.getDate());
+    setfechaactual(date);
+    if (loading) return;
     if (user === null) window.location.assign("/Login");
+    setUserName(user.email);
   }, [user, loading]);
-
-  
-  async function handleSend() {
-    var template_params = {
-      to_name: "Clientes prontos a limpieza",
-      from_name: "Sistema de Reportes",
-      message: clientes.,
-    };
-    console.log(template_params);
-
-    emailjs
-      .send(
-        "service_07irwdr",
-        "template_0n3zehl",
-        template_params,
-        emailjs.init("user_swdEcicIxbn0pfLvSx9HE")
-      )
-      .then(
-        swal({
-          title: "¡Enviado!",
-          text: "Se envio un correo de confirmación",
-          icon: "info",
-          button: "Aceptar",
-        })
-      );
-  }
 
   return (
     <>
-<<<<<<< Updated upstream
-   
-    <Nav />
-   
-<div class="sidebar" >
-  <a class="active" href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-</div>
-
-<div class="contentf">
-<h3>Bienvenido ,Nombre de persona, al hub de herramientas administrativas hoy es , fecha de hoy, lista de clientes que tienen pendiente limpieza por fecha</h3> 
-</div>
-=======
       <Nav />
       <Fragment>
         <div class="contentf">
@@ -108,12 +144,13 @@ function SideMenu() {
                 <th scope="col">Telefono</th>
                 <th scope="col">Tipo de Servicio</th>
                 <th scope="col">Proxima Revision</th>
+                <th scope="col">Confirmar Orden</th>
               </tr>
             </thead>
             <tbody>
               {clientes
                 ? clientes.map((item, index) => {
-                    if (item.proxima_revision !== "") {
+                    if (item.proxima_revision !== ""  && !item.recordad) {
                       //fecha dividir en un arreglo pos 0=dia pos 1=mes pos 2=año
                       const fechArr = item.proxima_revision.split("/");
                       //fecha actual dividir en un arreglo pos 0=dia pos 1=mes pos 2=año
@@ -144,6 +181,26 @@ function SideMenu() {
                             <td className="table-primary">
                               {item.proxima_revision}
                             </td>
+
+                            <td class="table-primary">
+                      <div
+                        class="btn-group"
+                        role="group"
+                        aria-label="Basic example"
+                      >
+                        <Button
+                          onClick={()=>editRow(item.id)}
+                         
+                          
+                          color="success">
+                        <i class="bi bi-card-checklist"></i>
+                        </Button> 
+
+                        </div>
+                        </td>
+
+                            
+                            
                           </tr>
                         );
                       }
@@ -152,15 +209,36 @@ function SideMenu() {
                 : null}
             </tbody>
           </table>
+          <Modal isOpen={ventanaConfirm}>
+          <ModalHeader closeButton>¿DESEA CONFIRMAR LA ORDEN DE TRABAJO?</ModalHeader>
+
+          <ModalFooter>
+            <Button
+              onClick={(e)=>modificarRecordatorio(e)}
+              type="button"
+              variant="primary"
+              style={{background:"red"}}
+            >
+              SI
+            </Button>
+
+            <Button
+              onClick={() =>setVentanaConfirm(false)}
+              
+              type="button"
+              variant="secondary"
+              style={{background:"rgb(70,130,180)"}}
+            >
+              NO
+            </Button>
+          </ModalFooter>
+        </Modal>
+
+
+
           <Link to="/adminOrders"></Link>
-
-          <button className="rounded botonSize sendMail" onClick={handleSend} >
-                      Enviar Lista
-          </button>
-
         </div>
       </Fragment>
->>>>>>> Stashed changes
     </>
   );
 }

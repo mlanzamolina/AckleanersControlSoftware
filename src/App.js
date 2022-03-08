@@ -1,7 +1,6 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import "./index.css"
+import "./index.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./views/Login/Login";
@@ -14,8 +13,10 @@ import PasswordRecovery from "./views/PasswordRecovery/PasswordRecovery";
 import Usuarios from "./views/Usuarios/Usuarios";
 import Ordenes from "./views/Orders/Ordenes";
 import ListarOrdenes from "./views/Orders/ListarOrdenes";
+import { Empleados } from "./views/Employees/interfazEmpleados";
 import AgregarOrden from "./views/Orders/agregarOrden";
-import Reportes from "./views/Reports/Reportes";
+import { Reportes } from "./views/Reports/interfazReportes";
+import CrearReportes from "./views/Reports/Reportes";
 import ModificarOrden from "./views/Orders/modificarOrdenes";
 import AgregarReportes from "./views/Reports/AgregarReportes";
 import ModificarUsuarios from "./views/Usuarios/ModificarUsuario";
@@ -23,31 +24,37 @@ import ListarUsuarios from "./views/Usuarios/ListarUsuarios";
 import AgregarUsuarios from "./views/Usuarios/AgregarUsuarios";
 import Inventarios from "./views/Inventarios/Inventarios";
 import NewPassword from "./views/NewPassword/NewPassword";
-import Probar from "./views/Probandocss/probar";
-import { Documentos } from "./views/Documents/interfazDocumentos"
+import { Documentos } from "./views/Documents/interfazDocumentos";
 import EliminarEmpleados from "./views/Employees/eliminarEmpleados";
 import AgregarDocumento from "./views/Documents/agregarDocumento";
 import DescargarDocumento from "./views/Documents/descargarDocumento";
 import "./components/tailwind.css";
 import AdmiDocumentos from "./views/Documents/admiDocumentos";
-
+import DeleteInventarios from "./views/Inventarios/deleteInventarios";
+import { IOrdenes } from "./views/Orders/interfazOrdenes";
+import AdmiInventario from "./views/Inventarios/admiInventario";
+import AgregarInventario from "./views/Inventarios/agregarInventario";
+import ConfirmReport from "./views/Reports/ConfirmReport";
+import { InterfazCuadrillas } from "./views/Cuadrillas/interfazCuadrillas";
+import { AgregarCuadrilla } from "./views/Cuadrillas/agregarCuadrilla";
+import { ModificarCuadrilla } from "./views/Cuadrillas/modificarCuadrilla";
 
 function App() {
   return (
     <>
       <Router>
-
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
+
           <div className="cover">
             <Route path="/Login">
               <Login />
             </Route>
 
-            <Route path="/probar">
-              <Probar />
+            <Route exact path="/interfazEmpleados">
+              <Empleados />
             </Route>
 
             <Route exact path="/AgregarEmpleado">
@@ -85,7 +92,11 @@ function App() {
               <Reportes />
             </Route>
 
-            <Route path="/AgregarReportes/:id/:nombre/:telefono">
+            <Route path="/CrearReportes">
+              <CrearReportes />
+            </Route>
+
+            <Route path="/AgregarReportes/:id/:nombre/:telefono/:currentOrder">
               <AgregarReportes />
             </Route>
 
@@ -100,18 +111,23 @@ function App() {
             <Route path="/ModificarUsuarios">
               <ModificarUsuarios />
             </Route>
+
             <Route path="/AgregarUsuarios">
               <AgregarUsuarios />
             </Route>
+
             <Route path="/inventarios">
               <Inventarios />
             </Route>
+
             <Route path="/NewPassword">
               <NewPassword />
             </Route>
+
             <Route path="/adminDocs">
               <Documentos />
             </Route>
+
             <Route path="/eliminarEmpleados">
               <EliminarEmpleados />
             </Route>
@@ -123,16 +139,46 @@ function App() {
             <Route path="/descargarDocumento">
               <DescargarDocumento />
             </Route>
+
             <Route path="/admiDocumentos">
-              <AdmiDocumentos/>
+              <AdmiDocumentos />
             </Route>
-            
+
+            <Route path="/DeleteInventarios">
+              <DeleteInventarios />
+            </Route>
+
+            <Route path="/agregarInventario">
+              <AgregarInventario />
+            </Route>
+
+            <Route path="/adminOrders">
+              <IOrdenes />
+            </Route>
+
+            <Route path="/admiInventario">
+              <AdmiInventario />
+            </Route>
+
+            <Route path="/confirmReport/:id">
+              <ConfirmReport />
+            </Route>
+
+            <Route path="/interfazCuadrillas">
+              <InterfazCuadrillas />
+            </Route>
+
+            <Route path="/agregarCuadrilla">
+              <AgregarCuadrilla />
+            </Route>
+
+            <Route path="/modificarCuadrilla">
+              <ModificarCuadrilla />
+            </Route>
+
           </div>
         </Switch>
-
       </Router>
-
-
     </>
   );
 }
