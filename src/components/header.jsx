@@ -26,7 +26,7 @@ export class Header extends Component {
             >
               <span
                 id="blackOverlay"
-                className="w-full h-full absolute opacity-75 bg-black"
+                className="w-full h-full bg-black"
               ></span>
             </div>
             <div className="container relative mx-auto">

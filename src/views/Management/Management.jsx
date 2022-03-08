@@ -9,9 +9,11 @@ import "./Management.css";
 import logo from "../../img/logo.png";
 import Nav from "../NavAdmin";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { collection, doc, Firestore, updateDoc } from "firebase/firestore";
+import { collection, connectFirestoreEmulator, doc, Firestore, updateDoc } from "firebase/firestore";
 import { dbOrdenes, db } from "../../components/firebase";
 import styles from "./Table.module.css";
+import * as emailjs from "emailjs-com";
+
 import {
   Button,
   Modal,
@@ -24,8 +26,46 @@ import { set } from "react-hook-form";
 import swal from "sweetalert";
 
 
-
 function SideMenu() {
+
+  function removeDuplicates(arr) {
+    return arr.filter((item, 
+        index) => arr.indexOf(item) === index);
+}
+
+  function constructstring(){
+    let cadena = "";
+   for (let index = 0; index < arrayClientes.length/2; index++) {
+    cadena += "[ Nombre: " + arrayClientes[index] + " Telefono: " + arrayClientestel[index] + " ]";
+   }
+   return cadena;
+ }
+
+  async function handleSend() {
+    var template_params = {
+      to_name: "Clientes prontos a limpieza",
+      from_name: "Sistema de Reportes",
+      message: constructstring(),
+    };
+    console.log(template_params);
+  
+    emailjs
+      .send(
+        "service_07irwdr",
+        "template_0n3zehl",
+        template_params,
+        emailjs.init("user_swdEcicIxbn0pfLvSx9HE")
+      )
+      .then(
+        swal({
+          title: "¡Enviado!",
+          text: "Se envio correo de recordatorio",
+          icon: "info",
+          button: "Aceptar",
+        })
+      );
+  }
+
   const [dats, setDatos] = useState({
     nombre: " ",
     numero_telefono: " ",
@@ -47,7 +87,8 @@ function SideMenu() {
     { idField: "id" }
   );
   const [user, loading] = useAuthState(auth);
-
+  const [arrayClientes, setarrayClientes] = useState([]);
+  const [arrayClientestel, setarrayClientestel] = useState([]);
   const [userName, setUserName] = useState("");
   const [fechaactual, setfechaactual] = useState([]);
   const [ventanaConfirm, setVentanaConfirm] = useState(false);
@@ -112,6 +153,7 @@ function SideMenu() {
   return (
     <>
       <Nav />
+      
       <Fragment>
         <div class="contentf">
           <h1
@@ -169,6 +211,8 @@ function SideMenu() {
                       );
                       //enviar recordatorio aqui
                       if (fechaactual.getTime() >= pDate.getTime()) {
+                        arrayClientes.push(item.nombre);
+                        arrayClientestel.push(item.numero_telefono);
                         return (
                           <tr key={item.id} className="text-center">
                             <td className="table-primary">{item.nombre}</td>                            
@@ -234,11 +278,15 @@ function SideMenu() {
           </ModalFooter>
         </Modal>
 
-
+        <button className="rounded botonSize sendMail" onClick={handleSend} >
+                      Enviar Lista
+          </button>
 
           <Link to="/adminOrders"></Link>
         </div>
       </Fragment>
+
+      
     </>
   );
 }
