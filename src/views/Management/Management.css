@@ -122,6 +122,8 @@ span {
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: local;
+    background-position: center;
+    
 }
 
 
