@@ -266,7 +266,7 @@ export default function AgregarReportes() {
           <button style={{display:"", marginLeft:"20%", marginBottom:"10%"}} type="button" className="btn btn-primary rounded" onClick={print}>
             Descargar
           </button>
-          <Link to={"/AgregarDocumento"}>
+          <Link to={`/confirmReport/${currentOrder}`}>
             <button style={{ marginLeft:"10%", width:"200px"}} type="button" className="btn btn-success" onClick={sendMail}>
               Enviar reporte
             </button>

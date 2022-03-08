@@ -61,26 +61,28 @@ function ConfirmReport() {
 
   let hoy = new Date();
   let fechaActual = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
+  const [archivo, setArchivo] = useState("");
   const [archivoUrl, setArchivoUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [flag, setFlag] = useState(true);
 
-  const archivoHandler = async (event) => {
-    const archivo = event.target.files[0];
-    swal({
-      title: "¡Revisando el documento!",
-      icon: "warning",
-      text: "Un momento...",
-      timer: 2000,
-      button: false,
-    });
-    setIsLoading(true);
-    const storageRef = app.storage().ref("Documentos");
-    const archivoPath = storageRef.child(archivo.name);
-    await archivoPath.put(archivo);
-    console.log("Archivo cargado ", archivo.name);
-    const enlaceUrl = await archivoPath.getDownloadURL();
-    setArchivoUrl(enlaceUrl);
-    setIsLoading(false);
+  const handleFileSubmit = (e) => {
+    if (
+      !(
+        e.target.files[0].name.toLowerCase().endsWith(".pdf")
+      )
+    ) {
+      swal({
+        title: "Formato de archivo no aceptable",
+        text: "El archivo subido no es un reporte en formato pdf, por favor asegurarse de subir el reporte en el formato adecuado.",
+        icon: "warning",
+        button: "Aceptar",
+      });
+      e.target.value = null;
+      setArchivo(null);
+      return;
+    }
+    setArchivo(e.target.files[0]);
   };
 
   const submitHandler = async (event) => {
@@ -112,22 +114,39 @@ function ConfirmReport() {
     const idDeReporte = event.target.idreporte.value;
     const tablaDocumentosRef = app.firestore().collection("Documentos");
 
-    const documento = tablaDocumentosRef.doc().set({
-      nombre: nombreArchivo,
-      descripcion: descripcionArchivo,
-      tipo: "Reporte",
-      url: archivoUrl,
-      fecha: fechaArchivo,
-      idreporte: idDeReporte,
-    });
-
     swal({
-      title: "¡Agregado!",
-      text: "Archivo agregado a la base de datos",
-      icon: "info",
-      button: "Aceptar",
+      title: "¡Revisando el documento!",
+      icon: "warning",
+      text: "Un momento...",
+      timer: 2000,
+      button: false,
     });
+    setIsLoading(true);
+    const storageRef = app.storage().ref("Documentos");
+    const archivoPath = storageRef.child(archivo.name);
+    await archivoPath.put(archivo)
+    .then((uploadtaskSnapshot) => {
+      return uploadtaskSnapshot.ref.getDownloadURL();
+    }).then((url) => {
+      setIsLoading(false);
+      setFlag(false);
 
+      const documento = tablaDocumentosRef.doc().set({
+        nombre: nombreArchivo,
+        descripcion: descripcionArchivo,
+        tipo: "Reporte",
+        url: url,
+        fecha: fechaArchivo,
+        idreporte: idDeReporte,
+      });
+
+      swal({
+        title: "¡Agregado!",
+        text: "Archivo agregado a la base de datos",
+        icon: "info",
+        button: "Aceptar",
+      });
+    });
     await new Promise(resolve => setTimeout(resolve, 2000));
     document.getElementById("i_nombre").value = null;
     document.getElementById("i_descripcion").value = null;
@@ -202,6 +221,7 @@ function ConfirmReport() {
               <button
                 type="button"
                 className="btn btn-success"
+                disabled={flag}
                 onClick={handleSubmit}
                 style={{
                   fontSize: "20px",
@@ -264,6 +284,8 @@ function ConfirmReport() {
                       className="form-control rounded"
                       id="id_reporte"
                       name="idreporte"
+                      value={id}
+                      readOnly
                       disabled
                     ></input>
                     <br />
@@ -284,7 +306,7 @@ function ConfirmReport() {
                       type="file"
                       placeholder="Cargar documento..."
                       id="i_foto"
-                      onChange={archivoHandler}
+                      onChange={handleFileSubmit}
                       disabled
                     />
                     <br />
