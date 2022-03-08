@@ -7,7 +7,8 @@ export default class SingleImageUploadComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            file: null
+            file: null,
+            flag: false
         }
         this.uploadSingleFile = this.uploadSingleFile.bind(this)
         this.upload = this.upload.bind(this)
@@ -15,7 +16,8 @@ export default class SingleImageUploadComponent extends Component {
 
     uploadSingleFile(e) {
         this.setState({
-            file: URL.createObjectURL(e.target.files[0])
+            file: URL.createObjectURL(e.target.files[0]),
+            flag: true
         })
     }
 
@@ -39,7 +41,7 @@ export default class SingleImageUploadComponent extends Component {
                 </div>
 
                 <div className="form-group">
-                    <input type="file" className="file-input" onChange={this.uploadSingleFile} />
+                    <input type="file" className="file-input" onChange={this.uploadSingleFile} hidden={this.state.flag}/>
                 </div>
             </form >
         )
