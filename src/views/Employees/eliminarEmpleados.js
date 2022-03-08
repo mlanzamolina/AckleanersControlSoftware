@@ -146,7 +146,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         title: "Formato de archivo no aceptable",
         text: "El archivo subido no es una foto, por favor asegurarse de subir una imagen formato png o jpeg",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
       e.target.value = null;
       setimageURL(null);
@@ -174,7 +174,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
             title: "Numero de Documento Nacional de Identifacicion repetido",
             text: "Por favor reingrese un DNI unico o no se le dejara modificar",
             icon: "warning",
-            button: "aceptar",
+            button: "Aceptar",
           });
         }
       });
@@ -196,7 +196,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         estado: empleados.estado,
         direccion: empleados.direccion,
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const editRow = (empleados) => {
@@ -249,7 +249,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         title: "No se realizo",
         text: "No se modifico el empleado, verifique los campos",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
     } else {
       setIsloading(true);
@@ -265,7 +265,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
           title: "Surgio un error",
           text: "No se modifico",
           icon: "info",
-          button: "aceptar",
+          button: "Aceptar",
         });
       });
       console.log(nombre);
@@ -289,10 +289,10 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         title: "Empleado Modificado",
         text: "Se modifico el empleado exitosamente",
         icon: "info",
-        button: "aceptar",
+        button: "Aceptar",
       });
     }
-  
+
   }; //Fin
 
   const cambiarFoto = (e) => {
@@ -322,14 +322,14 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
     <>
       <Nav />
       <div className="contentf">
-      <h1 style={{
-            width:"100%",
-            textAlign:"center", 
-            marginTop:"1%", 
-            marginBottom:"80px",
-            borderBottom:"2px solid black"
-          }}
-            >Administración de Empleados</h1>
+        <h1 style={{
+          width: "100%",
+          textAlign: "center",
+          marginTop: "1%",
+          marginBottom: "80px",
+          borderBottom: "2px solid black"
+        }}
+        >Administración de Empleados</h1>
         <div className="container">
           <div className="mt-4 mb-4 table-responsive">
             <table className="table table-dark table-striped">
@@ -394,12 +394,12 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
             />
           </div>
           <Link to="/AgregarEmpleado">
-            <button type="button" class="btn btn-success" style={{marginLeft:"75%"}}>
+            <button type="button" class="btn btn-success" style={{ marginLeft: "75%" }}>
               Ir a Agregar Empleado
             </button>
           </Link>
           <Link to="/interfazEmpleados">
-            <button type="button" class="btn btn-danger" style={{marginLeft:"1%"}}>
+            <button type="button" class="btn btn-danger" style={{ marginLeft: "1%" }}>
               Volver
             </button>
           </Link>
@@ -412,7 +412,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
               type="button"
               variant="primary"
               onClick={() => eliminarEmpleado(id)}
-              style={{background:"red"}}
+              style={{ background: "red" }}
             >
               SI
             </Button>
@@ -421,7 +421,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
               type="button"
               variant="secondary"
               onClick={() => mostrarModalEliminar()}
-              style={{background:"rgb(70,130,180)"}}
+              style={{ background: "rgb(70,130,180)" }}
             >
               NO
             </Button>
@@ -526,11 +526,11 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                     type="button"
                     class="btn btn-outline-danger"
                     onClick={() => SetmostrarM(false)}
-                    style={{background:"red"}}
+                    style={{ background: "red" }}
                   >
                     Salir
                   </Button>
-                  <Button type="submit" class="btn btn-outline-danger" style={{background:"rgb(70,130,180)"}}>
+                  <Button type="submit" class="btn btn-outline-danger" style={{ background: "rgb(70,130,180)" }}>
                     {isLoading ? (
                       <h1 class="btn btn-primary" type="button" disabled>
                         <span
@@ -588,7 +588,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                 type="button"
                 class="btn btn-outline-danger"
                 onClick={() => setMostrarV(false)}
-                style={{background:"red"}}
+                style={{ background: "red" }}
               >
                 Salir
               </Button>
