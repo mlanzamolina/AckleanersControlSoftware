@@ -172,6 +172,7 @@ function SideMenu() {
               fontSize: "25px"
             }}>
             Resumen de Servicios Pendientes</h2>
+            <div className="table-responsive">
           <table className="table table-dark table-striped" align="center">
             {/*<table className="ta" align="center">*/}
             <thead className={styles.tableRowHeader}>
@@ -249,6 +250,7 @@ function SideMenu() {
                 : null}
             </tbody>
           </table>
+          </div>
           <Modal isOpen={ventanaConfirm}>
             <ModalHeader closeButton>¿DESEA CONFIRMAR LA ORDEN DE TRABAJO?</ModalHeader>
 
