@@ -31,6 +31,7 @@ import TableFooter from "./TableFooter";
 
 
 
+
 const AdmiInventario = ({ rowsPerPage }) => {
   const [data, setData] = useState([]);
   const [mostrarE, setMostrarE] = useState(false);

@@ -267,6 +267,7 @@ useEffect(() => {
 
 return (
     <>
+         <div className="contentf">
         <div className="mt-4 mb-4 table-responsive">
             <table className="table table-dark table-striped">
                 <thead className={styles.tableRowHeader}>
@@ -443,6 +444,19 @@ return (
         </Modal>
 
 
+        <div class="col-12 offset-lg-7">
+            <Link to="/interfazCuadrillas">
+                <button
+                    type="submit"
+                    class="btn btn-danger"
+                    style={{ marginBottom: "5%", marginTop: "5%" }}
+                >
+                    Volver
+                </button>
+            </Link>
+        </div>
+
+        </div>
 
 
 
