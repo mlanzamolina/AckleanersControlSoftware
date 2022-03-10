@@ -31,7 +31,6 @@ import swal from "sweetalert";
 import useTable from "./useTable";
 import TableFooter from "./TableFooter";
 import styles from "./Table.module.css";
-import "./estiloCuadrillas2.css";
 let hoy = new Date();
 let fechaActual =
   hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear();
