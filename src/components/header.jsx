@@ -16,7 +16,9 @@ export class Header extends Component {
       <>
       <div id="head">
         <main>
+          
           <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+            
             <div
               className="absolute top-0 w-full h-full bg-center bg-cover"
               style={{
@@ -26,8 +28,8 @@ export class Header extends Component {
             >
               <span
                 id="blackOverlay"
-                className="w-full h-full bg-black"
-              ></span>
+                className="w-full h-full absolute opacity-75 bg-black"
+             />
             </div>
             <div className="container relative mx-auto">
               <div className="items-center flex flex-wrap">
