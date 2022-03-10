@@ -40,9 +40,9 @@ export default function Reportes() {
     } else {
       swal({
         title: "Error",
-        text: "El empleado seleccionado ya esta agregado a al reporte.",
+        text: "El empleado seleccionado ya esta agregado al reporte.",
         icon: "error",
-        button: "aceptar",
+        button: "Aceptar",
       });
     }
   };
@@ -54,7 +54,7 @@ export default function Reportes() {
         title: "Error",
         text: "La orden seleccionada ya esta agregada al reporte.",
         icon: "error",
-        button: "aceptar",
+        button: "Aceptar",
       });
     }
   };
@@ -122,7 +122,7 @@ export default function Reportes() {
         title: "Revisar fomulario",
         text: "Por favor verifique que todos los campos esten llenos",
         icon: "warning",
-        button: "aceptar",
+        button: "Aceptar",
       });
     } else {
       setTrueReporte();
@@ -137,7 +137,7 @@ export default function Reportes() {
       .then(() => {
         swal({
           title: "Completada",
-          text: "Reporte creado a continuacion agregue imagenes.",
+          text: "Reporte creado, a continuación agregue imagenes.",
           icon: "info",
           button: "Aceptar",
         });

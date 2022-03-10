@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap");
+
 .estiloPrincipal {
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
   background-size: cover;
@@ -8,9 +9,9 @@
   background-size: cover;
 }
 
-.estiloContenedor {
+.estiloContenedorReporte {
   background-color: rgba(0, 0, 0, 0.4);
-  height: 50%;
+  height: auto;
   width: 70%;
   margin-top: 2%;
   margin-bottom: 2%;
