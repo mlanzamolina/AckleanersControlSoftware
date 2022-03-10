@@ -48,7 +48,7 @@ export const ModificarCuadrilla = () => {
     const [nombre, setNombre] = useState("");
     const [currentID, setCurrentID] = useState({
         id: null,
-        nombre: "",
+        nombreCuadrilla: "",
         herramientasCuadrillas: "",
         empleadosCuadrilla: "",
         fechaCreacion: "",
@@ -61,6 +61,7 @@ export const ModificarCuadrilla = () => {
 
     const editRow = (cuadrillas,index) => {
         obtener(cuadrillas);
+        console.log(cuadrillas.nombreCuadrilla);
     
     
         if (mostrarM === false) {
@@ -74,7 +75,7 @@ export const ModificarCuadrilla = () => {
         setID(cuadrillas.id);
         setCurrentID({
             id: cuadrillas.id,
-            nombre: cuadrillas.nombreCuadrilla,
+            nombreCuadrilla: cuadrillas.nombreCuadrilla,
             comentarioCuadrilla: cuadrillas.comentarioCuadrilla,
             fechaCreacion: cuadrillas.fechaCreacion,
             herramientasCuadrillas: cuadrillas.herramientasCuadrillas
@@ -194,9 +195,13 @@ export const ModificarCuadrilla = () => {
             return;
         }
         const fechaCuadrilla = fechaActual;
-        const tablaDocumentosRef = doc(db, "Documentos", id);
+        const tablaDocumentosRef = doc(db, "Cuadrillas", id);
 
-        if (nombre == " " || comentario == " ") {
+        var nombre2 = document.getElementById("i_nombre").value;
+        var descripcion2 = document.getElementById("i_descripcion").value;
+        
+
+        if (nombre2 == " " || descripcion2 == " ") {
             swal({
                 title: "No se realizo",
                 text: "No se modifico la cuadrilla, verifique los campos",
@@ -207,8 +212,8 @@ export const ModificarCuadrilla = () => {
             return;
         } else {
             await updateDoc(tablaDocumentosRef, {
-                nombreCuadrilla: nombre,
-                comentarioCuadrilla: comentario,
+                nombreCuadrilla: nombre2,
+                comentarioCuadrilla: descripcion2,
                 herramientasCuadrillas: valueHerramienta,
                 empleadosCuadrilla: valueEmpleado,
                 fechaCreacion: fechaActual
@@ -230,10 +235,10 @@ export const ModificarCuadrilla = () => {
         }
     
 
-    document.getElementById("nombre").value = null;
+    document.getElementById("i_nombre").value = null;
     document.getElementById("id_empleados").value = "Seleccione empleado (s)";
     document.getElementById("i_herramientas").value = "Seleccione herramienta (s)";
-    document.getElementById("comentario").value = null;
+    document.getElementById("i_descripcion").value = null;
     setValueEmpleado([])
     setValueHerramienta([])
     return;
@@ -280,7 +285,7 @@ return (
                             <td class="table-primary">{cuadrilla.nombreCuadrilla}</td>
 
                             <td class="table-primary">{cuadrilla.empleadosCuadrilla + ""}   </td>
-                            <td class="table-primary">{cuadrilla.herramientasCuadrillas}</td>
+                            <td class="table-primary">{cuadrilla.herramientasCuadrillas+""}</td>
                             <td class="table-primary">{cuadrilla.fechaCreacion}</td>
                             <td class="table-primary">{cuadrilla.comentarioCuadrilla}</td>
 
@@ -316,16 +321,15 @@ return (
             <ModalBody>
                 <div className="form-group">
                     <form onSubmit={cargarDatos}>
-                        <label>Nombre de Cuadrilla</label>
+                        <label>Identificador de Cuadrilla</label>
                         
-
-                        <inputs
+                        <input
                             type="text"
-                            id="nombre"
+                            id="i_nombre"
                             className="form-control"
                             onChange={(e) => setNombre(e.target.value)}
-                            defaultValue={currentID && currentID.nombre}
-                            name="nombre"
+                            defaultValue={currentID && currentID.nombreCuadrilla}
+                            name="nombreCuadrilla"
                         />
                         <br />
 
@@ -404,21 +408,13 @@ return (
                         <label>Comentario Cuadrilla</label>
 
                         <textarea
-                            id="comentario"
+                            id="i_descripcion"
                             class="form-control"
-                            name="comentario"
+                            name="descripcionCuadrilla"
                             onChange={(e) => setComentario(e.target.value)}
                             defaultValue={currentID && currentID.comentarioCuadrilla}
                         ></textarea>
                         <br />
-
-
-
-
-
-
-
-
 
 
 
