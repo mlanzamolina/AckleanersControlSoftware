@@ -138,7 +138,7 @@ export const AgregarCuadrilla = () => {
         });
         swal({
             title: "¡Agregado!",
-            text: "Archivo agregado a la base de datos",
+            text: "Cuadrilla agregada a la base de datos",
             icon: "info",
             button: "Aceptar",
         });
