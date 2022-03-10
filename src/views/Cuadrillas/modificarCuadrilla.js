@@ -222,8 +222,7 @@ export const ModificarCuadrilla = () => {
 
     document.getElementById("i_nombre").value = null;
     document.getElementById("id_empleados").value = "Seleccione empleado (s)";
-    document.getElementById("i_herramientas").value =
-      "Seleccione herramienta (s)";
+    document.getElementById("i_herramientas").value = "Seleccione herramienta (s)";
     document.getElementById("i_descripcion").value = null;
     setValueEmpleado([]);
     setValueHerramienta([]);
@@ -246,6 +245,17 @@ export const ModificarCuadrilla = () => {
     <>
       <Nav />
       <div className="contentf">
+        <div className="text-center" style={{ margin: "50px 0px" }}>
+          <h1 style={{
+            width: "100%",
+            textAlign: "center",
+            marginTop: "1%",
+            marginBottom: "80px",
+            borderBottom: "2px solid black",
+            fontSize: "30px"
+          }}
+          >Administración de Cuadrillas</h1>
+        </div>
         <div className="mt-4 mb-4 table-responsive">
           <table className="table table-dark table-striped">
             <thead className={styles.tableRowHeader}>
@@ -325,21 +335,21 @@ export const ModificarCuadrilla = () => {
                   <option selected>Seleccione empleado (s)</option>
                   {empleados
                     ? empleados.map((item) => {
-                        return (
-                          <option key={item.id} value={item.nombre}>
-                            {"[ID Empleado: " +
-                              item.id +
-                              "]" +
-                              " [Nombre:" +
-                              item.nombre +
-                              "]"}
-                          </option>
-                        );
-                      })
+                      return (
+                        <option key={item.id} value={item.nombre}>
+                          {"[ID Empleado: " +
+                            item.id +
+                            "]" +
+                            " [Nombre:" +
+                            item.nombre +
+                            "]"}
+                        </option>
+                      );
+                    })
                     : null}
                 </select>
 
-                <div className="mb-3 col-md-8 rounded estiloAgregados letrasAgregados">
+                <div className="mb-3 col-md-8 rounded estiloAgregados letrasAgregados2">
                   <label style={{ marginLeft: "1%" }}>
                     Empleado(s) asignados:
                   </label>
@@ -370,20 +380,20 @@ export const ModificarCuadrilla = () => {
                     <option selected>Seleccione herramienta (s)</option>
                     {inventario
                       ? inventario.map((item) => {
-                          return (
-                            <option key={item.id} value={item.nombre}>
-                              {"[Nombre: " +
-                                item.nombre +
-                                "]" +
-                                "[Descripcion: " +
-                                item.descripcion +
-                                "]"}
-                            </option>
-                          );
-                        })
+                        return (
+                          <option key={item.id} value={item.nombre}>
+                            {"[Nombre: " +
+                              item.nombre +
+                              "]" +
+                              "[Descripcion: " +
+                              item.descripcion +
+                              "]"}
+                          </option>
+                        );
+                      })
                       : null}
                   </select>
-                  <div className="mb-3 col-md-6 rounded estiloAgregados letrasAgregados">
+                  <div className="mb-3 col-md-6 rounded estiloAgregados letrasAgregados2">
                     <label style={{ marginLeft: "1%" }}>
                       Herramienta (s) asignadas:
                     </label>
@@ -432,12 +442,22 @@ export const ModificarCuadrilla = () => {
           </ModalBody>
         </Modal>
 
-        <div class="col-12 offset-lg-7">
+        <div class="col-12 offset-lg-8">
+          <Link to="/agregarCuadrilla">
+            <button
+              type="submit"
+              class="btn btn-success"
+              style={{ marginBottom: "5%", marginTop: "2%" }}
+            >
+              Agregar Nueva Cuadrilla
+            </button>
+          </Link>
+
           <Link to="/interfazCuadrillas">
             <button
               type="submit"
               class="btn btn-danger"
-              style={{ marginBottom: "5%", marginTop: "5%" }}
+              style={{ marginLeft: "2%", marginBottom: "5%", marginTop: "2%" }}
             >
               Volver
             </button>
