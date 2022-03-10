@@ -213,7 +213,7 @@ export const ModificarCuadrilla = () => {
 
       swal({
         title: "Cuadrilla Modificada",
-        text: "Se modifico el documento exitosamente",
+        text: "Se modifico la cuadrilla exitosamente",
         icon: "info",
         button: "Aceptar",
       });
