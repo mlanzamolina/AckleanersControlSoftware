@@ -334,16 +334,13 @@ export const ModificarCuadrilla = () => {
                   <option selected>Seleccione empleado (s)</option>
                   {empleados
                     ? empleados.map((item) => {
-                      return (
-                        <option key={item.id} value={item.nombre}>
-                          {"[ID Empleado: " +
-                            item.id +
-                            "]" +
-                            " [Nombre:" +
-                            item.nombre +
-                            "]"}
-                        </option>
-                      );
+                      if (item.estado == "ACTIVO") {
+                        return (
+                          <option key={item.id} value={item.nombre}>
+                            {"[ID Empleado: " + item.id + "]" + " [Nombre:" + item.nombre + "]"}
+                          </option>
+                        );
+                      }
                     })
                     : null}
                 </select>
@@ -381,18 +378,13 @@ export const ModificarCuadrilla = () => {
                       ? inventario.map((item) => {
                         return (
                           <option key={item.id} value={item.nombre}>
-                            {"[Nombre: " +
-                              item.nombre +
-                              "]" +
-                              "[Descripcion: " +
-                              item.descripcion +
-                              "]"}
+                            {"[Nombre: " + item.nombre + "]" + "[Descripcion: " + item.descripcion + "]"}
                           </option>
                         );
                       })
                       : null}
                   </select>
-                  <div className="mb-3 col-md-6 rounded estiloAgregados letrasAgregados2">
+                  <div className="mb-3 col-md-8 rounded estiloAgregados letrasAgregados2">
                     <label style={{ marginLeft: "1%" }}>
                       Herramienta (s) asignadas:
                     </label>
@@ -401,7 +393,7 @@ export const ModificarCuadrilla = () => {
                     ))}
                   </div>
                   <button
-                    class=" mb-3 col-md-6 btn btn-success"
+                    class="mb-3 col-md-6 btn btn-success"
                     onClick={addHerramienta}
                   >
                     Agregar

@@ -210,14 +210,17 @@ export const AgregarCuadrilla = () => {
                                     <option selected>Seleccione empleado (s)</option>
                                     {empleados
                                         ? empleados.map((item) => {
-                                            return (
-                                                <option key={item.id} value={item.nombre}>
-                                                    {"[ID Empleado: " + item.id + "]" +
-                                                        " [Nombre:" + item.nombre + "]"}
-                                                </option>
-                                            );
+                                            if (item.estado == "ACTIVO") {
+                                                return (
+                                                    <option key={item.id} value={item.nombre}>
+                                                        {"[ID Empleado: " + item.id + "]" +
+                                                            " [Nombre:" + item.nombre + "]"}
+                                                    </option>
+                                                );
+                                            }
                                         })
                                         : null}
+
                                 </select>
                                 <div
                                     className="mb-3 col-md-8 rounded estiloAgregados letrasAgregados"
