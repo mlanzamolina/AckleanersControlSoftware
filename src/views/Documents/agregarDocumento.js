@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { app } from "../../components/firebase";
-import "../Employees/estiloEmpleado.css";
+import "../Documents/estiloDocs.css";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import Nav from "../NavAdmin";
@@ -128,7 +128,7 @@ export const AgregarDocumento = () => {
     <>
       <Nav></Nav>
       <form onSubmit={submitHandler}>
-        <div className="p-2 contenedorPrincipal">
+        <div className="p-2 contenedorPrincipalDoc">
           <h1 style={{
             width: "100%",
             textAlign: "center",

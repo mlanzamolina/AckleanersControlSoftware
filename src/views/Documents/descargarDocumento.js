@@ -20,7 +20,7 @@ export const DescargarDocumento = () => {
   return (
     <>
       <Nav />
-      <div className="p-2 contenedorPrincipal">
+      <div className="p-2 contenedorPrincipalDoc">
       <h1 style={{
             width:"100%",
             textAlign:"center", 

@@ -228,7 +228,7 @@ const AdmiDocumentos = () => {
   return (
     <>
       <NavAdmin></NavAdmin>
-      <div className="contentm">
+      <div className="contentf">
         <div className="text-center" style={{ margin: "50px 0px" }}>
           <h1 style={{
             width: "100%",

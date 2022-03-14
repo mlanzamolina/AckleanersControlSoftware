@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
 
 .contenedorPrincipal{
-    background-image: url("https://gradients.mijo-design.com/public/uploads/files/db13.png");
+    background-image: url("../../img/background1.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
