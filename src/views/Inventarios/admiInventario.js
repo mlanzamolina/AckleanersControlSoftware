@@ -423,7 +423,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
         {/* MODAL PARA MOSTRAR OBJETOS */}
 
         <Modal isOpen={mostrarM}>
-          <ModalHeader>Modificar Inventario</ModalHeader>
+          <ModalHeader>Modificar Articulo</ModalHeader>
           <ModalBody>
             <div className="form-group">
               <form onSubmit={(e) => modificar(e)}>
