@@ -397,7 +397,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
           </div>
         </div>
         <Modal isOpen={mostrarE}>
-          <ModalHeader closeButton>¿DESEA ELIMINAR EL EMPLEADO?</ModalHeader>
+          <ModalHeader closeButton>¿DESEA ELIMINAR EL ARTICULO?</ModalHeader>
 
           <ModalFooter>
             <Button
