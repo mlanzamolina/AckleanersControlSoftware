@@ -308,11 +308,13 @@ export default function Reportes() {
                     <option selected>Seleccione Un Empleado</option>
                     {empleados
                       ? empleados.map((item) => {
-                        return (
-                          <option key={item.id} value={item.nombre}>
-                            {item.nombre}
-                          </option>
-                        );
+                        if(item.estado === "ACTIVO"){
+                          return (
+                            <option key={item.id} value={item.nombre}>
+                              {item.nombre}
+                            </option>
+                          );
+                        }
                       })
                       : null}
                   </select>
@@ -333,11 +335,13 @@ export default function Reportes() {
                     <option selected>Seleccione Un Empleado</option>
                     {empleados
                       ? empleados.map((item) => {
-                        return (
-                          <option key={item.id} value={item.nombre}>
-                            {item.nombre}
-                          </option>
-                        );
+                        if (item.estado === "ACTIVO") {
+                          return (
+                            <option key={item.id} value={item.nombre}>
+                              {item.nombre}
+                            </option>
+                          );
+                        }
                       })
                       : null}
                   </select>
