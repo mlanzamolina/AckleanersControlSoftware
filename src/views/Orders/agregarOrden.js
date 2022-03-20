@@ -310,11 +310,13 @@ const AgregarOrden = () => {
                       <option selected>Seleccione un Empleado</option>
                       {empleados
                         ? empleados.map((item) => {
+                          if (item.estado === "ACTIVO") {
                             return (
-                              <option key={item.id} value={item.nombre}>
-                                {item.nombre}
-                              </option>
-                            );
+                                <option key={item.id} value={item.nombre}>
+                                  {item.nombre}
+                                </option>
+                              );
+                          }  
                           })
                         : null}
                     </select>
