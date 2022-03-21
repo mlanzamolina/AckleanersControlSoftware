@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { SocialIcon } from 'react-social-icons';
 
 export class footer extends Component {
   render() {
@@ -34,28 +35,8 @@ export class footer extends Component {
                   Encuentranos en redes sociales.
                 </h5>
                 <div className="mt-6 lg:mb-0 mb-6">
-                  <a
-                    target="_blank"
-                    style={{}}
-                    href="https://www.facebook.com/Ackleaners-106521830930162"
-                  >
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/1200px-Facebook_icon.svg.png"
-                      width="90vw"
-                      alt="..."
-                    />
-                  </a>
-                  <a
-                    target="_blank"
-                    style={{}}
-                    href="https://www.instagram.com/ackleaners/"
-                  >
-                    <img
-                      src="https://aegean600.com/wp-content/uploads/instagram-logo.png"
-                      width="96vw"
-                      alt="..."
-                    />
-                  </a>
+                  <SocialIcon url="https://www.facebook.com/Ackleaners-106521830930162" style={{ height: 50, width: 50 }}/>
+                  <SocialIcon url="https://www.instagram.com/ackleaners/" style={{ height: 50, width: 50 }}/>
                 </div>
               </div>
             </div>
