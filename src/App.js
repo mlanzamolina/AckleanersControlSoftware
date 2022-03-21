@@ -4,7 +4,6 @@ import "./index.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./views/Login/Login";
-import { Link } from "react-router-dom";
 import AgregarEmpleado from "./views/Employees/agregarEmpleado";
 import ModificarEmpleado from "./views/Employees/modificarEmpleado";
 import ListarEmpleado from "./views/Employees/listarEmpleado";
