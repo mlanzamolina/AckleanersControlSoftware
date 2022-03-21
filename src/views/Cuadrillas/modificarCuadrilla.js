@@ -347,7 +347,7 @@ export const ModificarCuadrilla = () => {
 
                 <div className="mb-3 col-md-8 rounded estiloAgregados letrasAgregados2">
                   <label style={{ marginLeft: "1%" }}>
-                    Empleado(s) asignados:
+                    Empleado (s) asignados:
                   </label>
                   {valueEmpleado.map((name) => (
                     <h2 class="indentadoAgregados">{name}</h2>
