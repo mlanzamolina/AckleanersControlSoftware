@@ -263,7 +263,7 @@ export const ModificarCuadrilla = () => {
                 <th scope="col">Empleados Cuadrilla</th>
                 <th scope="col">Herramientas</th>
                 <th scope="col">Fecha</th>
-                <th scope="col">Comentario</th>
+                <th scope="col">Descripcion</th>
                 <th scope="col">EDITAR</th>
               </tr>
             </thead>
@@ -400,7 +400,7 @@ export const ModificarCuadrilla = () => {
                   </button>
                 </div>
 
-                <label>Comentario Cuadrilla</label>
+                <label>Indicaciones para Cuadrilla</label>
 
                 <textarea
                   id="i_descripcion"
