@@ -308,7 +308,7 @@ export const ModificarCuadrilla = () => {
         </div>
 
         <Modal isOpen={mostrarM}>
-          <ModalHeader>CUADRILLA</ModalHeader>
+          <ModalHeader>Modificar Cuadrilla</ModalHeader>
           <ModalBody>
             <div className="form-group">
               <form onSubmit={cargarDatos}>
