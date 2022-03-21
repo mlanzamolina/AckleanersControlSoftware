@@ -31,7 +31,8 @@ function SideMenu() {
 
   function constructstring() {
     let cadena = "";
-    for (let index = 0; index < arrayClientes.length / 2; index++) {
+    setarrayClientes(removeDuplicates(arrayClientes));
+      for (let index = 0; index < arrayClientes.length / 2; index++) {
       cadena += "[ Nombre: " + arrayClientes[index] + " Telefono: " + arrayClientestel[index] + " ]";
     }
     return cadena;
@@ -120,10 +121,13 @@ function SideMenu() {
       text: "Recordatorio confirmado",
       icon: "info",
       button: "aceptar",
-    });
-
-    setVentanaConfirm(false);
-
+    }).then
+      (() => {
+        setVentanaConfirm(false);
+      
+      }).then(() => {
+        window.location.reload();
+      });
   }
 
   const editRow = (id2) => {
