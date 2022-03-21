@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, {  useState } from "react";
 import { app } from "../../components/firebase";
 import "./estiloInventario.css";
 import { Link } from "react-router-dom";
@@ -70,13 +70,13 @@ export const AgregarInventario = () => {
     const fechaArticulo = fechaActual;
 
     const tablaDocumentosRef = app.firestore().collection("Inventario");
-    const documento = tablaDocumentosRef.doc().set({
+    const documento = tablaDocumentosRef.doc().set({ //no borrar
       nombre: nombreArticulo,
       descripcion: descripcionArticulo,
       cantidad: cantidadArticulo,
       url: articuloUrl,
       fecha: fechaArticulo,
-    });
+    });//no se puede borrar esto
 
     swal({
       title: "¡Agregado!",
