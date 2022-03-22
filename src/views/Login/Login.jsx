@@ -52,6 +52,10 @@ export default function Login() {
 
   }
 
+  useEffect(() => {
+    if(loading) return;
+    if (user !== null) window.location.assign("/Management");
+  }, [user, loading]);
 
   return (
     <>

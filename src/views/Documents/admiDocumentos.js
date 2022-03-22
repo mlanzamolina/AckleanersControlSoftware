@@ -22,6 +22,7 @@ import {
   updateDoc,
   deleteDoc,
 } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
@@ -34,7 +35,7 @@ import NavAdmin from "../NavAdmin";
 
 const AdmiDocumentos = () => {
   const [data, setData] = useState([]);
-
+  const [user, loading, error] = useAuthState(auth);
   const [page, setPage] = useState(1);
   const [tipo, setTipo] = useState("");
   const [mostrarE, setMostrarE, setMostrarEliminar] = useState(false);
@@ -92,6 +93,8 @@ const AdmiDocumentos = () => {
   };
 
   useEffect(() => {
+    if (loading) return;
+    if (user === null) window.location.assign("/Login");
     const getDocumentos = async () => {
       const temp = [];
       var cad = "Eligir Opcion";
@@ -103,7 +106,7 @@ const AdmiDocumentos = () => {
       }
     };
     getDocumentos();
-  }, [tipo]);
+  }, [user, loading, tipo]);
 
   const [archivoUrl, setArchivoUrl] = useState("");
 
@@ -230,15 +233,18 @@ const AdmiDocumentos = () => {
       <NavAdmin></NavAdmin>
       <div className="contentf">
         <div className="text-center" style={{ margin: "50px 0px" }}>
-          <h1 style={{
-            width: "100%",
-            textAlign: "center",
-            marginTop: "1%",
-            marginBottom: "80px",
-            borderBottom: "2px solid black",
-            fontSize: "30px"
-          }}
-          >Administración de Documentos</h1>
+          <h1
+            style={{
+              width: "100%",
+              textAlign: "center",
+              marginTop: "1%",
+              marginBottom: "80px",
+              borderBottom: "2px solid black",
+              fontSize: "30px",
+            }}
+          >
+            Administración de Documentos
+          </h1>
         </div>
         <div className="container">
           <div className="dropdown">
@@ -429,12 +435,16 @@ const AdmiDocumentos = () => {
         </Modal>
 
         <Link to="adminDocs">
-          <button type="button" class="btn btn-danger" style={{ marginLeft: "75%", marginRight: "1%" }}>
+          <button
+            type="button"
+            class="btn btn-danger"
+            style={{ marginLeft: "75%", marginRight: "1%" }}
+          >
             Volver
           </button>
         </Link>
         <Link to="AgregarDocumento">
-          <button type="button" class="btn btn-secondary" >
+          <button type="button" class="btn btn-secondary">
             Agregar Documento
           </button>
         </Link>
