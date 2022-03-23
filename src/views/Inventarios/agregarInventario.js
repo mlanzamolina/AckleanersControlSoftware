@@ -1,4 +1,6 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { auth } from "../../components/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { app } from "../../components/firebase";
 import "./estiloInventario.css";
 import { Link } from "react-router-dom";
@@ -6,12 +8,17 @@ import swal from "sweetalert";
 import Nav from "../NavAdmin";
 
 export const AgregarInventario = () => {
-
   let hoy = new Date();
-  let fechaActual = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
+  let fechaActual =
+    hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear();
   const [articuloUrl, setArticuloUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
 
+  useEffect(() => {
+    if (loading) return;
+    if (user === null) window.location.assign("/Login");
+  }, [user, loading]);
 
   const archivoHandler = async (event) => {
     const archivo = event.target.files[0];
@@ -66,17 +73,17 @@ export const AgregarInventario = () => {
       return;
     }
 
-
     const fechaArticulo = fechaActual;
 
     const tablaDocumentosRef = app.firestore().collection("Inventario");
     const documento = tablaDocumentosRef.doc().set({
+      //no borrar
       nombre: nombreArticulo,
       descripcion: descripcionArticulo,
       cantidad: cantidadArticulo,
       url: articuloUrl,
       fecha: fechaArticulo,
-    });
+    }); //no se puede borrar esto
 
     swal({
       title: "¡Agregado!",
@@ -85,7 +92,7 @@ export const AgregarInventario = () => {
       button: "Aceptar",
     });
 
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     document.getElementById("i_nombre").value = null;
     document.getElementById("i_descripcion").value = null;
     document.getElementById("i_cantidad").value = null;
@@ -98,22 +105,29 @@ export const AgregarInventario = () => {
       <Nav></Nav>
       <form onSubmit={submitHandler}>
         <div className="p-2 contenedorPrincipalInv">
-          <h1 style={{
-            width: "100%",
-            textAlign: "center",
-            marginTop: "1%",
-            marginBottom: "80px",
-            borderBottom: "2px solid black",
-            fontSize: "30px"
-          }}
-          >Agregar Inventario</h1>
+          <h1
+            style={{
+              width: "100%",
+              textAlign: "center",
+              marginTop: "1%",
+              marginBottom: "80px",
+              borderBottom: "2px solid black",
+              fontSize: "30px",
+            }}
+          >
+            Agregar Inventario
+          </h1>
           <div className="container rounded contenedorFormularioInv">
             <div style={{ marginBottom: "100%" }}>
               <div class="mb-3 col-md-12">
                 <label
                   for="exampleFormControlInput1"
                   className="form-label letrasFormularioInv"
-                  style={{ marginTop: "2%", paddingLeft: "80%", fontSize: "18px" }}
+                  style={{
+                    marginTop: "2%",
+                    paddingLeft: "80%",
+                    fontSize: "18px",
+                  }}
                 >
                   Fecha actual: {fechaActual}
                 </label>
@@ -185,12 +199,21 @@ export const AgregarInventario = () => {
                     marginTop: "5%",
                   }}
                 >
-                  {isLoading ?
+                  {isLoading ? (
                     <h1 class="btn btn-sucess" type="button" disabled>
-                      <span style={{ background: "white" }} class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                      <span class="sr-only" style={{ color: "white" }} >Cargando...</span>
-                    </h1> : <h1>Ingresar Articulo</h1>
-                  }
+                      <span
+                        style={{ background: "white" }}
+                        class="spinner-grow spinner-grow-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="sr-only" style={{ color: "white" }}>
+                        Cargando...
+                      </span>
+                    </h1>
+                  ) : (
+                    <h1>Ingresar Articulo</h1>
+                  )}
                 </button>
 
                 <Link to="/inventarios">
@@ -207,7 +230,11 @@ export const AgregarInventario = () => {
                   <button
                     type="submit"
                     class="btn btn-secondary"
-                    style={{ marginLeft: "2%", marginBottom: "5%", marginTop: "5%" }}
+                    style={{
+                      marginLeft: "2%",
+                      marginBottom: "5%",
+                      marginTop: "5%",
+                    }}
                   >
                     Administrar Inventario
                   </button>

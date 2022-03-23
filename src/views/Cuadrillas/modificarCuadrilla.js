@@ -262,7 +262,7 @@ export const ModificarCuadrilla = () => {
                 <th scope="col">Empleados Cuadrilla</th>
                 <th scope="col">Herramientas</th>
                 <th scope="col">Fecha</th>
-                <th scope="col">Comentario</th>
+                <th scope="col">Descripcion</th>
                 <th scope="col">EDITAR</th>
               </tr>
             </thead>
@@ -307,7 +307,7 @@ export const ModificarCuadrilla = () => {
         </div>
 
         <Modal isOpen={mostrarM}>
-          <ModalHeader>CUADRILLA</ModalHeader>
+          <ModalHeader>Modificar Cuadrilla</ModalHeader>
           <ModalBody>
             <div className="form-group">
               <form onSubmit={cargarDatos}>
@@ -346,7 +346,7 @@ export const ModificarCuadrilla = () => {
 
                 <div className="mb-3 col-md-8 rounded estiloAgregados letrasAgregados2">
                   <label style={{ marginLeft: "1%" }}>
-                    Empleado(s) asignados:
+                    Empleado (s) asignados:
                   </label>
                   {valueEmpleado.map((name) => (
                     <h2 class="indentadoAgregados">{name}</h2>
@@ -399,7 +399,7 @@ export const ModificarCuadrilla = () => {
                   </button>
                 </div>
 
-                <label>Comentario Cuadrilla</label>
+                <label>Indicaciones para Cuadrilla</label>
 
                 <textarea
                   id="i_descripcion"

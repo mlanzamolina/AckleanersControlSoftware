@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../NavAdmin";
 import {
   Button,
@@ -6,23 +6,17 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Form,
 } from "reactstrap";
 import {
   db,
-  auth,
-  registerWithEmailAndPassword,
   almacenamiento,
 } from "../../components/firebase";
 import {
-  collection,
   doc,
-  getDocs,
   updateDoc,
   deleteDoc,
 } from "firebase/firestore";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import styles from "./Table.module.css";
@@ -34,14 +28,13 @@ import TableFooter from "./TableFooter";
 const AdmiInventario = ({ rowsPerPage }) => {
   const [data, setData] = useState([]);
   const [mostrarE, setMostrarE] = useState(false);
-  const [opcionE, setopcionE] = useState(false);
   const [id, setID] = useState("");
   const [mostrarM, SetmostrarM] = useState(false);
   let hoy = new Date();
   let fechaActual =
     hoy.getDate() + "-" + (hoy.getMonth() + 1) + "-" + hoy.getFullYear();
 
-  const [cantidad, setCantidad] = useState("");
+  const [cantidad, setCantidad] = useState(""); //no borrar
   const [currentID, setCurrentID] = useState({
     id: null,
     nombre: "",
@@ -61,7 +54,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
 
   const [mostrarV, setMostrarV] = useState(false);
 
-  const [paginated, setPaginated] = useState();
+  // const [paginated, setPaginated] = useState();
 
   const [page, setPage] = useState(1);
   const [vista, setVista] = useState({
@@ -75,7 +68,7 @@ const AdmiInventario = ({ rowsPerPage }) => {
 
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
-  const [disponibilidad, setDisponibilidad] = useState("");
+  // const [disponibilidad, setDisponibilidad] = useState("");
 
   //const [url, setUrl] = useState("");
 
@@ -83,8 +76,8 @@ const AdmiInventario = ({ rowsPerPage }) => {
   const [image, setImage] = useState("");
   const [imageurl, setimageURL] = useState("");
   const [idFire, setIDFire] = useState("");
-  const [q, setQ] = useState("");
-  const [imageurl2, setimageURL2] = useState("");
+  // const [q, setQ] = useState("");
+  const [imageurl2, setimageURL2] = useState(""); // no borrar
 
   const [isLoading, setIsloading] = useState(false);
 
@@ -110,9 +103,9 @@ const AdmiInventario = ({ rowsPerPage }) => {
 
   const { slice, range } = useTable(data, page, 5);
 
-  const refrescar = () => {
-    window.location.reload(false);
-  };
+  // const refrescar = () => {
+  //   window.location.reload(false);
+  // };
 
   const eliminarInventario = async (id) => {
     const inventario = doc(db, "Inventario", id);

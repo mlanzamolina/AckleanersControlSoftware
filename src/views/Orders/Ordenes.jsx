@@ -15,7 +15,6 @@ export default function Ordenes() {
   const showSidebar = () => setSidebar(!sidebar);
   
   useEffect(() => {
-    console.log(user);
     if(loading) return;
     if (user === null) window.location.assign("/Login");
   }, [user, loading]);
