@@ -9,9 +9,9 @@ import "./estiloEmpleado.css";
 import Nav from "../NavAdmin";
 
 const AgregarEmpleado = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const tablaEmpleadosRef = collection(dbEmpleado, "Empleados");
-  const [empleados, emp_loading, emp_error] = useCollectionData(
+  const [empleados] = useCollectionData(
     collection(dbEmpleado, "Empleados"),
     { idField: "id" }
   );
@@ -259,7 +259,7 @@ const AgregarEmpleado = () => {
                   <img
                     id="foto"
                     src={imageurl}
-                    className="col-3 offset-lg-4 foto rounded"
+                    className="col-3 offset-lg-4 foto rounded" alt="..."
                   />
                 </div>
 

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { SocialIcon } from 'react-social-icons';
 
 export class footer extends Component {
   render() {
@@ -27,41 +28,23 @@ export class footer extends Component {
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap text-center lg:text-left">
               <div className="w-full lg:w-6/12 px-4">
-                <h4 className="text-3xl font-semibold">
+                
+              </div>
+            </div>
+           
+            <div className="flex flex-wrap items-center md:justify-between justify-center">
+              <div className="w-full md:w-4/12 px-4 mx-auto text-center">
+              <h4 className="text-3xl font-semibold">
                   ¡Mantente en contacto!
                 </h4>
                 <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
                   Encuentranos en redes sociales.
                 </h5>
                 <div className="mt-6 lg:mb-0 mb-6">
-                  <a
-                    target="_blank"
-                    style={{}}
-                    href="https://www.facebook.com/Ackleaners-106521830930162"
-                  >
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/1200px-Facebook_icon.svg.png"
-                      width="90vw"
-                      alt="..."
-                    />
-                  </a>
-                  <a
-                    target="_blank"
-                    style={{}}
-                    href="https://www.instagram.com/ackleaners/"
-                  >
-                    <img
-                      src="https://aegean600.com/wp-content/uploads/instagram-logo.png"
-                      width="96vw"
-                      alt="..."
-                    />
-                  </a>
+                  <SocialIcon url="https://www.facebook.com/Ackleaners-106521830930162" style={{ height: 50, width: 50 }}/>
+                  <SocialIcon url="https://www.instagram.com/ackleaners/" style={{ height: 50, width: 50 }}/>
                 </div>
-              </div>
-            </div>
-            <hr className="my-6 border-blueGray-300" />
-            <div className="flex flex-wrap items-center md:justify-between justify-center">
-              <div className="w-full md:w-4/12 px-4 mx-auto text-center">
+                <hr width="100%" className="my-6 border-blueGray-300" />
                 <div className="text-sm text-blueGray-500 font-semibold py-1">
                   Copyright © {new Date().getFullYear()} ACkleaners by{" "}
                   <a>ACkleaners</a>

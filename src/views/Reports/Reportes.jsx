@@ -71,6 +71,8 @@ export default function Reportes() {
   const [fecha2, setFecha2] = useState("");
 
   useEffect(() => {
+    if (loading) return;
+    if (user === null) window.location.assign("/Login");
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!
@@ -88,7 +90,7 @@ export default function Reportes() {
     setFecha(today);
     today = mm + "/" + dd + "/" + yyyy;
     setFecha2(today);
-  });
+  }, [user, loading]);
 
   const handleInputChance = (event) => {
     setDatos({
@@ -164,11 +166,6 @@ export default function Reportes() {
         alert(e);
       });
   };
-
-  useEffect(() => {
-    if (loading) return;
-    if (user === null) window.location.assign("/Login");
-  }, [user, loading]);
 
   return (
     <Fragment>
@@ -308,11 +305,13 @@ export default function Reportes() {
                     <option selected>Seleccione Un Empleado</option>
                     {empleados
                       ? empleados.map((item) => {
-                        return (
-                          <option key={item.id} value={item.nombre}>
-                            {item.nombre}
-                          </option>
-                        );
+                        if(item.estado === "ACTIVO"){
+                          return (
+                            <option key={item.id} value={item.nombre}>
+                              {item.nombre}
+                            </option>
+                          );
+                        }
                       })
                       : null}
                   </select>
@@ -333,11 +332,13 @@ export default function Reportes() {
                     <option selected>Seleccione Un Empleado</option>
                     {empleados
                       ? empleados.map((item) => {
-                        return (
-                          <option key={item.id} value={item.nombre}>
-                            {item.nombre}
-                          </option>
-                        );
+                        if (item.estado === "ACTIVO") {
+                          return (
+                            <option key={item.id} value={item.nombre}>
+                              {item.nombre}
+                            </option>
+                          );
+                        }
                       })
                       : null}
                   </select>

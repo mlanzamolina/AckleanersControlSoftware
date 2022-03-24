@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import React, { Fragment, useState, useEffect } from "react";
+import { auth } from "../../components/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { collection } from "@firebase/firestore";
 import { db } from "../../components/firebase";
 import Nav from "../NavAdmin";
 
 export const DescargarDocumento = () => {
+  const [user, loading2, error2] = useAuthState(auth);
+
   const [datos, setDatos] = useState({
     nombre: "",
     descripcion: "",
@@ -17,19 +21,27 @@ export const DescargarDocumento = () => {
     { idField: "id" }
   );
 
+  useEffect(() => {
+    if (loading2) return;
+    if (user === null) window.location.assign("/Login");
+  }, [user, loading2]);
+
   return (
     <>
       <Nav />
-      <div className="p-2 contenedorPrincipal">
-      <h1 style={{
-            width:"100%",
-            textAlign:"center", 
-            marginTop:"1%", 
-            marginBottom:"80px",
-            borderBottom:"2px solid black",
-            fontSize:"30px"
+      <div className="p-2 contenedorPrincipalDoc">
+        <h1
+          style={{
+            width: "100%",
+            textAlign: "center",
+            marginTop: "1%",
+            marginBottom: "80px",
+            borderBottom: "2px solid black",
+            fontSize: "30px",
           }}
-            >Descargar Documentos</h1>
+        >
+          Descargar Documentos
+        </h1>
         <div
           className="container rounded contenedorFormularioBajar"
           style={{ marginBottom: "100%" }}

@@ -1,23 +1,33 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { auth } from "../../components/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { app } from "../../components/firebase";
-import "../Employees/estiloEmpleado.css";
+import "../Documents/estiloDocs.css";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import Nav from "../NavAdmin";
 
 export const AgregarDocumento = () => {
   let hoy = new Date();
-  let fechaActual = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
+  let fechaActual =
+    hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear();
   const [archivoUrl, setArchivoUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
+  const [sidebar, setSidebar] = useState(false);
+
+  useEffect(() => {
+    if (loading) return;
+    if (user === null) window.location.assign("/Login");
+  }, [user, loading]);
 
   function habilitarID() {
-    var seleccionado = document.getElementById("i_tipo").value
+    var seleccionado = document.getElementById("i_tipo").value;
     if (seleccionado == "Reporte") {
-      document.getElementById("id_reporte").removeAttribute("disabled")
+      document.getElementById("id_reporte").removeAttribute("disabled");
     } else {
-      document.getElementById("id_reporte").setAttribute("disabled", true)
-      document.getElementById("id_reporte").value = null
+      document.getElementById("id_reporte").setAttribute("disabled", true);
+      document.getElementById("id_reporte").value = null;
     }
   }
 
@@ -115,7 +125,7 @@ export const AgregarDocumento = () => {
       button: "Aceptar",
     });
 
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     document.getElementById("i_nombre").value = null;
     document.getElementById("i_descripcion").value = null;
     document.getElementById("id_reporte").value = null;
@@ -128,23 +138,33 @@ export const AgregarDocumento = () => {
     <>
       <Nav></Nav>
       <form onSubmit={submitHandler}>
-        <div className="p-2 contenedorPrincipal">
-          <h1 style={{
-            width: "100%",
-            textAlign: "center",
-            marginTop: "1%",
-            marginBottom: "80px",
-            borderBottom: "2px solid black",
-            fontSize: "30px"
-          }}
-          >Agregar Documento</h1>
-          <div style={{width:"90%"}} className="container rounded contenedorFormulario">
+        <div className="p-2 contenedorPrincipalDoc">
+          <h1
+            style={{
+              width: "100%",
+              textAlign: "center",
+              marginTop: "1%",
+              marginBottom: "80px",
+              borderBottom: "2px solid black",
+              fontSize: "30px",
+            }}
+          >
+            Agregar Documento
+          </h1>
+          <div
+            style={{ width: "90%" }}
+            className="container rounded contenedorFormulario"
+          >
             <div style={{ marginBottom: "100%" }}>
               <div class="mb-3 col-md-12">
                 <label
                   for="exampleFormControlInput1"
                   className="form-label letrasFormulario"
-                  style={{ marginTop: "2%", paddingLeft: "80%", fontSize: "18px" }}
+                  style={{
+                    marginTop: "2%",
+                    paddingLeft: "80%",
+                    fontSize: "18px",
+                  }}
                 >
                   Fecha actual: {fechaActual}
                 </label>
@@ -234,12 +254,21 @@ export const AgregarDocumento = () => {
                     marginTop: "5%",
                   }}
                 >
-                  {isLoading ?
+                  {isLoading ? (
                     <h1 class="btn btn-sucess" type="button" disabled>
-                      <span style={{ background: "white" }} class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                      <span style={{ color: "white" }} class="sr-only">Cargando...</span>
-                    </h1> : <h1>Cargar Documento</h1>
-                  }
+                      <span
+                        style={{ background: "white" }}
+                        class="spinner-grow spinner-grow-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      <span style={{ color: "white" }} class="sr-only">
+                        Cargando...
+                      </span>
+                    </h1>
+                  ) : (
+                    <h1>Cargar Documento</h1>
+                  )}
                 </button>
 
                 <Link to="/adminDocs">
@@ -256,7 +285,11 @@ export const AgregarDocumento = () => {
                   <button
                     type="submit"
                     class="btn btn-secondary"
-                    style={{ marginLeft: "2%", marginBottom: "5%", marginTop: "5%" }}
+                    style={{
+                      marginLeft: "2%",
+                      marginBottom: "5%",
+                      marginTop: "5%",
+                    }}
                   >
                     Administrar Documentos
                   </button>

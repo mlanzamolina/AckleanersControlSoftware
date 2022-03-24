@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { dbOrdenes, db } from "../../components/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { collection, addDoc } from "firebase/firestore";
+import { auth } from "../../components/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import "./Formulario.css";
 import swal from "sweetalert";
 import Nav from "../NavAdmin";
@@ -11,6 +13,7 @@ import "./estiloOrdenes.css";
 const AgregarOrden = () => {
   const tablaOrdenesRef = collection(dbOrdenes, "OrdenesTrabajo");
   const [orden_emps, setOrden_emps] = useState([]);
+  const [user, loading, error] = useAuthState(auth);
   const [flag, setFlag] = useState(true);
   const [select_emp, setSelect_emp] = useState("");
   const [empleados, emp_loading, emp_error] = useCollectionData(
@@ -18,7 +21,10 @@ const AgregarOrden = () => {
     { idField: "id" }
   );
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (loading) return;
+    if (user === null) window.location.assign("/Login");
+  }, [user, loading]);
 
   const [dats, setDatos] = useState({
     nombre: " ",
@@ -58,7 +64,7 @@ const AgregarOrden = () => {
         button: "Aceptar",
       });
       return;
-    }else if(!dats.numero_telefono || dats.numero_telefono == " "){
+    } else if (!dats.numero_telefono || dats.numero_telefono == " ") {
       swal({
         title: "No se realizo",
         text: "Por favor, ingrese un numero de telefono",
@@ -66,15 +72,19 @@ const AgregarOrden = () => {
         button: "Aceptar",
       });
       return;
-    }else if(!dats.cantidad_unidades || dats.cantidad_unidades == " " || dats.cantidad_unidades <= 0){
+    } else if (
+      !dats.cantidad_unidades ||
+      dats.cantidad_unidades == " " ||
+      dats.cantidad_unidades <= 0
+    ) {
       swal({
         title: "No se realizo",
         text: "Por favor, ingrese una cantidad de unidades validas",
         icon: "warning",
         button: "Aceptar",
       });
-      return; 
-    }else if(!dats.descripcion || dats.descripcion == " "){
+      return;
+    } else if (!dats.descripcion || dats.descripcion == " ") {
       swal({
         title: "No se realizo",
         text: "Por favor, ingrese una descripción para más detalles",
@@ -82,7 +92,7 @@ const AgregarOrden = () => {
         button: "Aceptar",
       });
       return;
-    }else if(!dats.tipo_vivienda || dats.tipo_vivienda == " "){
+    } else if (!dats.tipo_vivienda || dats.tipo_vivienda == " ") {
       swal({
         title: "No se realizo",
         text: "Por favor, ingrese un tipo de servicio",
@@ -90,7 +100,7 @@ const AgregarOrden = () => {
         button: "Aceptar",
       });
       return;
-    }else if(orden_emps.length === 0){
+    } else if (orden_emps.length === 0) {
       swal({
         title: "No se realizo",
         text: "Por favor, ingrese al menos un empleado",
@@ -98,7 +108,7 @@ const AgregarOrden = () => {
         button: "Aceptar",
       });
       return;
-    }else {
+    } else {
       var fecha = new Date();
       var hoy = new Date();
       if (dats.tipo_vivienda === "Casa") {
@@ -193,7 +203,7 @@ const AgregarOrden = () => {
                     name="nombre"
                     onChange={handleInputChance}
                     id="a_nombre"
-                    style={{width:"40%"}}
+                    style={{ width: "40%" }}
                     required
                   ></input>
                 </div>
@@ -211,7 +221,7 @@ const AgregarOrden = () => {
                     name="numero_telefono"
                     onChange={handleInputChance}
                     id="a_contacto"
-                    style={{width:"40%"}}
+                    style={{ width: "40%" }}
                     required
                   ></input>
                 </div>
@@ -245,7 +255,7 @@ const AgregarOrden = () => {
                     id="a_descripcion"
                     onChange={handleInputChance}
                     placeholder="Si tienes comentarios adicionales o un metodo de contacto adicional, puedes especificarlos..."
-                    style={{width:"70%"}}
+                    style={{ width: "70%" }}
                   ></textarea>
                 </div>
 
@@ -310,11 +320,13 @@ const AgregarOrden = () => {
                       <option selected>Seleccione un Empleado</option>
                       {empleados
                         ? empleados.map((item) => {
-                            return (
-                              <option key={item.id} value={item.nombre}>
-                                {item.nombre}
-                              </option>
-                            );
+                            if (item.estado === "ACTIVO") {
+                              return (
+                                <option key={item.id} value={item.nombre}>
+                                  {item.nombre}
+                                </option>
+                              );
+                            }
                           })
                         : null}
                     </select>

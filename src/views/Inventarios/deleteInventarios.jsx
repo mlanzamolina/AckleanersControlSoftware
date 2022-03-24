@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState } from "react";
 import { app } from "../../components/firebase";
 import "../Employees/estiloEmpleado.css";
 import { Link } from "react-router-dom";
@@ -60,7 +60,7 @@ export const DeleteInventarios = () => {
     }
 
     const tablaDocumentosRef = app.firestore().collection("Documentos");
-    const documento = tablaDocumentosRef.doc().set({
+    const documento = tablaDocumentosRef.doc().set({ //no borrar
       nombre: nombreArchivo,
       descripcion: descripcionArchivo,
       tipo: tipoArchivo,

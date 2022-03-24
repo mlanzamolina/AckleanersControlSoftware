@@ -23,6 +23,7 @@ import {
 } from "firebase/firestore";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useAuthState } from "react-firebase-hooks/auth";
 import swal from "sweetalert";
 
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -31,6 +32,7 @@ import useTable from "./useTable";
 import TableFooter from "./TableFooter";
 
 const EliminarEmpleados = ({ rowsPerPage }) => {
+  const [user, loading, error] = useAuthState(auth);
   const [data, setData] = useState([]);
   const [mostrarE, setMostrarE] = useState(false);
   const [opcionE, setopcionE] = useState(false);
@@ -108,7 +110,9 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
       });
     };
     fecthData();
-  }, []);
+    if (loading) return;
+    if (user === null) window.location.assign("/Login");
+  }, [user, loading]);
 
   const { slice, range } = useTable(data, page, 5);
 
@@ -196,7 +200,7 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         estado: empleados.estado,
         direccion: empleados.direccion,
       });
-    } catch (error) { }
+    } catch (error) {}
   };
 
   const editRow = (empleados) => {
@@ -292,7 +296,6 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
         button: "Aceptar",
       });
     }
-
   }; //Fin
 
   const cambiarFoto = (e) => {
@@ -322,14 +325,17 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
     <>
       <Nav />
       <div className="contentf">
-        <h1 style={{
-          width: "100%",
-          textAlign: "center",
-          marginTop: "1%",
-          marginBottom: "80px",
-          borderBottom: "2px solid black"
-        }}
-        >Administración de Empleados</h1>
+        <h1
+          style={{
+            width: "100%",
+            textAlign: "center",
+            marginTop: "1%",
+            marginBottom: "80px",
+            borderBottom: "2px solid black",
+          }}
+        >
+          Administración de Empleados
+        </h1>
         <div className="container">
           <div className="mt-4 mb-4 table-responsive">
             <table className="table table-dark table-striped">
@@ -394,12 +400,20 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
             />
           </div>
           <Link to="/AgregarEmpleado">
-            <button type="button" class="btn btn-success" style={{ marginLeft: "75%" }}>
+            <button
+              type="button"
+              class="btn btn-success"
+              style={{ marginLeft: "75%" }}
+            >
               Ir a Agregar Empleado
             </button>
           </Link>
           <Link to="/interfazEmpleados">
-            <button type="button" class="btn btn-danger" style={{ marginLeft: "1%" }}>
+            <button
+              type="button"
+              class="btn btn-danger"
+              style={{ marginLeft: "1%" }}
+            >
               Volver
             </button>
           </Link>
@@ -530,7 +544,11 @@ const EliminarEmpleados = ({ rowsPerPage }) => {
                   >
                     Salir
                   </Button>
-                  <Button type="submit" class="btn btn-outline-danger" style={{ background: "rgb(70,130,180)" }}>
+                  <Button
+                    type="submit"
+                    class="btn btn-outline-danger"
+                    style={{ background: "rgb(70,130,180)" }}
+                  >
                     {isLoading ? (
                       <h1 class="btn btn-primary" type="button" disabled>
                         <span

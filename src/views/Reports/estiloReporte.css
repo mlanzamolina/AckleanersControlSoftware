@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap");
 
 .estiloPrincipal {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
+  background-image: url("../../img/background2.png");
   background-size: cover;
 }
 .contenedorPrincipal2 {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMKgNAjbmCFysZjSxm5XU1Xhh6T0XVrhlafBXCJc7sN78CoOpr4aKort9UwmzkrQf9OA&usqp=CAU");
+  background-image: url("../../img/background2.png");
   background-size: cover;
 }
 
