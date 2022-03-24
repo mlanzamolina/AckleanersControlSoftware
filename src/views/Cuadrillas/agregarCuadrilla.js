@@ -1,9 +1,7 @@
-import React from 'react'
-import { useEffect, useState } from 'react';
+import { useEffect, useState,React } from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../components/firebase";
 import "./estiloCuadrillas.css";
-import { db, app } from "../../components/firebase";
+import { db, app,auth } from "../../components/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { collection } from "firebase/firestore";
 import { Link } from 'react-router-dom';
@@ -14,7 +12,7 @@ let hoy = new Date();
 let fechaActual = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
 
 export const AgregarCuadrilla = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     useEffect(() => {
         if (loading) return;
         if (user === null) window.location.assign("/Login");
@@ -36,7 +34,6 @@ export const AgregarCuadrilla = () => {
                 icon: "info",
                 button: "Aceptar",
             });
-            return;
         } else if (valueEmpleado.includes(getElementoEmpleado)) {
             swal({
                 title: "Error",
@@ -44,7 +41,6 @@ export const AgregarCuadrilla = () => {
                 icon: "info",
                 button: "Aceptar",
             });
-            return;
         } else {
             setValueEmpleado([...valueEmpleado, getElementoEmpleado])
         }
@@ -73,12 +69,12 @@ export const AgregarCuadrilla = () => {
         setValueHerramienta([...valueHerramienta, getElementoHerramienta])
     }
 
-    const [empleados, emp_loading, emp_error] = useCollectionData(
+    const [empleados] = useCollectionData(
         collection(db, "Empleados"),
         { idField: "id" }
     );
 
-    const [inventario, inv_loading, inv_error] = useCollectionData(
+    const [inventario] = useCollectionData(
         collection(db, "Inventario"),
         { idField: "id" }
     );
