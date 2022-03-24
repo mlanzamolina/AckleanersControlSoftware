@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {logout} from "../components/firebase";
 import { SidebarData } from "./Management/SideBarData";
-import logo from "../img/logo.png";
 
 export class NavAdmin extends Component {  
     render() {

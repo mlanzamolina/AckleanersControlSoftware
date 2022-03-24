@@ -1,54 +1,21 @@
-import React, { useRef } from "react";
-import { useParams, Link, useHistory } from "react-router-dom";
+import React from "react";
+import { useParams, Link } from "react-router-dom";
 import SingleImageUploadComponent from "./SingleImageUploadComponent ";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
 import logito from "../../img/ack.png";
 import { useState, useEffect } from "react";
-import Reportes from "./Reportes";
 import "../Employees/estiloEmpleado.css";
-import { v4 as uuidv4 } from "uuid";
-import { dbOrdenes, db } from "../../components/firebase";
 import swal from "sweetalert";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
-import * as emailjs from "emailjs-com";
-const RandomID = uuidv4();
 
-//import ReactToPrint, {PrintContextConsumer} from "react-to-print";
+import * as emailjs from "emailjs-com";
 
 export default function AgregarReportes() {
-  const history = useHistory();
   let { id } = useParams();
   let { nombre } = useParams();
   let { telefono } = useParams();
   let { currentOrder } = useParams();
   const [urlReportes, setUrl] = useState("");
-  //let { id } = useParams();
-  function handleMandarReporte() {
-    const input = document.getElementById("divToPrint");
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, "JPEG", 0, 0);
-      // pdf.output('dataurlnewwindow');
-      pdf.save("download.pdf");
-    });
-  }
-
   const [fecha, setFecha] = useState("");
 
-  const updateUser = async (nombre, age) => {
-    const userDoc = doc(db, "OrdenesTrabajo", nombre);
-    const newFields = { RandomID: id };
-    await updateDoc(userDoc, newFields);
-  };
   async function sendMail() {
     var template_params = {
       to_name: "Revisador de Reportes",
