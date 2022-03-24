@@ -1,7 +1,9 @@
-import { useEffect, useState,React } from 'react';
+import React from 'react'
+import { useEffect, useState } from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../components/firebase";
 import "./estiloCuadrillas.css";
-import { db, app,auth } from "../../components/firebase";
+import { db, app } from "../../components/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { collection } from "firebase/firestore";
 import { Link } from 'react-router-dom';
@@ -12,7 +14,7 @@ let hoy = new Date();
 let fechaActual = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
 
 export const AgregarCuadrilla = () => {
-    const [user, loading] = useAuthState(auth);
+    const [user, loading, error] = useAuthState(auth);
     useEffect(() => {
         if (loading) return;
         if (user === null) window.location.assign("/Login");
@@ -34,6 +36,7 @@ export const AgregarCuadrilla = () => {
                 icon: "info",
                 button: "Aceptar",
             });
+            return;
         } else if (valueEmpleado.includes(getElementoEmpleado)) {
             swal({
                 title: "Error",
@@ -41,6 +44,7 @@ export const AgregarCuadrilla = () => {
                 icon: "info",
                 button: "Aceptar",
             });
+            return;
         } else {
             setValueEmpleado([...valueEmpleado, getElementoEmpleado])
         }
@@ -69,12 +73,12 @@ export const AgregarCuadrilla = () => {
         setValueHerramienta([...valueHerramienta, getElementoHerramienta])
     }
 
-    const [empleados] = useCollectionData(
+    const [empleados, emp_loading, emp_error] = useCollectionData(
         collection(db, "Empleados"),
         { idField: "id" }
     );
 
-    const [inventario] = useCollectionData(
+    const [inventario, inv_loading, inv_error] = useCollectionData(
         collection(db, "Inventario"),
         { idField: "id" }
     );
@@ -206,22 +210,19 @@ export const AgregarCuadrilla = () => {
                                     <option selected>Seleccione empleado (s)</option>
                                     {empleados
                                         ? empleados.map((item) => {
-                                            if (item.estado == "ACTIVO") {
-                                                return (
-                                                    <option key={item.id} value={item.nombre}>
-                                                        {"[ID Empleado: " + item.id + "]" +
-                                                            " [Nombre:" + item.nombre + "]"}
-                                                    </option>
-                                                );
-                                            }
+                                            return (
+                                                <option key={item.id} value={item.nombre}>
+                                                    {"[ID Empleado: " + item.id + "]" +
+                                                        " [Nombre:" + item.nombre + "]"}
+                                                </option>
+                                            );
                                         })
                                         : null}
-
                                 </select>
                                 <div
                                     className="mb-3 col-md-8 rounded estiloAgregados letrasAgregados"
                                 >
-                                    <label style={{ marginLeft: "1%" }}>Empleado (s) asignados:</label>
+                                    <label style={{ marginLeft: "1%" }}>Empleado(s) asignados:</label>
                                     {valueEmpleado.map(name => <h2 class="indentadoAgregados">{name}</h2>)}
                                 </div>
                                 <button
